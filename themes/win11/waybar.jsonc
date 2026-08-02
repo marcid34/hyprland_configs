@@ -1,0 +1,149 @@
+// Windows 11 Pro — waybar
+// Windows 11 — centred taskbar, Mica surfaces, Fluent blue.
+{
+  "name": "taskbar",
+  "layer": "top",
+  "position": "bottom",
+  "height": 48,
+  "spacing": 4,
+  "modules-left": [],
+  "modules-center": [
+    "custom/start",
+    "group/workspaces",
+    "custom/media"
+  ],
+  "modules-right": [
+    "tray",
+    "custom/notif",
+    "network",
+    "pulseaudio",
+    "battery",
+    "clock"
+  ],
+  "custom/start": {
+    "format": "",
+    "on-click": "~/.config/themes/launch.sh",
+    "tooltip": false,
+    "cursor": true
+  },
+  "group/workspaces": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/ws1",
+      "custom/ws2",
+      "custom/ws3",
+      "custom/ws4",
+      "custom/ws5"
+    ]
+  },
+  "custom/media": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/player.sh",
+    "on-click": "playerctl play-pause",
+    "max-length": 24,
+    "interval": 5
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10
+  },
+  "custom/notif": {
+    "exec": "~/.config/waybar/scripts/notif.py render",
+    "on-click": "~/.config/waybar/scripts/notif.py toggle",
+    "return-type": "json",
+    "interval": 3,
+    "cursor": true
+  },
+  "network": {
+    "interval": 5,
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤮",
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "tooltip-format-wifi": "<b>{essid}</b>\n{signalStrength}%  ·  {ipaddr}",
+    "on-click": "alacritty --class nm-float -e nmtui"
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-muted": "󰝟",
+    "scroll-step": 5,
+    "format-icons": {
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
+    },
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  },
+  "battery": {
+    "interval": 30,
+    "states": {
+      "warning": 25,
+      "critical": 12
+    },
+    "format": "{icon}",
+    "format-charging": "󰂄",
+    "format-icons": [
+      "󰁺",
+      "󰁼",
+      "󰁾",
+      "󰂀",
+      "󰂂"
+    ],
+    "tooltip-format": "{capacity}%  ·  {time} left"
+  },
+  "clock": {
+    "interval": 10,
+    "format": "{:%H:%M\n%d/%m/%Y}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "mode": "month",
+      "format": {
+        "today": "<b>{}</b>"
+      }
+    }
+  },
+  "custom/ws1": {
+    "exec": "~/.config/waybar/scripts/ws.py render numbers 1",
+    "on-click": "~/.config/waybar/scripts/ws.py focus 1",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  "custom/ws2": {
+    "exec": "~/.config/waybar/scripts/ws.py render numbers 2",
+    "on-click": "~/.config/waybar/scripts/ws.py focus 2",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  "custom/ws3": {
+    "exec": "~/.config/waybar/scripts/ws.py render numbers 3",
+    "on-click": "~/.config/waybar/scripts/ws.py focus 3",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  "custom/ws4": {
+    "exec": "~/.config/waybar/scripts/ws.py render numbers 4",
+    "on-click": "~/.config/waybar/scripts/ws.py focus 4",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  "custom/ws5": {
+    "exec": "~/.config/waybar/scripts/ws.py render numbers 5",
+    "on-click": "~/.config/waybar/scripts/ws.py focus 5",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  }
+}

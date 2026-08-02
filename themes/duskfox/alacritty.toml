@@ -1,0 +1,45 @@
+# duskfox — Alacritty
+# Duskfox — muted violet night. Rose Pine's cousin, cooler and dimmer.
+
+[colors.primary]
+background = "#232136"
+foreground = "#e0def4"
+dim_foreground = "#b6b3ce"
+
+[colors.cursor]
+text = "#232136"
+cursor = "#c4a7e7"
+
+[colors.selection]
+text = "#e0def4"
+background = "#393552"
+
+[colors.normal]
+black = "#2d2a45"
+red = "#eb6f92"
+green = "#a3be8c"
+yellow = "#9ccfd8"
+blue = "#569fba"
+magenta = "#c4a7e7"
+cyan = "#9ccfd8"
+white = "#b6b3ce"
+
+[colors.bright]
+black = "#393552"
+red = "#eb6f92"
+green = "#a3be8c"
+yellow = "#c4a7e7"
+blue = "#569fba"
+magenta = "#c4a7e7"
+cyan = "#9ccfd8"
+white = "#e0def4"
+
+[window]
+padding = { x = 16, y = 14 }
+decorations = "Transparent"
+opacity = 0.92
+blur = true
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size = 13.0

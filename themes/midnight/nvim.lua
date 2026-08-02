@@ -1,0 +1,35 @@
+-- midnight — Neovim
+-- Midnight — deepest navy. Almost no chrome; status on demand only.
+return {
+  palette = {
+    name = "midnight",
+    bg        = "#070b14",
+    bg1       = "#0b1120",
+    bg2       = "#111a2e",
+    bg3       = "#1a2740",
+    fg        = "#c4d0e4",
+    fg1       = "#8fa0bd",
+    dim       = "#4a5a7a",
+    sel       = "#1a2740",
+    accent    = "#4d7cc7",
+    accent2   = "#6f9ae0",
+    red       = "#c75d6b",
+    green     = "#5da88f",
+    blue      = "#4d7cc7",
+    purple    = "#8f6fc7",
+    cyan      = "#4da8c7",
+    orange           = "#6f9ae0",
+    yellow           = "#6f9ae0",
+    transparent      = false,
+    light            = false,
+    italic_comments  = true,
+    border           = "#1a2740",
+  },
+  opts = {
+    number = true, relativenumber = true, signcolumn = "yes",
+    cursorline = true, cursorlineopt = "number",
+    winborder = "single",
+    fillchars = "eob: ,vert:|",
+    laststatus = 3,
+  },
+}

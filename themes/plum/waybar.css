@@ -1,0 +1,91 @@
+/* plum — waybar
+ *
+ * Plum — aubergine and magenta. Rich, saturated, unapologetic.
+ * Layout: spacious.
+ */
+
+* {
+  font-family: "Adwaita Sans", "FreeSerif", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+/* Air. Tall bar, deep pills, wide gaps — the opposite of a status line.
+ * Works because the module count is deliberately low. */
+window#waybar { background: transparent; color: #ecd9f5; }
+.modules-left { padding-left: 16px; }
+.modules-right { padding-right: 16px; }
+#clock, #battery, #network, #tray, #pulseaudio, #backlight, #cpu, #memory, #sys, #custom-media, #custom-notif, #custom-power, #idle_inhibitor, #privacy, #window, #workspaces {
+  background-color: rgba(30, 21, 38, 0.88);
+  color: #c4a8d4;
+  margin: 6px 5px; padding: 4px 32px;
+  border: 1px solid rgba(224, 95, 196, 0.18);
+  border-radius: 18px;
+}
+#clock {
+  color: #e05fc4;
+  background-color: rgba(224, 95, 196, 0.12);
+  border-color: rgba(224, 95, 196, 0.35);
+  font-weight: 700; letter-spacing: 1px; padding: 4px 26px;
+}
+#custom-media { color: #a678e0; }
+#pulseaudio { color: #a678e0; }
+#network { color: #6bd6d6; }
+#battery { color: #7fd6a8; }
+
+/* ── workspaces ── */
+#workspaces { padding: 4px 16px; }
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent; border: none; box-shadow: none;
+  padding: 0 9px; margin: 0; color: #3a2949;
+}
+#workspaces .occupied { color: #7a5f8c; }
+#workspaces .visible   { color: #a678e0; }
+#workspaces .active    { color: #e05fc4; text-shadow: 0 0 12px rgba(224, 95, 196, 0.85); }
+
+/* ── states ── */
+#battery.warning  { color: #a678e0; }
+#battery.critical { color: #e5527a; }
+#network.disconnected { color: #e5527a; }
+#network.disabled     { color: #3a2949; }
+#custom-notif.dnd     { color: #e5527a; }
+#custom-notif.unread  { color: #e05fc4; }
+#custom-notif.idle    { color: #7a5f8c; }
+#idle_inhibitor.activated   { color: #e05fc4; }
+#idle_inhibitor.deactivated { color: #7a5f8c; }
+#custom-power { color: #e5527a; }
+#window { color: #7a5f8c; }
+#window.empty { color: transparent; }
+#privacy { color: #e5527a; }
+tooltip { background: #1e1526; border: 1px solid #3a2949; border-radius: 14px; }
+tooltip label { color: #ecd9f5; }
+
+
+/* ─────────────────────────────────────────────────────────
+ * Bar redesign: selectors for this rice's own module set.
+ * ───────────────────────────────────────────────────────── */
+#custom-ws, #custom-launcher, #window, #backlight, #privacy, #idle_inhibitor {
+  /* match this rice's existing module treatment */
+}
+
+/* Single-module workspace indicator (click/scroll to move). Coloured as one
+ * unit rather than per-dot, since the glyphs live in one label. */
+#custom-ws {
+  color: #ecd9f5;
+  letter-spacing: 1px;
+}
+#custom-ws.ws { color: #ecd9f5; }
+
+
+/* ── Multi-window shell ─────────────────────────────────────
+ * This rice runs 1 separate bar window(s). waybar exposes each
+ * bar's `name` as a class on the window, so they can be styled
+ * independently -- a floating card is not a panel.
+ * ──────────────────────────────────────────────────────────── */
+
+window#waybar.card {
+  background: rgba(23, 16, 29, 0.94);
+  border: 1px solid #291c33;
+  border-radius: 12px;
+}

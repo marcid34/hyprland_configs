@@ -1,0 +1,170 @@
+/* everforest — Waybar
+ *
+ * Soft forest. Rounded, muted, deliberately low-contrast — this palette is
+ * designed to be easy on the eyes for long sessions, so nothing here glows,
+ * inverts or shouts. Modules are gently raised surfaces on a dark green-grey.
+ *
+ *   bg0 #2d353b  bg1 #272e33  bg2 #343f44  bg3 #475258
+ *   fg #d3c6aa  grey1 #859289  grey0 #7a8478
+ *   green #a7c080  aqua #83c092  blue #7fbbb3  yellow #dbbc7f
+ *   orange #e69875  red #e67e80  purple #d699b6
+ */
+
+* {
+  font-family: "Ubuntu", "FreeSerif", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: #d3c6aa;
+}
+
+.modules-left  { padding-left: 10px; }
+.modules-right { padding-right: 10px; }
+
+#clock,
+#battery,
+#network,
+#tray,
+#workspaces,
+#custom-media,
+#cpu,
+#memory,
+#temperature,
+#pulseaudio-slider,
+#profiles,
+#volume {
+  background-color: rgba(52, 63, 68, 0.94);
+  color: #d3c6aa;
+  margin: 4px 3px;
+  padding: 3px 26px;
+  border: 1px solid rgba(71, 82, 88, 0.9);
+  border-radius: 10px;
+}
+
+#clock {
+  color: #2d353b;
+  background-color: #a7c080;
+  border-color: #a7c080;
+  padding: 2px 16px;
+  font-weight: 700;
+}
+
+/* ── Network ── */
+#network {
+  font-family: "UbuntuMono Nerd Font", monospace;
+  font-size: 15px;
+  color: #83c092;
+  padding: 2px 12px;
+  min-width: 20px;
+}
+#network.ethernet     { color: #7fbbb3; }
+#network.linked       { color: #dbbc7f; border-color: rgba(219, 188, 127, 0.6); }
+#network.disconnected { color: #e67e80; border-color: rgba(230, 126, 128, 0.6); }
+#network.disabled     { color: #7a8478; }
+
+/* ── Pulseaudio ── */
+#pulseaudio {
+  font-family: "UbuntuMono Nerd Font", monospace;
+  font-size: 14px;
+  color: #d699b6;
+}
+
+/* ── Workspaces ── */
+#workspaces { padding: 2px 8px; }
+
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent;
+  border: none;
+  padding: 0 6px;
+  color: #475258;
+}
+#workspaces .occupied { color: #859289; }
+#workspaces .visible  { color: #7fbbb3; }
+#workspaces .active   { color: #a7c080; }
+
+/* ── Profiles (rice switcher) ── */
+#profiles { padding: 2px 8px; }
+
+#custom-profile1, #custom-profile2, #custom-profile3, #custom-profile4,
+#custom-profile5, #custom-profile6, #custom-profile7, #custom-profile8,
+#custom-profile9, #custom-profile10 {
+  background: transparent;
+  border: none;
+  padding: 0 3px;
+  font-size: 10px;
+}
+#profiles .inactive { color: #475258; }
+#profiles .active   { color: #a7c080; }
+
+/* ── Battery ── */
+#battery          { color: #a7c080; }
+#battery.warning  { color: #dbbc7f; }
+#battery.critical { color: #e67e80; border-color: rgba(230, 126, 128, 0.6); }
+
+#custom-media { color: #d699b6; }
+#cpu          { color: #83c092; }
+#memory       { color: #a7c080; }
+#temperature  { color: #e69875; }
+
+/* ── Volume slider ── */
+#pulseaudio-slider { min-width: 80px; padding: 2px 13px; }
+
+#pulseaudio-slider slider {
+  min-height: 12px;
+  min-width: 12px;
+  background-image: none;
+  border: none;
+  border-radius: 10px;
+  background-color: #d3c6aa;
+  margin: -6px;
+}
+#pulseaudio-slider trough {
+  min-height: 4px;
+  border-radius: 10px;
+  background: #475258;
+}
+#pulseaudio-slider highlight {
+  border-radius: 10px;
+  background: #a7c080;
+}
+
+#pulseaudio.icon {
+  background: transparent;
+  border: none;
+  color: #d699b6;
+  margin: 0;
+  padding: 0 7px 0 0;
+}
+
+tooltip {
+  background: rgba(39, 46, 51, 0.97);
+  border: 1px solid #475258;
+  border-radius: 8px;
+}
+tooltip label { color: #d3c6aa; }
+
+
+/* ─────────────────────────────────────────────────────────
+ * Bar redesign: selectors for this rice's own module set.
+ * ───────────────────────────────────────────────────────── */
+#custom-ws, #custom-launcher, #window, #backlight, #privacy, #idle_inhibitor {
+  /* match this rice's existing module treatment */
+}
+
+/* Single-module workspace indicator (click/scroll to move). Coloured as one
+ * unit rather than per-dot, since the glyphs live in one label. */
+#custom-ws {
+  color: #d3c6aa;
+  letter-spacing: 1px;
+}
+#custom-ws.ws { color: #d3c6aa; }
+
+/* Bar sits on the bottom edge, so the rule belongs on top. */
+window#waybar {
+  border-bottom: none;
+  border-top: 1px solid #343f44;
+}

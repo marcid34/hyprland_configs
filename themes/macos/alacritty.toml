@@ -1,0 +1,45 @@
+# Mac OS X — Alacritty
+# macOS — translucent menubar up top, magnified dock below.
+
+[colors.primary]
+background = "#1e1e1e"
+foreground = "#ebebf0"
+dim_foreground = "#8e8e93"
+
+[colors.cursor]
+text = "#1e1e1e"
+cursor = "#0a84ff"
+
+[colors.selection]
+text = "#ffffff"
+background = "#3a3a3c"
+
+[colors.normal]
+black = "#2c2c2e"
+red = "#ff453a"
+green = "#32d74b"
+yellow = "#64d2ff"
+blue = "#0a84ff"
+magenta = "#bf5af2"
+cyan = "#64d2ff"
+white = "#ebebf0"
+
+[colors.bright]
+black = "#3a3a3c"
+red = "#ff453a"
+green = "#32d74b"
+yellow = "#0a84ff"
+blue = "#0a84ff"
+magenta = "#bf5af2"
+cyan = "#64d2ff"
+white = "#ffffff"
+
+[window]
+padding = { x = 12, y = 10 }
+decorations = "Transparent"
+opacity = 0.82
+blur = true
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size = 13.0

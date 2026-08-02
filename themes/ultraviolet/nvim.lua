@@ -1,0 +1,35 @@
+-- ultraviolet — Neovim
+-- Ultraviolet — monochrome violet. One hue, twelve values, nothing else.
+return {
+  palette = {
+    name = "ultraviolet",
+    bg        = "#0f0a18",
+    bg1       = "#150e21",
+    bg2       = "#1e142e",
+    bg3       = "#2c1e42",
+    fg        = "#ddd0f0",
+    fg1       = "#b09ccc",
+    dim       = "#6b5a8a",
+    sel       = "#2c1e42",
+    accent    = "#9d6bff",
+    accent2   = "#c4a0ff",
+    red       = "#b76bff",
+    green     = "#8f7bd6",
+    blue      = "#7b6bff",
+    purple    = "#9d6bff",
+    cyan      = "#a68fff",
+    orange           = "#c4a0ff",
+    yellow           = "#c4a0ff",
+    transparent      = true,
+    light            = false,
+    italic_comments  = true,
+    border           = "#2c1e42",
+  },
+  opts = {
+    number = true, relativenumber = true, signcolumn = "yes",
+    cursorline = true, cursorlineopt = "number",
+    winborder = "rounded",
+    fillchars = "eob: ,vert:│",
+    laststatus = 3,
+  },
+}

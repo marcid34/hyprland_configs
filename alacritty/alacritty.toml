@@ -1,0 +1,25 @@
+# ~/.config/alacritty/alacritty.toml
+#
+# Behaviour only. All styling — colours, window, font — lives in the active
+# rice and arrives via the import below.
+#
+# Nothing visual may be set in this file. Alacritty loads imports *first* and
+# lets the importing file win on conflict, so any colour or padding key here
+# would silently shadow every theme.
+#
+# live_config_reload watches this file; themes/switch.sh touches it after
+# repointing the symlink, which forces the import to be re-resolved.
+
+[general]
+import             = ["~/.config/themes/current/alacritty.toml"]
+live_config_reload = true
+
+# Without this, alacritty inherits the cwd of whatever spawned it — which for
+# a Hyprland keybind is Hyprland's own cwd, i.e. wherever the compositor was
+# launched from. Pin it so new windows always start at $HOME.
+working_directory  = "/home/kib"
+
+[[keyboard.bindings]]
+key   = "Return"
+mods  = "Shift"
+chars = "\u001B\r"

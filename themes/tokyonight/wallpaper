@@ -1,0 +1,4 @@
+# Bare path = applied to every monitor. Use <output>=<path> lines to
+# differ per display (see kib-custom).
+/home/kib/Pictures/Wallpapers/themes/tokyonight.jpg
+transition=grow

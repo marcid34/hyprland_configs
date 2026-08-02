@@ -1,0 +1,113 @@
+/* haze — rofi
+ *
+ * A pane of frosted glass. No hard border, 22px rounding, and a selection
+ * that is a soft pink wash rather than a solid fill — at this opacity a
+ * solid bar would punch a hole in the blur.
+ */
+
+* {
+  base:     #1e1e2e;
+  surface0: #313244;
+  surface1: #45475a;
+  overlay0: #6c7086;
+  subtext0: #a6adc8;
+  text:     #cdd6f4;
+  pink:     #f5c2e7;
+  blue:     #89b4fa;
+  red:      #f38ba8;
+
+  background-color: transparent;
+  text-color:       @text;
+  font:             "Ubuntu Mono 13";
+}
+
+window {
+  width:            560px;
+  background-color: #1e1e2e9e;   /* ~62%, matching the terminal */
+  border:           1px;
+  border-color:     #cdd6f41f;
+  border-radius:    22px;
+  padding:          0;
+}
+
+mainbox {
+  children: [ inputbar, listview ];
+  spacing:  0;
+}
+
+inputbar {
+  children:     [ prompt, entry ];
+  padding:      16px 22px;
+  spacing:      14px;
+  border:       0 0 1px 0;
+  border-color: #cdd6f414;
+}
+
+prompt {
+  background-color: #f5c2e72e;
+  text-color:       @pink;
+  padding:          3px 14px;
+  border-radius:    14px;
+}
+
+entry {
+  placeholder:    "";
+  cursor:         text;
+  text-color:     @text;
+  vertical-align: 0.5;
+}
+
+listview {
+  lines:        8;
+  columns:      1;
+  padding:      10px;
+  spacing:      4px;
+  scrollbar:    false;
+  fixed-height: false;
+}
+
+element {
+  padding:       10px 16px;
+  spacing:       14px;
+  border-radius: 14px;
+  cursor:        pointer;
+}
+
+element normal.normal,
+element alternate.normal {
+  background-color: transparent;
+  text-color:       @text;
+}
+
+element normal.active,
+element alternate.active {
+  background-color: transparent;
+  text-color:       @blue;
+}
+
+element normal.urgent,
+element alternate.urgent {
+  background-color: transparent;
+  text-color:       @red;
+}
+
+element selected.normal,
+element selected.active {
+  background-color: #f5c2e733;
+  text-color:       @pink;
+}
+
+element selected.urgent {
+  background-color: #f38ba833;
+  text-color:       @red;
+}
+
+element-icon {
+  size:           22px;
+  vertical-align: 0.5;
+}
+
+element-text {
+  vertical-align: 0.5;
+  text-color:     inherit;
+}

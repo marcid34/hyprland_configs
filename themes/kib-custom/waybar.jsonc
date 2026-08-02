@@ -1,0 +1,186 @@
+// Waybar config for this rice. Each profile owns its own layout and
+// module set -- the theme picker (SUPER+T) swaps this file along with
+// the stylesheet, so a rice is a whole bar, not a reskin.
+{
+  // "layer": "top", // Waybar at top layer
+  // "position": "bottom", // Waybar position (top|bottom|left|right)
+  "height": 30, // Waybar height (to be removed for auto height)
+  // "width": 1280, // Waybar width
+  "spacing": 4, // Gaps between modules (4px)
+  // Choose the order of the modules
+  "modules-left": [
+    "group/workspaces",
+    "clock"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "tray",
+    "cpu",
+    "temperature",
+    "memory",
+    "custom/media",
+    "group/volume",
+    "network",
+    "battery"
+  ],
+  // Modules configuration
+  // "sway/workspaces": {
+  //     "disable-scroll": true,
+  //     "all-outputs": true,
+  //     "warp-on-scroll": false,
+  //     "format": "{name}: {icon}",
+  //     "format-icons": {
+  //         "1": "",
+  //         "2": "",
+  //         "3": "",
+  //         "4": "",
+  //         "5": "",
+  //         "urgent": "",
+  //         "focused": "",
+  //         "default": ""
+  //     }
+  // },
+  // Waybar 0.15's hyprland/workspaces still issues Hyprland's old string
+  // dispatches ("dispatch workspace 3"), which 0.56 removed when dispatch moved
+  // to the Lua engine — so its clicks, and move-to-monitor with them, are silent
+  // no-ops. `on-click` can't override it either: the per-workspace GtkButton
+  // swallows the press before the module's on-click ever fires. So: one custom
+  // module per workspace, clicks routed through scripts/hypr-ws.py, which speaks
+  // the Lua dispatchers. `focus` there == move-to-monitor: true.
+  "group/workspaces": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/ws1",
+      "custom/ws2",
+      "custom/ws3",
+      "custom/ws4",
+      "custom/ws5"
+    ]
+  },
+  "custom/ws1": {
+    "exec": "~/.config/waybar/scripts/hypr-ws.py render 1",
+    "on-click": "~/.config/waybar/scripts/hypr-ws.py focus 1",
+    "return-type": "json",
+    "restart-interval": 3, // reconnect if Hyprland restarts under us
+    "cursor": true
+  },
+  "custom/ws2": {
+    "exec": "~/.config/waybar/scripts/hypr-ws.py render 2",
+    "on-click": "~/.config/waybar/scripts/hypr-ws.py focus 2",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  "custom/ws3": {
+    "exec": "~/.config/waybar/scripts/hypr-ws.py render 3",
+    "on-click": "~/.config/waybar/scripts/hypr-ws.py focus 3",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  "custom/ws4": {
+    "exec": "~/.config/waybar/scripts/hypr-ws.py render 4",
+    "on-click": "~/.config/waybar/scripts/hypr-ws.py focus 4",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  "custom/ws5": {
+    "exec": "~/.config/waybar/scripts/hypr-ws.py render 5",
+    "on-click": "~/.config/waybar/scripts/hypr-ws.py focus 5",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  "network": {
+    "interval": 5,
+    // {icon} pulls from format-icons; 5 icons = 5 equal signal bands
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰈀",
+    "format-linked": "󰌘",
+    "format-disconnected": "󰤮",
+    "format-disabled": "󰤙",
+    "format-icons": [
+      "󰤮",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "tooltip-format-wifi": "<b>{essid}</b>\n{signalStrength}%  \u00b7  {frequency} GHz\n{ipaddr}\n󰇚 {bandwidthDownBytes}   󰕒 {bandwidthUpBytes}",
+    "tooltip-format-ethernet": "<b>{ifname}</b>\n{ipaddr}\n󰇚 {bandwidthDownBytes}   󰕒 {bandwidthUpBytes}",
+    "tooltip-format-linked": "<b>{ifname}</b>\nConnected, no address",
+    "tooltip-format-disconnected": "Disconnected",
+    "tooltip-format-disabled": "WiFi radio off",
+    "on-click": "alacritty --class nm-float -e nmtui",
+    "on-click-right": "nmcli radio wifi | grep -q enabled && nmcli radio wifi off || nmcli radio wifi on"
+  },
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-icons": [
+      " ",
+      " ",
+      " ",
+      " ",
+      " "
+    ],
+    "interval": 60,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    }
+  },
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10,
+    "icons": {}
+  },
+  "custom/media": {
+    "format": "󰝚 {}",
+    "return-type": "json",
+    "on-click": "playerctl play-pause",
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous",
+    "exec": "~/.config/waybar/scripts/player.sh",
+    "max-length": 20,
+    "interval": 10,
+  },
+  "cpu": {
+    "interval": 10,
+    "format": "{usage}% ",
+    "max-length": 10
+  },
+  "memory": {
+    "interval": 30,
+    "format": "{percentage}% ",
+    "max-length": 10
+  },
+  "temperature": {
+    "interval": 10,
+    "format": "{temperatureC}°C ",
+    "max-length": 10
+  },
+  "pulseaudio/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal",
+    "format": " {}"
+  },
+  "group/volume": {
+    "orientation": "horizontal",
+    "modules": [
+      "pulseaudio#icon",
+      "pulseaudio/slider"
+    ]
+  },
+  "pulseaudio#icon": {
+    "format": "{icon}",
+    "format-muted": "",
+    "format-icons": [
+      "",
+      ""
+    ],
+    "tooltip": false,
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  }
+}

@@ -1,0 +1,123 @@
+// ultraviolet — waybar
+// Shell: waybar-rail
+{
+  "name": "rail",
+  "layer": "top",
+  "position": "left",
+  "width": 56,
+  "spacing": 10,
+  "modules-left": [
+    "custom/launcher",
+    "group/workspaces"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "pulseaudio",
+    "network",
+    "battery",
+    "custom/power"
+  ],
+  "group/workspaces": {
+    "orientation": "vertical",
+    "modules": [
+      "custom/ws1",
+      "custom/ws2",
+      "custom/ws3",
+      "custom/ws4",
+      "custom/ws5"
+    ]
+  },
+  "custom/ws1": {
+    "exec": "~/.config/waybar/scripts/ws.py render numbers 1",
+    "on-click": "~/.config/waybar/scripts/ws.py focus 1",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  "custom/ws2": {
+    "exec": "~/.config/waybar/scripts/ws.py render numbers 2",
+    "on-click": "~/.config/waybar/scripts/ws.py focus 2",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  "custom/ws3": {
+    "exec": "~/.config/waybar/scripts/ws.py render numbers 3",
+    "on-click": "~/.config/waybar/scripts/ws.py focus 3",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  "custom/ws4": {
+    "exec": "~/.config/waybar/scripts/ws.py render numbers 4",
+    "on-click": "~/.config/waybar/scripts/ws.py focus 4",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  "custom/ws5": {
+    "exec": "~/.config/waybar/scripts/ws.py render numbers 5",
+    "on-click": "~/.config/waybar/scripts/ws.py focus 5",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  "custom/launcher": {
+    "format": "",
+    "on-click": "~/.config/themes/launch.sh",
+    "tooltip": false,
+    "cursor": true
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-muted": "󰝟",
+    "scroll-step": 5,
+    "format-icons": {
+      "headphone": "󰋋",
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
+    },
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  },
+  "network": {
+    "interval": 5,
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤮",
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "tooltip-format-wifi": "<b>{essid}</b>\n{signalStrength}%  ·  {ipaddr}",
+    "on-click": "alacritty --class nm-float -e nmtui"
+  },
+  "battery": {
+    "interval": 30,
+    "states": {
+      "warning": 25,
+      "critical": 12
+    },
+    "format": "{icon}",
+    "format-charging": "󰂄 {capacity}",
+    "format-icons": [
+      "󰁺",
+      "󰁼",
+      "󰁾",
+      "󰂀",
+      "󰂂"
+    ],
+    "tooltip-format": "{capacity}%  ·  {time} left"
+  },
+  "custom/power": {
+    "format": "󰐥",
+    "on-click": "~/.config/waybar/scripts/power.sh",
+    "tooltip": false,
+    "cursor": true
+  }
+}

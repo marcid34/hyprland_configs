@@ -1,0 +1,8 @@
+/* ~/.config/rofi/config.rasi
+ *
+ * Deliberately empty of everything except the import. Each rice ships its own
+ * complete rofi setup -- behaviour (`configuration {}`) as well as looks --
+ * so a profile is a from-scratch launcher, not a reskin of a shared one.
+ */
+
+@import "../themes/current/rofi.rasi"

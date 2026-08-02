@@ -1,0 +1,45 @@
+# moss — Alacritty
+# Moss — desaturated sage and stone. The quietest palette here.
+
+[colors.primary]
+background = "#1c201b"
+foreground = "#d4d8cc"
+dim_foreground = "#a4ab9c"
+
+[colors.cursor]
+text = "#1c201b"
+cursor = "#8fa876"
+
+[colors.selection]
+text = "#d4d8cc"
+background = "#3a4136"
+
+[colors.normal]
+black = "#2c322a"
+red = "#a87c7c"
+green = "#8fa876"
+yellow = "#7c9a8e"
+blue = "#7c8fa8"
+magenta = "#9a8fa8"
+cyan = "#7c9a8e"
+white = "#a4ab9c"
+
+[colors.bright]
+black = "#3a4136"
+red = "#a87c7c"
+green = "#8fa876"
+yellow = "#8fa876"
+blue = "#7c8fa8"
+magenta = "#9a8fa8"
+cyan = "#7c9a8e"
+white = "#d4d8cc"
+
+[window]
+padding = { x = 14, y = 12 }
+decorations = "Transparent"
+opacity = 0.94
+blur = true
+
+[font]
+normal = { family = "UbuntuMono Nerd Font", style = "Regular" }
+size = 14.0

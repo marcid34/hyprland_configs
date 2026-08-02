@@ -1,0 +1,119 @@
+/* brutal — rofi
+ *
+ * Square, opaque, 3px bordered, with a yellow prompt slab. Every element
+ * state is declared: rofi's built-in default theme fills any state we leave
+ * unnamed, and its `background` is Solarized #fdf6e3.
+ */
+
+* {
+  crust:    #11111b;
+  base:     #1e1e2e;
+  surface0: #313244;
+  surface1: #45475a;
+  overlay0: #6c7086;
+  text:     #cdd6f4;
+  yellow:   #f9e2af;
+  red:      #f38ba8;
+
+  background-color: transparent;
+  text-color:       @text;
+  font:             "JetBrainsMono Nerd Font Propo Bold 11";
+}
+
+window {
+  width:            520px;
+  background-color: @crust;
+  border:           4px;
+  border-color:     @text;
+  border-radius:    0;
+  padding:          0;
+}
+
+mainbox {
+  children: [ inputbar, listview ];
+  spacing:  0;
+}
+
+inputbar {
+  children:     [ prompt, entry ];
+  padding:      12px 14px;
+  spacing:      12px;
+  border:       0 0 4px 0;
+  border-color: @text;
+  background-color: @base;
+}
+
+prompt {
+  background-color: @yellow;
+  text-color:       @crust;
+  padding:          2px 10px;
+  border:           2px;
+  border-color:     @crust;
+  border-radius:    0;
+}
+
+entry {
+  placeholder:    "";
+  cursor:         text;
+  text-color:     @text;
+  vertical-align: 0.5;
+}
+
+listview {
+  lines:        8;
+  columns:      1;
+  padding:      6px;
+  spacing:      4px;
+  scrollbar:    false;
+  fixed-height: false;
+}
+
+element {
+  padding:       8px 10px;
+  spacing:       12px;
+  border-radius: 0;
+  border:        2px;
+  border-color:  transparent;
+  cursor:        pointer;
+}
+
+element normal.normal,
+element alternate.normal {
+  background-color: transparent;
+  text-color:       @text;
+}
+
+element normal.active,
+element alternate.active {
+  background-color: transparent;
+  text-color:       @yellow;
+}
+
+element normal.urgent,
+element alternate.urgent {
+  background-color: transparent;
+  text-color:       @red;
+}
+
+element selected.normal,
+element selected.active {
+  background-color: @yellow;
+  text-color:       @crust;
+  border-color:     @text;
+}
+
+element selected.urgent {
+  background-color: @red;
+  text-color:       @crust;
+  border-color:     @text;
+}
+
+element-icon {
+  size:           20px;
+  vertical-align: 0.5;
+}
+
+element-text {
+  vertical-align: 0.5;
+  text-color:     inherit;
+}

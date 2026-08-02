@@ -1,0 +1,95 @@
+/* dracula — waybar
+ *
+ * Dracula — the classic. Violet, magenta and cyan on graphite.
+ * Layout: center-clock.
+ */
+
+* {
+  font-family: "JetBrainsMono Nerd Font Propo", "FreeSerif", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+window#waybar { background: transparent; color: #f8f8f2; }
+.modules-left { padding-left: 8px; }
+.modules-right { padding-right: 10px; }
+#clock, #battery, #network, #tray, #pulseaudio, #backlight, #cpu, #memory, #sys, #custom-media, #custom-notif, #custom-power, #idle_inhibitor, #privacy, #window, #workspaces {
+  background-color: rgba(33, 34, 44, 0.9);
+  color: #d8d8d2;
+  margin: 4px 3px; padding: 3px 25px;
+  border: 1px solid #44475a; border-radius: 10px;
+}
+#window { background: transparent; border: none; color: #6272a4; padding: 2px 6px; }
+#clock { color: #bd93f9; border-color: rgba(189, 147, 249, 0.45); font-weight: 600; }
+#custom-media { color: #ff79c6; }
+#pulseaudio { color: #ff79c6; }
+#network { color: #8be9fd; }
+#battery { color: #50fa7b; }
+
+/* ── workspaces ── */
+#workspaces { padding: 2px 9px; }
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent; border: none; box-shadow: none;
+  padding: 0 6px; margin: 0; color: #44475a;
+}
+#workspaces .occupied { color: #6272a4; }
+#workspaces .visible   { color: #ff79c6; }
+#workspaces .active    { color: #bd93f9; text-shadow: 0 0 9px rgba(189, 147, 249, 0.7); }
+
+/* ── states ── */
+#battery.warning  { color: #ff79c6; }
+#battery.critical { color: #ff5555; }
+#network.disconnected { color: #ff5555; }
+#network.disabled     { color: #44475a; }
+#custom-notif.dnd     { color: #ff5555; }
+#custom-notif.unread  { color: #bd93f9; }
+#custom-notif.idle    { color: #6272a4; }
+#idle_inhibitor.activated   { color: #bd93f9; }
+#idle_inhibitor.deactivated { color: #6272a4; }
+#custom-power { color: #ff5555; }
+#window { color: #6272a4; }
+#window.empty { color: transparent; }
+#privacy { color: #ff5555; }
+tooltip { background: #21222c; border: 1px solid #44475a; border-radius: 6px; }
+tooltip label { color: #f8f8f2; }
+
+
+/* ─────────────────────────────────────────────────────────
+ * Bar redesign: selectors for this rice's own module set.
+ * ───────────────────────────────────────────────────────── */
+#custom-ws, #custom-launcher, #window, #backlight, #privacy, #idle_inhibitor {
+  /* match this rice's existing module treatment */
+}
+
+/* Single-module workspace indicator (click/scroll to move). Coloured as one
+ * unit rather than per-dot, since the glyphs live in one label. */
+#custom-ws {
+  color: #f8f8f2;
+  letter-spacing: 1px;
+}
+#custom-ws.ws { color: #f8f8f2; }
+
+#custom-launcher {
+  color: #bd93f9;
+  font-size: 15px;
+  padding: 0 14px;
+}
+#custom-launcher:hover { background: #bd93f9; color: #282a36; }
+
+
+/* ── Multi-window shell ─────────────────────────────────────
+ * This rice runs 2 separate bar window(s). waybar exposes each
+ * bar's `name` as a class on the window, so they can be styled
+ * independently -- a floating card is not a panel.
+ * ──────────────────────────────────────────────────────────── */
+
+window#waybar.menubar {
+  background: rgba(40, 42, 54, 0.95);
+}
+
+window#waybar.dock {
+  background: rgba(40, 42, 54, 0.94);
+  border: 1px solid #343746;
+  border-radius: 12px;
+}

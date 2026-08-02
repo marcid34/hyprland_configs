@@ -1,0 +1,48 @@
+# tty — Alacritty styling (Catppuccin Mocha)
+#
+# A console: opaque crust, minimal padding, green foreground and cursor.
+# The normal/bright ramps are pulled toward green and teal so ordinary
+# coloured output reads as phosphor rather than as a full 16-colour palette.
+
+[colors.primary]
+background     = "#11111b"
+foreground     = "#a6e3a1"
+dim_foreground = "#6c7086"
+
+[colors.cursor]
+text   = "#11111b"
+cursor = "#a6e3a1"
+
+[colors.selection]
+text       = "#11111b"
+background = "#a6e3a1"
+
+[colors.normal]
+black   = "#45475a"
+red     = "#f38ba8"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#94e2d5"
+magenta = "#94e2d5"
+cyan    = "#94e2d5"
+white   = "#bac2de"
+
+[colors.bright]
+black   = "#6c7086"
+red     = "#f38ba8"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#89dceb"
+magenta = "#89dceb"
+cyan    = "#89dceb"
+white   = "#cdd6f4"
+
+[window]
+padding     = { x = 4, y = 2 }
+decorations = "None"
+opacity     = 1.0
+blur        = false
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font Mono", style = "Regular" }
+size   = 12.00

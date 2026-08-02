@@ -1,0 +1,182 @@
+/* rosepine — Waybar
+ *
+ * Soho at dusk. No hard borders anywhere: modules are defined by a barely
+ * lighter surface fill and a lot of breathing room. Where tokyonight glows,
+ * this one recedes — the palette is muted by design and outlining it would
+ * fight that.
+ *
+ *   base #191724  surface #1f1d2e  overlay #26233a  highlight #403d52
+ *   text #e0def4  subtle #908caa  muted #6e6a86
+ *   love #eb6f92  gold #f6c177  rose #ebbcba  pine #31748f
+ *   foam #9ccfd8  iris #c4a7e7
+ */
+
+* {
+  font-family: "Adwaita Sans", "FreeSerif", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: #e0def4;
+}
+
+.modules-left  { padding-left: 12px; }
+.modules-right { padding-right: 12px; }
+
+#clock,
+#battery,
+#network,
+#tray,
+#workspaces,
+#custom-media,
+#cpu,
+#memory,
+#temperature,
+#pulseaudio-slider,
+#profiles,
+#volume {
+  background-color: rgba(31, 29, 46, 0.92);
+  color: #908caa;
+  margin: 5px 3px;
+  padding: 3px 27px;
+  border: none;
+  border-radius: 14px;
+}
+
+#clock {
+  color: #ebbcba;
+  background-color: rgba(235, 188, 186, 0.10);
+  padding: 2px 18px;
+}
+
+/* ── Network ── */
+#network {
+  font-family: "JetBrainsMono Nerd Font Propo", monospace;
+  font-size: 14px;
+  color: #9ccfd8;
+  padding: 2px 13px;
+  min-width: 20px;
+}
+#network.ethernet     { color: #31748f; }
+#network.linked       { color: #f6c177; }
+#network.disconnected { color: #eb6f92; background-color: rgba(235, 111, 146, 0.12); }
+#network.disabled     { color: #6e6a86; }
+
+/* ── Pulseaudio ── */
+#pulseaudio {
+  font-family: "JetBrainsMono Nerd Font Propo", monospace;
+  font-size: 13px;
+  color: #c4a7e7;
+}
+
+/* ── Workspaces ── */
+#workspaces { padding: 2px 10px; }
+
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent;
+  border: none;
+  padding: 0 7px;
+  color: #403d52;
+}
+#workspaces .occupied { color: #6e6a86; }
+#workspaces .visible  { color: #9ccfd8; }
+#workspaces .active   { color: #ebbcba; }
+
+/* ── Profiles (rice switcher) ── */
+#profiles { padding: 2px 10px; }
+
+#custom-profile1, #custom-profile2, #custom-profile3, #custom-profile4,
+#custom-profile5, #custom-profile6, #custom-profile7, #custom-profile8,
+#custom-profile9, #custom-profile10 {
+  background: transparent;
+  border: none;
+  padding: 0 3px;
+  font-size: 10px;
+}
+#profiles .inactive { color: #403d52; }
+#profiles .active   { color: #c4a7e7; }
+
+/* ── Battery ── */
+#battery          { color: #9ccfd8; }
+#battery.warning  { color: #f6c177; }
+#battery.critical { color: #eb6f92; background-color: rgba(235, 111, 146, 0.12); }
+
+#custom-media { color: #c4a7e7; }
+#cpu          { color: #9ccfd8; }
+#memory       { color: #31748f; }
+#temperature  { color: #f6c177; }
+
+/* ── Volume slider ── */
+#pulseaudio-slider { min-width: 84px; padding: 2px 14px; }
+
+#pulseaudio-slider slider {
+  min-height: 12px;
+  min-width: 12px;
+  background-image: none;
+  border: none;
+  border-radius: 14px;
+  background-color: #e0def4;
+  margin: -6px;
+}
+#pulseaudio-slider trough {
+  min-height: 4px;
+  border-radius: 14px;
+  background: #403d52;
+}
+#pulseaudio-slider highlight {
+  border-radius: 14px;
+  background: #ebbcba;
+}
+
+#pulseaudio.icon {
+  background: transparent;
+  border: none;
+  color: #c4a7e7;
+  margin: 0;
+  padding: 0 8px 0 0;
+}
+
+tooltip {
+  background: rgba(25, 23, 36, 0.97);
+  border: 1px solid #26233a;
+  border-radius: 12px;
+}
+tooltip label { color: #e0def4; }
+
+
+/* ─────────────────────────────────────────────────────────
+ * Bar redesign: selectors for this rice's own module set.
+ * ───────────────────────────────────────────────────────── */
+#custom-ws, #custom-launcher, #window, #backlight, #privacy, #idle_inhibitor {
+  /* match this rice's existing module treatment */
+}
+
+/* Single-module workspace indicator (click/scroll to move). Coloured as one
+ * unit rather than per-dot, since the glyphs live in one label. */
+#custom-ws {
+  color: #e0def4;
+  letter-spacing: 1px;
+}
+#custom-ws.ws { color: #e0def4; }
+
+/* Bar sits on the bottom edge, so the rule belongs on top. */
+window#waybar {
+  border-bottom: none;
+  border-top: 1px solid #26233a;
+}
+
+
+/* ── Multi-window shell ─────────────────────────────────────
+ * This rice runs 1 separate bar window(s). waybar exposes each
+ * bar's `name` as a class on the window, so they can be styled
+ * independently -- a floating card is not a panel.
+ * ──────────────────────────────────────────────────────────── */
+
+window#waybar.card {
+  background: rgba(25, 23, 36, 0.94);
+  border: 1px solid #26233a;
+  border-radius: 12px;
+}

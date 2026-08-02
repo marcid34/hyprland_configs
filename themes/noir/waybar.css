@@ -1,0 +1,71 @@
+/* noir — waybar
+ * Noir — film stock. Hard greyscale, one crimson accent, deep shadows.
+ * Shell: waybar-dual
+ */
+
+* {
+  font-family: "Adwaita Sans", "FreeSerif", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+window#waybar {
+  background: rgba(20, 20, 22, 1.0);
+  color: #b0b0b4;
+}
+
+.modules-left { padding-left: 10px; }
+.modules-right { padding-right: 10px; }
+
+#clock, #battery, #network, #tray, #pulseaudio, #backlight, #cpu, #memory,
+#custom-media, #custom-notif, #custom-power, #custom-launcher,
+#idle_inhibitor, #window, #workspaces, #custom-ws {
+  background-color: transparent;
+  color: #b0b0b4;
+  margin: 0;
+  padding: 4px 18px;
+  border: none;
+  border-radius: 0px;
+}
+
+#clock { color: #c1272d; font-weight: 700; }
+#window { color: #6a6a70; background: transparent; border: none; }
+#custom-launcher { color: #c1272d; font-size: 15px; }
+#custom-media { color: #8a8a90; }
+#pulseaudio { color: #8a8a90; }
+#network { color: #a8a8ae; }
+#battery { color: #9a9aa0; }
+#battery.warning { color: #8a8a90; }
+#battery.critical { color: #c1272d; }
+#network.disconnected { color: #c1272d; }
+#custom-notif.dnd { color: #c1272d; }
+#custom-notif.unread { color: #c1272d; }
+#custom-notif.idle { color: #6a6a70; }
+#custom-power { color: #c1272d; }
+#idle_inhibitor.activated { color: #c1272d; }
+#idle_inhibitor.deactivated { color: #6a6a70; }
+
+#workspaces { padding: 0 8px; }
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent; border: none; margin: 0;
+  padding: 4px 9px; color: #2c2c30;
+}
+#workspaces .occupied { color: #6a6a70; }
+#workspaces .visible  { color: #8a8a90; }
+#workspaces .active   { color: #c1272d; }
+#custom-ws { color: #e4e4e6; letter-spacing: 1px; }
+
+tooltip { background: #141416; border: 1px solid #2c2c30;
+           border-radius: 0px; }
+tooltip label { color: #e4e4e6; }
+
+window#waybar.info {
+  background: rgba(20, 20, 22, 1.0);
+  
+}
+
+window#waybar.tasks {
+  background: rgba(20, 20, 22, 1.0);
+  
+}

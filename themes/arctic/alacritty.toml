@@ -1,0 +1,45 @@
+# arctic — Alacritty
+# Arctic — a LIGHT rice. Ice white, pale blue, cold and clean.
+
+[colors.primary]
+background = "#f4f7fa"
+foreground = "#28323c"
+dim_foreground = "#4a5865"
+
+[colors.cursor]
+text = "#f4f7fa"
+cursor = "#3a7ca5"
+
+[colors.selection]
+text = "#28323c"
+background = "#dbe6f0"
+
+[colors.normal]
+black = "#e6edf3"
+red = "#b3505a"
+green = "#4a7c59"
+yellow = "#5fa8d3"
+blue = "#3a7ca5"
+magenta = "#6b5b95"
+cyan = "#4e8f9e"
+white = "#4a5865"
+
+[colors.bright]
+black = "#cfdae4"
+red = "#b3505a"
+green = "#4a7c59"
+yellow = "#3a7ca5"
+blue = "#3a7ca5"
+magenta = "#6b5b95"
+cyan = "#4e8f9e"
+white = "#28323c"
+
+[window]
+padding = { x = 14, y = 12 }
+decorations = "Transparent"
+opacity = 0.97
+blur = false
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size = 13.0

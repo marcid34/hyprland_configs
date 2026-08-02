@@ -1,0 +1,35 @@
+-- Mac OS X — Neovim
+-- macOS — translucent menubar up top, magnified dock below.
+return {
+  palette = {
+    name = "macos",
+    bg        = "#1e1e1e",
+    bg1       = "#252527",
+    bg2       = "#2c2c2e",
+    bg3       = "#3a3a3c",
+    fg        = "#ffffff",
+    fg1       = "#ebebf0",
+    dim       = "#8e8e93",
+    sel       = "#3a3a3c",
+    accent    = "#0a84ff",
+    accent2   = "#64d2ff",
+    red       = "#ff453a",
+    green     = "#32d74b",
+    blue      = "#0a84ff",
+    purple    = "#bf5af2",
+    cyan      = "#64d2ff",
+    orange           = "#64d2ff",
+    yellow           = "#64d2ff",
+    transparent      = true,
+    light            = false,
+    italic_comments  = true,
+    border           = "#3a3a3c",
+  },
+  opts = {
+    number = true, relativenumber = true, signcolumn = "yes",
+    cursorline = true, cursorlineopt = "number",
+    winborder = "rounded",
+    fillchars = "eob: ,vert:│",
+    laststatus = 3,
+  },
+}

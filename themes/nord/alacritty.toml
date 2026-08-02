@@ -1,0 +1,45 @@
+# nord — Alacritty
+# Nord — arctic. Cool blue-greys, frost cyan, zero warmth.
+
+[colors.primary]
+background = "#2e3440"
+foreground = "#eceff4"
+dim_foreground = "#d8dee9"
+
+[colors.cursor]
+text = "#2e3440"
+cursor = "#88c0d0"
+
+[colors.selection]
+text = "#eceff4"
+background = "#434c5e"
+
+[colors.normal]
+black = "#3b4252"
+red = "#bf616a"
+green = "#a3be8c"
+yellow = "#81a1c1"
+blue = "#5e81ac"
+magenta = "#b48ead"
+cyan = "#8fbcbb"
+white = "#d8dee9"
+
+[colors.bright]
+black = "#4c566a"
+red = "#bf616a"
+green = "#a3be8c"
+yellow = "#88c0d0"
+blue = "#5e81ac"
+magenta = "#b48ead"
+cyan = "#8fbcbb"
+white = "#eceff4"
+
+[window]
+padding = { x = 10, y = 8 }
+decorations = "None"
+opacity = 0.97
+blur = false
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size = 13.0

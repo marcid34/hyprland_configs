@@ -1,0 +1,45 @@
+# crimson — Alacritty
+# Crimson — burgundy and oxblood. Warm dark, no brightness anywhere.
+
+[colors.primary]
+background = "#180d10"
+foreground = "#f0dde2"
+dim_foreground = "#c9a8b2"
+
+[colors.cursor]
+text = "#180d10"
+cursor = "#c72c48"
+
+[colors.selection]
+text = "#f0dde2"
+background = "#3e1f28"
+
+[colors.normal]
+black = "#2c161d"
+red = "#c72c48"
+green = "#8fa87c"
+yellow = "#e0607a"
+blue = "#7c8fa8"
+magenta = "#a87c9f"
+cyan = "#7ca8a0"
+white = "#c9a8b2"
+
+[colors.bright]
+black = "#3e1f28"
+red = "#c72c48"
+green = "#8fa87c"
+yellow = "#c72c48"
+blue = "#7c8fa8"
+magenta = "#a87c9f"
+cyan = "#7ca8a0"
+white = "#f0dde2"
+
+[window]
+padding = { x = 14, y = 12 }
+decorations = "Transparent"
+opacity = 0.95
+blur = false
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size = 13.0

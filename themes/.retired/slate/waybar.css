@@ -1,0 +1,234 @@
+/* slate — Waybar
+ *
+ * The anti-pill. Instead of islands floating on a transparent tray, the
+ * whole bar is one solid mantle slab and the modules sit flush inside it,
+ * separated by hairlines rather than by gaps. Quiet, dense, monochrome
+ * except for a single blue accent.
+ *
+ * Catppuccin Mocha led by blue #89b4fa, with most modules deliberately
+ * left in subtext greys so the accent means something.
+ *   mantle #181825  base #1e1e2e  surface0 #313244  surface1 #45475a
+ *   overlay0 #6c7086  subtext0 #a6adc8  text #cdd6f4  blue #89b4fa
+ */
+
+* {
+  font-family: "Ubuntu Mono", "JetBrainsMono Nerd Font", monospace;
+  font-size: 14px;
+  font-weight: bold;
+  min-height: 0;
+}
+
+window#waybar {
+  background: #181825;
+  color: #a6adc8;
+  border-bottom: 1px solid #313244;
+}
+
+.modules-left {
+  padding-left: 0;
+}
+
+.modules-right {
+  padding-right: 6px;
+}
+
+/* Flush modules: no background of their own, no border, no radius. The
+ * slab behind them is the surface. */
+#clock,
+#battery,
+#network,
+#tray,
+#workspaces,
+#custom-media,
+#cpu,
+#memory,
+#temperature,
+#pulseaudio-slider,
+#profiles,
+#volume {
+  background-color: transparent;
+  color: #a6adc8;
+  margin: 0;
+  padding: 0 11px;
+  border: none;
+  border-radius: 0;
+}
+
+/* Hairline column rules on the right cluster only — the left side reads as
+ * one continuous group. */
+#cpu,
+#memory,
+#temperature,
+#custom-media,
+#network,
+#battery,
+#volume {
+  border-left: 1px solid #313244;
+}
+
+#clock {
+  color: #89b4fa;
+  padding: 0 14px;
+}
+
+/* ── Network ── */
+#network {
+  font-family: "JetBrainsMono Nerd Font Propo", monospace;
+  font-size: 14px;
+  color: #a6adc8;
+  min-width: 20px;
+}
+
+#network.ethernet {
+  color: #89b4fa;
+}
+
+#network.linked {
+  color: #f9e2af;
+}
+
+#network.disconnected {
+  color: #f38ba8;
+}
+
+#network.disabled {
+  color: #45475a;
+}
+
+/* ── Pulseaudio ── */
+#pulseaudio {
+  font-family: "JetBrainsMono Nerd Font Propo", monospace;
+  font-size: 13px;
+  color: #a6adc8;
+}
+
+/* ── Workspaces — the accent lives here, as an underline rather than a
+ * fill, so the bar keeps a flat unbroken face. ── */
+#workspaces {
+  padding: 0 4px;
+}
+
+#custom-ws1,
+#custom-ws2,
+#custom-ws3,
+#custom-ws4,
+#custom-ws5 {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0 8px;
+  margin: 0;
+  color: #45475a;
+}
+
+#workspaces .occupied {
+  color: #6c7086;
+}
+
+#workspaces .visible {
+  color: #a6adc8;
+  border-bottom: 2px solid #45475a;
+}
+
+#workspaces .active {
+  color: #89b4fa;
+  border-bottom: 2px solid #89b4fa;
+}
+
+/* ── Profiles (rice switcher) ── */
+#profiles {
+  padding: 0 4px;
+  border-left: 1px solid #313244;
+}
+
+#custom-profile1,
+#custom-profile2,
+#custom-profile3,
+#custom-profile4,
+#custom-profile5 {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0 6px;
+  margin: 0;
+}
+
+#profiles .inactive {
+  color: #45475a;
+}
+
+#profiles .active {
+  color: #89b4fa;
+  border-bottom: 2px solid #89b4fa;
+}
+
+/* ── Battery ── */
+#battery {
+  color: #a6adc8;
+}
+
+#battery.warning {
+  color: #f9e2af;
+}
+
+#battery.critical {
+  color: #f38ba8;
+}
+
+#custom-media {
+  color: #6c7086;
+}
+
+#cpu,
+#memory {
+  color: #a6adc8;
+}
+
+#temperature {
+  color: #a6adc8;
+}
+
+/* ── Volume slider — thin, flat, blue fill ── */
+#pulseaudio-slider {
+  min-width: 72px;
+  padding: 0 11px;
+}
+
+#pulseaudio-slider slider {
+  min-height: 10px;
+  min-width: 10px;
+  background-image: none;
+  border: none;
+  border-radius: 2px;
+  background-color: #cdd6f4;
+  margin: -6px;
+}
+
+#pulseaudio-slider trough {
+  min-height: 4px;
+  border-radius: 2px;
+  background: #313244;
+}
+
+#pulseaudio-slider highlight {
+  border-radius: 2px;
+  background: #89b4fa;
+}
+
+#pulseaudio.icon {
+  background: transparent;
+  border: none;
+  color: #a6adc8;
+  margin: 0;
+  padding: 0 6px 0 0;
+}
+
+tooltip {
+  background: #11111b;
+  border: 1px solid #313244;
+  border-radius: 4px;
+}
+
+tooltip label {
+  color: #cdd6f4;
+}

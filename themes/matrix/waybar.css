@@ -1,0 +1,61 @@
+/* matrix — waybar
+ * Matrix — code rain. Pure green on black, no chrome at all.
+ * Shell: conky
+ */
+
+* {
+  font-family: "JetBrainsMono Nerd Font Mono", "FreeSerif", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: #00c832;
+}
+
+.modules-left { padding-left: 10px; }
+.modules-right { padding-right: 10px; }
+
+#clock, #battery, #network, #tray, #pulseaudio, #backlight, #cpu, #memory,
+#custom-media, #custom-notif, #custom-power, #custom-launcher,
+#idle_inhibitor, #window, #workspaces, #custom-ws {
+  background-color: rgba(2, 10, 2, 1.0);
+  color: #00c832;
+  margin: 5px 4px;
+  padding: 4px 16px;
+  border: 1px solid #0a2814;
+  border-radius: 0px;
+}
+
+#clock { color: #00ff41; font-weight: 700; }
+#window { color: #046417; background: transparent; border: none; }
+#custom-launcher { color: #00ff41; font-size: 15px; }
+#custom-media { color: #7dffa0; }
+#pulseaudio { color: #7dffa0; }
+#network { color: #7dffa0; }
+#battery { color: #00ff41; }
+#battery.warning { color: #7dffa0; }
+#battery.critical { color: #ff3131; }
+#network.disconnected { color: #ff3131; }
+#custom-notif.dnd { color: #ff3131; }
+#custom-notif.unread { color: #00ff41; }
+#custom-notif.idle { color: #046417; }
+#custom-power { color: #ff3131; }
+#idle_inhibitor.activated { color: #00ff41; }
+#idle_inhibitor.deactivated { color: #046417; }
+
+#workspaces { padding: 0 8px; }
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent; border: none; margin: 0;
+  padding: 4px 9px; color: #0a2814;
+}
+#workspaces .occupied { color: #046417; }
+#workspaces .visible  { color: #7dffa0; }
+#workspaces .active   { color: #00ff41; }
+#custom-ws { color: #00ff41; letter-spacing: 1px; }
+
+tooltip { background: #020a02; border: 1px solid #0a2814;
+           border-radius: 0px; }
+tooltip label { color: #00ff41; }

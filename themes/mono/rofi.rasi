@@ -1,0 +1,130 @@
+/* mono — rofi
+ *
+ * A printed index. Wide margins, a single hairline under the prompt, and a
+ * selection marked by a white rule in the left margin plus a shift to full
+ * white text — no fill, because a fill would be the loudest thing on screen
+ * in a rice with no colour.
+ */
+
+configuration {
+  modes:               "drun,run";
+  show-icons:          true;
+  icon-theme:          "breeze-dark";
+  drun-display-format: "{name}";
+  display-drun:        "apps";
+  display-run:         "run";
+  drun-match-fields:   "name,generic,exec,keywords";
+}
+
+* {
+  bg:    #0a0a0a;
+  bg1:   #121212;
+  bg2:   #1c1c1c;
+  bg3:   #2e2e2e;
+  dim:   #6e6e6e;
+  fg1:   #9a9a9a;
+  fg2:   #b4b4b4;
+  fg:    #e8e8e8;
+  white: #ffffff;
+
+  background-color: transparent;
+  text-color:       @fg2;
+  font:             "Adwaita Sans 12";
+}
+
+window {
+  width:            560px;
+  background-color: #0a0a0af7;
+  border:           1px;
+  border-color:     @bg3;
+  border-radius:    2px;
+  padding:          0;
+}
+
+mainbox {
+  children: [ inputbar, listview ];
+  spacing:  0;
+}
+
+inputbar {
+  children:     [ prompt, entry ];
+  padding:      20px 24px 14px 24px;
+  spacing:      14px;
+  border:       0 0 1px 0;
+  border-color: @bg2;
+}
+
+prompt {
+  background-color: transparent;
+  text-color:       @dim;
+  padding:          0;
+}
+
+entry {
+  placeholder:       "";
+  placeholder-color: @bg3;
+  cursor:            text;
+  text-color:        @white;
+  vertical-align:    0.5;
+}
+
+listview {
+  lines:        10;
+  columns:      1;
+  padding:      10px 12px 14px 12px;
+  spacing:      1px;
+  scrollbar:    false;
+  fixed-height: false;
+}
+
+element {
+  padding:       7px 14px;
+  spacing:       14px;
+  border-radius: 0;
+  border:        0 0 0 2px;
+  border-color:  transparent;
+  cursor:        pointer;
+}
+
+element normal.normal,
+element alternate.normal {
+  background-color: transparent;
+  text-color:       @dim;
+}
+
+element normal.active,
+element alternate.active {
+  background-color: transparent;
+  text-color:       @fg2;
+}
+
+element normal.urgent,
+element alternate.urgent {
+  background-color: transparent;
+  text-color:       @fg;
+}
+
+element selected.normal,
+element selected.active {
+  background-color: transparent;
+  text-color:       @white;
+  border-color:     @white;
+}
+
+element selected.urgent {
+  background-color: @bg2;
+  text-color:       @white;
+  border-color:     @white;
+}
+
+/* Icons desaturate badly against a monochrome ground; keep them small
+   enough to read as marks rather than as the only colour on screen. */
+element-icon {
+  size:           16px;
+  vertical-align: 0.5;
+}
+
+element-text {
+  vertical-align: 0.5;
+  text-color:     inherit;
+}

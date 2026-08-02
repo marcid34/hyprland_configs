@@ -1,0 +1,95 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "small",
+    "padding": {
+      "top": 1,
+      "left": 2,
+      "right": 4
+    },
+    "color": {
+      "1": "38;2;193;39;45",
+      "2": "38;2;138;138;144"
+    }
+  },
+  "display": {
+    "separator": "  ",
+    "key": {
+      "width": 9
+    },
+    "color": {
+      "title": "38;2;193;39;45"
+    }
+  },
+  "modules": [
+    "break",
+    {
+      "type": "title",
+      "color": {
+        "user": "38;2;193;39;45",
+        "host": "38;2;138;138;144"
+      }
+    },
+    {
+      "type": "custom",
+      "format": "────────────────────────────",
+      "outputColor": "38;2;44;44;48"
+    },
+    {
+      "type": "os",
+      "key": "os",
+      "keyColor": "38;2;193;39;45"
+    },
+    {
+      "type": "kernel",
+      "key": "kernel",
+      "keyColor": "38;2;193;39;45"
+    },
+    {
+      "type": "uptime",
+      "key": "uptime",
+      "keyColor": "38;2;193;39;45"
+    },
+    {
+      "type": "packages",
+      "key": "pkgs",
+      "keyColor": "38;2;193;39;45"
+    },
+    {
+      "type": "shell",
+      "key": "shell",
+      "keyColor": "38;2;193;39;45"
+    },
+    {
+      "type": "wm",
+      "key": "wm",
+      "keyColor": "38;2;138;138;144"
+    },
+    {
+      "type": "terminal",
+      "key": "term",
+      "keyColor": "38;2;138;138;144"
+    },
+    {
+      "type": "cpu",
+      "key": "cpu",
+      "keyColor": "38;2;168;168;174"
+    },
+    {
+      "type": "memory",
+      "key": "mem",
+      "keyColor": "38;2;154;154;160"
+    },
+    {
+      "type": "disk",
+      "key": "disk",
+      "keyColor": "38;2;154;154;160"
+    },
+    "break",
+    {
+      "type": "colors",
+      "symbol": "circle"
+    },
+    "break"
+  ]
+}

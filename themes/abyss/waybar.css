@@ -1,0 +1,101 @@
+/* abyss — waybar
+ *
+ * Abyss — deep water. Near-black navy, teal and electric cyan.
+ * Layout: three-island.
+ */
+
+* {
+  font-family: "JetBrainsMono Nerd Font Propo", "FreeSerif", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+/* Three floating islands rather than a bar: left, centre and right each get
+ * their own rounded surface, and the gaps between them show the wallpaper. */
+window#waybar { background: transparent; color: #cfe3f5; }
+.modules-left, .modules-center, .modules-right {
+  background-color: rgba(15, 26, 43, 0.86);
+  border: 1px solid #1d3050;
+  border-radius: 14px;
+  margin: 5px 8px;
+  padding: 0 6px;
+}
+#clock, #battery, #network, #tray, #pulseaudio, #backlight, #cpu, #memory, #sys, #custom-media, #custom-notif, #custom-power, #idle_inhibitor, #privacy, #window, #workspaces {
+  background: transparent; color: #9fbcd6;
+  margin: 0; padding: 3px 23px; border: none; border-radius: 0;
+}
+#clock { color: #2ec4b6; font-weight: 700; letter-spacing: 0.5px; }
+#window { color: #4a6483; }
+#custom-media { color: #7b6cf6; }
+#network { color: #48cae4; }
+#battery { color: #2ec4b6; }
+#pulseaudio { color: #48cae4; }
+
+/* ── workspaces ── */
+#workspaces { padding: 0 6px; }
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent; border: none; box-shadow: none;
+  padding: 0 6px; margin: 0; color: #1d3050;
+}
+#workspaces .occupied { color: #4a6483; }
+#workspaces .visible   { color: #48cae4; }
+#workspaces .active    { color: #2ec4b6; text-shadow: 0 0 10px rgba(46, 196, 182, 0.8); }
+
+/* ── states ── */
+#battery.warning  { color: #48cae4; }
+#battery.critical { color: #ef476f; }
+#network.disconnected { color: #ef476f; }
+#network.disabled     { color: #1d3050; }
+#custom-notif.dnd     { color: #ef476f; }
+#custom-notif.unread  { color: #2ec4b6; }
+#custom-notif.idle    { color: #4a6483; }
+#idle_inhibitor.activated   { color: #2ec4b6; }
+#idle_inhibitor.deactivated { color: #4a6483; }
+#custom-power { color: #ef476f; }
+#window { color: #4a6483; }
+#window.empty { color: transparent; }
+#privacy { color: #ef476f; }
+tooltip { background: #0f1a2b; border: 1px solid #1d3050; border-radius: 10px; }
+tooltip label { color: #cfe3f5; }
+
+
+/* ─────────────────────────────────────────────────────────
+ * Bar redesign: selectors for this rice's own module set.
+ * ───────────────────────────────────────────────────────── */
+#custom-ws, #custom-launcher, #window, #backlight, #privacy, #idle_inhibitor {
+  /* match this rice's existing module treatment */
+}
+
+/* Single-module workspace indicator (click/scroll to move). Coloured as one
+ * unit rather than per-dot, since the glyphs live in one label. */
+#custom-ws {
+  color: #cfe3f5;
+  letter-spacing: 1px;
+}
+#custom-ws.ws { color: #cfe3f5; }
+
+
+/* ── Multi-window shell ─────────────────────────────────────
+ * This rice runs 3 separate bar window(s). waybar exposes each
+ * bar's `name` as a class on the window, so they can be styled
+ * independently -- a floating card is not a panel.
+ * ──────────────────────────────────────────────────────────── */
+
+window#waybar.i1 {
+  background: rgba(11, 18, 32, 0.94);
+  border: 1px solid #152438;
+  border-radius: 12px;
+}
+
+window#waybar.i2 {
+  background: rgba(11, 18, 32, 0.94);
+  border: 1px solid #152438;
+  border-radius: 12px;
+}
+
+window#waybar.i3 {
+  background: rgba(11, 18, 32, 0.94);
+  border: 1px solid #152438;
+  border-radius: 12px;
+}

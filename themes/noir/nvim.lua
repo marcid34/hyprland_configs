@@ -1,0 +1,35 @@
+-- noir — Neovim
+-- Noir — film stock. Hard greyscale, one crimson accent, deep shadows.
+return {
+  palette = {
+    name = "noir",
+    bg        = "#0c0c0d",
+    bg1       = "#141416",
+    bg2       = "#1e1e21",
+    bg3       = "#2c2c30",
+    fg        = "#e4e4e6",
+    fg1       = "#b0b0b4",
+    dim       = "#6a6a70",
+    sel       = "#2c2c30",
+    accent    = "#c1272d",
+    accent2   = "#8a8a90",
+    red       = "#c1272d",
+    green     = "#9a9aa0",
+    blue      = "#8a8a90",
+    purple    = "#7a7a80",
+    cyan      = "#a8a8ae",
+    orange           = "#8a8a90",
+    yellow           = "#8a8a90",
+    transparent      = false,
+    light            = false,
+    italic_comments  = true,
+    border           = "#2c2c30",
+  },
+  opts = {
+    number = true, relativenumber = true, signcolumn = "yes",
+    cursorline = true, cursorlineopt = "number",
+    winborder = "single",
+    fillchars = "eob: ,vert:|",
+    laststatus = 3,
+  },
+}

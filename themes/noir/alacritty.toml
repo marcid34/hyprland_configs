@@ -1,0 +1,45 @@
+# noir — Alacritty
+# Noir — film stock. Hard greyscale, one crimson accent, deep shadows.
+
+[colors.primary]
+background = "#0c0c0d"
+foreground = "#e4e4e6"
+dim_foreground = "#b0b0b4"
+
+[colors.cursor]
+text = "#0c0c0d"
+cursor = "#c1272d"
+
+[colors.selection]
+text = "#e4e4e6"
+background = "#2c2c30"
+
+[colors.normal]
+black = "#1e1e21"
+red = "#c1272d"
+green = "#9a9aa0"
+yellow = "#8a8a90"
+blue = "#8a8a90"
+magenta = "#7a7a80"
+cyan = "#a8a8ae"
+white = "#b0b0b4"
+
+[colors.bright]
+black = "#2c2c30"
+red = "#c1272d"
+green = "#9a9aa0"
+yellow = "#c1272d"
+blue = "#8a8a90"
+magenta = "#7a7a80"
+cyan = "#a8a8ae"
+white = "#e4e4e6"
+
+[window]
+padding = { x = 14, y = 12 }
+decorations = "None"
+opacity = 1.0
+blur = false
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size = 13.0

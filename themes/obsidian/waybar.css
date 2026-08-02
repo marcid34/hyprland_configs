@@ -1,0 +1,66 @@
+/* obsidian — waybar
+ * Obsidian — true black with a single violet. Built for OLED.
+ * Shell: waybar-pill
+ */
+
+* {
+  font-family: "Adwaita Sans", "FreeSerif", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: #a8a8b4;
+}
+
+.modules-left { padding-left: 10px; }
+.modules-right { padding-right: 10px; }
+
+#clock, #battery, #network, #tray, #pulseaudio, #backlight, #cpu, #memory,
+#custom-media, #custom-notif, #custom-power, #custom-launcher,
+#idle_inhibitor, #window, #workspaces, #custom-ws {
+  background-color: rgba(10, 10, 12, 1.0);
+  color: #a8a8b4;
+  margin: 5px 4px;
+  padding: 4px 16px;
+  border: 1px solid #212127;
+  border-radius: 18px;
+}
+
+#clock { color: #8b5cf6; font-weight: 700; }
+#window { color: #5a5a68; background: transparent; border: none; }
+#custom-launcher { color: #8b5cf6; font-size: 15px; }
+#custom-media { color: #a78bfa; }
+#pulseaudio { color: #a78bfa; }
+#network { color: #22d3ee; }
+#battery { color: #4ade80; }
+#battery.warning { color: #a78bfa; }
+#battery.critical { color: #f0517a; }
+#network.disconnected { color: #f0517a; }
+#custom-notif.dnd { color: #f0517a; }
+#custom-notif.unread { color: #8b5cf6; }
+#custom-notif.idle { color: #5a5a68; }
+#custom-power { color: #f0517a; }
+#idle_inhibitor.activated { color: #8b5cf6; }
+#idle_inhibitor.deactivated { color: #5a5a68; }
+
+#workspaces { padding: 0 8px; }
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent; border: none; margin: 0;
+  padding: 4px 9px; color: #212127;
+}
+#workspaces .occupied { color: #5a5a68; }
+#workspaces .visible  { color: #a78bfa; }
+#workspaces .active   { color: #8b5cf6; }
+#custom-ws { color: #e8e8ee; letter-spacing: 1px; }
+
+tooltip { background: #0a0a0c; border: 1px solid #212127;
+           border-radius: 14px; }
+tooltip label { color: #e8e8ee; }
+
+window#waybar.pill {
+  background: rgba(10, 10, 12, 1.0);
+  border: 1px solid #212127; border-radius: 18px;
+}

@@ -1,0 +1,45 @@
+# blueprint — Alacritty
+# Blueprint — drafting table. Cyan hairlines on navy, all monospace.
+
+[colors.primary]
+background = "#06121f"
+foreground = "#e8f4fb"
+dim_foreground = "#9dc9e0"
+
+[colors.cursor]
+text = "#06121f"
+cursor = "#35d6ff"
+
+[colors.selection]
+text = "#e8f4fb"
+background = "#14344f"
+
+[colors.normal]
+black = "#0d2438"
+red = "#ff6b8a"
+green = "#5fe3c0"
+yellow = "#7fe3ff"
+blue = "#35d6ff"
+magenta = "#9ab6ff"
+cyan = "#7fe3ff"
+white = "#9dc9e0"
+
+[colors.bright]
+black = "#14344f"
+red = "#ff6b8a"
+green = "#5fe3c0"
+yellow = "#35d6ff"
+blue = "#35d6ff"
+magenta = "#9ab6ff"
+cyan = "#7fe3ff"
+white = "#e8f4fb"
+
+[window]
+padding = { x = 10, y = 8 }
+decorations = "None"
+opacity = 0.95
+blur = false
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font Mono", style = "Regular" }
+size = 12.0

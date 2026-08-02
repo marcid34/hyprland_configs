@@ -1,0 +1,31 @@
+/* macOS — Spotlight */
+configuration {
+  modes: "drun"; show-icons: true; icon-theme: "breeze-dark";
+  drun-display-format: "{name}";
+}
+* { background-color: transparent; text-color: #ffffff;
+     font: "Adwaita Sans 15"; }
+window { width: 680px; background-color: rgba(44, 44, 46, 0.88);
+          border: 1px; border-color: rgba(255, 255, 255, 0.14);
+          border-radius: 12px; padding: 0;
+          location: center; y-offset: -140px; }
+mainbox { children: [ inputbar, listview ]; spacing: 0; }
+inputbar { children: [ prompt, entry ]; padding: 16px 18px; spacing: 12px;
+            border: 0 0 1px 0; border-color: rgba(255, 255, 255, 0.10); }
+prompt { text-color: #8e8e93; font: "Adwaita Sans 16"; }
+entry  { placeholder: "Spotlight Search"; placeholder-color: #8e8e93; }
+listview { lines: 7; columns: 1; padding: 6px; spacing: 1px;
+            fixed-height: false; scrollbar: false; }
+element { padding: 8px 12px; spacing: 12px; border-radius: 6px;
+           cursor: pointer; }
+element normal.normal, element alternate.normal {
+  background-color: transparent; text-color: #ebebf0; }
+element normal.active, element alternate.active {
+  background-color: transparent; text-color: #64d2ff; }
+element normal.urgent, element alternate.urgent {
+  background-color: transparent; text-color: #ff453a; }
+element selected.normal, element selected.active {
+  background-color: #0a84ff; text-color: #ffffff; }
+element selected.urgent { background-color: #ff453a; text-color: #ffffff; }
+element-icon { size: 22px; vertical-align: 0.5; }
+element-text { vertical-align: 0.5; text-color: inherit; }

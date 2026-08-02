@@ -1,0 +1,31 @@
+/* Full-screen overlay launcher — takes the whole display. */
+configuration {
+  modes:      "drun";
+  show-icons: true;
+  icon-theme: "breeze-dark";
+  drun-display-format: "{name}";
+}
+* { background-color: transparent; text-color: #ecd9f5;
+     font: "Adwaita Mono 13"; }
+window { fullscreen: true; background-color: #17101df7; padding: 8%; }
+mainbox { children: [ inputbar, listview ]; spacing: 26px; }
+inputbar { children: [ prompt, entry ]; spacing: 16px;
+            padding: 0 0 18px 0; border: 0 0 2px 0; border-color: #e05fc4; }
+prompt { text-color: #e05fc4; font: "Adwaita Mono 20"; }
+entry  { placeholder: "type to search"; placeholder-color: #3a2949;
+          font: "Adwaita Mono 20"; }
+listview { columns: 2; lines: 8; spacing: 6px; scrollbar: false;
+            fixed-height: false; }
+element { padding: 12px 16px; spacing: 14px; border-radius: 8px;
+           cursor: pointer; }
+element normal.normal, element alternate.normal {
+  background-color: transparent; text-color: #ecd9f5; }
+element normal.active, element alternate.active {
+  background-color: transparent; text-color: #e05fc4; }
+element normal.urgent, element alternate.urgent {
+  background-color: transparent; text-color: #e5527a; }
+element selected.normal, element selected.active {
+  background-color: #e05fc4; text-color: #17101d; }
+element selected.urgent { background-color: #e5527a; text-color: #17101d; }
+element-icon { size: 26px; }
+element-text { vertical-align: 0.5; text-color: inherit; }

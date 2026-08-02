@@ -1,0 +1,46 @@
+# dawn — Alacritty
+#
+# Dawn — Rose Pine Dawn. A LIGHT rice: warm paper, ink, pine.
+
+[colors.primary]
+background     = "#faf4ed"
+foreground     = "#575279"
+dim_foreground = "#797593"
+
+[colors.cursor]
+text   = "#faf4ed"
+cursor = "#286983"
+
+[colors.selection]
+text       = "#575279"
+background = "#dfdad9"
+
+[colors.normal]
+black   = "#f2e9e1"
+red     = "#b4637a"
+green   = "#618774"
+yellow  = "#ea9d34"
+blue    = "#286983"
+magenta = "#907aa9"
+cyan    = "#56949f"
+white   = "#797593"
+
+[colors.bright]
+black   = "#dfdad9"
+red     = "#b4637a"
+green   = "#618774"
+yellow  = "#ea9d34"
+blue    = "#286983"
+magenta = "#907aa9"
+cyan    = "#56949f"
+white   = "#575279"
+
+[window]
+padding     = { x = 16, y = 14 }
+decorations = "Transparent"
+opacity     = 0.97
+blur        = false
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size   = 13.0

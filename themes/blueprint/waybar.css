@@ -1,0 +1,79 @@
+/* blueprint — waybar
+ *
+ * Blueprint — drafting table. Cyan hairlines on navy, all monospace.
+ * Layout: readout.
+ */
+
+* {
+  font-family: "JetBrainsMono Nerd Font Mono", "FreeSerif", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  min-height: 0;
+}
+
+/* A drafting title block. Everything is monospace, every field is labelled
+ * in words rather than glyphs, and cells are ruled in cyan hairline like a
+ * technical drawing. Dense on purpose — this rice is about legibility of
+ * data, not restraint. */
+window#waybar {
+  background: rgba(6, 18, 31, 0.95);
+  color: #9dc9e0;
+  border-bottom: 1px solid #35d6ff;
+}
+.modules-left { padding-left: 0; }
+.modules-right { padding-right: 0; }
+#clock, #battery, #network, #tray, #pulseaudio, #backlight, #cpu, #memory, #sys, #custom-media, #custom-notif, #custom-power, #idle_inhibitor, #privacy, #window, #workspaces {
+  background: transparent; color: #9dc9e0;
+  margin: 0; padding: 3px 16px; border: none; border-radius: 0;
+  letter-spacing: 0.5px;
+}
+#cpu, #memory, #backlight, #pulseaudio, #network, #battery, #custom-notif,
+#idle_inhibitor, #clock { border-left: 1px solid #14344f; }
+#clock { color: #06121f; background-color: #35d6ff; font-weight: 700; }
+#window { color: #3f6b8a; }
+#sys, #cpu, #memory { color: #7fe3ff; }
+#network, #pulseaudio, #backlight { color: #9dc9e0; }
+#battery { color: #5fe3c0; }
+
+/* ── workspaces ── */
+#workspaces { padding: 0 8px; border-right: 1px solid #14344f; }
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent; border: none; box-shadow: none;
+  padding: 0 6px; margin: 0; color: #14344f;
+}
+#workspaces .occupied { color: #3f6b8a; }
+#workspaces .visible   { color: #7fe3ff; }
+#workspaces .active    { color: #35d6ff; text-shadow: 0 0 8px rgba(53, 214, 255, 0.8); }
+
+/* ── states ── */
+#battery.warning  { color: #7fe3ff; }
+#battery.critical { color: #ff6b8a; }
+#network.disconnected { color: #ff6b8a; }
+#network.disabled     { color: #14344f; }
+#custom-notif.dnd     { color: #ff6b8a; }
+#custom-notif.unread  { color: #35d6ff; }
+#custom-notif.idle    { color: #3f6b8a; }
+#idle_inhibitor.activated   { color: #35d6ff; }
+#idle_inhibitor.deactivated { color: #3f6b8a; }
+#custom-power { color: #ff6b8a; }
+#window { color: #3f6b8a; }
+#window.empty { color: transparent; }
+#privacy { color: #ff6b8a; }
+tooltip { background: #081a2b; border: 1px solid #14344f; border-radius: 0px; }
+tooltip label { color: #e8f4fb; }
+
+
+/* ─────────────────────────────────────────────────────────
+ * Bar redesign: selectors for this rice's own module set.
+ * ───────────────────────────────────────────────────────── */
+#custom-ws, #custom-launcher, #window, #backlight, #privacy, #idle_inhibitor {
+  /* match this rice's existing module treatment */
+}
+
+/* Single-module workspace indicator (click/scroll to move). Coloured as one
+ * unit rather than per-dot, since the glyphs live in one label. */
+#custom-ws {
+  color: #e8f4fb;
+  letter-spacing: 1px;
+}
+#custom-ws.ws { color: #e8f4fb; }

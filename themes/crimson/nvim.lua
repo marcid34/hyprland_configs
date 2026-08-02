@@ -1,0 +1,35 @@
+-- crimson — Neovim
+-- Crimson — burgundy and oxblood. Warm dark, no brightness anywhere.
+return {
+  palette = {
+    name = "crimson",
+    bg        = "#180d10",
+    bg1       = "#201116",
+    bg2       = "#2c161d",
+    bg3       = "#3e1f28",
+    fg        = "#f0dde2",
+    fg1       = "#c9a8b2",
+    dim       = "#7a5560",
+    sel       = "#3e1f28",
+    accent    = "#c72c48",
+    accent2   = "#e0607a",
+    red       = "#c72c48",
+    green     = "#8fa87c",
+    blue      = "#7c8fa8",
+    purple    = "#a87c9f",
+    cyan      = "#7ca8a0",
+    orange           = "#e0607a",
+    yellow           = "#e0607a",
+    transparent      = true,
+    light            = false,
+    italic_comments  = true,
+    border           = "#3e1f28",
+  },
+  opts = {
+    number = true, relativenumber = true, signcolumn = "yes",
+    cursorline = true, cursorlineopt = "number",
+    winborder = "rounded",
+    fillchars = "eob: ,vert:│",
+    laststatus = 3,
+  },
+}

@@ -1,0 +1,47 @@
+// rosepine — waybar
+// Shell: No bar. A dock at the bottom and a single clock card top-right.
+// This rice's own desktop shell, not a restyle of another profile's.
+{
+  "name": "card",
+  "layer": "top",
+  "position": "top",
+  "height": 28,
+  "width": 170,
+  "margin-top": 10,
+  "margin-right": 14,
+  "modules-left": [],
+  "modules-center": [],
+  "modules-right": [
+    "clock",
+    "battery"
+  ],
+  "clock": {
+    "interval": 10,
+    "format": "{:%H:%M}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "mode": "month",
+      "format": {
+        "today": "<b>{}</b>"
+      }
+    }
+  },
+  "battery": {
+    "interval": 30,
+    "states": {
+      "warning": 25,
+      "critical": 12
+    },
+    "format": "{capacity}",
+    "format-charging": "󰂄 {capacity}",
+    "format-icons": [
+      "󰁺",
+      "󰁼",
+      "󰁾",
+      "󰂀",
+      "󰂂"
+    ],
+    "tooltip-format": "{capacity}%  ·  {time} left"
+  },
+  "spacing": 5
+}

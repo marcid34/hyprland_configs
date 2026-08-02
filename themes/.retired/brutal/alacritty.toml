@@ -1,0 +1,47 @@
+# brutal — Alacritty styling (Catppuccin Mocha)
+#
+# Fully opaque on crust, tight padding, bold face. No blur, no translucency —
+# the terminal is a solid block sitting on the wallpaper, not a window into it.
+
+[colors.primary]
+background     = "#11111b"
+foreground     = "#cdd6f4"
+dim_foreground = "#bac2de"
+
+[colors.cursor]
+text   = "#11111b"
+cursor = "#f9e2af"
+
+[colors.selection]
+text       = "#11111b"
+background = "#f9e2af"
+
+[colors.normal]
+black   = "#45475a"
+red     = "#f38ba8"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#89b4fa"
+magenta = "#f5c2e7"
+cyan    = "#94e2d5"
+white   = "#bac2de"
+
+[colors.bright]
+black   = "#585b70"
+red     = "#f38ba8"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#89b4fa"
+magenta = "#f5c2e7"
+cyan    = "#94e2d5"
+white   = "#a6adc8"
+
+[window]
+padding     = { x = 4, y = 4 }
+decorations = "None"
+opacity     = 1.0
+blur        = false
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Bold" }
+size   = 12.50

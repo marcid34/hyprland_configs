@@ -1,0 +1,61 @@
+/* solarized — waybar
+ * Solarized Dark — the 2011 classic. Teal base, restrained accents.
+ * Shell: nwg-panel
+ */
+
+* {
+  font-family: "Adwaita Sans", "FreeSerif", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: #839496;
+}
+
+.modules-left { padding-left: 10px; }
+.modules-right { padding-right: 10px; }
+
+#clock, #battery, #network, #tray, #pulseaudio, #backlight, #cpu, #memory,
+#custom-media, #custom-notif, #custom-power, #custom-launcher,
+#idle_inhibitor, #window, #workspaces, #custom-ws {
+  background-color: rgba(1, 50, 61, 1.0);
+  color: #839496;
+  margin: 5px 4px;
+  padding: 4px 16px;
+  border: 1px solid #0f4b58;
+  border-radius: 6px;
+}
+
+#clock { color: #2aa198; font-weight: 700; }
+#window { color: #586e75; background: transparent; border: none; }
+#custom-launcher { color: #2aa198; font-size: 15px; }
+#custom-media { color: #268bd2; }
+#pulseaudio { color: #268bd2; }
+#network { color: #2aa198; }
+#battery { color: #859900; }
+#battery.warning { color: #268bd2; }
+#battery.critical { color: #dc322f; }
+#network.disconnected { color: #dc322f; }
+#custom-notif.dnd { color: #dc322f; }
+#custom-notif.unread { color: #2aa198; }
+#custom-notif.idle { color: #586e75; }
+#custom-power { color: #dc322f; }
+#idle_inhibitor.activated { color: #2aa198; }
+#idle_inhibitor.deactivated { color: #586e75; }
+
+#workspaces { padding: 0 8px; }
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent; border: none; margin: 0;
+  padding: 4px 9px; color: #0f4b58;
+}
+#workspaces .occupied { color: #586e75; }
+#workspaces .visible  { color: #268bd2; }
+#workspaces .active   { color: #2aa198; }
+#custom-ws { color: #93a1a1; letter-spacing: 1px; }
+
+tooltip { background: #01323d; border: 1px solid #0f4b58;
+           border-radius: 2px; }
+tooltip label { color: #93a1a1; }

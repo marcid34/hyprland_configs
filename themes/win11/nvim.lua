@@ -1,0 +1,35 @@
+-- Windows 11 Pro — Neovim
+-- Windows 11 — centred taskbar, Mica surfaces, Fluent blue.
+return {
+  palette = {
+    name = "win11",
+    bg        = "#202020",
+    bg1       = "#191919",
+    bg2       = "#2b2b2b",
+    bg3       = "#3d3d3d",
+    fg        = "#ffffff",
+    fg1       = "#e0e0e0",
+    dim       = "#a0a0a0",
+    sel       = "#3d3d3d",
+    accent    = "#0078d4",
+    accent2   = "#4cc2ff",
+    red       = "#f85149",
+    green     = "#6ccb5f",
+    blue      = "#0078d4",
+    purple    = "#b4a0ff",
+    cyan      = "#4cc2ff",
+    orange           = "#4cc2ff",
+    yellow           = "#4cc2ff",
+    transparent      = false,
+    light            = false,
+    italic_comments  = true,
+    border           = "#3d3d3d",
+  },
+  opts = {
+    number = true, relativenumber = true, signcolumn = "yes",
+    cursorline = true, cursorlineopt = "number",
+    winborder = "rounded",
+    fillchars = "eob: ,vert:│",
+    laststatus = 3,
+  },
+}

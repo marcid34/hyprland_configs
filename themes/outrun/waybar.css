@@ -1,0 +1,182 @@
+/* outrun — Waybar
+ *
+ * 1984 neon. Indigo night, hot magenta, cyan horizon. Every accent carries
+ * a glow, borders are saturated rather than neutral, and the bar sits on a
+ * deep purple that is almost but not quite black.
+ *
+ * The restraint that keeps this from being a mess: only two colours glow
+ * (magenta and cyan) and everything else is a muted lavender. A neon
+ * palette where *everything* glows just reads as noise.
+ *
+ *   bg #0d0221  bg1 #190b33  bg2 #241b4d  bg3 #3b2d6b
+ *   fg #f0e6ff  fg1 #c9b8f0  dim #6b5b9a
+ *   magenta #ff2e97  cyan #00f0ff  purple #b967ff
+ *   yellow #fffb96  green #3bf4a0  orange #ff9e2c
+ */
+
+* {
+  font-family: "JetBrainsMono Nerd Font Propo", "FreeSerif", monospace;
+  font-size: 14px;
+  font-weight: 700;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: #f0e6ff;
+}
+
+.modules-left  { padding-left: 10px; }
+.modules-right { padding-right: 10px; }
+
+#clock,
+#battery,
+#network,
+#tray,
+#workspaces,
+#custom-media,
+#cpu,
+#memory,
+#temperature,
+#pulseaudio-slider,
+#profiles,
+#volume {
+  background-color: rgba(25, 11, 51, 0.90);
+  color: #c9b8f0;
+  margin: 4px 3px;
+  padding: 3px 26px;
+  border: 2px solid #3b2d6b;
+  border-radius: 4px;
+}
+
+#clock {
+  color: #ff2e97;
+  border-color: #ff2e97;
+  background-color: rgba(255, 46, 151, 0.10);
+  text-shadow: 0 0 12px rgba(255, 46, 151, 0.9);
+  letter-spacing: 1px;
+}
+
+/* ── Network ── */
+#network {
+  font-size: 14px;
+  color: #00f0ff;
+  padding: 2px 12px;
+  min-width: 22px;
+  text-shadow: 0 0 9px rgba(0, 240, 255, 0.7);
+}
+#network.ethernet     { color: #00f0ff; }
+#network.linked       { color: #fffb96; text-shadow: 0 0 9px rgba(255, 251, 150, 0.7); }
+#network.disconnected { color: #ff2e97; border-color: #ff2e97; text-shadow: 0 0 10px rgba(255, 46, 151, 0.9); }
+#network.disabled     { color: #6b5b9a; text-shadow: none; }
+
+/* ── Pulseaudio ── */
+#pulseaudio {
+  font-size: 13px;
+  color: #b967ff;
+}
+
+/* ── Workspaces ── */
+#workspaces { padding: 2px 8px; }
+
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent;
+  border: none;
+  padding: 0 6px;
+  color: #3b2d6b;
+}
+#workspaces .occupied { color: #6b5b9a; }
+#workspaces .visible  { color: #00f0ff; text-shadow: 0 0 10px rgba(0, 240, 255, 0.85); }
+#workspaces .active   { color: #ff2e97; text-shadow: 0 0 14px rgba(255, 46, 151, 1); }
+
+/* ── Profiles (rice switcher) ── */
+#profiles { padding: 2px 8px; }
+
+#custom-profile1, #custom-profile2, #custom-profile3, #custom-profile4,
+#custom-profile5, #custom-profile6, #custom-profile7, #custom-profile8,
+#custom-profile9, #custom-profile10 {
+  background: transparent;
+  border: none;
+  padding: 0 3px;
+  font-size: 10px;
+}
+#profiles .inactive { color: #3b2d6b; }
+#profiles .active   { color: #00f0ff; text-shadow: 0 0 14px rgba(0, 240, 255, 1); }
+
+/* ── Battery ── */
+#battery          { color: #3bf4a0; }
+#battery.warning  { color: #fffb96; }
+#battery.critical { color: #ff2e97; border-color: #ff2e97; text-shadow: 0 0 10px rgba(255, 46, 151, 0.9); }
+
+#custom-media { color: #b967ff; }
+#cpu          { color: #00f0ff; }
+#memory       { color: #b967ff; }
+#temperature  { color: #ff9e2c; }
+
+/* ── Volume slider — a neon light bar ── */
+#pulseaudio-slider { min-width: 80px; padding: 2px 12px; }
+
+#pulseaudio-slider slider {
+  min-height: 13px;
+  min-width: 6px;
+  background-image: none;
+  border: none;
+  border-radius: 2px;
+  background-color: #00f0ff;
+  margin: -6px;
+}
+#pulseaudio-slider trough {
+  min-height: 4px;
+  border-radius: 2px;
+  background: #3b2d6b;
+}
+#pulseaudio-slider highlight {
+  border-radius: 2px;
+  background: #ff2e97;
+}
+
+#pulseaudio.icon {
+  background: transparent;
+  border: none;
+  color: #b967ff;
+  margin: 0;
+  padding: 0 7px 0 0;
+}
+
+tooltip {
+  background: rgba(13, 2, 33, 0.97);
+  border: 2px solid #ff2e97;
+  border-radius: 4px;
+}
+tooltip label { color: #f0e6ff; }
+
+
+/* ─────────────────────────────────────────────────────────
+ * Bar redesign: selectors for this rice's own module set.
+ * ───────────────────────────────────────────────────────── */
+#custom-ws, #custom-launcher, #window, #backlight, #privacy, #idle_inhibitor {
+  /* match this rice's existing module treatment */
+}
+
+/* Single-module workspace indicator (click/scroll to move). Coloured as one
+ * unit rather than per-dot, since the glyphs live in one label. */
+#custom-ws {
+  color: #f0e6ff;
+  letter-spacing: 1px;
+}
+#custom-ws.ws { color: #f0e6ff; }
+
+
+/* ── Multi-window shell ─────────────────────────────────────
+ * This rice runs 2 separate bar window(s). waybar exposes each
+ * bar's `name` as a class on the window, so they can be styled
+ * independently -- a floating card is not a panel.
+ * ──────────────────────────────────────────────────────────── */
+
+window#waybar.marquee {
+  background: rgba(13, 2, 33, 0.95);
+}
+
+window#waybar.strip {
+  background: rgba(13, 2, 33, 0.95);
+}

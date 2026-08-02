@@ -1,0 +1,9 @@
+/* solarized — nwg-panel */
+window { background-color: #01323d; color: #839496; }
+#panel-top { background-color: #01323d; border-bottom: 1px solid #0f4b58; }
+#clock { color: #2aa198; font-weight: bold; padding: 0 14px; }
+#executor { color: #839496; padding: 0 12px; }
+#panel-controls { background-color: #01323d; border: 1px solid #0f4b58;
+                   border-radius: 6px; padding: 8px; }
+button { background: transparent; border: none; padding: 4px 10px; }
+button:hover { background-color: rgba(42, 161, 152, 0.20); border-radius: 6px; }

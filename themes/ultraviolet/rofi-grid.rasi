@@ -1,0 +1,31 @@
+/* Icon grid launcher — an app drawer rather than a list. */
+configuration {
+  modes:      "drun";
+  show-icons: true;
+  icon-theme: "breeze-dark";
+  drun-display-format: "{name}";
+}
+* { background-color: transparent; text-color: #ddd0f0;
+     font: "Adwaita Mono 11"; }
+window { width: 780px; background-color: #0f0a18f2;
+          border: 1px; border-color: #1e142e; border-radius: 16px; }
+mainbox { children: [ inputbar, listview ]; spacing: 0; padding: 14px; }
+inputbar { children: [ prompt, entry ]; padding: 10px 14px; spacing: 10px;
+            background-color: #2c1e42; border-radius: 10px; }
+prompt { text-color: #9d6bff; }
+entry  { placeholder: "search"; placeholder-color: #2c1e42; }
+listview { columns: 5; lines: 3; spacing: 10px; padding: 14px 0 0 0;
+            fixed-height: false; scrollbar: false; }
+element { orientation: vertical; padding: 14px 6px; border-radius: 12px;
+           cursor: pointer; }
+element normal.normal, element alternate.normal {
+  background-color: transparent; text-color: #ddd0f0; }
+element normal.active, element alternate.active {
+  background-color: transparent; text-color: #9d6bff; }
+element normal.urgent, element alternate.urgent {
+  background-color: transparent; text-color: #b76bff; }
+element selected.normal, element selected.active {
+  background-color: #9d6bff; text-color: #0f0a18; }
+element selected.urgent { background-color: #b76bff; text-color: #0f0a18; }
+element-icon { size: 46px; horizontal-align: 0.5; }
+element-text { horizontal-align: 0.5; text-color: inherit; }

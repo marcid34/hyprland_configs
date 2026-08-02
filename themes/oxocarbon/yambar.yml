@@ -1,0 +1,50 @@
+# oxocarbon — yambar
+#
+# A different bar program entirely. yambar is declarative YAML and draws
+# text, which suits Carbon's data-table feel better than waybar's widget
+# model. No icons anywhere; every field is labelled.
+
+bar:
+  height: 26
+  location: top
+  background: 161616ff
+  font: Adwaita Mono:size=10
+  foreground: f2f4f8ff
+  border:
+    bottom-width: 2
+    color: ee5396ff
+
+  left:
+    - i3:
+        content:
+          "":
+            map:
+              default:
+                string: {text: " {name} ", foreground: 393939ff}
+              conditions:
+                state == focused:
+                  string: {text: " {name} ", foreground: 161616ff, background: ee5396ff}
+    - label:
+        content: {string: {text: "", margin: 6}}
+
+  right:
+    - cpu:
+        poll-interval: 2500
+        content:
+          map:
+            conditions:
+              id == 0:
+                - string: {text: "CPU {cpu} ", foreground: f2f4f8ff}
+    - memory:
+        poll-interval: 5000
+        content:
+          - string: {text: "MEM {percent_used} ", foreground: f2f4f8ff}
+    - battery:
+        name: BAT0
+        poll-interval: 30000
+        content:
+          - string: {text: "BAT {capacity} ", foreground: f2f4f8ff}
+    - clock:
+        time-format: "%H:%M:%S"
+        content:
+          - string: {text: " {time} ", foreground: 161616ff, background: ee5396ff}

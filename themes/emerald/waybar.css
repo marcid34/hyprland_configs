@@ -1,0 +1,79 @@
+/* emerald — waybar
+ *
+ * Emerald — deep green glass. Jewel tones on near-black forest.
+ * Layout: unified.
+ */
+
+* {
+  font-family: "JetBrainsMono Nerd Font Propo", "FreeSerif", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  min-height: 0;
+}
+
+/* One continuous surface. Modules are separated by hairlines rather than
+ * gaps, so the bar reads as a single instrument panel. */
+window#waybar {
+  background: rgba(12, 31, 24, 0.94);
+  color: #9fd6bd;
+  border-bottom: 1px solid #1a4433;
+}
+.modules-left { padding-left: 4px; }
+.modules-right { padding-right: 4px; }
+#clock, #battery, #network, #tray, #pulseaudio, #backlight, #cpu, #memory, #sys, #custom-media, #custom-notif, #custom-power, #idle_inhibitor, #privacy, #window, #workspaces {
+  background: transparent; color: #9fd6bd;
+  margin: 0; padding: 3px 17px; border: none; border-radius: 0;
+}
+#cpu, #memory, #custom-media, #tray, #pulseaudio, #network, #battery,
+#custom-notif, #idle_inhibitor, #custom-power, #backlight, #clock {
+  border-left: 1px solid #1a4433;
+}
+#clock { color: #2ee68a; font-weight: 700; }
+#window { color: #4b7a66; }
+#sys { color: #4b7a66; }
+#network { color: #3ddbd9; }
+#battery { color: #2ee68a; }
+#pulseaudio { color: #3ddbd9; }
+
+/* ── workspaces ── */
+#workspaces { padding: 0 8px; }
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent; border: none; box-shadow: none;
+  padding: 0 7px; margin: 0; color: #1a4433;
+}
+#workspaces .occupied { color: #4b7a66; }
+#workspaces .visible   { color: #3ddbd9; }
+#workspaces .active    { color: #2ee68a; background-color: #123024; }
+
+/* ── states ── */
+#battery.warning  { color: #3ddbd9; }
+#battery.critical { color: #ff6b81; }
+#network.disconnected { color: #ff6b81; }
+#network.disabled     { color: #1a4433; }
+#custom-notif.dnd     { color: #ff6b81; }
+#custom-notif.unread  { color: #2ee68a; }
+#custom-notif.idle    { color: #4b7a66; }
+#idle_inhibitor.activated   { color: #2ee68a; }
+#idle_inhibitor.deactivated { color: #4b7a66; }
+#custom-power { color: #ff6b81; }
+#window { color: #4b7a66; }
+#window.empty { color: transparent; }
+#privacy { color: #ff6b81; }
+tooltip { background: #0c1f18; border: 1px solid #1a4433; border-radius: 0px; }
+tooltip label { color: #d7f5e6; }
+
+
+/* ─────────────────────────────────────────────────────────
+ * Bar redesign: selectors for this rice's own module set.
+ * ───────────────────────────────────────────────────────── */
+#custom-ws, #custom-launcher, #window, #backlight, #privacy, #idle_inhibitor {
+  /* match this rice's existing module treatment */
+}
+
+/* Single-module workspace indicator (click/scroll to move). Coloured as one
+ * unit rather than per-dot, since the glyphs live in one label. */
+#custom-ws {
+  color: #d7f5e6;
+  letter-spacing: 1px;
+}
+#custom-ws.ws { color: #d7f5e6; }

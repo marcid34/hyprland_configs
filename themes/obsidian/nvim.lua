@@ -1,0 +1,35 @@
+-- obsidian — Neovim
+-- Obsidian — true black with a single violet. Built for OLED.
+return {
+  palette = {
+    name = "obsidian",
+    bg        = "#000000",
+    bg1       = "#0a0a0c",
+    bg2       = "#141418",
+    bg3       = "#212127",
+    fg        = "#e8e8ee",
+    fg1       = "#a8a8b4",
+    dim       = "#5a5a68",
+    sel       = "#212127",
+    accent    = "#8b5cf6",
+    accent2   = "#a78bfa",
+    red       = "#f0517a",
+    green     = "#4ade80",
+    blue      = "#60a5fa",
+    purple    = "#8b5cf6",
+    cyan      = "#22d3ee",
+    orange           = "#a78bfa",
+    yellow           = "#a78bfa",
+    transparent      = false,
+    light            = false,
+    italic_comments  = true,
+    border           = "#212127",
+  },
+  opts = {
+    number = true, relativenumber = true, signcolumn = "yes",
+    cursorline = true, cursorlineopt = "number",
+    winborder = "rounded",
+    fillchars = "eob: ,vert:│",
+    laststatus = 3,
+  },
+}

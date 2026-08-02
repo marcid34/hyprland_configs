@@ -1,0 +1,174 @@
+/* oxocarbon — Waybar
+ *
+ * IBM Carbon. Zero radius, precise 2px rules, near-black ground and one
+ * electric magenta. This is square like brutal was, but the opposite intent:
+ * brutal was loud, this is exact. Nothing overlaps, nothing shadows, every
+ * edge lands on the grid.
+ *
+ *   base #161616  bg1 #101010  bg2 #262626  bg3 #393939  dim #525252
+ *   fg #f2f4f8  fg1 #dde1e6
+ *   magenta #ee5396  blue #33b1ff  cyan #3ddbd9  purple #be95ff
+ *   green #42be65  yellow #ffe97b  red #ff7eb6  orange #ff6f00
+ */
+
+* {
+  font-family: "Adwaita Sans", "FreeSerif", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  min-height: 0;
+}
+
+window#waybar {
+  background: #161616;
+  color: #f2f4f8;
+  border-bottom: 2px solid #ee5396;
+}
+
+.modules-left  { padding-left: 0; }
+.modules-right { padding-right: 0; }
+
+#clock,
+#battery,
+#network,
+#tray,
+#workspaces,
+#custom-media,
+#cpu,
+#memory,
+#temperature,
+#pulseaudio-slider,
+#profiles,
+#volume {
+  background-color: transparent;
+  color: #dde1e6;
+  margin: 0;
+  padding: 3px 20px;
+  border: none;
+  border-radius: 0;
+}
+
+/* Hard 2px column rules — the Carbon grid made visible. */
+#cpu, #memory, #temperature, #custom-media, #network, #battery, #volume, #profiles {
+  border-left: 2px solid #262626;
+}
+
+#clock {
+  color: #161616;
+  background-color: #ee5396;
+  padding: 0 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* ── Network ── */
+#network {
+  font-family: "JetBrainsMono Nerd Font Propo", monospace;
+  font-size: 14px;
+  color: #3ddbd9;
+  min-width: 22px;
+}
+#network.ethernet     { color: #33b1ff; }
+#network.linked       { color: #ffe97b; }
+#network.disconnected { color: #161616; background-color: #ff7eb6; }
+#network.disabled     { color: #525252; }
+
+/* ── Pulseaudio ── */
+#pulseaudio {
+  font-family: "JetBrainsMono Nerd Font Propo", monospace;
+  font-size: 13px;
+  color: #be95ff;
+}
+
+/* ── Workspaces — hard top rule as the active marker ── */
+#workspaces { padding: 0 6px; }
+
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent;
+  border: none;
+  border-top: 2px solid transparent;
+  padding: 0 9px;
+  margin: 0;
+  color: #393939;
+}
+#workspaces .occupied { color: #6f6f6f; }
+#workspaces .visible  { color: #33b1ff; border-top: 2px solid #33b1ff; }
+#workspaces .active   { color: #ee5396; border-top: 2px solid #ee5396; }
+
+/* ── Profiles (rice switcher) ── */
+#profiles { padding: 0 6px; }
+
+#custom-profile1, #custom-profile2, #custom-profile3, #custom-profile4,
+#custom-profile5, #custom-profile6, #custom-profile7, #custom-profile8,
+#custom-profile9, #custom-profile10 {
+  background: transparent;
+  border: none;
+  border-top: 2px solid transparent;
+  padding: 0 4px;
+  margin: 0;
+  font-size: 9px;
+}
+#profiles .inactive { color: #393939; }
+#profiles .active   { color: #ee5396; border-top: 2px solid #ee5396; }
+
+/* ── Battery ── */
+#battery          { color: #42be65; }
+#battery.warning  { color: #ffe97b; }
+#battery.critical { color: #161616; background-color: #ff7eb6; }
+
+#custom-media { color: #be95ff; }
+#cpu          { color: #3ddbd9; }
+#memory       { color: #42be65; }
+#temperature  { color: #ff6f00; }
+
+/* ── Volume slider — square, no caps ── */
+#pulseaudio-slider { min-width: 78px; padding: 0 14px; }
+
+#pulseaudio-slider slider {
+  min-height: 12px;
+  min-width: 4px;
+  background-image: none;
+  border: none;
+  border-radius: 0;
+  background-color: #f2f4f8;
+  margin: -6px;
+}
+#pulseaudio-slider trough {
+  min-height: 4px;
+  border-radius: 0;
+  background: #393939;
+}
+#pulseaudio-slider highlight {
+  border-radius: 0;
+  background: #ee5396;
+}
+
+#pulseaudio.icon {
+  background: transparent;
+  border: none;
+  color: #be95ff;
+  margin: 0;
+  padding: 0 7px 0 0;
+}
+
+tooltip {
+  background: #101010;
+  border: 2px solid #ee5396;
+  border-radius: 0;
+}
+tooltip label { color: #f2f4f8; }
+
+
+/* ─────────────────────────────────────────────────────────
+ * Bar redesign: selectors for this rice's own module set.
+ * ───────────────────────────────────────────────────────── */
+#custom-ws, #custom-launcher, #window, #backlight, #privacy, #idle_inhibitor {
+  /* match this rice's existing module treatment */
+}
+
+/* Single-module workspace indicator (click/scroll to move). Coloured as one
+ * unit rather than per-dot, since the glyphs live in one label. */
+#custom-ws {
+  color: #f2f4f8;
+  letter-spacing: 1px;
+}
+#custom-ws.ws { color: #f2f4f8; }

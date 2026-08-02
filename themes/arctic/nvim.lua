@@ -1,0 +1,35 @@
+-- arctic — Neovim
+-- Arctic — a LIGHT rice. Ice white, pale blue, cold and clean.
+return {
+  palette = {
+    name = "arctic",
+    bg        = "#f4f7fa",
+    bg1       = "#ffffff",
+    bg2       = "#e6edf3",
+    bg3       = "#cfdae4",
+    fg        = "#28323c",
+    fg1       = "#4a5865",
+    dim       = "#8fa0b0",
+    sel       = "#dbe6f0",
+    accent    = "#3a7ca5",
+    accent2   = "#5fa8d3",
+    red       = "#b3505a",
+    green     = "#4a7c59",
+    blue      = "#3a7ca5",
+    purple    = "#6b5b95",
+    cyan      = "#4e8f9e",
+    orange           = "#5fa8d3",
+    yellow           = "#5fa8d3",
+    transparent      = false,
+    light            = true,
+    italic_comments  = true,
+    border           = "#cfdae4",
+  },
+  opts = {
+    number = true, relativenumber = true, signcolumn = "yes",
+    cursorline = true, cursorlineopt = "number",
+    winborder = "rounded",
+    fillchars = "eob: ,vert:│",
+    laststatus = 3,
+  },
+}

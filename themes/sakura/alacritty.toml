@@ -1,0 +1,45 @@
+# sakura — Alacritty
+# Sakura — blossom at night. Soft pink and lilac on plum-black.
+
+[colors.primary]
+background = "#1a1520"
+foreground = "#f2e6ef"
+dim_foreground = "#cdb8c8"
+
+[colors.cursor]
+text = "#1a1520"
+cursor = "#f2a6c2"
+
+[colors.selection]
+text = "#f2e6ef"
+background = "#3d3047"
+
+[colors.normal]
+black = "#2e2436"
+red = "#e8748f"
+green = "#a7e0c8"
+yellow = "#c9a7d4"
+blue = "#a8d8ea"
+magenta = "#c9a7d4"
+cyan = "#a8d8ea"
+white = "#cdb8c8"
+
+[colors.bright]
+black = "#3d3047"
+red = "#e8748f"
+green = "#a7e0c8"
+yellow = "#f2a6c2"
+blue = "#a8d8ea"
+magenta = "#c9a7d4"
+cyan = "#a8d8ea"
+white = "#f2e6ef"
+
+[window]
+padding = { x = 16, y = 14 }
+decorations = "Transparent"
+opacity = 0.9
+blur = true
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size = 13.0

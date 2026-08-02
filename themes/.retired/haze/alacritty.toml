@@ -1,0 +1,48 @@
+# haze — Alacritty styling (Catppuccin Mocha)
+#
+# Low opacity with generous padding so the blurred wallpaper reads as a soft
+# wash behind the text rather than as detail competing with it. Pink cursor
+# to match the bar's accent.
+
+[colors.primary]
+background     = "#1e1e2e"
+foreground     = "#cdd6f4"
+dim_foreground = "#a6adc8"
+
+[colors.cursor]
+text   = "#1e1e2e"
+cursor = "#f5c2e7"
+
+[colors.selection]
+text       = "#1e1e2e"
+background = "#f5c2e7"
+
+[colors.normal]
+black   = "#585b70"
+red     = "#f38ba8"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#89b4fa"
+magenta = "#f5c2e7"
+cyan    = "#94e2d5"
+white   = "#bac2de"
+
+[colors.bright]
+black   = "#6c7086"
+red     = "#f38ba8"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#89b4fa"
+magenta = "#f5c2e7"
+cyan    = "#94e2d5"
+white   = "#cdd6f4"
+
+[window]
+padding     = { x = 22, y = 20 }
+decorations = "Transparent"
+opacity     = 0.62
+blur        = true
+
+[font]
+normal = { family = "Ubuntu Mono", style = "Regular" }
+size   = 14.00

@@ -1,0 +1,14 @@
+// mono — waybar
+// Shell: No persistent chrome. Status is summoned with SUPER+I.
+// This rice's own desktop shell, not a restyle of another profile's.
+// This rice runs no waybar. See shell.sh for what it does run.
+{
+  "name": "unused",
+  "layer": "top",
+  "position": "top",
+  "height": 1,
+  "modules-left": [],
+  "modules-center": [],
+  "modules-right": [],
+  "spacing": 5
+}

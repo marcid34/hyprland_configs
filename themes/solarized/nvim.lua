@@ -1,0 +1,35 @@
+-- solarized — Neovim
+-- Solarized Dark — the 2011 classic. Teal base, restrained accents.
+return {
+  palette = {
+    name = "solarized",
+    bg        = "#002b36",
+    bg1       = "#01323d",
+    bg2       = "#073642",
+    bg3       = "#0f4b58",
+    fg        = "#93a1a1",
+    fg1       = "#839496",
+    dim       = "#586e75",
+    sel       = "#073642",
+    accent    = "#2aa198",
+    accent2   = "#268bd2",
+    red       = "#dc322f",
+    green     = "#859900",
+    blue      = "#268bd2",
+    purple    = "#6c71c4",
+    cyan      = "#2aa198",
+    orange           = "#268bd2",
+    yellow           = "#268bd2",
+    transparent      = false,
+    light            = false,
+    italic_comments  = true,
+    border           = "#0f4b58",
+  },
+  opts = {
+    number = true, relativenumber = true, signcolumn = "yes",
+    cursorline = true, cursorlineopt = "number",
+    winborder = "single",
+    fillchars = "eob: ,vert:│",
+    laststatus = 3,
+  },
+}

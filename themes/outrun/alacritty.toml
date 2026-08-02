@@ -1,0 +1,46 @@
+# outrun — Alacritty
+#
+# Outrun — 1984 neon. Indigo night, hot magenta, cyan horizon.
+
+[colors.primary]
+background     = "#0d0221"
+foreground     = "#f0e6ff"
+dim_foreground = "#c9b8f0"
+
+[colors.cursor]
+text   = "#0d0221"
+cursor = "#ff2e97"
+
+[colors.selection]
+text       = "#f0e6ff"
+background = "#3b2d6b"
+
+[colors.normal]
+black   = "#241b4d"
+red     = "#ff2e97"
+green   = "#3bf4a0"
+yellow  = "#fffb96"
+blue    = "#00f0ff"
+magenta = "#b967ff"
+cyan    = "#00f0ff"
+white   = "#c9b8f0"
+
+[colors.bright]
+black   = "#3b2d6b"
+red     = "#ff2e97"
+green   = "#3bf4a0"
+yellow  = "#fffb96"
+blue    = "#00f0ff"
+magenta = "#b967ff"
+cyan    = "#00f0ff"
+white   = "#f0e6ff"
+
+[window]
+padding     = { x = 14, y = 12 }
+decorations = "Transparent"
+opacity     = 0.9
+blur        = true
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Bold" }
+size   = 13.0

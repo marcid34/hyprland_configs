@@ -1,0 +1,35 @@
+-- matrix — Neovim
+-- Matrix — code rain. Pure green on black, no chrome at all.
+return {
+  palette = {
+    name = "matrix",
+    bg        = "#000000",
+    bg1       = "#020a02",
+    bg2       = "#04140a",
+    bg3       = "#0a2814",
+    fg        = "#00ff41",
+    fg1       = "#00c832",
+    dim       = "#046417",
+    sel       = "#0a2814",
+    accent    = "#00ff41",
+    accent2   = "#7dffa0",
+    red       = "#ff3131",
+    green     = "#00ff41",
+    blue      = "#00c832",
+    purple    = "#00ff41",
+    cyan      = "#7dffa0",
+    orange           = "#7dffa0",
+    yellow           = "#7dffa0",
+    transparent      = false,
+    light            = false,
+    italic_comments  = false,
+    border           = "#0a2814",
+  },
+  opts = {
+    number = true, relativenumber = true, signcolumn = "yes",
+    cursorline = true, cursorlineopt = "number",
+    winborder = "single",
+    fillchars = "eob: ,vert:|",
+    laststatus = 3,
+  },
+}

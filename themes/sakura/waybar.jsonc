@@ -1,0 +1,28 @@
+// sakura — waybar
+// Shell: One small pill. Nothing else on screen, ever.
+// This rice's own desktop shell, not a restyle of another profile's.
+{
+  "name": "pill",
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "width": 150,
+  "margin-top": 10,
+  "modules-left": [],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [],
+  "clock": {
+    "interval": 10,
+    "format": "{:%H:%M}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "mode": "month",
+      "format": {
+        "today": "<b>{}</b>"
+      }
+    }
+  },
+  "spacing": 5
+}

@@ -1,0 +1,85 @@
+/* sakura — waybar
+ *
+ * Sakura — blossom at night. Soft pink and lilac on plum-black.
+ * Layout: minimal.
+ */
+
+* {
+  font-family: "Adwaita Sans", "FreeSerif", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+/* Four things. Workspaces, time, sound, power. Everything else is a
+ * keybind or a tooltip — a bar you never need to read is a bar that never
+ * interrupts you. */
+window#waybar { background: transparent; color: #f2e6ef; }
+.modules-left { padding-left: 14px; }
+.modules-right { padding-right: 14px; }
+#clock, #battery, #network, #tray, #pulseaudio, #backlight, #cpu, #memory, #sys, #custom-media, #custom-notif, #custom-power, #idle_inhibitor, #privacy, #window, #workspaces {
+  background-color: rgba(34, 27, 41, 0.9);
+  color: #cdb8c8;
+  margin: 5px 4px; padding: 3px 30px;
+  border: none; border-radius: 16px;
+}
+#clock { color: #f2a6c2; font-weight: 600; padding: 3px 22px; }
+#pulseaudio { color: #c9a7d4; }
+#network { color: #a8d8ea; }
+#battery { color: #a7e0c8; }
+
+/* ── workspaces ── */
+#workspaces { padding: 3px 14px; }
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent; border: none; box-shadow: none;
+  padding: 0 8px; margin: 0; color: #3d3047;
+}
+#workspaces .occupied { color: #7a6377; }
+#workspaces .visible   { color: #c9a7d4; }
+#workspaces .active    { color: #f2a6c2;  }
+
+/* ── states ── */
+#battery.warning  { color: #c9a7d4; }
+#battery.critical { color: #e8748f; }
+#network.disconnected { color: #e8748f; }
+#network.disabled     { color: #3d3047; }
+#custom-notif.dnd     { color: #e8748f; }
+#custom-notif.unread  { color: #f2a6c2; }
+#custom-notif.idle    { color: #7a6377; }
+#idle_inhibitor.activated   { color: #f2a6c2; }
+#idle_inhibitor.deactivated { color: #7a6377; }
+#custom-power { color: #e8748f; }
+#window { color: #7a6377; }
+#window.empty { color: transparent; }
+#privacy { color: #e8748f; }
+tooltip { background: #221b29; border: 1px solid #3d3047; border-radius: 12px; }
+tooltip label { color: #f2e6ef; }
+
+
+/* ─────────────────────────────────────────────────────────
+ * Bar redesign: selectors for this rice's own module set.
+ * ───────────────────────────────────────────────────────── */
+#custom-ws, #custom-launcher, #window, #backlight, #privacy, #idle_inhibitor {
+  /* match this rice's existing module treatment */
+}
+
+/* Single-module workspace indicator (click/scroll to move). Coloured as one
+ * unit rather than per-dot, since the glyphs live in one label. */
+#custom-ws {
+  color: #f2e6ef;
+  letter-spacing: 1px;
+}
+#custom-ws.ws { color: #f2e6ef; }
+
+
+/* ── Multi-window shell ─────────────────────────────────────
+ * This rice runs 1 separate bar window(s). waybar exposes each
+ * bar's `name` as a class on the window, so they can be styled
+ * independently -- a floating card is not a panel.
+ * ──────────────────────────────────────────────────────────── */
+
+window#waybar.pill {
+  background: rgba(26, 21, 32, 0.94);
+  border: 1px solid #2e2436;
+  border-radius: 12px;
+}

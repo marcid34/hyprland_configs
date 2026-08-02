@@ -1,0 +1,46 @@
+# amber — Alacritty
+#
+# Amber CRT — single-phosphor terminal. One colour, tight grid, glow.
+
+[colors.primary]
+background     = "#0c0a08"
+foreground     = "#ffb000"
+dim_foreground = "#d99400"
+
+[colors.cursor]
+text   = "#0c0a08"
+cursor = "#ffb000"
+
+[colors.selection]
+text       = "#ffb000"
+background = "#3d2f10"
+
+[colors.normal]
+black   = "#1e1710"
+red     = "#ff5f00"
+green   = "#ffb000"
+yellow  = "#ffcc55"
+blue    = "#d99400"
+magenta = "#ffb000"
+cyan    = "#ffcc55"
+white   = "#d99400"
+
+[colors.bright]
+black   = "#2b2116"
+red     = "#ff5f00"
+green   = "#ffb000"
+yellow  = "#ffcc55"
+blue    = "#d99400"
+magenta = "#ffb000"
+cyan    = "#ffcc55"
+white   = "#ffb000"
+
+[window]
+padding     = { x = 10, y = 8 }
+decorations = "None"
+opacity     = 1.0
+blur        = false
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font Mono", style = "Regular" }
+size   = 13.0

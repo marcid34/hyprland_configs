@@ -1,0 +1,79 @@
+/* mercury — waybar
+ *
+ * Mercury — cool silver. Near-monochrome, one ice-blue accent.
+ * Layout: hairline.
+ */
+
+* {
+  font-family: "Adwaita Sans", "FreeSerif", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  min-height: 0;
+}
+
+/* One continuous surface. Modules are separated by hairlines rather than
+ * gaps, so the bar reads as a single instrument panel. */
+window#waybar {
+  background: rgba(21, 24, 28, 0.95);
+  color: #b8c2cd;
+  border-bottom: 1px solid #1e2229;
+}
+.modules-left { padding-left: 4px; }
+.modules-right { padding-right: 4px; }
+#clock, #battery, #network, #tray, #pulseaudio, #backlight, #cpu, #memory, #sys, #custom-media, #custom-notif, #custom-power, #idle_inhibitor, #privacy, #window, #workspaces {
+  background: transparent; color: #b8c2cd;
+  margin: 0; padding: 3px 17px; border: none; border-radius: 0;
+}
+#cpu, #memory, #custom-media, #tray, #pulseaudio, #network, #battery,
+#custom-notif, #idle_inhibitor, #custom-power, #backlight, #clock {
+  border-left: 1px solid #1e2229;
+}
+#clock { color: #6fa8dc; font-weight: 700; }
+#window { color: #6b7684; }
+#sys { color: #6b7684; }
+#network { color: #a9c7e8; }
+#battery { color: #8fb8a8; }
+#pulseaudio { color: #a9c7e8; }
+
+/* ── workspaces ── */
+#workspaces { padding: 0 8px; }
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent; border: none; box-shadow: none;
+  padding: 0 7px; margin: 0; color: #2b313a;
+}
+#workspaces .occupied { color: #6b7684; }
+#workspaces .visible   { color: #a9c7e8; }
+#workspaces .active    { color: #6fa8dc; background-color: #1e2229; }
+
+/* ── states ── */
+#battery.warning  { color: #a9c7e8; }
+#battery.critical { color: #e06c75; }
+#network.disconnected { color: #e06c75; }
+#network.disabled     { color: #2b313a; }
+#custom-notif.dnd     { color: #e06c75; }
+#custom-notif.unread  { color: #6fa8dc; }
+#custom-notif.idle    { color: #6b7684; }
+#idle_inhibitor.activated   { color: #6fa8dc; }
+#idle_inhibitor.deactivated { color: #6b7684; }
+#custom-power { color: #e06c75; }
+#window { color: #6b7684; }
+#window.empty { color: transparent; }
+#privacy { color: #e06c75; }
+tooltip { background: #15181c; border: 1px solid #2b313a; border-radius: 0px; }
+tooltip label { color: #e6ecf2; }
+
+
+/* ─────────────────────────────────────────────────────────
+ * Bar redesign: selectors for this rice's own module set.
+ * ───────────────────────────────────────────────────────── */
+#custom-ws, #custom-launcher, #window, #backlight, #privacy, #idle_inhibitor {
+  /* match this rice's existing module treatment */
+}
+
+/* Single-module workspace indicator (click/scroll to move). Coloured as one
+ * unit rather than per-dot, since the glyphs live in one label. */
+#custom-ws {
+  color: #e6ecf2;
+  letter-spacing: 1px;
+}
+#custom-ws.ws { color: #e6ecf2; }

@@ -1,0 +1,46 @@
+# mono — Alacritty
+#
+# Mono — Swiss. No colour at all. Typography, grid and negative space.
+
+[colors.primary]
+background     = "#0a0a0a"
+foreground     = "#e8e8e8"
+dim_foreground = "#b4b4b4"
+
+[colors.cursor]
+text   = "#0a0a0a"
+cursor = "#ffffff"
+
+[colors.selection]
+text       = "#e8e8e8"
+background = "#2e2e2e"
+
+[colors.normal]
+black   = "#1c1c1c"
+red     = "#c8c8c8"
+green   = "#e8e8e8"
+yellow  = "#d4d4d4"
+blue    = "#b4b4b4"
+magenta = "#9a9a9a"
+cyan    = "#c8c8c8"
+white   = "#b4b4b4"
+
+[colors.bright]
+black   = "#2e2e2e"
+red     = "#c8c8c8"
+green   = "#e8e8e8"
+yellow  = "#d4d4d4"
+blue    = "#b4b4b4"
+magenta = "#9a9a9a"
+cyan    = "#c8c8c8"
+white   = "#e8e8e8"
+
+[window]
+padding     = { x = 20, y = 16 }
+decorations = "Transparent"
+opacity     = 0.96
+blur        = false
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size   = 13.0

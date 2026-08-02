@@ -1,0 +1,45 @@
+# midnight — Alacritty
+# Midnight — deepest navy. Almost no chrome; status on demand only.
+
+[colors.primary]
+background = "#070b14"
+foreground = "#c4d0e4"
+dim_foreground = "#8fa0bd"
+
+[colors.cursor]
+text = "#070b14"
+cursor = "#4d7cc7"
+
+[colors.selection]
+text = "#c4d0e4"
+background = "#1a2740"
+
+[colors.normal]
+black = "#111a2e"
+red = "#c75d6b"
+green = "#5da88f"
+yellow = "#6f9ae0"
+blue = "#4d7cc7"
+magenta = "#8f6fc7"
+cyan = "#4da8c7"
+white = "#8fa0bd"
+
+[colors.bright]
+black = "#1a2740"
+red = "#c75d6b"
+green = "#5da88f"
+yellow = "#4d7cc7"
+blue = "#4d7cc7"
+magenta = "#8f6fc7"
+cyan = "#4da8c7"
+white = "#c4d0e4"
+
+[window]
+padding = { x = 14, y = 12 }
+decorations = "None"
+opacity = 1.0
+blur = false
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size = 13.0

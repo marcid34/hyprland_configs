@@ -1,0 +1,56 @@
+/* macOS — menubar
+ * 26px, heavily translucent, no rounding (it is flush to the top edge),
+ * SF-ish type at 13px, and generous spacing between status items. The dock
+ * is nwg-dock, not waybar.
+ */
+* {
+  font-family: "Adwaita Sans", "FreeSans", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+window#waybar {
+  background: rgba(30, 30, 30, 0.72);
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modules-left  { padding-left: 10px; }
+.modules-right { padding-right: 12px; }
+
+#custom-apple, #window, #custom-media, #cpu, #network, #pulseaudio,
+#battery, #custom-notif, #clock {
+  background: transparent;
+  color: #ffffff;
+  margin: 0;
+  padding: 0 9px;
+  border: none;
+  border-radius: 5px;
+}
+
+#custom-apple { font-size: 15px; padding: 0 12px; }
+#custom-apple:hover, #clock:hover, #pulseaudio:hover, #network:hover,
+#battery:hover, #custom-notif:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* The app name sits in bold right after the apple, as macOS does it. */
+#window { font-weight: 700; padding-left: 4px; }
+
+#clock { font-weight: 400; padding: 0 10px; }
+#cpu   { color: #8e8e93; }
+#custom-media { color: #8e8e93; }
+#battery.warning  { color: #ffd60a; }
+#battery.critical { color: #ff453a; }
+#network.disconnected { color: #ff453a; }
+#custom-notif.dnd    { color: #0a84ff; }
+#custom-notif.unread { color: #0a84ff; }
+#custom-notif.idle   { color: #8e8e93; }
+
+tooltip {
+  background: rgba(44, 44, 46, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+}
+tooltip label { color: #ffffff; }

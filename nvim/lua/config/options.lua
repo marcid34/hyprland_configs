@@ -1,0 +1,13 @@
+local opt = vim.opt
+opt.number = true
+opt.relativenumber = true
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.expandtab = true
+opt.smartindent = true
+opt.termguicolors = true          -- required for Catppuccin's true colors
+opt.signcolumn = "yes"
+opt.ignorecase = true
+opt.smartcase = true
+opt.clipboard = "unnamedplus"     -- yank to system clipboard
+opt.updatetime = 250

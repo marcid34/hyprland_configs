@@ -1,0 +1,45 @@
+# plum — Alacritty
+# Plum — aubergine and magenta. Rich, saturated, unapologetic.
+
+[colors.primary]
+background = "#17101d"
+foreground = "#ecd9f5"
+dim_foreground = "#c4a8d4"
+
+[colors.cursor]
+text = "#17101d"
+cursor = "#e05fc4"
+
+[colors.selection]
+text = "#ecd9f5"
+background = "#3a2949"
+
+[colors.normal]
+black = "#291c33"
+red = "#e5527a"
+green = "#7fd6a8"
+yellow = "#a678e0"
+blue = "#6bb8e8"
+magenta = "#a678e0"
+cyan = "#6bd6d6"
+white = "#c4a8d4"
+
+[colors.bright]
+black = "#3a2949"
+red = "#e5527a"
+green = "#7fd6a8"
+yellow = "#e05fc4"
+blue = "#6bb8e8"
+magenta = "#a678e0"
+cyan = "#6bd6d6"
+white = "#ecd9f5"
+
+[window]
+padding = { x = 16, y = 14 }
+decorations = "Transparent"
+opacity = 0.88
+blur = true
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size = 13.5

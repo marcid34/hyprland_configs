@@ -1,0 +1,76 @@
+/* arctic — waybar
+ * Arctic — a LIGHT rice. Ice white, pale blue, cold and clean.
+ * Shell: waybar-cards
+ */
+
+* {
+  font-family: "Adwaita Sans", "FreeSerif", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: #4a5865;
+}
+
+.modules-left { padding-left: 10px; }
+.modules-right { padding-right: 10px; }
+
+#clock, #battery, #network, #tray, #pulseaudio, #backlight, #cpu, #memory,
+#custom-media, #custom-notif, #custom-power, #custom-launcher,
+#idle_inhibitor, #window, #workspaces, #custom-ws {
+  background-color: rgba(255, 255, 255, 0.97);
+  color: #4a5865;
+  margin: 5px 4px;
+  padding: 4px 16px;
+  border: 1px solid #cfdae4;
+  border-radius: 14px;
+}
+
+#clock { color: #3a7ca5; font-weight: 700; }
+#window { color: #8fa0b0; background: transparent; border: none; }
+#custom-launcher { color: #3a7ca5; font-size: 15px; }
+#custom-media { color: #5fa8d3; }
+#pulseaudio { color: #5fa8d3; }
+#network { color: #4e8f9e; }
+#battery { color: #4a7c59; }
+#battery.warning { color: #5fa8d3; }
+#battery.critical { color: #b3505a; }
+#network.disconnected { color: #b3505a; }
+#custom-notif.dnd { color: #b3505a; }
+#custom-notif.unread { color: #3a7ca5; }
+#custom-notif.idle { color: #8fa0b0; }
+#custom-power { color: #b3505a; }
+#idle_inhibitor.activated { color: #3a7ca5; }
+#idle_inhibitor.deactivated { color: #8fa0b0; }
+
+#workspaces { padding: 0 8px; }
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent; border: none; margin: 0;
+  padding: 4px 9px; color: #cfdae4;
+}
+#workspaces .occupied { color: #8fa0b0; }
+#workspaces .visible  { color: #5fa8d3; }
+#workspaces .active   { color: #3a7ca5; }
+#custom-ws { color: #28323c; letter-spacing: 1px; }
+
+tooltip { background: #ffffff; border: 1px solid #cfdae4;
+           border-radius: 10px; }
+tooltip label { color: #28323c; }
+
+window#waybar.ws {
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid #cfdae4; border-radius: 14px;
+}
+
+window#waybar.clock {
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid #cfdae4; border-radius: 14px;
+}
+
+window#waybar.sys {
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid #cfdae4; border-radius: 14px;
+}

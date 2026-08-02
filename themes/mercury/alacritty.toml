@@ -1,0 +1,45 @@
+# mercury — Alacritty
+# Mercury — cool silver. Near-monochrome, one ice-blue accent.
+
+[colors.primary]
+background = "#0e1013"
+foreground = "#e6ecf2"
+dim_foreground = "#b8c2cd"
+
+[colors.cursor]
+text = "#0e1013"
+cursor = "#6fa8dc"
+
+[colors.selection]
+text = "#e6ecf2"
+background = "#2b313a"
+
+[colors.normal]
+black = "#1e2229"
+red = "#e06c75"
+green = "#8fb8a8"
+yellow = "#a9c7e8"
+blue = "#6fa8dc"
+magenta = "#9aa8c7"
+cyan = "#a9c7e8"
+white = "#b8c2cd"
+
+[colors.bright]
+black = "#2b313a"
+red = "#e06c75"
+green = "#8fb8a8"
+yellow = "#6fa8dc"
+blue = "#6fa8dc"
+magenta = "#9aa8c7"
+cyan = "#a9c7e8"
+white = "#e6ecf2"
+
+[window]
+padding = { x = 16, y = 14 }
+decorations = "Transparent"
+opacity = 0.95
+blur = false
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size = 13.0

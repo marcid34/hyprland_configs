@@ -1,0 +1,94 @@
+// mercury — waybar
+// Shell: A 20px hairline strip. Present but almost invisible.
+// This rice's own desktop shell, not a restyle of another profile's.
+{
+  "name": "strip",
+  "layer": "top",
+  "position": "top",
+  "height": 20,
+  "modules-left": [
+    "custom/ws",
+    "hyprland/window"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "cpu",
+    "memory",
+    "pulseaudio",
+    "network",
+    "battery"
+  ],
+  "custom/ws": {
+    "exec": "~/.config/waybar/scripts/ws.py all fraction",
+    "on-click": "~/.config/waybar/scripts/ws.py cycle 1",
+    "on-click-right": "~/.config/waybar/scripts/ws.py cycle -1",
+    "on-scroll-up": "~/.config/waybar/scripts/ws.py cycle 1",
+    "on-scroll-down": "~/.config/waybar/scripts/ws.py cycle -1",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  "hyprland/window": {
+    "format": "{title}",
+    "max-length": 50,
+    "separate-outputs": true,
+    "rewrite": {
+      "": "—"
+    }
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "{usage}"
+  },
+  "memory": {
+    "interval": 15,
+    "format": "{percentage}"
+  },
+  "pulseaudio": {
+    "format": "{volume}",
+    "format-muted": "󰝟",
+    "scroll-step": 5,
+    "format-icons": {
+      "headphone": "󰋋",
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
+    },
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  },
+  "network": {
+    "interval": 5,
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤮",
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "tooltip-format-wifi": "<b>{essid}</b>\n{signalStrength}%  ·  {ipaddr}",
+    "on-click": "alacritty --class nm-float -e nmtui"
+  },
+  "battery": {
+    "interval": 30,
+    "states": {
+      "warning": 25,
+      "critical": 12
+    },
+    "format": "{capacity}",
+    "format-charging": "󰂄 {capacity}",
+    "format-icons": [
+      "󰁺",
+      "󰁼",
+      "󰁾",
+      "󰂀",
+      "󰂂"
+    ],
+    "tooltip-format": "{capacity}%  ·  {time} left"
+  },
+  "spacing": 5
+}

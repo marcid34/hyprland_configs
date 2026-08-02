@@ -1,0 +1,123 @@
+/* amber — rofi
+ *
+ * A monitor, not a menu. Full-bleed inverted selection, no rounding, no
+ * icons, a single hairline frame, and a blinking-cursor prompt. One hue
+ * throughout; urgency is brightness.
+ */
+
+configuration {
+  modes:               "drun,run";
+  show-icons:          true;
+  icon-theme:          "breeze-dark";
+  drun-display-format: "{name}";
+  display-drun:        "apps";
+  display-run:         "run";
+  drun-match-fields:   "name,generic,exec,keywords";
+}
+
+* {
+  bg:     #0c0a08;
+  bg1:    #141009;
+  bg2:    #1e1710;
+  bg3:    #2b2116;
+  amber:  #ffb000;
+  bright: #ffcc55;
+  dim:    #d99400;
+  faint:  #7a5400;
+
+  background-color: transparent;
+  text-color:       @dim;
+  font:             "Terminus 12";
+}
+
+window {
+  width:            640px;
+  background-color: @bg;
+  border:           1px;
+  border-color:     @amber;
+  border-radius:    0;
+  padding:          0;
+}
+
+mainbox {
+  children: [ inputbar, listview ];
+  spacing:  0;
+}
+
+inputbar {
+  children:     [ prompt, entry ];
+  padding:      8px 12px;
+  spacing:      8px;
+  border:       0 0 1px 0;
+  border-color: @bg3;
+}
+
+prompt {
+  background-color: transparent;
+  text-color:       @amber;
+  padding:          0;
+}
+
+entry {
+  placeholder:    "";
+  cursor:         text;
+  text-color:     @bright;
+  vertical-align: 0.5;
+}
+
+listview {
+  lines:        14;
+  columns:      1;
+  padding:      2px 0;
+  spacing:      0;
+  scrollbar:    false;
+  fixed-height: false;
+}
+
+/* Rows run edge to edge so the selection inverts a full scanline. */
+element {
+  padding:       1px 12px;
+  spacing:       8px;
+  border-radius: 0;
+  cursor:        pointer;
+}
+
+element normal.normal,
+element alternate.normal {
+  background-color: transparent;
+  text-color:       @dim;
+}
+
+element normal.active,
+element alternate.active {
+  background-color: transparent;
+  text-color:       @bright;
+}
+
+element normal.urgent,
+element alternate.urgent {
+  background-color: transparent;
+  text-color:       @bright;
+}
+
+element selected.normal,
+element selected.active {
+  background-color: @amber;
+  text-color:       @bg;
+}
+
+element selected.urgent {
+  background-color: @bright;
+  text-color:       @bg;
+}
+
+/* No icons — a phosphor terminal has no colour to render them in. */
+element-icon {
+  size:    0px;
+  enabled: false;
+}
+
+element-text {
+  vertical-align: 0.5;
+  text-color:     inherit;
+}

@@ -1,0 +1,122 @@
+/* duskfox — waybar
+ *
+ * Duskfox — muted violet night. Rose Pine's cousin, cooler and dimmer.
+ * Layout: left-flow.
+ */
+
+* {
+  font-family: "Adwaita Sans", "FreeSerif", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+window#waybar { background: transparent; color: #e0def4; }
+.modules-left { padding-left: 10px; }
+.modules-right { padding-right: 10px; }
+#clock, #battery, #network, #tray, #pulseaudio, #backlight, #cpu, #memory, #sys, #custom-media, #custom-notif, #custom-power, #idle_inhibitor, #privacy, #window, #workspaces {
+  background-color: rgba(29, 27, 42, 0.92);
+  color: #b6b3ce;
+  margin: 4px 3px; padding: 3px 25px;
+  border: 1px solid #393552; border-radius: 8px;
+}
+#window { background: transparent; border: none; color: #6e6a86; padding: 2px 6px; }
+#clock { color: #c4a7e7; border-color: rgba(196, 167, 231, 0.45); font-weight: 600; }
+#custom-media { color: #9ccfd8; }
+#pulseaudio { color: #9ccfd8; }
+#network { color: #9ccfd8; }
+#battery { color: #a3be8c; }
+
+/* ── workspaces ── */
+#workspaces { padding: 2px 9px; }
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent; border: none; box-shadow: none;
+  padding: 0 6px; margin: 0; color: #393552;
+}
+#workspaces .occupied { color: #6e6a86; }
+#workspaces .visible   { color: #9ccfd8; }
+#workspaces .active    { color: #c4a7e7; text-shadow: 0 0 9px rgba(196, 167, 231, 0.7); }
+
+/* ── states ── */
+#battery.warning  { color: #9ccfd8; }
+#battery.critical { color: #eb6f92; }
+#network.disconnected { color: #eb6f92; }
+#network.disabled     { color: #393552; }
+#custom-notif.dnd     { color: #eb6f92; }
+#custom-notif.unread  { color: #c4a7e7; }
+#custom-notif.idle    { color: #6e6a86; }
+#idle_inhibitor.activated   { color: #c4a7e7; }
+#idle_inhibitor.deactivated { color: #6e6a86; }
+#custom-power { color: #eb6f92; }
+#window { color: #6e6a86; }
+#window.empty { color: transparent; }
+#privacy { color: #eb6f92; }
+tooltip { background: #1d1b2a; border: 1px solid #393552; border-radius: 4px; }
+tooltip label { color: #e0def4; }
+
+
+/* ─────────────────────────────────────────────────────────
+ * Bar redesign: selectors for this rice's own module set.
+ * ───────────────────────────────────────────────────────── */
+#custom-ws, #custom-launcher, #window, #backlight, #privacy, #idle_inhibitor {
+  /* match this rice's existing module treatment */
+}
+
+/* Single-module workspace indicator (click/scroll to move). Coloured as one
+ * unit rather than per-dot, since the glyphs live in one label. */
+#custom-ws {
+  color: #e0def4;
+  letter-spacing: 1px;
+}
+#custom-ws.ws { color: #e0def4; }
+
+
+/* ── Multi-window shell ─────────────────────────────────────
+ * This rice runs 1 separate bar window(s). waybar exposes each
+ * bar's `name` as a class on the window, so they can be styled
+ * independently -- a floating card is not a panel.
+ * ──────────────────────────────────────────────────────────── */
+
+window#waybar.rail {
+  background: rgba(35, 33, 54, 0.94);
+  border: 1px solid #2d2a45;
+  border-radius: 12px;
+}
+
+
+/* ── Vertical rail ──────────────────────────────────────────
+ * This bar is only ~52px wide. The shared module rule sets horizontal
+ * padding sized for a top bar, which inside a rail pushes every label off
+ * centre and clips the wide ones. Vertical bars need the padding rotated:
+ * space above and below, none at the sides, and labels centred in the
+ * column.
+ * ──────────────────────────────────────────────────────────── */
+window#waybar {
+  border-bottom: none;
+  border-right: 1px solid #2d2a45;
+}
+
+.modules-left, .modules-center, .modules-right {
+  padding: 12px 0;
+}
+
+#clock, #battery, #network, #pulseaudio, #backlight, #cpu, #memory,
+#custom-power, #custom-launcher, #custom-notif, #idle_inhibitor,
+#custom-ws, #custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  padding: 9px 0;
+  margin: 0;
+  min-width: 0;
+  border: none;
+  border-left: none;
+}
+
+/* Centre each label horizontally in the column. */
+#workspaces {
+  padding: 0;
+  margin: 0;
+}
+
+#custom-launcher {
+  padding: 12px 0;
+  font-size: 16px;
+}

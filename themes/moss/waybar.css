@@ -1,0 +1,66 @@
+/* moss — waybar
+ * Moss — desaturated sage and stone. The quietest palette here.
+ * Shell: waybar-slim
+ */
+
+* {
+  font-family: "Ubuntu", "FreeSerif", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+window#waybar {
+  background: rgba(35, 40, 33, 0.94);
+  color: #a4ab9c;
+}
+
+.modules-left { padding-left: 10px; }
+.modules-right { padding-right: 10px; }
+
+#clock, #battery, #network, #tray, #pulseaudio, #backlight, #cpu, #memory,
+#custom-media, #custom-notif, #custom-power, #custom-launcher,
+#idle_inhibitor, #window, #workspaces, #custom-ws {
+  background-color: transparent;
+  color: #a4ab9c;
+  margin: 0;
+  padding: 4px 18px;
+  border: none;
+  border-radius: 0px;
+}
+
+#clock { color: #8fa876; font-weight: 700; }
+#window { color: #6c7466; background: transparent; border: none; }
+#custom-launcher { color: #8fa876; font-size: 15px; }
+#custom-media { color: #7c9a8e; }
+#pulseaudio { color: #7c9a8e; }
+#network { color: #7c9a8e; }
+#battery { color: #8fa876; }
+#battery.warning { color: #7c9a8e; }
+#battery.critical { color: #a87c7c; }
+#network.disconnected { color: #a87c7c; }
+#custom-notif.dnd { color: #a87c7c; }
+#custom-notif.unread { color: #8fa876; }
+#custom-notif.idle { color: #6c7466; }
+#custom-power { color: #a87c7c; }
+#idle_inhibitor.activated { color: #8fa876; }
+#idle_inhibitor.deactivated { color: #6c7466; }
+
+#workspaces { padding: 0 8px; }
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent; border: none; margin: 0;
+  padding: 4px 9px; color: #3a4136;
+}
+#workspaces .occupied { color: #6c7466; }
+#workspaces .visible  { color: #7c9a8e; }
+#workspaces .active   { color: #8fa876; }
+#custom-ws { color: #d4d8cc; letter-spacing: 1px; }
+
+tooltip { background: #232821; border: 1px solid #3a4136;
+           border-radius: 6px; }
+tooltip label { color: #d4d8cc; }
+
+window#waybar.slim {
+  background: rgba(35, 40, 33, 0.94);
+  
+}

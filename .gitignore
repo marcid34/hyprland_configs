@@ -1,0 +1,28 @@
+# Symlinks that switch.sh creates and repoints on every theme change. They
+# live inside these directories once the directories are linked into
+# ~/.config, but they are runtime state, not configuration.
+hypr/hyprlock.conf
+waybar/config.jsonc
+waybar/style.css
+mako/config
+fastfetch/config.jsonc
+themes/current
+starship.toml
+
+# Regenerated from `hyprctl monitors` by switch.sh on every rice change, so
+# its contents are whatever displays happened to be plugged in at the time.
+hypr/hyprpaper.conf
+
+# Bundled with the nwg-panel package, not user configuration (1.4M).
+nwg-panel/icons_light/
+nwg-panel/icons_dark/
+nwg-panel/icons_color/
+
+# Installer backups
+*.bak
+*.bak.*
+
+__pycache__/
+*.pyc
+*.swp
+*~

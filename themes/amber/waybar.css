@@ -1,0 +1,186 @@
+/* amber — Waybar
+ *
+ * Single-phosphor CRT. The discipline that makes this read as *designed*
+ * rather than dated is that there is exactly one hue: #ffb000, varied only
+ * in brightness. No second colour anywhere, not even for errors — urgency
+ * is carried by brightness and glow, the way an actual amber monitor did it.
+ *
+ * The other half is the grid: uniform padding, uniform tracking, one
+ * hairline, and nothing rounded. A retro palette applied loosely looks like
+ * a broken theme; applied strictly it looks deliberate.
+ *
+ *   bg #0c0a08  bg1 #141009  bg2 #1e1710  bg3 #2b2116
+ *   amber #ffb000  bright #ffcc55  dim #d99400  faint #7a5400
+ */
+
+* {
+  font-family: "Terminus", "xos4 Terminus", "JetBrainsMono Nerd Font Mono", monospace;
+  font-size: 14px;
+  font-weight: normal;
+  min-height: 0;
+}
+
+window#waybar {
+  background: #0c0a08;
+  color: #ffb000;
+  border-bottom: 1px solid #2b2116;
+}
+
+.modules-left  { padding-left: 10px; }
+.modules-right { padding-right: 10px; }
+
+/* Flat, uniform, gridded. Every module gets identical treatment — the
+ * regularity is the aesthetic. */
+#clock,
+#battery,
+#network,
+#tray,
+#workspaces,
+#custom-media,
+#cpu,
+#memory,
+#temperature,
+#pulseaudio-slider,
+#profiles,
+#volume {
+  background-color: transparent;
+  color: #d99400;
+  margin: 0;
+  padding: 3px 18px;
+  border: none;
+  border-radius: 0;
+  letter-spacing: 1px;
+}
+
+#clock {
+  color: #0c0a08;
+  background-color: #ffb000;
+  padding: 0 14px;
+  letter-spacing: 2px;
+  text-shadow: none;
+}
+
+/* ── Network ── */
+#network {
+  font-family: "JetBrainsMono Nerd Font Propo", monospace;
+  font-size: 14px;
+  color: #d99400;
+  min-width: 22px;
+  letter-spacing: 0;
+}
+#network.ethernet     { color: #ffb000; }
+#network.linked       { color: #ffcc55; }
+#network.disconnected { color: #ffcc55; text-shadow: 0 0 8px rgba(255, 204, 85, 0.9); }
+#network.disabled     { color: #7a5400; }
+
+/* ── Pulseaudio ── */
+#pulseaudio {
+  font-family: "JetBrainsMono Nerd Font Propo", monospace;
+  font-size: 13px;
+  color: #d99400;
+  letter-spacing: 0;
+}
+
+/* ── Workspaces — the phosphor glow is the only "effect" in the rice ── */
+#workspaces { padding: 0 8px; }
+
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent;
+  border: none;
+  padding: 0 7px;
+  color: #2b2116;
+  letter-spacing: 0;
+}
+#workspaces .occupied { color: #7a5400; }
+#workspaces .visible  { color: #d99400; }
+#workspaces .active {
+  color: #ffcc55;
+  text-shadow: 0 0 10px rgba(255, 176, 0, 0.95);
+}
+
+/* ── Profiles (rice switcher) ── */
+#profiles { padding: 0 8px; }
+
+#custom-profile1, #custom-profile2, #custom-profile3, #custom-profile4,
+#custom-profile5, #custom-profile6, #custom-profile7, #custom-profile8,
+#custom-profile9, #custom-profile10 {
+  background: transparent;
+  border: none;
+  padding: 0 3px;
+  font-size: 10px;
+  letter-spacing: 0;
+}
+#profiles .inactive { color: #2b2116; }
+#profiles .active {
+  color: #ffcc55;
+  text-shadow: 0 0 10px rgba(255, 176, 0, 0.95);
+}
+
+/* ── Battery — brightness, not hue, carries state ── */
+#battery          { color: #d99400; }
+#battery.warning  { color: #ffb000; }
+#battery.critical {
+  color: #ffcc55;
+  text-shadow: 0 0 9px rgba(255, 204, 85, 0.9);
+}
+
+#custom-media { color: #7a5400; }
+#cpu          { color: #d99400; }
+#memory       { color: #d99400; }
+#temperature  { color: #d99400; }
+
+/* ── Volume slider — a segmented bar-graph, like a VU meter ── */
+#pulseaudio-slider { min-width: 70px; padding: 0 12px; }
+
+#pulseaudio-slider slider {
+  min-height: 11px;
+  min-width: 3px;
+  background-image: none;
+  border: none;
+  border-radius: 0;
+  background-color: #ffcc55;
+  margin: -6px;
+}
+#pulseaudio-slider trough {
+  min-height: 3px;
+  border-radius: 0;
+  background: #2b2116;
+}
+#pulseaudio-slider highlight {
+  border-radius: 0;
+  background: #ffb000;
+}
+
+#pulseaudio.icon {
+  background: transparent;
+  border: none;
+  color: #d99400;
+  margin: 0;
+  padding: 0 6px 0 0;
+}
+
+tooltip {
+  background: #0c0a08;
+  border: 1px solid #ffb000;
+  border-radius: 0;
+}
+tooltip label {
+  color: #ffb000;
+  font-family: "Terminus", monospace;
+}
+
+
+/* ─────────────────────────────────────────────────────────
+ * Bar redesign: selectors for this rice's own module set.
+ * ───────────────────────────────────────────────────────── */
+#custom-ws, #custom-launcher, #window, #backlight, #privacy, #idle_inhibitor {
+  /* match this rice's existing module treatment */
+}
+
+/* Single-module workspace indicator (click/scroll to move). Coloured as one
+ * unit rather than per-dot, since the glyphs live in one label. */
+#custom-ws {
+  color: #ffb000;
+  letter-spacing: 1px;
+}
+#custom-ws.ws { color: #ffb000; }

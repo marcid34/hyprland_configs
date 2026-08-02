@@ -1,0 +1,75 @@
+// blueprint — waybar
+// Shell: Schematic overlay on the desktop (conky) + a title-block strip.
+// This rice's own desktop shell, not a restyle of another profile's.
+{
+  "name": "titleblock",
+  "layer": "top",
+  "position": "top",
+  "height": 24,
+  "modules-left": [
+    "custom/ws",
+    "hyprland/window"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "cpu",
+    "memory",
+    "battery",
+    "clock"
+  ],
+  "custom/ws": {
+    "exec": "~/.config/waybar/scripts/ws.py all fraction",
+    "on-click": "~/.config/waybar/scripts/ws.py cycle 1",
+    "on-click-right": "~/.config/waybar/scripts/ws.py cycle -1",
+    "on-scroll-up": "~/.config/waybar/scripts/ws.py cycle 1",
+    "on-scroll-down": "~/.config/waybar/scripts/ws.py cycle -1",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  "hyprland/window": {
+    "format": "{title}",
+    "max-length": 50,
+    "separate-outputs": true,
+    "rewrite": {
+      "": "—"
+    }
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "CPU {usage}"
+  },
+  "memory": {
+    "interval": 15,
+    "format": "MEM {percentage}"
+  },
+  "battery": {
+    "interval": 30,
+    "states": {
+      "warning": 25,
+      "critical": 12
+    },
+    "format": "BAT {capacity}",
+    "format-charging": "󰂄 {capacity}",
+    "format-icons": [
+      "󰁺",
+      "󰁼",
+      "󰁾",
+      "󰂀",
+      "󰂂"
+    ],
+    "tooltip-format": "{capacity}%  ·  {time} left"
+  },
+  "clock": {
+    "interval": 10,
+    "format": "{:%Y-%m-%d %H:%M}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "mode": "month",
+      "format": {
+        "today": "<b>{}</b>"
+      }
+    }
+  },
+  "spacing": 5
+}

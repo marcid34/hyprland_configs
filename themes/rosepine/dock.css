@@ -1,0 +1,18 @@
+/* dock — nwg-dock-hyprland
+ * Launched by shell.sh with -c so it picks up this stylesheet. */
+window {
+    background-color: rgba(25, 23, 36, 0.91);
+    border-radius: 16px;
+    border: 1px solid #26233a;
+    padding: 6px;
+}
+#box { padding: 4px 8px; }
+button {
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    margin: 0 3px;
+    padding: 4px;
+}
+button:hover { background-color: rgba(235, 188, 186, 0.20); }
+#active { border-bottom: 2px solid #ebbcba; }

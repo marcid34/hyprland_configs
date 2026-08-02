@@ -1,0 +1,160 @@
+[
+  {
+    "name": "panel-edp",
+    "output": "eDP-1",
+    "layer": "top",
+    "position": "top",
+    "controls": "right",
+    "width": "auto",
+    "height": 34,
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "padding-horizontal": 12,
+    "padding-vertical": 0,
+    "spacing": 14,
+    "items-padding": 6,
+    "icons": "light",
+    "css-name": "panel-top",
+    "modules-left": [
+      "clock"
+    ],
+    "modules-center": [],
+    "modules-right": [
+      "executor-cpu",
+      "executor-mem",
+      "executor-disk",
+      "tray"
+    ],
+    "clock": {
+      "format": "%a %d %b   %H:%M",
+      "interval": 10,
+      "tooltip-text": "",
+      "on-left-click": "",
+      "css-name": "clock"
+    },
+    "executor-cpu": {
+      "script": "/home/kib/.config/waybar/scripts/stat.sh cpu",
+      "interval": 5,
+      "css-name": "executor"
+    },
+    "executor-mem": {
+      "script": "/home/kib/.config/waybar/scripts/stat.sh mem",
+      "interval": 15,
+      "css-name": "executor"
+    },
+    "executor-disk": {
+      "script": "/home/kib/.config/waybar/scripts/stat.sh disk",
+      "interval": 60,
+      "css-name": "executor"
+    },
+    "tray": {
+      "root-css-name": "tray",
+      "inner-css-name": "tray-inner",
+      "icon-size": 16,
+      "smooth-scrolling-threshold": 1
+    },
+    "controls-settings": {
+      "components": [
+        "net",
+        "brightness",
+        "volume",
+        "battery"
+      ],
+      "commands": {
+        "net": "nmtui",
+        "bluetooth": "",
+        "battery": ""
+      },
+      "show-values": true,
+      "interval": 1,
+      "icon-size": 16,
+      "hover-opens": false,
+      "leave-closes": true,
+      "click-closes": true,
+      "css-name": "panel-controls",
+      "battery-low-level": 20,
+      "battery-low-interval": 3,
+      "window-width": 320,
+      "window-margin": 8
+    }
+  },
+  {
+    "name": "panel-hdmi",
+    "output": "HDMI-A-2",
+    "layer": "top",
+    "position": "top",
+    "controls": "right",
+    "width": "auto",
+    "height": 34,
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "padding-horizontal": 12,
+    "padding-vertical": 0,
+    "spacing": 14,
+    "items-padding": 6,
+    "icons": "light",
+    "css-name": "panel-top",
+    "modules-left": [
+      "clock"
+    ],
+    "modules-center": [],
+    "modules-right": [
+      "executor-cpu",
+      "executor-mem",
+      "executor-disk",
+      "tray"
+    ],
+    "clock": {
+      "format": "%a %d %b   %H:%M",
+      "interval": 10,
+      "tooltip-text": "",
+      "on-left-click": "",
+      "css-name": "clock"
+    },
+    "executor-cpu": {
+      "script": "/home/kib/.config/waybar/scripts/stat.sh cpu",
+      "interval": 5,
+      "css-name": "executor"
+    },
+    "executor-mem": {
+      "script": "/home/kib/.config/waybar/scripts/stat.sh mem",
+      "interval": 15,
+      "css-name": "executor"
+    },
+    "executor-disk": {
+      "script": "/home/kib/.config/waybar/scripts/stat.sh disk",
+      "interval": 60,
+      "css-name": "executor"
+    },
+    "tray": {
+      "root-css-name": "tray",
+      "inner-css-name": "tray-inner",
+      "icon-size": 16,
+      "smooth-scrolling-threshold": 1
+    },
+    "controls-settings": {
+      "components": [
+        "net",
+        "brightness",
+        "volume",
+        "battery"
+      ],
+      "commands": {
+        "net": "nmtui",
+        "bluetooth": "",
+        "battery": ""
+      },
+      "show-values": true,
+      "interval": 1,
+      "icon-size": 16,
+      "hover-opens": false,
+      "leave-closes": true,
+      "click-closes": true,
+      "css-name": "panel-controls",
+      "battery-low-level": 20,
+      "battery-low-interval": 3,
+      "window-width": 320,
+      "window-margin": 8
+    }
+  }
+]

@@ -1,0 +1,31 @@
+/* Icon grid launcher — an app drawer rather than a list. */
+configuration {
+  modes:      "drun";
+  show-icons: true;
+  icon-theme: "breeze-dark";
+  drun-display-format: "{name}";
+}
+* { background-color: transparent; text-color: #e8e8ee;
+     font: "Adwaita Mono 11"; }
+window { width: 780px; background-color: #000000f2;
+          border: 1px; border-color: #141418; border-radius: 16px; }
+mainbox { children: [ inputbar, listview ]; spacing: 0; padding: 14px; }
+inputbar { children: [ prompt, entry ]; padding: 10px 14px; spacing: 10px;
+            background-color: #212127; border-radius: 10px; }
+prompt { text-color: #8b5cf6; }
+entry  { placeholder: "search"; placeholder-color: #212127; }
+listview { columns: 5; lines: 3; spacing: 10px; padding: 14px 0 0 0;
+            fixed-height: false; scrollbar: false; }
+element { orientation: vertical; padding: 14px 6px; border-radius: 12px;
+           cursor: pointer; }
+element normal.normal, element alternate.normal {
+  background-color: transparent; text-color: #e8e8ee; }
+element normal.active, element alternate.active {
+  background-color: transparent; text-color: #8b5cf6; }
+element normal.urgent, element alternate.urgent {
+  background-color: transparent; text-color: #f0517a; }
+element selected.normal, element selected.active {
+  background-color: #8b5cf6; text-color: #000000; }
+element selected.urgent { background-color: #f0517a; text-color: #000000; }
+element-icon { size: 46px; horizontal-align: 0.5; }
+element-text { horizontal-align: 0.5; text-color: inherit; }

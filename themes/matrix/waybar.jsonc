@@ -1,0 +1,10 @@
+// matrix — no waybar. Shell: conky. See shell.components.
+{
+  "name": "unused",
+  "layer": "top",
+  "position": "top",
+  "height": 1,
+  "modules-left": [],
+  "modules-center": [],
+  "modules-right": []
+}

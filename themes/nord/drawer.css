@@ -1,0 +1,16 @@
+/* nwg-drawer — full-screen application grid. */
+window { background-color: rgba(46, 52, 64, 0.94); font-family: "Adwaita Mono"; }
+#searchbox {
+  background-color: #434c5e;
+  color: #eceff4;
+  border: none;
+  border-radius: 10px;
+  margin: 26px 420px;
+  padding: 8px 14px;
+}
+#button {
+  background: transparent; border: none; border-radius: 12px;
+  margin: 6px; padding: 12px;
+}
+#button:hover { background-color: rgba(136, 192, 208, 0.20); }
+#desc, #label { color: #eceff4; }

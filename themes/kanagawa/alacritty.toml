@@ -1,0 +1,46 @@
+# kanagawa — Alacritty
+#
+# Kanagawa — ink wash. Warm sumi blacks, wave blue and carp yellow.
+
+[colors.primary]
+background     = "#1f1f28"
+foreground     = "#dcd7ba"
+dim_foreground = "#c8c093"
+
+[colors.cursor]
+text   = "#1f1f28"
+cursor = "#e6c384"
+
+[colors.selection]
+text       = "#dcd7ba"
+background = "#2d4f67"
+
+[colors.normal]
+black   = "#2a2a37"
+red     = "#c34043"
+green   = "#98bb6c"
+yellow  = "#e6c384"
+blue    = "#7e9cd8"
+magenta = "#957fb8"
+cyan    = "#7aa89f"
+white   = "#c8c093"
+
+[colors.bright]
+black   = "#363646"
+red     = "#c34043"
+green   = "#98bb6c"
+yellow  = "#e6c384"
+blue    = "#7e9cd8"
+magenta = "#957fb8"
+cyan    = "#7aa89f"
+white   = "#dcd7ba"
+
+[window]
+padding     = { x = 14, y = 12 }
+decorations = "Transparent"
+opacity     = 0.95
+blur        = false
+
+[font]
+normal = { family = "UbuntuMono Nerd Font", style = "Regular" }
+size   = 14.0

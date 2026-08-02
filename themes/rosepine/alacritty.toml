@@ -1,0 +1,46 @@
+# rosepine — Alacritty
+#
+# Rose Pine — soho vibes. Muted rose and iris on a deep plum base.
+
+[colors.primary]
+background     = "#191724"
+foreground     = "#e0def4"
+dim_foreground = "#908caa"
+
+[colors.cursor]
+text   = "#191724"
+cursor = "#ebbcba"
+
+[colors.selection]
+text       = "#e0def4"
+background = "#403d52"
+
+[colors.normal]
+black   = "#26233a"
+red     = "#eb6f92"
+green   = "#a3be8c"
+yellow  = "#f6c177"
+blue    = "#9ccfd8"
+magenta = "#c4a7e7"
+cyan    = "#9ccfd8"
+white   = "#908caa"
+
+[colors.bright]
+black   = "#403d52"
+red     = "#eb6f92"
+green   = "#a3be8c"
+yellow  = "#f6c177"
+blue    = "#9ccfd8"
+magenta = "#c4a7e7"
+cyan    = "#9ccfd8"
+white   = "#e0def4"
+
+[window]
+padding     = { x = 16, y = 14 }
+decorations = "Transparent"
+opacity     = 0.92
+blur        = true
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size   = 13.0

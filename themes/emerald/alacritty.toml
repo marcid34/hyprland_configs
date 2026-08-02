@@ -1,0 +1,45 @@
+# emerald — Alacritty
+# Emerald — deep green glass. Jewel tones on near-black forest.
+
+[colors.primary]
+background = "#071410"
+foreground = "#d7f5e6"
+dim_foreground = "#9fd6bd"
+
+[colors.cursor]
+text = "#071410"
+cursor = "#2ee68a"
+
+[colors.selection]
+text = "#d7f5e6"
+background = "#1a4433"
+
+[colors.normal]
+black = "#123024"
+red = "#ff6b81"
+green = "#2ee68a"
+yellow = "#3ddbd9"
+blue = "#21c7a8"
+magenta = "#8be0c2"
+cyan = "#3ddbd9"
+white = "#9fd6bd"
+
+[colors.bright]
+black = "#1a4433"
+red = "#ff6b81"
+green = "#2ee68a"
+yellow = "#2ee68a"
+blue = "#21c7a8"
+magenta = "#8be0c2"
+cyan = "#3ddbd9"
+white = "#d7f5e6"
+
+[window]
+padding = { x = 16, y = 14 }
+decorations = "Transparent"
+opacity = 0.94
+blur = true
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+size = 12.5

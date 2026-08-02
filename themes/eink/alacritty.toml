@@ -1,0 +1,45 @@
+# eink — Alacritty
+# E-ink — paper. Pure black on warm white, no colour, no gloss.
+
+[colors.primary]
+background = "#f7f7f4"
+foreground = "#111111"
+dim_foreground = "#3a3a38"
+
+[colors.cursor]
+text = "#f7f7f4"
+cursor = "#111111"
+
+[colors.selection]
+text = "#111111"
+background = "#d6d6cf"
+
+[colors.normal]
+black = "#ebebe6"
+red = "#8c2f39"
+green = "#3a5a40"
+yellow = "#5a5a56"
+blue = "#2b4c7e"
+magenta = "#4a3f6b"
+cyan = "#2f5d62"
+white = "#3a3a38"
+
+[colors.bright]
+black = "#d6d6cf"
+red = "#8c2f39"
+green = "#3a5a40"
+yellow = "#111111"
+blue = "#2b4c7e"
+magenta = "#4a3f6b"
+cyan = "#2f5d62"
+white = "#111111"
+
+[window]
+padding = { x = 10, y = 8 }
+decorations = "None"
+opacity = 1.0
+blur = false
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size = 13.5

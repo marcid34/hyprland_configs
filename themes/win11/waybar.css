@@ -1,0 +1,74 @@
+/* Windows 11 — taskbar
+ * Mica: a near-opaque dark surface, 4px-rounded hover fills, centred icon
+ * cluster, and the clock stacked time-over-date hard against the right.
+ */
+* {
+  font-family: "Adwaita Sans", "FreeSans", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  min-height: 0;
+}
+
+window#waybar {
+  background: rgba(32, 32, 32, 0.96);
+  color: #ffffff;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.modules-center, .modules-right { padding: 0 6px; }
+
+#custom-start, #custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4,
+#custom-ws5, #custom-media, #tray, #custom-notif, #network, #pulseaudio,
+#battery, #clock {
+  background: transparent;
+  color: #e0e0e0;
+  margin: 4px 2px;
+  padding: 0 10px;
+  border: none;
+  border-radius: 4px;
+}
+
+/* Windows hover: a soft fill, not a colour change. */
+#custom-start:hover, #custom-media:hover, #custom-notif:hover,
+#network:hover, #pulseaudio:hover, #battery:hover, #clock:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+#custom-start { font-size: 17px; color: #4cc2ff; padding: 0 13px; }
+#custom-start:hover { background: rgba(255, 255, 255, 0.10); }
+
+/* Taskbar buttons: the active one gets the underline pill Windows uses. */
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  font-size: 12px;
+  padding: 0 13px;
+  margin: 5px 2px;
+  color: #a0a0a0;
+  border-bottom: 2px solid transparent;
+}
+#workspaces .occupied { color: #e0e0e0; background: rgba(255,255,255,0.05); }
+#workspaces .visible  { color: #ffffff;  background: rgba(255,255,255,0.07); }
+#workspaces .active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.10);
+  border-bottom: 2px solid #4cc2ff;
+}
+
+#clock {
+  font-size: 11px;
+  padding: 0 12px;
+  color: #ffffff;
+}
+#tray { padding: 0 8px; }
+#battery.warning  { color: #ffd23f; }
+#battery.critical { color: #f85149; }
+#network.disconnected { color: #f85149; }
+#custom-notif.dnd    { color: #4cc2ff; }
+#custom-notif.unread { color: #4cc2ff; }
+#custom-notif.idle   { color: #a0a0a0; }
+
+tooltip {
+  background: #2b2b2b;
+  border: 1px solid #3d3d3d;
+  border-radius: 8px;
+}
+tooltip label { color: #ffffff; }

@@ -1,0 +1,42 @@
+/* Theme picker — inherits the active rice's look.
+ *
+ * Only geometry lives here; every colour and font comes from the active
+ * profile's rofi.rasi via the import below, so the picker restyles itself
+ * along with everything else.
+ *
+ * Laid out as a grid rather than a list. eDP-1 is 1920x1080 at scale 1.5,
+ * i.e. 1280x720 logical -- a single 30-row column is roughly 900px tall and
+ * runs off the bottom of that panel. Three columns of ten fit in ~350px with
+ * room to spare, and stay readable on the 2560x1440 display too.
+ */
+
+configuration {
+  modes:  "dmenu";
+  dpi:    0;
+}
+
+@import "current/rofi.rasi"
+
+/* Overrides land after the import so they win. */
+window {
+  width:   860px;
+  padding: 0;
+}
+
+listview {
+  lines:      11;
+  columns:    3;
+  scrollbar:  false;
+  fixed-height: false;
+  spacing:    2px;
+  padding:    10px;
+}
+
+element {
+  padding:       7px 12px;
+  border-radius: 4px;
+}
+
+inputbar {
+  enabled: false;
+}

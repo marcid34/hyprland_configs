@@ -1,0 +1,45 @@
+# ultraviolet — Alacritty
+# Ultraviolet — monochrome violet. One hue, twelve values, nothing else.
+
+[colors.primary]
+background = "#0f0a18"
+foreground = "#ddd0f0"
+dim_foreground = "#b09ccc"
+
+[colors.cursor]
+text = "#0f0a18"
+cursor = "#9d6bff"
+
+[colors.selection]
+text = "#ddd0f0"
+background = "#2c1e42"
+
+[colors.normal]
+black = "#1e142e"
+red = "#b76bff"
+green = "#8f7bd6"
+yellow = "#c4a0ff"
+blue = "#7b6bff"
+magenta = "#9d6bff"
+cyan = "#a68fff"
+white = "#b09ccc"
+
+[colors.bright]
+black = "#2c1e42"
+red = "#b76bff"
+green = "#8f7bd6"
+yellow = "#9d6bff"
+blue = "#7b6bff"
+magenta = "#9d6bff"
+cyan = "#a68fff"
+white = "#ddd0f0"
+
+[window]
+padding = { x = 14, y = 12 }
+decorations = "Transparent"
+opacity = 0.92
+blur = true
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size = 13.0

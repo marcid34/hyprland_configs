@@ -1,0 +1,124 @@
+configuration {
+  modes:               "drun,run";
+  show-icons:          true;
+  icon-theme:          "breeze-dark";
+  drun-display-format: "{name}";
+  display-drun:        "apps";
+  display-run:         "run";
+  drun-match-fields:   "name,generic,exec,keywords";
+}
+
+
+
+/* Catppuccin Mocha — same values as ~/.config/waybar/style.css */
+* {
+  base:     #1e1e2e;
+  mantle:   #181825;
+  surface0: #313244;
+  surface1: #45475a;
+  overlay0: #6c7086;
+  subtext0: #a6adc8;
+  text:     #cdd6f4;
+  mauve:    #cba6f7;
+  red:      #f38ba8;
+
+  background-color: transparent;
+  text-color:       @text;
+  font:             "JetBrainsMono Nerd Font Propo 11";
+}
+
+window {
+  width:            460px;
+  background-color: #1e1e2eF0;   /* base @ ~94% */
+  border:           1px;
+  border-color:     @surface1;
+  border-radius:    12px;
+  padding:          0;
+}
+
+mainbox {
+  children: [ inputbar, listview ];
+  spacing:  0;
+}
+
+inputbar {
+  children:      [ prompt, entry ];
+  padding:       11px 15px;
+  spacing:       10px;
+  border:        0 0 1px 0;
+  border-color:  @surface0;
+}
+
+prompt {
+  background-color: @mauve;
+  text-color:       @base;
+  padding:          1px 9px;
+  border-radius:    6px;
+}
+
+entry {
+  placeholder:       "";
+  cursor:            text;
+  text-color:        @text;
+  vertical-align:    0.5;
+}
+
+listview {
+  lines:        8;
+  columns:      1;
+  padding:      6px;
+  spacing:      2px;
+  scrollbar:    false;
+  fixed-height: false;   /* shrink when few results */
+}
+
+element {
+  padding:       7px 11px;
+  spacing:       11px;
+  border-radius: 7px;
+  cursor:        pointer;
+}
+
+/* Rofi's built-in default theme fills every element state we don't name here
+   (normal-background is Solarized #fdf6e3). The `*` block above can't override
+   it — `element <state>` is the more specific selector — so all nine states
+   must be declared explicitly. */
+
+element normal.normal,
+element alternate.normal {
+  background-color: transparent;
+  text-color:       @text;
+}
+
+element normal.active,
+element alternate.active {
+  background-color: transparent;
+  text-color:       @mauve;
+}
+
+element normal.urgent,
+element alternate.urgent {
+  background-color: transparent;
+  text-color:       @red;
+}
+
+element selected.normal,
+element selected.active {
+  background-color: @mauve;
+  text-color:       @base;
+}
+
+element selected.urgent {
+  background-color: @red;
+  text-color:       @base;
+}
+
+element-icon {
+  size:           18px;
+  vertical-align: 0.5;
+}
+
+element-text {
+  vertical-align: 0.5;
+  text-color:     inherit;
+}

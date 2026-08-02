@@ -1,0 +1,138 @@
+// outrun — waybar
+// Shell: Top marquee + a bottom neon strip. Two bars, both loud.
+// This rice's own desktop shell, not a restyle of another profile's.
+[
+  {
+    "name": "marquee",
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "modules-left": [
+      "custom/ws"
+    ],
+    "modules-center": [
+      "clock"
+    ],
+    "modules-right": [
+      "pulseaudio",
+      "network",
+      "battery",
+      "custom/power"
+    ],
+    "custom/ws": {
+      "exec": "~/.config/waybar/scripts/ws.py all meter",
+      "on-click": "~/.config/waybar/scripts/ws.py cycle 1",
+      "on-click-right": "~/.config/waybar/scripts/ws.py cycle -1",
+      "on-scroll-up": "~/.config/waybar/scripts/ws.py cycle 1",
+      "on-scroll-down": "~/.config/waybar/scripts/ws.py cycle -1",
+      "return-type": "json",
+      "restart-interval": 3,
+      "cursor": true
+    },
+    "clock": {
+      "interval": 1,
+      "format": "{:%H:%M:%S}",
+      "tooltip-format": "<tt>{calendar}</tt>",
+      "calendar": {
+        "mode": "month",
+        "format": {
+          "today": "<b>{}</b>"
+        }
+      }
+    },
+    "pulseaudio": {
+      "format": "{icon} {volume}",
+      "format-muted": "󰝟",
+      "scroll-step": 5,
+      "format-icons": {
+        "headphone": "󰋋",
+        "default": [
+          "󰕿",
+          "󰖀",
+          "󰕾"
+        ]
+      },
+      "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    },
+    "network": {
+      "interval": 5,
+      "format-wifi": "{icon}",
+      "format-ethernet": "󰈀",
+      "format-disconnected": "󰤮",
+      "format-icons": [
+        "󰤯",
+        "󰤟",
+        "󰤢",
+        "󰤥",
+        "󰤨"
+      ],
+      "tooltip-format-wifi": "<b>{essid}</b>\n{signalStrength}%  ·  {ipaddr}",
+      "on-click": "alacritty --class nm-float -e nmtui"
+    },
+    "battery": {
+      "interval": 30,
+      "states": {
+        "warning": 25,
+        "critical": 12
+      },
+      "format": "{icon} {capacity}",
+      "format-charging": "󰂄 {capacity}",
+      "format-icons": [
+        "󰁺",
+        "󰁼",
+        "󰁾",
+        "󰂀",
+        "󰂂"
+      ],
+      "tooltip-format": "{capacity}%  ·  {time} left"
+    },
+    "custom/power": {
+      "format": "󰐥",
+      "on-click": "~/.config/waybar/scripts/power.sh",
+      "tooltip": false,
+      "cursor": true
+    },
+    "spacing": 5
+  },
+  {
+    "name": "strip",
+    "layer": "top",
+    "position": "bottom",
+    "height": 22,
+    "modules-left": [
+      "hyprland/window"
+    ],
+    "modules-center": [
+      "custom/media"
+    ],
+    "modules-right": [
+      "cpu",
+      "memory"
+    ],
+    "hyprland/window": {
+      "format": "{title}",
+      "max-length": 50,
+      "separate-outputs": true,
+      "rewrite": {
+        "": "—"
+      }
+    },
+    "custom/media": {
+      "format": "{}",
+      "return-type": "json",
+      "exec": "~/.config/waybar/scripts/player.sh",
+      "on-click": "playerctl play-pause",
+      "max-length": 30,
+      "interval": 5
+    },
+    "cpu": {
+      "interval": 5,
+      "format": "󰻠 {usage}"
+    },
+    "memory": {
+      "interval": 15,
+      "format": "󰍛 {percentage}"
+    },
+    "spacing": 5
+  }
+]

@@ -1,0 +1,136 @@
+/* oxocarbon — rofi
+ *
+ * A Carbon data table. Zero radius, full-bleed rows, a 2px magenta rule
+ * under the input, and a selection that fills edge to edge with no inset —
+ * exactly how a Carbon list item highlights.
+ */
+
+configuration {
+  modes:               "drun,run";
+  show-icons:          true;
+  icon-theme:          "breeze-dark";
+  drun-display-format: "{name}";
+  display-drun:        "apps";
+  display-run:         "run";
+  drun-match-fields:   "name,generic,exec,keywords";
+}
+
+* {
+  base:    #161616;
+  bg1:     #101010;
+  bg2:     #262626;
+  bg3:     #393939;
+  dim:     #525252;
+  fg:      #f2f4f8;
+  fg1:     #dde1e6;
+  magenta: #ee5396;
+  blue:    #33b1ff;
+  cyan:    #3ddbd9;
+  purple:  #be95ff;
+  red:     #ff7eb6;
+
+  background-color: transparent;
+  text-color:       @fg1;
+  font:             "Adwaita Sans 12";
+}
+
+window {
+  width:            620px;
+  background-color: @base;
+  border:           2px;
+  border-color:     @magenta;
+  border-radius:    0;
+  padding:          0;
+}
+
+mainbox {
+  children: [ inputbar, listview ];
+  spacing:  0;
+}
+
+inputbar {
+  children:         [ prompt, entry ];
+  padding:          14px 16px;
+  spacing:          12px;
+  background-color: @bg1;
+  border:           0 0 2px 0;
+  border-color:     @magenta;
+}
+
+prompt {
+  background-color: transparent;
+  text-color:       @magenta;
+  padding:          0;
+}
+
+entry {
+  placeholder:    "";
+  cursor:         text;
+  text-color:     @fg;
+  vertical-align: 0.5;
+}
+
+/* No listview padding — rows run the full width of the panel. */
+listview {
+  lines:        10;
+  columns:      1;
+  padding:      0;
+  spacing:      0;
+  scrollbar:    false;
+  fixed-height: false;
+}
+
+element {
+  padding:       9px 16px;
+  spacing:       12px;
+  border-radius: 0;
+  border:        0 0 0 3px;
+  border-color:  transparent;
+  cursor:        pointer;
+}
+
+element normal.normal {
+  background-color: transparent;
+  text-color:       @fg1;
+}
+
+/* Zebra striping — a data table, not a menu. */
+element alternate.normal {
+  background-color: #1c1c1c;
+  text-color:       @fg1;
+}
+
+element normal.active,
+element alternate.active {
+  background-color: transparent;
+  text-color:       @cyan;
+}
+
+element normal.urgent,
+element alternate.urgent {
+  background-color: transparent;
+  text-color:       @red;
+}
+
+element selected.normal,
+element selected.active {
+  background-color: @bg2;
+  text-color:       @fg;
+  border-color:     @magenta;
+}
+
+element selected.urgent {
+  background-color: @bg2;
+  text-color:       @red;
+  border-color:     @red;
+}
+
+element-icon {
+  size:           19px;
+  vertical-align: 0.5;
+}
+
+element-text {
+  vertical-align: 0.5;
+  text-color:     inherit;
+}

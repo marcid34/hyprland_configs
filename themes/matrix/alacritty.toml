@@ -1,0 +1,45 @@
+# matrix — Alacritty
+# Matrix — code rain. Pure green on black, no chrome at all.
+
+[colors.primary]
+background = "#000000"
+foreground = "#00ff41"
+dim_foreground = "#00c832"
+
+[colors.cursor]
+text = "#000000"
+cursor = "#00ff41"
+
+[colors.selection]
+text = "#00ff41"
+background = "#0a2814"
+
+[colors.normal]
+black = "#04140a"
+red = "#ff3131"
+green = "#00ff41"
+yellow = "#7dffa0"
+blue = "#00c832"
+magenta = "#00ff41"
+cyan = "#7dffa0"
+white = "#00c832"
+
+[colors.bright]
+black = "#0a2814"
+red = "#ff3131"
+green = "#00ff41"
+yellow = "#00ff41"
+blue = "#00c832"
+magenta = "#00ff41"
+cyan = "#7dffa0"
+white = "#00ff41"
+
+[window]
+padding = { x = 14, y = 12 }
+decorations = "None"
+opacity = 1.0
+blur = false
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font Mono", style = "Regular" }
+size = 12.5

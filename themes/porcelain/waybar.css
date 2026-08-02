@@ -1,0 +1,66 @@
+/* porcelain — waybar
+ * Porcelain — a LIGHT clinical rice. Cool white, blue-grey, surgical.
+ * Shell: waybar-menubar
+ */
+
+* {
+  font-family: "Adwaita Sans", "FreeSerif", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+window#waybar {
+  background: rgba(255, 255, 255, 1.0);
+  color: #4d5866;
+}
+
+.modules-left { padding-left: 10px; }
+.modules-right { padding-right: 10px; }
+
+#clock, #battery, #network, #tray, #pulseaudio, #backlight, #cpu, #memory,
+#custom-media, #custom-notif, #custom-power, #custom-launcher,
+#idle_inhibitor, #window, #workspaces, #custom-ws {
+  background-color: transparent;
+  color: #4d5866;
+  margin: 0;
+  padding: 4px 18px;
+  border: none;
+  border-radius: 0px;
+}
+
+#clock { color: #4c6ef5; font-weight: 700; }
+#window { color: #95a1b0; background: transparent; border: none; }
+#custom-launcher { color: #4c6ef5; font-size: 15px; }
+#custom-media { color: #748ffc; }
+#pulseaudio { color: #748ffc; }
+#network { color: #0c8599; }
+#battery { color: #2f9e44; }
+#battery.warning { color: #748ffc; }
+#battery.critical { color: #c92a3d; }
+#network.disconnected { color: #c92a3d; }
+#custom-notif.dnd { color: #c92a3d; }
+#custom-notif.unread { color: #4c6ef5; }
+#custom-notif.idle { color: #95a1b0; }
+#custom-power { color: #c92a3d; }
+#idle_inhibitor.activated { color: #4c6ef5; }
+#idle_inhibitor.deactivated { color: #95a1b0; }
+
+#workspaces { padding: 0 8px; }
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent; border: none; margin: 0;
+  padding: 4px 9px; color: #d8dee6;
+}
+#workspaces .occupied { color: #95a1b0; }
+#workspaces .visible  { color: #748ffc; }
+#workspaces .active   { color: #4c6ef5; }
+#custom-ws { color: #2b3440; letter-spacing: 1px; }
+
+tooltip { background: #ffffff; border: 1px solid #d8dee6;
+           border-radius: 6px; }
+tooltip label { color: #2b3440; }
+
+window#waybar.menubar {
+  background: rgba(255, 255, 255, 1.0);
+  
+}

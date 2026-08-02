@@ -1,0 +1,195 @@
+// nord — waybar
+// Shell: Full Plasma panel: launcher, tasks, tray, clock — one opaque slab.
+// This rice's own desktop shell, not a restyle of another profile's.
+{
+  "name": "panel",
+  "layer": "top",
+  "position": "bottom",
+  "height": 40,
+  "modules-left": [
+    "custom/launcher",
+    "group/workspaces",
+    "hyprland/window"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "custom/media",
+    "tray",
+    "cpu",
+    "memory",
+    "backlight",
+    "pulseaudio",
+    "network",
+    "battery",
+    "custom/notif",
+    "idle_inhibitor",
+    "clock",
+    "custom/power"
+  ],
+  "group/workspaces": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/ws1",
+      "custom/ws2",
+      "custom/ws3",
+      "custom/ws4",
+      "custom/ws5"
+    ]
+  },
+  "custom/ws1": {
+    "exec": "~/.config/waybar/scripts/ws.py render numbers 1",
+    "on-click": "~/.config/waybar/scripts/ws.py focus 1",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  "custom/ws2": {
+    "exec": "~/.config/waybar/scripts/ws.py render numbers 2",
+    "on-click": "~/.config/waybar/scripts/ws.py focus 2",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  "custom/ws3": {
+    "exec": "~/.config/waybar/scripts/ws.py render numbers 3",
+    "on-click": "~/.config/waybar/scripts/ws.py focus 3",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  "custom/ws4": {
+    "exec": "~/.config/waybar/scripts/ws.py render numbers 4",
+    "on-click": "~/.config/waybar/scripts/ws.py focus 4",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  "custom/ws5": {
+    "exec": "~/.config/waybar/scripts/ws.py render numbers 5",
+    "on-click": "~/.config/waybar/scripts/ws.py focus 5",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  "custom/launcher": {
+    "format": "",
+    "on-click": "rofi -show drun",
+    "tooltip": false,
+    "cursor": true
+  },
+  "hyprland/window": {
+    "format": "{title}",
+    "max-length": 50,
+    "separate-outputs": true,
+    "rewrite": {
+      "": "—"
+    }
+  },
+  "custom/media": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/player.sh",
+    "on-click": "playerctl play-pause",
+    "max-length": 30,
+    "interval": 5
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "󰻠 {usage}"
+  },
+  "memory": {
+    "interval": 15,
+    "format": "󰍛 {percentage}"
+  },
+  "backlight": {
+    "format": "{icon} {percent}",
+    "format-icons": [
+      "󰃞",
+      "󰃟",
+      "󰃠"
+    ],
+    "scroll-step": 5
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}",
+    "format-muted": "󰝟",
+    "scroll-step": 5,
+    "format-icons": {
+      "headphone": "󰋋",
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
+    },
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  },
+  "network": {
+    "interval": 5,
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤮",
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "tooltip-format-wifi": "<b>{essid}</b>\n{signalStrength}%  ·  {ipaddr}",
+    "on-click": "alacritty --class nm-float -e nmtui"
+  },
+  "battery": {
+    "interval": 30,
+    "states": {
+      "warning": 25,
+      "critical": 12
+    },
+    "format": "{icon} {capacity}",
+    "format-charging": "󰂄 {capacity}",
+    "format-icons": [
+      "󰁺",
+      "󰁼",
+      "󰁾",
+      "󰂀",
+      "󰂂"
+    ],
+    "tooltip-format": "{capacity}%  ·  {time} left"
+  },
+  "custom/notif": {
+    "exec": "~/.config/waybar/scripts/notif.py render",
+    "on-click": "~/.config/waybar/scripts/notif.py toggle",
+    "return-type": "json",
+    "interval": 3,
+    "cursor": true
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󰅶",
+      "deactivated": "󰛊"
+    }
+  },
+  "clock": {
+    "interval": 10,
+    "format": "{:%a %d %b   %H:%M}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "mode": "month",
+      "format": {
+        "today": "<b>{}</b>"
+      }
+    }
+  },
+  "custom/power": {
+    "format": "󰐥",
+    "on-click": "~/.config/waybar/scripts/power.sh",
+    "tooltip": false,
+    "cursor": true
+  },
+  "spacing": 5
+}

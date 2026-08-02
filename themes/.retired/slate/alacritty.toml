@@ -1,0 +1,48 @@
+# slate — Alacritty styling (Catppuccin Mocha)
+#
+# Near-opaque mantle with modest padding. The foreground is subtext0 rather
+# than full text: this rice keeps everything a step quieter so the blue
+# accent and the cursor are the only things that pull the eye.
+
+[colors.primary]
+background     = "#181825"
+foreground     = "#bac2de"
+dim_foreground = "#6c7086"
+
+[colors.cursor]
+text   = "#181825"
+cursor = "#89b4fa"
+
+[colors.selection]
+text       = "#cdd6f4"
+background = "#313244"
+
+[colors.normal]
+black   = "#45475a"
+red     = "#f38ba8"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#89b4fa"
+magenta = "#cba6f7"
+cyan    = "#94e2d5"
+white   = "#bac2de"
+
+[colors.bright]
+black   = "#585b70"
+red     = "#f38ba8"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#89b4fa"
+magenta = "#cba6f7"
+cyan    = "#94e2d5"
+white   = "#cdd6f4"
+
+[window]
+padding     = { x = 8, y = 6 }
+decorations = "Transparent"
+opacity     = 0.97
+blur        = false
+
+[font]
+normal = { family = "Ubuntu Mono", style = "Regular" }
+size   = 13.00

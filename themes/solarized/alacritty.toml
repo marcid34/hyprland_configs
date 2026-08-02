@@ -1,0 +1,45 @@
+# solarized — Alacritty
+# Solarized Dark — the 2011 classic. Teal base, restrained accents.
+
+[colors.primary]
+background = "#002b36"
+foreground = "#93a1a1"
+dim_foreground = "#839496"
+
+[colors.cursor]
+text = "#002b36"
+cursor = "#2aa198"
+
+[colors.selection]
+text = "#93a1a1"
+background = "#073642"
+
+[colors.normal]
+black = "#073642"
+red = "#dc322f"
+green = "#859900"
+yellow = "#268bd2"
+blue = "#268bd2"
+magenta = "#6c71c4"
+cyan = "#2aa198"
+white = "#839496"
+
+[colors.bright]
+black = "#0f4b58"
+red = "#dc322f"
+green = "#859900"
+yellow = "#2aa198"
+blue = "#268bd2"
+magenta = "#6c71c4"
+cyan = "#2aa198"
+white = "#93a1a1"
+
+[window]
+padding = { x = 14, y = 12 }
+decorations = "Transparent"
+opacity = 1.0
+blur = false
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size = 13.0

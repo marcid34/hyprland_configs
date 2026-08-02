@@ -1,0 +1,45 @@
+# abyss — Alacritty
+# Abyss — deep water. Near-black navy, teal and electric cyan.
+
+[colors.primary]
+background = "#0b1220"
+foreground = "#cfe3f5"
+dim_foreground = "#9fbcd6"
+
+[colors.cursor]
+text = "#0b1220"
+cursor = "#2ec4b6"
+
+[colors.selection]
+text = "#cfe3f5"
+background = "#1d3050"
+
+[colors.normal]
+black = "#152438"
+red = "#ef476f"
+green = "#2ec4b6"
+yellow = "#48cae4"
+blue = "#4895ef"
+magenta = "#7b6cf6"
+cyan = "#48cae4"
+white = "#9fbcd6"
+
+[colors.bright]
+black = "#1d3050"
+red = "#ef476f"
+green = "#2ec4b6"
+yellow = "#2ec4b6"
+blue = "#4895ef"
+magenta = "#7b6cf6"
+cyan = "#48cae4"
+white = "#cfe3f5"
+
+[window]
+padding = { x = 16, y = 14 }
+decorations = "Transparent"
+opacity = 0.86
+blur = true
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+size = 13.0

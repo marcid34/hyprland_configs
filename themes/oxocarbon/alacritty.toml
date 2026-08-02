@@ -1,0 +1,46 @@
+# oxocarbon — Alacritty
+#
+# Oxocarbon — IBM Carbon. Near-black, hard edges, electric magenta.
+
+[colors.primary]
+background     = "#161616"
+foreground     = "#f2f4f8"
+dim_foreground = "#dde1e6"
+
+[colors.cursor]
+text   = "#161616"
+cursor = "#ee5396"
+
+[colors.selection]
+text       = "#f2f4f8"
+background = "#393939"
+
+[colors.normal]
+black   = "#262626"
+red     = "#ff7eb6"
+green   = "#42be65"
+yellow  = "#ffe97b"
+blue    = "#33b1ff"
+magenta = "#be95ff"
+cyan    = "#3ddbd9"
+white   = "#dde1e6"
+
+[colors.bright]
+black   = "#393939"
+red     = "#ff7eb6"
+green   = "#42be65"
+yellow  = "#ffe97b"
+blue    = "#33b1ff"
+magenta = "#be95ff"
+cyan    = "#3ddbd9"
+white   = "#f2f4f8"
+
+[window]
+padding     = { x = 12, y = 10 }
+decorations = "None"
+opacity     = 1.0
+blur        = false
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size   = 13.0

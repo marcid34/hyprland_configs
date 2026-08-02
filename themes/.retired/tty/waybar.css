@@ -1,0 +1,227 @@
+/* tty — Waybar
+ *
+ * A status line, not a bar. No pills, no fills, no rounding: the modules
+ * are bare text on a dark strip with a single hairline underneath, the way
+ * tmux or a console statusline looks. Identity comes entirely from colour.
+ *
+ * Catppuccin Mocha led by green #a6e3a1 — the phosphor colour.
+ *   crust #11111b  surface1 #45475a  overlay0 #6c7086
+ *   green #a6e3a1  teal #94e2d5  yellow #f9e2af  red #f38ba8
+ */
+
+* {
+  font-family: "JetBrainsMono Nerd Font Propo", "Ubuntu Mono", monospace;
+  font-size: 14px;
+  font-weight: normal;
+  min-height: 0;
+}
+
+window#waybar {
+  background: #11111b;
+  color: #a6e3a1;
+  border-bottom: 1px solid #45475a;
+}
+
+.modules-left {
+  padding-left: 8px;
+}
+
+.modules-right {
+  padding-right: 8px;
+}
+
+/* No module chrome at all — every block is transparent text. The only
+ * separation is the 4px "spacing" from config.jsonc plus padding. */
+#clock,
+#battery,
+#network,
+#tray,
+#workspaces,
+#custom-media,
+#cpu,
+#memory,
+#temperature,
+#pulseaudio-slider,
+#profiles,
+#volume {
+  background-color: transparent;
+  color: #a6e3a1;
+  margin: 0;
+  padding: 0 9px;
+  border: none;
+  border-radius: 0;
+}
+
+/* Faint vertical rules between right-hand modules, like column separators
+ * in a console readout. */
+#cpu,
+#memory,
+#temperature,
+#network,
+#battery,
+#volume {
+  border-left: 1px solid #313244;
+}
+
+#clock {
+  color: #11111b;
+  background-color: #a6e3a1;
+  padding: 0 10px;
+  font-weight: bold;
+}
+
+/* ── Network ── */
+#network {
+  font-size: 14px;
+  color: #94e2d5;
+  min-width: 20px;
+}
+
+#network.ethernet {
+  color: #89b4fa;
+}
+
+#network.linked {
+  color: #f9e2af;
+}
+
+#network.disconnected {
+  color: #f38ba8;
+}
+
+#network.disabled {
+  color: #45475a;
+}
+
+/* ── Pulseaudio ── */
+#pulseaudio {
+  font-size: 14px;
+  color: #94e2d5;
+}
+
+/* ── Workspaces ── */
+#workspaces {
+  padding: 0 6px;
+}
+
+#custom-ws1,
+#custom-ws2,
+#custom-ws3,
+#custom-ws4,
+#custom-ws5 {
+  background: transparent;
+  border: none;
+  padding: 0 5px;
+  color: #45475a;
+}
+
+#workspaces .occupied {
+  color: #6c7086;
+}
+
+#workspaces .visible {
+  color: #94e2d5;
+}
+
+#workspaces .active {
+  color: #a6e3a1;
+  background-color: #1e1e2e;
+}
+
+/* ── Profiles (rice switcher) ── */
+#profiles {
+  padding: 0 6px;
+  border-left: 1px solid #313244;
+}
+
+#custom-profile1,
+#custom-profile2,
+#custom-profile3,
+#custom-profile4,
+#custom-profile5 {
+  background: transparent;
+  border: none;
+  padding: 0 4px;
+}
+
+#profiles .inactive {
+  color: #45475a;
+}
+
+#profiles .active {
+  color: #a6e3a1;
+}
+
+/* ── Battery ── */
+#battery {
+  color: #a6e3a1;
+}
+
+#battery.warning {
+  color: #f9e2af;
+}
+
+#battery.critical {
+  color: #f38ba8;
+}
+
+#custom-media {
+  color: #94e2d5;
+}
+
+#cpu {
+  color: #a6e3a1;
+}
+
+#memory {
+  color: #a6e3a1;
+}
+
+#temperature {
+  color: #f9e2af;
+}
+
+/* ── Volume slider — a bar-graph cell, squared and flat ── */
+#pulseaudio-slider {
+  min-width: 64px;
+  padding: 0 9px;
+}
+
+#pulseaudio-slider slider {
+  min-height: 10px;
+  min-width: 3px;
+  background-image: none;
+  border: none;
+  border-radius: 0;
+  background-color: #a6e3a1;
+  margin: -6px;
+}
+
+#pulseaudio-slider trough {
+  min-height: 3px;
+  border-radius: 0;
+  background: #45475a;
+}
+
+#pulseaudio-slider highlight {
+  border-radius: 0;
+  background: #a6e3a1;
+}
+
+#pulseaudio.icon {
+  background: transparent;
+  border: none;
+  color: #94e2d5;
+  margin: 0;
+  padding: 0 6px 0 0;
+}
+
+tooltip {
+  background: #11111b;
+  border: 1px solid #45475a;
+  border-radius: 0;
+}
+
+tooltip label {
+  color: #a6e3a1;
+}

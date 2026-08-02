@@ -1,0 +1,104 @@
+/* ultraviolet — waybar
+ * Ultraviolet — monochrome violet. One hue, twelve values, nothing else.
+ * Shell: waybar-rail
+ */
+
+* {
+  font-family: "Adwaita Sans", "FreeSerif", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: #b09ccc;
+}
+
+.modules-left { padding-left: 10px; }
+.modules-right { padding-right: 10px; }
+
+#clock, #battery, #network, #tray, #pulseaudio, #backlight, #cpu, #memory,
+#custom-media, #custom-notif, #custom-power, #custom-launcher,
+#idle_inhibitor, #window, #workspaces, #custom-ws {
+  background-color: rgba(21, 14, 33, 0.92);
+  color: #b09ccc;
+  margin: 5px 4px;
+  padding: 4px 16px;
+  border: 1px solid #2c1e42;
+  border-radius: 12px;
+}
+
+#clock { color: #9d6bff; font-weight: 700; }
+#window { color: #6b5a8a; background: transparent; border: none; }
+#custom-launcher { color: #9d6bff; font-size: 15px; }
+#custom-media { color: #c4a0ff; }
+#pulseaudio { color: #c4a0ff; }
+#network { color: #a68fff; }
+#battery { color: #8f7bd6; }
+#battery.warning { color: #c4a0ff; }
+#battery.critical { color: #b76bff; }
+#network.disconnected { color: #b76bff; }
+#custom-notif.dnd { color: #b76bff; }
+#custom-notif.unread { color: #9d6bff; }
+#custom-notif.idle { color: #6b5a8a; }
+#custom-power { color: #b76bff; }
+#idle_inhibitor.activated { color: #9d6bff; }
+#idle_inhibitor.deactivated { color: #6b5a8a; }
+
+#workspaces { padding: 0 8px; }
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent; border: none; margin: 0;
+  padding: 4px 9px; color: #2c1e42;
+}
+#workspaces .occupied { color: #6b5a8a; }
+#workspaces .visible  { color: #c4a0ff; }
+#workspaces .active   { color: #9d6bff; }
+#custom-ws { color: #ddd0f0; letter-spacing: 1px; }
+
+tooltip { background: #150e21; border: 1px solid #2c1e42;
+           border-radius: 8px; }
+tooltip label { color: #ddd0f0; }
+
+window#waybar.rail {
+  background: rgba(21, 14, 33, 0.92);
+  border: 1px solid #2c1e42; border-radius: 12px;
+}
+
+
+/* ── Vertical rail ──────────────────────────────────────────
+ * This bar is only ~52px wide. The shared module rule sets horizontal
+ * padding sized for a top bar, which inside a rail pushes every label off
+ * centre and clips the wide ones. Vertical bars need the padding rotated:
+ * space above and below, none at the sides, and labels centred in the
+ * column.
+ * ──────────────────────────────────────────────────────────── */
+window#waybar {
+  border-bottom: none;
+  border-right: 1px solid #1e142e;
+}
+
+.modules-left, .modules-center, .modules-right {
+  padding: 12px 0;
+}
+
+#clock, #battery, #network, #pulseaudio, #backlight, #cpu, #memory,
+#custom-power, #custom-launcher, #custom-notif, #idle_inhibitor,
+#custom-ws, #custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  padding: 9px 0;
+  margin: 0;
+  min-width: 0;
+  border: none;
+  border-left: none;
+}
+
+/* Centre each label horizontally in the column. */
+#workspaces {
+  padding: 0;
+  margin: 0;
+}
+
+#custom-launcher {
+  padding: 12px 0;
+  font-size: 16px;
+}

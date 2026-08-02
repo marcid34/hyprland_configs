@@ -1,0 +1,45 @@
+# porcelain — Alacritty
+# Porcelain — a LIGHT clinical rice. Cool white, blue-grey, surgical.
+
+[colors.primary]
+background = "#fbfcfd"
+foreground = "#2b3440"
+dim_foreground = "#4d5866"
+
+[colors.cursor]
+text = "#fbfcfd"
+cursor = "#4c6ef5"
+
+[colors.selection]
+text = "#2b3440"
+background = "#e2e8f0"
+
+[colors.normal]
+black = "#eef1f5"
+red = "#c92a3d"
+green = "#2f9e44"
+yellow = "#748ffc"
+blue = "#4c6ef5"
+magenta = "#7048e8"
+cyan = "#0c8599"
+white = "#4d5866"
+
+[colors.bright]
+black = "#d8dee6"
+red = "#c92a3d"
+green = "#2f9e44"
+yellow = "#4c6ef5"
+blue = "#4c6ef5"
+magenta = "#7048e8"
+cyan = "#0c8599"
+white = "#2b3440"
+
+[window]
+padding = { x = 14, y = 12 }
+decorations = "Transparent"
+opacity = 1.0
+blur = false
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size = 13.0

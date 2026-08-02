@@ -1,0 +1,35 @@
+-- porcelain — Neovim
+-- Porcelain — a LIGHT clinical rice. Cool white, blue-grey, surgical.
+return {
+  palette = {
+    name = "porcelain",
+    bg        = "#fbfcfd",
+    bg1       = "#ffffff",
+    bg2       = "#eef1f5",
+    bg3       = "#d8dee6",
+    fg        = "#2b3440",
+    fg1       = "#4d5866",
+    dim       = "#95a1b0",
+    sel       = "#e2e8f0",
+    accent    = "#4c6ef5",
+    accent2   = "#748ffc",
+    red       = "#c92a3d",
+    green     = "#2f9e44",
+    blue      = "#4c6ef5",
+    purple    = "#7048e8",
+    cyan      = "#0c8599",
+    orange           = "#748ffc",
+    yellow           = "#748ffc",
+    transparent      = false,
+    light            = true,
+    italic_comments  = true,
+    border           = "#d8dee6",
+  },
+  opts = {
+    number = true, relativenumber = true, signcolumn = "yes",
+    cursorline = true, cursorlineopt = "number",
+    winborder = "rounded",
+    fillchars = "eob: ,vert:│",
+    laststatus = 3,
+  },
+}

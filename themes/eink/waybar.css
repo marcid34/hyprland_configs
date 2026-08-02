@@ -1,0 +1,75 @@
+/* eink — waybar
+ *
+ * E-ink — paper. Pure black on warm white, no colour, no gloss.
+ * Layout: document.
+ */
+
+* {
+  font-family: "Adwaita Sans", "FreeSerif", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+/* A page header, not a HUD. Pure black on paper, hairline rule beneath,
+ * words instead of icons, and no colour at all — the only rice here that
+ * would print correctly. */
+window#waybar {
+  background: #f7f7f4;
+  color: #3a3a38;
+  border-bottom: 1px solid #d6d6cf;
+}
+.modules-left { padding-left: 12px; }
+.modules-right { padding-right: 12px; }
+#clock, #battery, #network, #tray, #pulseaudio, #backlight, #cpu, #memory, #sys, #custom-media, #custom-notif, #custom-power, #idle_inhibitor, #privacy, #window, #workspaces {
+  background: transparent; color: #3a3a38;
+  margin: 0; padding: 3px 20px; border: none; border-radius: 0;
+  letter-spacing: 0.3px;
+}
+#clock { color: #111111; font-weight: 700; }
+#window { color: #8a8a84; }
+#battery, #network, #pulseaudio { color: #3a3a38; }
+#battery.critical { color: #8c2f39; font-weight: 700; }
+
+/* ── workspaces ── */
+#workspaces { padding: 0 8px; }
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent; border: none; box-shadow: none;
+  padding: 0 8px; margin: 0; color: #d6d6cf;
+}
+#workspaces .occupied { color: #8a8a84; }
+#workspaces .visible   { color: #5a5a56; }
+#workspaces .active    { color: #111111; border-bottom: 2px solid #111111; }
+
+/* ── states ── */
+#battery.warning  { color: #5a5a56; }
+#battery.critical { color: #8c2f39; }
+#network.disconnected { color: #8c2f39; }
+#network.disabled     { color: #d6d6cf; }
+#custom-notif.dnd     { color: #8c2f39; }
+#custom-notif.unread  { color: #111111; }
+#custom-notif.idle    { color: #8a8a84; }
+#idle_inhibitor.activated   { color: #111111; }
+#idle_inhibitor.deactivated { color: #8a8a84; }
+#custom-power { color: #8c2f39; }
+#window { color: #8a8a84; }
+#window.empty { color: transparent; }
+#privacy { color: #8c2f39; }
+tooltip { background: #ffffff; border: 1px solid #d6d6cf; border-radius: 0px; }
+tooltip label { color: #111111; }
+
+
+/* ─────────────────────────────────────────────────────────
+ * Bar redesign: selectors for this rice's own module set.
+ * ───────────────────────────────────────────────────────── */
+#custom-ws, #custom-launcher, #window, #backlight, #privacy, #idle_inhibitor {
+  /* match this rice's existing module treatment */
+}
+
+/* Single-module workspace indicator (click/scroll to move). Coloured as one
+ * unit rather than per-dot, since the glyphs live in one label. */
+#custom-ws {
+  color: #111111;
+  letter-spacing: 1px;
+}
+#custom-ws.ws { color: #111111; }

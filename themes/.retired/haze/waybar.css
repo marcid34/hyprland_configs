@@ -1,0 +1,225 @@
+/* haze — Waybar
+ *
+ * Glassmorphic: deeply translucent, generously rounded, effectively
+ * borderless. Where kib-custom uses a hairline to define each pill, haze
+ * lets Hyprland's blur do the defining and keeps only a whisper of a
+ * highlight along the edge.
+ *
+ * Catppuccin Mocha led by pink #f5c2e7 with blue #89b4fa as the second,
+ * the two softest colours in the palette.
+ *   base #1e1e2e  text #cdd6f4  pink #f5c2e7  blue #89b4fa
+ *   mauve #cba6f7  teal #94e2d5  green #a6e3a1
+ */
+
+* {
+  font-family: "Ubuntu Mono", "JetBrainsMono Nerd Font", monospace;
+  font-size: 15px;
+  font-weight: normal;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: #cdd6f4;
+}
+
+.modules-left {
+  padding-left: 14px;
+}
+
+.modules-right {
+  padding-right: 14px;
+}
+
+/* Shared glass. 0.42 alpha is low enough that the wallpaper reads through
+ * as colour rather than texture; the 1px inner highlight is what keeps the
+ * shape legible without a real border. */
+#clock,
+#battery,
+#network,
+#tray,
+#workspaces,
+#custom-media,
+#cpu,
+#memory,
+#temperature,
+#pulseaudio-slider,
+#profiles,
+#volume {
+  background-color: rgba(30, 30, 46, 0.42);
+  color: #cdd6f4;
+  margin: 5px 4px;
+  padding: 2px 16px;
+  border: 1px solid rgba(205, 214, 244, 0.09);
+  border-radius: 16px;
+}
+
+#clock {
+  color: #f5c2e7;
+  background-color: rgba(245, 194, 231, 0.12);
+  border-color: rgba(245, 194, 231, 0.22);
+  border-radius: 16px;
+}
+
+/* ── Network ── */
+#network {
+  font-family: "JetBrainsMono Nerd Font Propo", monospace;
+  font-size: 15px;
+  color: #94e2d5;
+  padding: 2px 13px;
+  min-width: 20px;
+}
+
+#network.ethernet {
+  color: #89b4fa;
+}
+
+#network.linked {
+  color: #f9e2af;
+  border-color: rgba(249, 226, 175, 0.28);
+}
+
+#network.disconnected {
+  color: #f38ba8;
+  border-color: rgba(243, 139, 168, 0.32);
+}
+
+#network.disabled {
+  color: #6c7086;
+}
+
+/* ── Pulseaudio ── */
+#pulseaudio {
+  font-family: "JetBrainsMono Nerd Font Propo", monospace;
+  font-size: 14px;
+  color: #89b4fa;
+}
+
+/* ── Workspaces ── */
+#workspaces {
+  padding: 2px 10px;
+}
+
+#custom-ws1,
+#custom-ws2,
+#custom-ws3,
+#custom-ws4,
+#custom-ws5 {
+  background: transparent;
+  border: none;
+  padding: 0 6px;
+  color: rgba(205, 214, 244, 0.18);
+}
+
+#workspaces .occupied {
+  color: rgba(205, 214, 244, 0.45);
+}
+
+#workspaces .visible {
+  color: #89b4fa;
+  text-shadow: 0 0 10px rgba(137, 180, 250, 0.6);
+}
+
+#workspaces .active {
+  color: #f5c2e7;
+  text-shadow: 0 0 12px rgba(245, 194, 231, 0.75);
+}
+
+/* ── Profiles (rice switcher) ── */
+#profiles {
+  padding: 2px 10px;
+}
+
+#custom-profile1,
+#custom-profile2,
+#custom-profile3,
+#custom-profile4,
+#custom-profile5 {
+  background: transparent;
+  border: none;
+  padding: 0 5px;
+}
+
+#profiles .inactive {
+  color: rgba(205, 214, 244, 0.2);
+}
+
+#profiles .active {
+  color: #f5c2e7;
+  text-shadow: 0 0 12px rgba(245, 194, 231, 0.75);
+}
+
+/* ── Battery ── */
+#battery {
+  color: #a6e3a1;
+}
+
+#battery.warning {
+  color: #f9e2af;
+}
+
+#battery.critical {
+  color: #f38ba8;
+  border-color: rgba(243, 139, 168, 0.32);
+}
+
+#custom-media {
+  color: #f5c2e7;
+}
+
+#cpu {
+  color: #89dceb;
+}
+
+#memory {
+  color: #b4befe;
+}
+
+#temperature {
+  color: #eba0ac;
+}
+
+/* ── Volume slider — soft, fully rounded ── */
+#pulseaudio-slider {
+  min-width: 84px;
+  padding: 2px 14px;
+}
+
+#pulseaudio-slider slider {
+  min-height: 14px;
+  min-width: 14px;
+  background-image: none;
+  border: none;
+  border-radius: 16px;
+  background-color: #f5c2e7;
+  margin: -6px;
+}
+
+#pulseaudio-slider trough {
+  min-height: 5px;
+  border-radius: 16px;
+  background: rgba(205, 214, 244, 0.16);
+}
+
+#pulseaudio-slider highlight {
+  border-radius: 16px;
+  background: #89b4fa;
+}
+
+#pulseaudio.icon {
+  background: transparent;
+  border: none;
+  color: #89b4fa;
+  margin: 0;
+  padding: 0 8px 0 0;
+}
+
+tooltip {
+  background: rgba(30, 30, 46, 0.82);
+  border: 1px solid rgba(205, 214, 244, 0.12);
+  border-radius: 14px;
+}
+
+tooltip label {
+  color: #cdd6f4;
+}

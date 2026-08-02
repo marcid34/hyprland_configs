@@ -1,0 +1,93 @@
+// dawn — waybar
+// Shell: macOS shape: hairline menubar on top, nwg-dock floating at the bottom.
+// This rice's own desktop shell, not a restyle of another profile's.
+{
+  "name": "menubar",
+  "layer": "top",
+  "position": "top",
+  "height": 24,
+  "modules-left": [
+    "custom/launcher",
+    "hyprland/window"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "pulseaudio",
+    "network",
+    "battery"
+  ],
+  "custom/launcher": {
+    "format": "",
+    "on-click": "rofi -show drun",
+    "tooltip": false,
+    "cursor": true
+  },
+  "hyprland/window": {
+    "format": "{title}",
+    "max-length": 50,
+    "separate-outputs": true,
+    "rewrite": {
+      "": "—"
+    }
+  },
+  "clock": {
+    "interval": 10,
+    "format": "{:%a %d %b  %I:%M %p}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "mode": "month",
+      "format": {
+        "today": "<b>{}</b>"
+      }
+    }
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}",
+    "format-muted": "󰝟",
+    "scroll-step": 5,
+    "format-icons": {
+      "headphone": "󰋋",
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
+    },
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  },
+  "network": {
+    "interval": 5,
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤮",
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "tooltip-format-wifi": "<b>{essid}</b>\n{signalStrength}%  ·  {ipaddr}",
+    "on-click": "alacritty --class nm-float -e nmtui"
+  },
+  "battery": {
+    "interval": 30,
+    "states": {
+      "warning": 25,
+      "critical": 12
+    },
+    "format": "{icon} {capacity}",
+    "format-charging": "󰂄 {capacity}",
+    "format-icons": [
+      "󰁺",
+      "󰁼",
+      "󰁾",
+      "󰂀",
+      "󰂂"
+    ],
+    "tooltip-format": "{capacity}%  ·  {time} left"
+  },
+  "spacing": 5
+}

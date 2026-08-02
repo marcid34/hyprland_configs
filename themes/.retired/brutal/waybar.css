@@ -1,0 +1,228 @@
+/* brutal — Waybar
+ *
+ * Neo-brutalist: nothing is soft, nothing is translucent, nothing is round.
+ * Solid base, 3px text-coloured borders, hard offset shadows with zero blur,
+ * uppercase and wide-tracked. The bar asserts itself instead of floating.
+ *
+ * Catppuccin Mocha, led by yellow #f9e2af instead of mauve — the loudest
+ * colour in the palette for the loudest rice.
+ *   base #1e1e2e  crust #11111b  surface1 #45475a  text #cdd6f4
+ *   yellow #f9e2af  red #f38ba8  green #a6e3a1  blue #89b4fa
+ */
+
+* {
+  font-family: "JetBrainsMono Nerd Font Propo", "Ubuntu Mono", monospace;
+  font-size: 14px;
+  font-weight: 800;
+  min-height: 0;
+}
+
+window#waybar {
+  background: #11111b;
+  /* crust — the bar is a solid slab, not a transparent tray */
+  color: #cdd6f4;
+  border-bottom: 3px solid #cdd6f4;
+}
+
+.modules-left {
+  padding-left: 0;
+}
+
+.modules-right {
+  padding-right: 0;
+}
+
+/* Shared block styling. Modules butt against each other with a hard
+ * border between them — no gaps, no rounding, no mercy. */
+#clock,
+#battery,
+#network,
+#tray,
+#workspaces,
+#custom-media,
+#cpu,
+#memory,
+#temperature,
+#pulseaudio-slider,
+#profiles,
+#volume {
+  background-color: #1e1e2e;
+  color: #cdd6f4;
+  margin: 3px 3px;
+  padding: 1px 10px;
+  border: 3px solid #cdd6f4;
+  border-radius: 0;
+  box-shadow: 3px 3px 0 #f9e2af;
+  /* hard offset shadow, zero blur — the brutalist signature */
+}
+
+#clock {
+  background-color: #f9e2af;
+  color: #11111b;
+  border-color: #11111b;
+  box-shadow: 3px 3px 0 #cdd6f4;
+  letter-spacing: 1px;
+}
+
+/* ── Network ── */
+#network {
+  font-size: 14px;
+  color: #94e2d5;
+  padding: 1px 9px;
+  min-width: 20px;
+}
+
+#network.ethernet {
+  color: #89b4fa;
+}
+
+#network.linked {
+  color: #f9e2af;
+  box-shadow: 3px 3px 0 #f9e2af;
+}
+
+#network.disconnected {
+  color: #11111b;
+  background-color: #f38ba8;
+  box-shadow: 3px 3px 0 #cdd6f4;
+}
+
+#network.disabled {
+  color: #6c7086;
+}
+
+/* ── Pulseaudio ── */
+#pulseaudio {
+  font-size: 14px;
+  color: #89b4fa;
+}
+
+/* ── Workspaces ── */
+#workspaces {
+  padding: 1px 6px;
+}
+
+#custom-ws1,
+#custom-ws2,
+#custom-ws3,
+#custom-ws4,
+#custom-ws5 {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0 5px;
+  color: #45475a;
+}
+
+#workspaces .occupied {
+  color: #bac2de;
+}
+
+#workspaces .visible {
+  color: #89b4fa;
+}
+
+#workspaces .active {
+  color: #f9e2af;
+}
+
+/* ── Profiles (rice switcher) ── */
+#profiles {
+  padding: 1px 6px;
+}
+
+#custom-profile1,
+#custom-profile2,
+#custom-profile3,
+#custom-profile4,
+#custom-profile5 {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0 4px;
+}
+
+#profiles .inactive {
+  color: #45475a;
+}
+
+#profiles .active {
+  color: #f9e2af;
+}
+
+/* ── Battery ── */
+#battery {
+  color: #a6e3a1;
+}
+
+#battery.warning {
+  color: #f9e2af;
+}
+
+#battery.critical {
+  color: #11111b;
+  background-color: #f38ba8;
+  box-shadow: 3px 3px 0 #cdd6f4;
+}
+
+#custom-media {
+  color: #f5c2e7;
+}
+
+#cpu {
+  color: #89dceb;
+}
+
+#memory {
+  color: #b4befe;
+}
+
+#temperature {
+  color: #eba0ac;
+}
+
+/* ── Volume slider — squared off, no round caps ── */
+#pulseaudio-slider {
+  min-width: 80px;
+  padding: 1px 8px;
+}
+
+#pulseaudio-slider slider {
+  min-height: 14px;
+  min-width: 8px;
+  background-image: none;
+  border: 2px solid #11111b;
+  border-radius: 0;
+  background-color: #cdd6f4;
+  margin: -6px;
+}
+
+#pulseaudio-slider trough {
+  min-height: 6px;
+  border-radius: 0;
+  background: #45475a;
+}
+
+#pulseaudio-slider highlight {
+  border-radius: 0;
+  background: #f9e2af;
+}
+
+#pulseaudio.icon {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: #89b4fa;
+  margin: 0;
+  padding: 0 6px 0 0;
+}
+
+tooltip {
+  background: #1e1e2e;
+  border: 3px solid #cdd6f4;
+  border-radius: 0;
+}
+
+tooltip label {
+  color: #cdd6f4;
+}

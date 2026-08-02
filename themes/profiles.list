@@ -1,0 +1,42 @@
+# Ordered profile registry, read by both switch.sh and waybar's profiles.py.
+# One per line:  <dirname>|<label>|<active-glyph>|<idle-glyph>
+#
+# Order here == left-to-right order of the waybar profiles module.
+#
+# The indicators are deliberately uniform rather than one shape per profile:
+# ten different glyphs in a row reads as clutter, and only U+25CF/U+25CB are
+# covered across every font stack these themes use (FreeSerif is pinned as a
+# last-resort fallback in each waybar.css, so no theme can render tofu).
+# Identity comes from position and tooltip; state comes from fill and colour.
+kib-custom|kib-custom|●|○
+tokyonight|tokyo night|●|○
+rosepine|rose pine|●|○
+kanagawa|kanagawa|●|○
+oxocarbon|oxocarbon|●|○
+everforest|everforest|●|○
+dawn|dawn|●|○
+amber|amber crt|●|○
+outrun|outrun|●|○
+mono|mono|●|○
+nord|nord|●|○
+dracula|dracula|●|○
+duskfox|duskfox|●|○
+abyss|abyss|●|○
+sakura|sakura|●|○
+emerald|emerald|●|○
+mercury|mercury|●|○
+plum|plum|●|○
+blueprint|blueprint|●|○
+eink|e-ink|●|○
+solarized|solarized|●|○
+matrix|matrix|●|○
+noir|noir|●|○
+arctic|arctic|●|○
+obsidian|obsidian|●|○
+crimson|crimson|●|○
+moss|moss|●|○
+ultraviolet|ultraviolet|●|○
+porcelain|porcelain|●|○
+midnight|midnight|●|○
+win11|Windows 11 Pro|●|○
+macos|Mac OS X|●|○

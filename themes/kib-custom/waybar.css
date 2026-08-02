@@ -1,0 +1,246 @@
+/* Catppuccin Mocha — matched to alacritty + nvim rice
+ *   base   #1e1e2e   surface0 #313244   surface1 #45475a
+ *   mantle #181825   overlay0 #6c7086   text     #cdd6f4
+ *   mauve  #cba6f7 (accent — alacritty cursor)   blue #89b4fa
+ *   green  #a6e3a1   yellow   #f9e2af   red      #f38ba8
+ *
+ * Transparency echoes alacritty opacity 0.9 + nvim bg=none.
+ * Text uses Ubuntu Mono (your terminal font); glyph icons fall
+ * back to the Nerd Font.
+ */
+
+* {
+  font-family: "Ubuntu Mono", "JetBrainsMono Nerd Font", monospace;
+  font-size: 15px;
+  font-weight: bold;
+  min-height: 0;
+}
+
+/* Transparent bar — modules float as translucent islands */
+window#waybar {
+  background: transparent;
+  color: #cdd6f4;
+}
+
+.modules-right {
+  padding-right: 8px;
+}
+
+.modules-left {
+  padding-left: 8px;
+}
+
+/* Shared pill styling — base @ ~0.9 opacity (matches alacritty),
+ * surface1 border, mauve-friendly rounding */
+#clock,
+#battery,
+#network,
+#tray,
+#workspaces,
+#custom-media,
+#cpu,
+#memory,
+#temperature,
+#pulseaudio-slider,
+#profiles,
+#volume {
+  background-color: rgba(30, 30, 46, 0.9);
+  /* base, translucent */
+  color: #cdd6f4;
+  margin: 4px 2px;
+  padding: 2px 12px;
+  border: 1px solid #45475a;
+  /* surface1 */
+  border-radius: 8px;
+}
+
+/* ── Clock (center) — mauve, your signature accent ── */
+#clock {
+  color: #cba6f7;
+  border-color: #cba6f7;
+}
+
+/* ── Network (icon only) ──
+ * The network module has no "states" support, so colour is driven by
+ * connection-type classes rather than by signal strength. Strength is
+ * carried by the glyph shape (5 bands via format-icons). */
+#network {
+  font-family: "JetBrainsMono Nerd Font Propo", "JetBrainsMono Nerd Font", monospace;
+  /* Propo = proportional icon width, centers single glyphs */
+  font-size: 15px;
+  color: #94e2d5;
+  /* teal — matches alacritty cyan */
+  padding: 2px 10px;
+  min-width: 20px;
+  /* pin width so band changes don't nudge the pill */
+}
+
+#network.ethernet {
+  color: #89b4fa;
+  /* blue — wired */
+}
+
+#network.linked {
+  color: #f9e2af;
+  /* yellow — carrier up, no address yet */
+  border-color: #f9e2af;
+}
+
+#network.disconnected {
+  color: #f38ba8;
+  /* red */
+  border-color: #f38ba8;
+}
+
+#network.disabled {
+  color: #6c7086;
+  /* overlay0 — radio off, deliberately quiet */
+}
+
+/* ── Pulseaudio ── */
+#pulseaudio {
+  font-family: "JetBrainsMono Nerd Font Propo", "JetBrainsMono Nerd Font", monospace;
+  /* Propo = proportional icon width, centers single glyphs */
+  font-size: 14px;
+  color: #89b4fa;
+  /* blue */
+}
+
+
+/* ── Workspaces (left) — one custom module per dot, see scripts/hypr-ws.py.
+ * They're labels rather than buttons now, so the old `#workspaces button`
+ * rules no longer apply; state comes from the JSON "class" field. ── */
+#workspaces {
+  padding: 2px 6px;
+}
+
+#custom-ws1,
+#custom-ws2,
+#custom-ws3,
+#custom-ws4,
+#custom-ws5 {
+  background: transparent;
+  border: none;
+  padding: 0 5px;
+  color: #45475a;
+  /* surface1 — empty */
+}
+
+#workspaces .occupied {
+  color: #6c7086;
+  /* overlay0 — has windows, but not on screen */
+}
+
+#workspaces .visible {
+  color: #89b4fa;
+  /* blue — live on the other monitor; clicking pulls it to this one */
+}
+
+#workspaces .active {
+  color: #cba6f7;
+  /* mauve — focused */
+  text-shadow: 0 0 8px rgba(203, 166, 247, 0.55);
+}
+
+/* ── Profiles (rice switcher) — same idiom as the workspace dots:
+ * one label per profile, shape carries identity, colour carries state. ── */
+#profiles {
+  padding: 2px 6px;
+}
+
+#custom-profile1,
+#custom-profile2,
+#custom-profile3,
+#custom-profile4,
+#custom-profile5,
+#custom-profile6,
+#custom-profile7,
+#custom-profile8,
+#custom-profile9,
+#custom-profile10 {
+  background: transparent;
+  border: none;
+  padding: 0 3px;
+  font-size: 10px;
+}
+
+#profiles .inactive {
+  color: #6c7086;
+  /* overlay0 — available, not live */
+}
+
+#profiles .active {
+  color: #cba6f7;
+  /* mauve — the live rice, matching the focused workspace */
+  text-shadow: 0 0 8px rgba(203, 166, 247, 0.55);
+}
+
+/* ── Battery (states from config.jsonc) ── */
+#battery {
+  color: #a6e3a1;
+  /* green */
+}
+
+#battery.warning {
+  color: #f9e2af;
+  /* yellow */
+}
+
+#battery.critical {
+  color: #f38ba8;
+  /* red */
+  border-color: #f38ba8;
+}
+
+#custom-media {
+  color: #f5c2e7;
+}
+
+#cpu {
+  color: #89dceb;
+}
+
+#memory {
+  color: #b4befe;
+}
+
+#temperature {
+  color: #ed547e;
+}
+
+#pulseaudio-slider {
+  min-width: 80px;
+  border: none;
+  background-color: rgba(30, 30, 46, 0.9);
+  background: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+#pulseaudio-slider slider {
+  min-height: 16px;
+  min-width: 16px;
+  background-image: none;
+  border: none;
+  background-color: #bac2de;
+  margin: -6px;
+}
+
+#pulseaudio-slider trough {
+  min-height: 5px;
+  border-radius: 5px;
+  background: #6c7086;
+}
+
+#pulseaudio-slider highlight {
+  border-radius: 5px;
+  background: #89b4fa;
+}
+
+#pulseaudio.icon {
+  background: transparent;
+  border: none;
+  color: #89b4fa;
+  margin: 0;
+  padding: 0 6px 0 0;
+}

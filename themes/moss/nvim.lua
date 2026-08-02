@@ -1,0 +1,35 @@
+-- moss — Neovim
+-- Moss — desaturated sage and stone. The quietest palette here.
+return {
+  palette = {
+    name = "moss",
+    bg        = "#1c201b",
+    bg1       = "#232821",
+    bg2       = "#2c322a",
+    bg3       = "#3a4136",
+    fg        = "#d4d8cc",
+    fg1       = "#a4ab9c",
+    dim       = "#6c7466",
+    sel       = "#3a4136",
+    accent    = "#8fa876",
+    accent2   = "#7c9a8e",
+    red       = "#a87c7c",
+    green     = "#8fa876",
+    blue      = "#7c8fa8",
+    purple    = "#9a8fa8",
+    cyan      = "#7c9a8e",
+    orange           = "#7c9a8e",
+    yellow           = "#7c9a8e",
+    transparent      = true,
+    light            = false,
+    italic_comments  = true,
+    border           = "#3a4136",
+  },
+  opts = {
+    number = true, relativenumber = true, signcolumn = "yes",
+    cursorline = true, cursorlineopt = "number",
+    winborder = "rounded",
+    fillchars = "eob: ,vert:│",
+    laststatus = 3,
+  },
+}
