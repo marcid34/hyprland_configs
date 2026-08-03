@@ -1,0 +1,51 @@
+/* QShell Showcase — waybar
+ * Fallback bar for a machine without quickshell. Same palette and radius as
+ * the real shell so the rice still hangs together if it is used.
+ */
+
+* {
+  font-family: "Adwaita Sans", "FreeSerif", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+window#waybar {
+  background: rgba(17, 20, 25, 0.96);
+  color: #eef2f7;
+  border: 1px solid #222833;
+  border-radius: 14px;
+}
+.modules-left, .modules-center, .modules-right { padding: 0 6px; }
+
+#clock, #battery, #network, #pulseaudio, #tray, #custom-media,
+#custom-notif, #custom-power, #window {
+  background: transparent; color: #93a0b0;
+  margin: 4px 1px; padding: 2px 11px; border-radius: 999px;
+  transition: background-color 140ms ease, color 140ms ease;
+}
+#clock { color: #eef2f7; font-weight: 600; }
+#custom-media { color: #4ade80; }
+#window { color: #5c6673; }
+#window.empty { color: transparent; }
+
+#clock:hover, #pulseaudio:hover, #network:hover, #battery:hover,
+#custom-notif:hover, #custom-media:hover { background: #171b22; color: #eef2f7; }
+#custom-power { color: #f87171; }
+#custom-power:hover { background: #f87171; color: #0a0c0f; }
+
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent; border: none; box-shadow: none;
+  padding: 0 6px; margin: 0; color: #222833;
+}
+#workspaces .occupied { color: #5c6673; }
+#workspaces .visible   { color: #4ade80; }
+#workspaces .active    { color: #5b9dff; }
+
+#battery.warning  { color: #fbbf24; }
+#battery.critical { color: #f87171; }
+#network.disconnected { color: #f87171; }
+#custom-notif.dnd     { color: #f87171; }
+#custom-notif.unread  { color: #5b9dff; }
+tooltip { background: #111419; border: 1px solid #222833; border-radius: 12px; }
+tooltip label { color: #eef2f7; }

@@ -1,0 +1,7 @@
+module qshell
+singleton Theme 1.0 Theme.qml
+Card 1.0 Card.qml
+Pill 1.0 Pill.qml
+Sparkline 1.0 Sparkline.qml
+Meter 1.0 Meter.qml
+Slider 1.0 Slider.qml

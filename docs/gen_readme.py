@@ -7,6 +7,10 @@ OUT = os.path.expanduser("~/.config/rices/hyprland_configs/README.md")
 
 GROUPS = [
     ("Signature", "The one this repo was built around.", ["kib-custom"]),
+    ("Showcase",
+     "Built to be looked at and read: a single Quickshell/QML codebase driving "
+     "bar, dashboard and controls, with every figure on screen live.",
+     ["qshell"]),
     ("Switchable",
      "One shape, more than one palette, swapped live from a control the rice "
      "puts on the desktop itself.",

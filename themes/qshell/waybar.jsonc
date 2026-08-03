@@ -1,0 +1,31 @@
+// QShell Showcase — waybar
+// Shell: quickshell. This file is the fallback for a machine without it —
+// switch.sh substitutes waybar when a rice's declared panel is missing, and a
+// rice with no waybar config would leave that machine with no bar at all.
+{
+  "name": "fallback",
+  "layer": "top",
+  "position": "top",
+  "height": 38,
+  "margin-top": 8,
+  "margin-left": 10,
+  "margin-right": 10,
+  "modules-left": ["custom/ws1","custom/ws2","custom/ws3","custom/ws4","custom/ws5","hyprland/window"],
+  "modules-center": ["clock"],
+  "modules-right": ["custom/media","tray","pulseaudio","network","battery","custom/notif","custom/power"],
+  "custom/ws1": { "exec": "~/.config/waybar/scripts/ws.py render numbers 1", "on-click": "~/.config/waybar/scripts/ws.py focus 1", "return-type": "json", "restart-interval": 3, "cursor": true },
+  "custom/ws2": { "exec": "~/.config/waybar/scripts/ws.py render numbers 2", "on-click": "~/.config/waybar/scripts/ws.py focus 2", "return-type": "json", "restart-interval": 3, "cursor": true },
+  "custom/ws3": { "exec": "~/.config/waybar/scripts/ws.py render numbers 3", "on-click": "~/.config/waybar/scripts/ws.py focus 3", "return-type": "json", "restart-interval": 3, "cursor": true },
+  "custom/ws4": { "exec": "~/.config/waybar/scripts/ws.py render numbers 4", "on-click": "~/.config/waybar/scripts/ws.py focus 4", "return-type": "json", "restart-interval": 3, "cursor": true },
+  "custom/ws5": { "exec": "~/.config/waybar/scripts/ws.py render numbers 5", "on-click": "~/.config/waybar/scripts/ws.py focus 5", "return-type": "json", "restart-interval": 3, "cursor": true },
+  "hyprland/window": { "format": "{title}", "max-length": 44, "separate-outputs": true, "rewrite": { "": "—" } },
+  "custom/media": { "format": "{}", "return-type": "json", "exec": "~/.config/waybar/scripts/player.sh", "on-click": "playerctl play-pause", "max-length": 28, "interval": 5 },
+  "tray": { "icon-size": 15, "spacing": 8 },
+  "pulseaudio": { "format": "{icon} {volume}", "format-muted": "󰝟", "scroll-step": 5, "format-icons": { "headphone": "󰋋", "default": ["󰕿","󰖀","󰕾"] }, "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle" },
+  "network": { "interval": 5, "format-wifi": "{icon}", "format-ethernet": "󰈀", "format-disconnected": "󰤮", "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"], "tooltip-format-wifi": "<b>{essid}</b>\n{signalStrength}%  ·  {ipaddr}" },
+  "battery": { "interval": 30, "states": { "warning": 25, "critical": 12 }, "format": "{icon} {capacity}", "format-charging": "󰂄 {capacity}", "format-icons": ["󰁺","󰁼","󰁾","󰂀","󰂂"] },
+  "custom/notif": { "exec": "~/.config/waybar/scripts/notif.py render", "on-click": "~/.config/waybar/scripts/notif.py toggle", "return-type": "json", "interval": 3, "cursor": true },
+  "clock": { "interval": 10, "format": "{:%a %d %b   %H:%M}", "tooltip-format": "<tt>{calendar}</tt>", "calendar": { "mode": "month", "format": { "today": "<b>{}</b>" } } },
+  "custom/power": { "format": "󰐥", "on-click": "~/.config/waybar/scripts/power.sh", "tooltip": false, "cursor": true },
+  "spacing": 6
+}

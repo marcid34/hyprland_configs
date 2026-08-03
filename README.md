@@ -2,16 +2,16 @@
 
 # hyprland_configs
 
-**A complete Hyprland desktop with 33 interchangeable rices.**
+**A complete Hyprland desktop with 34 interchangeable rices.**
 
 Switching a rice swaps the terminal, bar, launcher, notifications, lock screen,
 editor colours, prompt and wallpaper *together* — and can change what the
 desktop **is**, not just how it's painted. Some profiles run waybar, some a
 dock, some conky, some yambar, some nothing at all.
 
-<img src="docs/hero.jpg" width="100%" alt="All 33 rices">
+<img src="docs/hero.jpg" width="100%" alt="All 34 rices">
 
-`33 rices` · `4 light` · `7 launcher styles` · `8 shell layouts` · `wallpapers included`
+`34 rices` · `4 light` · `7 launcher styles` · `8 shell layouts` · `wallpapers included`
 
 **[Every rice, with descriptions and palettes →](#the-rices)**
 
@@ -179,7 +179,7 @@ themes/switch.sh dracula     # apply one by name
 themes/switch.sh --next      # or just cycle through them
 ```
 
-All 33 names are listed in [The rices](#the-rices) below, and in
+All 34 names are listed in [The rices](#the-rices) below, and in
 `themes/profiles.list`. Once you're logged in, `Super + T` opens a picker.
 
 **5. Log out and back into Hyprland.**
@@ -257,6 +257,13 @@ The one this repo was built around.
 
 <table>
 <tr><td width="33%" valign="top"><img src="docs/thumbs/kib-custom.jpg" width="100%" alt="kib-custom"><br><img src="docs/palettes/kib-custom.png" width="100%" height="8" alt=""><br><b>kib-custom</b> · <code>kib-custom</code><br><sub>Catppuccin Mocha — matched to alacritty + nvim rice</sub><br><sub><b>shell</b> waybar · <b>launcher</b> rofi</sub></td><td width="33%"></td><td width="33%"></td></tr>
+</table>
+### Showcase <sub>(1)</sub>
+
+Built to be looked at and read: a single Quickshell/QML codebase driving bar, dashboard and controls, with every figure on screen live.
+
+<table>
+<tr><td width="33%" valign="top"><img src="docs/thumbs/qshell.jpg" width="100%" alt="QShell Showcase"><br><img src="docs/palettes/qshell.png" width="100%" height="8" alt=""><br><b>QShell Showcase</b> · <code>qshell</code><br><sub>A demonstration of what Quickshell can do, dressed as a desktop you would actually ship. One QML codebase draws the bar, the dashboard and the notification toasts, and every number on screen is live: media from MPRIS, volume from PipeWire, battery from UPower, workspaces from Hyprland, CPU and memory sampled from /proc. Restrained on purpose — the point is capability without noise.</sub><br><sub><b>shell</b> quickshell · <b>launcher</b> rofi</sub></td><td width="33%"></td><td width="33%"></td></tr>
 </table>
 ### Switchable <sub>(1)</sub>
 

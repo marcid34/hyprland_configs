@@ -1,0 +1,4 @@
+# QShell Showcase — wallpaper
+# Bare path = applied to every monitor.
+/home/birch/.config/rices/hyprland_configs/wallpapers/qshell/qshell.jpg
+transition=fade

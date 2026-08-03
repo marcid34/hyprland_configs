@@ -1,0 +1,41 @@
+/* QShell Showcase — rofi
+ *
+ * The launcher matches the shell: one radius, one hairline, one accent, and a
+ * selected row that fills rather than outlines.
+ */
+configuration {
+  modes: "drun,run";
+  show-icons: true;
+  icon-theme: "breeze-dark";
+  drun-display-format: "{name}";
+  display-drun: "search";
+  display-run: "run";
+  drun-match-fields: "name,generic,exec,keywords";
+}
+* { bg:#0a0c0f; bg1:#111419; bg2:#171b22; bg3:#222833;
+     fg:#eef2f7; fg1:#93a0b0; dim:#5c6673; ac:#5b9dff;
+     ac2:#4ade80; red:#f87171;
+     background-color: transparent; text-color: @fg1;
+     font: "Adwaita Sans 12"; }
+window { width: 620px; background-color: @bg1; border: 1px;
+          border-color: @bg3; border-radius: 14px; padding: 0; }
+mainbox { children: [ inputbar, listview ]; spacing: 0; }
+inputbar { children: [ prompt, entry ]; padding: 16px 20px; spacing: 12px;
+            border: 0 0 1px 0; border-color: @bg3; }
+prompt { text-color: @ac; }
+entry { placeholder: "type to search"; placeholder-color: @dim; vertical-align: 0.5; }
+listview { lines: 8; columns: 1; padding: 8px; spacing: 2px;
+            scrollbar: false; fixed-height: false; }
+element { padding: 10px 14px; spacing: 12px;
+           border-radius: 9px; cursor: pointer; }
+element normal.normal, element alternate.normal {
+  background-color: transparent; text-color: @fg1; }
+element normal.active, element alternate.active {
+  background-color: transparent; text-color: @ac2; }
+element normal.urgent, element alternate.urgent {
+  background-color: transparent; text-color: @red; }
+element selected.normal, element selected.active {
+  background-color: @ac; text-color: @bg; }
+element selected.urgent { background-color: @red; text-color: @bg; }
+element-icon { size: 20px; vertical-align: 0.5; }
+element-text { vertical-align: 0.5; text-color: inherit; }

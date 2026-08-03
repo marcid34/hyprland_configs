@@ -79,6 +79,12 @@ that file, not extracted assets. The pointer traces Terraria's own arrowhead,
 which is Re-Logic's design; the other twelve shapes have no counterpart in the
 game and are drawn to match.
 
+## QShell Showcase
+
+| Asset | Source |
+| --- | --- |
+| `qshell/qshell.jpg` | [wallhaven](https://wallhaven.cc/w/e8xlgw) — cropped to the panel, otherwise unmodified |
+
 ## Fonts
 
 Vendored under `assets/fonts/`, all SIL Open Font Licence 1.1 (licence text

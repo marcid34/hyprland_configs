@@ -1,0 +1,45 @@
+# QShell Showcase — Alacritty
+# Clean slate: near-black ground, one azure accent, generous padding.
+
+[colors.primary]
+background = "#0a0c0f"
+foreground = "#eef2f7"
+dim_foreground = "#93a0b0"
+
+[colors.cursor]
+text = "#0a0c0f"
+cursor = "#5b9dff"
+
+[colors.selection]
+text = "#eef2f7"
+background = "#222833"
+
+[colors.normal]
+black = "#171b22"
+red = "#f87171"
+green = "#4ade80"
+yellow = "#fbbf24"
+blue = "#5b9dff"
+magenta = "#a78bfa"
+cyan = "#22d3ee"
+white = "#93a0b0"
+
+[colors.bright]
+black = "#5c6673"
+red = "#f87171"
+green = "#4ade80"
+yellow = "#fbbf24"
+blue = "#5b9dff"
+magenta = "#a78bfa"
+cyan = "#22d3ee"
+white = "#eef2f7"
+
+[window]
+padding = { x = 16, y = 14 }
+decorations = "None"
+opacity = 0.94
+blur = true
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+size = 12.0

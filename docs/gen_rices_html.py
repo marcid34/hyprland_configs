@@ -12,6 +12,10 @@ OUT = os.path.expanduser("~/.config/rices/hyprland_configs/RICES.html")
 
 GROUPS = [
     ("Signature", "The one this repo was built around.", ["kib-custom"]),
+    ("Showcase",
+     "Built to be looked at and read: a single Quickshell/QML codebase driving "
+     "bar, dashboard and controls, with every figure on screen live.",
+     ["qshell"]),
     ("Switchable",
      "One shape, more than one palette, swapped live from a control the rice "
      "puts on the desktop itself.",
@@ -90,7 +94,7 @@ for title, blurb, ids in GROUPS:
 
 ALL_TAGS = ["light", "dark", "monochrome", "one-hue", "muted", "vivid",
             "neon", "deep", "warm", "cool", "classic", "terminal", "pixel",
-            "two-mode", "homage"]
+            "two-mode", "clean", "showcase", "homage"]
 filters = "".join(
     '<button class="chip" data-f="%s">%s</button>' % (t, t) for t in ALL_TAGS)
 

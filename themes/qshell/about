@@ -1,0 +1,6 @@
+A demonstration of what Quickshell can do, dressed as a desktop you would
+actually ship. One QML codebase draws the bar, the dashboard and the
+notification toasts, and every number on screen is live: media from MPRIS,
+volume from PipeWire, battery from UPower, workspaces from Hyprland, CPU and
+memory sampled from /proc. Restrained on purpose — the point is capability
+without noise.
