@@ -13,6 +13,11 @@ starship.toml
 # its contents are whatever displays happened to be plugged in at the time.
 hypr/hyprpaper.conf
 
+# cava writes its stock default here on first run, into the directory we link
+# into ~/.config. The rice-specific styling lives in cava/themes/, which is
+# tracked; this file is just whatever cava last wrote.
+cava/config
+
 # Bundled with the nwg-panel package, not user configuration (1.4M).
 nwg-panel/icons_light/
 nwg-panel/icons_dark/

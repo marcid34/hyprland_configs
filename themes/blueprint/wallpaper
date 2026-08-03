@@ -1,4 +1,4 @@
 # Bare path = applied to every monitor. Use <output>=<path> lines to
 # differ per display (see kib-custom).
-/home/kib/Pictures/Wallpapers/themes/blueprint.png
+/home/birch/.config/rices/hyprland_configs/wallpapers/blueprint/blueprint.png
 transition=wipe

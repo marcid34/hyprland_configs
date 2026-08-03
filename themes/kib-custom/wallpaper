@@ -1,5 +1,5 @@
 # Per-monitor: <output>=<path>. A bare path line (no '=') is the fallback
 # used for any monitor not named here, so single-wallpaper rices need one line.
-eDP-1=/home/kib/Pictures/Wallpapers/laptop.png
-HDMI-A-2=/home/kib/Pictures/Wallpapers/monitor1.png
+eDP-1=/home/birch/.config/rices/hyprland_configs/wallpapers/kib-custom/laptop.png
+HDMI-A-2=/home/birch/.config/rices/hyprland_configs/wallpapers/kib-custom/monitor1.png
 transition=fade

@@ -1,0 +1,642 @@
+<title>Rices — feel &amp; tone</title>
+<style>
+  :root {
+    --bg:#0e1013; --panel:#15181d; --panel2:#1b1f26; --line:#262b34;
+    --fg:#e6e9ef; --dim:#98a1b0; --faint:#6b7484; --ac:#7aa2f7;
+    --radius:14px;
+    color-scheme: dark light;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg:#f6f7f9; --panel:#ffffff; --panel2:#f0f2f5; --line:#dfe3ea;
+      --fg:#161a20; --dim:#525c6b; --faint:#7b8492; --ac:#2f6feb;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg:#0e1013; --panel:#15181d; --panel2:#1b1f26; --line:#262b34;
+    --fg:#e6e9ef; --dim:#98a1b0; --faint:#6b7484; --ac:#7aa2f7;
+  }
+  :root[data-theme="light"] {
+    --bg:#f6f7f9; --panel:#ffffff; --panel2:#f0f2f5; --line:#dfe3ea;
+    --fg:#161a20; --dim:#525c6b; --faint:#7b8492; --ac:#2f6feb;
+  }
+
+  * { box-sizing:border-box; }
+  body {
+    margin:0; background:var(--bg); color:var(--fg);
+    font:15px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+         "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap { max-width:1180px; margin:0 auto; padding:0 20px 80px; }
+
+  header.top { padding:64px 0 32px; border-bottom:1px solid var(--line); margin-bottom:8px; }
+  header.top h1 {
+    margin:0 0 10px; font-size:clamp(28px,5vw,44px); line-height:1.1;
+    letter-spacing:-.02em; font-weight:650;
+  }
+  header.top p { margin:0; color:var(--dim); max-width:62ch; font-size:16px; }
+  .stats { display:flex; flex-wrap:wrap; gap:26px; margin-top:26px; }
+  .stat b { display:block; font-size:22px; font-weight:650; letter-spacing:-.01em; }
+  .stat span { color:var(--faint); font-size:12.5px; text-transform:uppercase; letter-spacing:.08em; }
+
+  .filters {
+    position:sticky; top:0; z-index:5; background:var(--bg);
+    padding:16px 0; border-bottom:1px solid var(--line);
+    display:flex; flex-wrap:wrap; gap:7px; align-items:center;
+  }
+  .chip {
+    font:inherit; font-size:12.5px; color:var(--dim); cursor:pointer;
+    background:var(--panel2); border:1px solid var(--line);
+    padding:5px 11px; border-radius:999px; transition:.13s;
+  }
+  .chip:hover { color:var(--fg); border-color:var(--faint); }
+  .chip.on { background:var(--ac); border-color:var(--ac); color:#fff; }
+  .filters .lbl { font-size:12.5px; color:var(--faint); margin-right:4px;
+                   text-transform:uppercase; letter-spacing:.08em; }
+
+  .group { margin-top:52px; }
+  .grouphead { position:relative; margin-bottom:20px; padding-right:52px; }
+  .grouphead h2 { margin:0 0 5px; font-size:20px; letter-spacing:-.01em; font-weight:620; }
+  .grouphead p { margin:0; color:var(--dim); max-width:70ch; font-size:14px; }
+  .grouphead .count {
+    position:absolute; right:0; top:0; color:var(--faint);
+    font-variant-numeric:tabular-nums; font-size:13px;
+    border:1px solid var(--line); border-radius:999px; padding:2px 10px;
+  }
+
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(310px,1fr)); gap:18px; }
+
+  .card {
+    background:var(--panel); border:1px solid var(--line);
+    border-radius:var(--radius); overflow:hidden;
+    display:flex; flex-direction:column; transition:.16s;
+  }
+  .card:hover { border-color:var(--faint); transform:translateY(-2px); }
+  .card.hide { display:none; }
+  .shot { display:block; aspect-ratio:3/2; overflow:hidden; background:var(--panel2); }
+  .shot img { width:100%; height:100%; object-fit:cover; display:block; }
+  .body { padding:15px 16px 16px; display:flex; flex-direction:column; gap:11px; flex:1; }
+  .body header { display:flex; align-items:baseline; gap:9px; flex-wrap:wrap; }
+  .body h3 { margin:0; font-size:16.5px; font-weight:620; letter-spacing:-.01em; }
+  .body code {
+    font:12px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color:var(--faint); background:var(--panel2);
+    padding:3px 6px; border-radius:5px;
+  }
+  .body p { margin:0; color:var(--dim); font-size:13.6px; line-height:1.55; flex:1; }
+
+  .swatches { display:flex; border-radius:6px; overflow:hidden; height:20px; }
+  .swatches i { flex:1; display:block; }
+
+  .meta { display:flex; flex-wrap:wrap; gap:14px; margin:0; }
+  .meta div { display:flex; gap:6px; align-items:baseline; }
+  .meta dt { color:var(--faint); font-size:11px; text-transform:uppercase; letter-spacing:.07em; }
+  .meta dd { margin:0; font:12px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color:var(--dim); }
+
+  .tags { display:flex; flex-wrap:wrap; gap:5px; }
+  .tag {
+    font-size:11px; letter-spacing:.03em; color:var(--faint);
+    border:1px solid var(--line); border-radius:999px; padding:2px 8px;
+  }
+  .tag.mode { color:var(--ac); border-color:color-mix(in srgb, var(--ac) 40%, transparent); }
+
+  footer { margin-top:64px; padding-top:24px; border-top:1px solid var(--line);
+            color:var(--faint); font-size:13px; }
+  footer code { font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  a { color:inherit; }
+  .empty { color:var(--faint); padding:40px 0; display:none; }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <h1>Rices &mdash; feel &amp; tone</h1>
+    <p>Every profile in this repo, and what each one is actually <em>for</em>.
+       A rice here is not a colour swap: it sets the bar, the launcher, the
+       lock screen, the terminal, the editor and the wallpaper together, and
+       some of them change what the desktop <em>is</em> &mdash; waybar, a dock,
+       conky, yambar, or nothing at all.</p>
+    <div class="stats">
+      <div class="stat"><b>32</b><span>rices</span></div>
+      <div class="stat"><b>4</b><span>light</span></div>
+      <div class="stat"><b>7</b><span>launcher styles</span></div>
+      <div class="stat"><b>7</b><span>shell layouts</span></div>
+    </div>
+  </header>
+
+  <div class="filters">
+    <span class="lbl">filter</span>
+    <button class="chip on" data-f="*">all</button>
+    <button class="chip" data-f="light">light</button><button class="chip" data-f="dark">dark</button><button class="chip" data-f="monochrome">monochrome</button><button class="chip" data-f="one-hue">one-hue</button><button class="chip" data-f="muted">muted</button><button class="chip" data-f="vivid">vivid</button><button class="chip" data-f="neon">neon</button><button class="chip" data-f="deep">deep</button><button class="chip" data-f="warm">warm</button><button class="chip" data-f="cool">cool</button><button class="chip" data-f="classic">classic</button><button class="chip" data-f="terminal">terminal</button><button class="chip" data-f="homage">homage</button>
+  </div>
+
+  <p class="empty">Nothing matches that combination.</p>
+  
+    <section class="group">
+      <div class="grouphead">
+        <h2>Signature</h2>
+        <p>The one this repo was built around.</p>
+        <span class="count">1</span>
+      </div>
+      <div class="grid">
+      <article class="card" data-tags="signature muted dark" id="kib-custom">
+        <a class="shot" href="docs/thumbs/kib-custom.jpg"><img src="docs/thumbs/kib-custom.jpg" alt="kib-custom wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>kib-custom</h3>
+            <code>kib-custom</code>
+          </header>
+          <p>Catppuccin Mocha — matched to alacritty + nvim rice</p>
+          <div class="swatches"><i style="background:#1e1e2e" title="base #1e1e2e"></i><i style="background:#181825" title="mantle #181825"></i><i style="background:#313244" title="surface0 #313244"></i><i style="background:#45475a" title="surface1 #45475a"></i><i style="background:#6c7086" title="overlay0 #6c7086"></i><i style="background:#a6adc8" title="subtext0 #a6adc8"></i><i style="background:#cdd6f4" title="text #cdd6f4"></i><i style="background:#cba6f7" title="mauve #cba6f7"></i><i style="background:#f38ba8" title="red #f38ba8"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar</dd></div><div><dt>launcher</dt><dd>rofi</dd></div><div><dt>transition</dt><dd>fade</dd></div></dl>
+          <div class="tags"><span class="tag">signature</span><span class="tag">muted</span><span class="tag mode">dark</span></div>
+        </div>
+      </article></div>
+    </section>
+    <section class="group">
+      <div class="grouphead">
+        <h2>Designed atmospheres</h2>
+        <p>Rices where the layout changes, not just the colours — different bar shape, different launcher, different amount of chrome.</p>
+        <span class="count">9</span>
+      </div>
+      <div class="grid">
+      <article class="card" data-tags="neon glass dark" id="tokyonight">
+        <a class="shot" href="docs/thumbs/tokyonight.jpg"><img src="docs/thumbs/tokyonight.jpg" alt="tokyo night wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>tokyo night</h3>
+            <code>tokyonight</code>
+          </header>
+          <p>Neon dusk. Deep navy glass pills with a faint inner highlight, and the accent colours carry a soft glow rather than a solid fill — the palette&#x27;s blues are luminous enough that glow reads better than block colour.</p>
+          <div class="swatches"><i style="background:#1a1b26" title="bg #1a1b26"></i><i style="background:#16161e" title="bg1 #16161e"></i><i style="background:#292e42" title="bg2 #292e42"></i><i style="background:#3b4261" title="bg3 #3b4261"></i><i style="background:#c0caf5" title="fg #c0caf5"></i><i style="background:#a9b1d6" title="fg1 #a9b1d6"></i><i style="background:#565f89" title="dim #565f89"></i><i style="background:#7aa2f7" title="blue #7aa2f7"></i><i style="background:#bb9af7" title="purple #bb9af7"></i><i style="background:#7dcfff" title="cyan #7dcfff"></i><i style="background:#f7768e" title="red #f7768e"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar</dd></div><div><dt>launcher</dt><dd>rofi-grid</dd></div><div><dt>transition</dt><dd>grow</dd></div></dl>
+          <div class="tags"><span class="tag">neon</span><span class="tag">glass</span><span class="tag mode">dark</span></div>
+        </div>
+      </article>
+      <article class="card" data-tags="muted soft dark" id="rosepine">
+        <a class="shot" href="docs/thumbs/rosepine.jpg"><img src="docs/thumbs/rosepine.jpg" alt="rose pine wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>rose pine</h3>
+            <code>rosepine</code>
+          </header>
+          <p>Soho at dusk. No hard borders anywhere: modules are defined by a barely lighter surface fill and a lot of breathing room.</p>
+          <div class="swatches"><i style="background:#191724" title="base #191724"></i><i style="background:#1f1d2e" title="surface #1f1d2e"></i><i style="background:#26233a" title="overlay #26233a"></i><i style="background:#403d52" title="med #403d52"></i><i style="background:#e0def4" title="text #e0def4"></i><i style="background:#908caa" title="subtle #908caa"></i><i style="background:#6e6a86" title="muted #6e6a86"></i><i style="background:#eb6f92" title="love #eb6f92"></i><i style="background:#f6c177" title="gold #f6c177"></i><i style="background:#ebbcba" title="rose #ebbcba"></i><i style="background:#9ccfd8" title="foam #9ccfd8"></i><i style="background:#c4a7e7" title="iris #c4a7e7"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar, nwg-dock</dd></div><div><dt>launcher</dt><dd>wofi</dd></div><div><dt>transition</dt><dd>fade</dd></div></dl>
+          <div class="tags"><span class="tag">muted</span><span class="tag">soft</span><span class="tag mode">dark</span></div>
+        </div>
+      </article>
+      <article class="card" data-tags="warm print dark" id="kanagawa">
+        <a class="shot" href="docs/thumbs/kanagawa.jpg"><img src="docs/thumbs/kanagawa.jpg" alt="kanagawa wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>kanagawa</h3>
+            <code>kanagawa</code>
+          </header>
+          <p>Ink wash. A solid sumi-black bar rather than floating islands: the modules sit on one continuous surface separated by wave-blue rules, like columns of text on a woodblock print.</p>
+          <div class="swatches"><i style="background:#16161d" title="sumi0 #16161d"></i><i style="background:#1f1f28" title="sumi3 #1f1f28"></i><i style="background:#2a2a37" title="sumi4 #2a2a37"></i><i style="background:#2d4f67" title="wave2 #2d4f67"></i><i style="background:#dcd7ba" title="fuji #dcd7ba"></i><i style="background:#c8c093" title="old #c8c093"></i><i style="background:#727169" title="gray #727169"></i><i style="background:#e6c384" title="carp #e6c384"></i><i style="background:#7e9cd8" title="crystal #7e9cd8"></i><i style="background:#7aa89f" title="aqua #7aa89f"></i><i style="background:#c34043" title="autumn #c34043"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar</dd></div><div><dt>launcher</dt><dd>rofi</dd></div><div><dt>transition</dt><dd>wipe</dd></div></dl>
+          <div class="tags"><span class="tag">warm</span><span class="tag">print</span><span class="tag mode">dark</span></div>
+        </div>
+      </article>
+      <article class="card" data-tags="neon sharp dark" id="oxocarbon">
+        <a class="shot" href="docs/thumbs/oxocarbon.jpg"><img src="docs/thumbs/oxocarbon.jpg" alt="oxocarbon wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>oxocarbon</h3>
+            <code>oxocarbon</code>
+          </header>
+          <p>IBM Carbon. Zero radius, precise 2px rules, near-black ground and one electric magenta.</p>
+          <div class="swatches"><i style="background:#161616" title="base #161616"></i><i style="background:#101010" title="bg1 #101010"></i><i style="background:#262626" title="bg2 #262626"></i><i style="background:#393939" title="bg3 #393939"></i><i style="background:#525252" title="dim #525252"></i><i style="background:#f2f4f8" title="fg #f2f4f8"></i><i style="background:#dde1e6" title="fg1 #dde1e6"></i><i style="background:#ee5396" title="magenta #ee5396"></i><i style="background:#33b1ff" title="blue #33b1ff"></i><i style="background:#3ddbd9" title="cyan #3ddbd9"></i><i style="background:#be95ff" title="purple #be95ff"></i><i style="background:#ff7eb6" title="red #ff7eb6"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>yambar</dd></div><div><dt>launcher</dt><dd>rofi-full</dd></div><div><dt>transition</dt><dd>simple</dd></div></dl>
+          <div class="tags"><span class="tag">neon</span><span class="tag">sharp</span><span class="tag mode">dark</span></div>
+        </div>
+      </article>
+      <article class="card" data-tags="muted soft dark" id="everforest">
+        <a class="shot" href="docs/thumbs/everforest.jpg"><img src="docs/thumbs/everforest.jpg" alt="everforest wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>everforest</h3>
+            <code>everforest</code>
+          </header>
+          <p>Soft forest. Rounded, muted, deliberately low-contrast — this palette is designed to be easy on the eyes for long sessions, so nothing here glows, inverts or shouts.</p>
+          <div class="swatches"><i style="background:#2d353b" title="bg0 #2d353b"></i><i style="background:#272e33" title="bg1 #272e33"></i><i style="background:#343f44" title="bg2 #343f44"></i><i style="background:#475258" title="bg3 #475258"></i><i style="background:#d3c6aa" title="fg #d3c6aa"></i><i style="background:#859289" title="grey1 #859289"></i><i style="background:#7a8478" title="grey0 #7a8478"></i><i style="background:#a7c080" title="green #a7c080"></i><i style="background:#83c092" title="aqua #83c092"></i><i style="background:#7fbbb3" title="blue #7fbbb3"></i><i style="background:#dbbc7f" title="yellow #dbbc7f"></i><i style="background:#e67e80" title="red #e67e80"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar, conky</dd></div><div><dt>launcher</dt><dd>wofi</dd></div><div><dt>transition</dt><dd>fade</dd></div></dl>
+          <div class="tags"><span class="tag">muted</span><span class="tag">soft</span><span class="tag mode">dark</span></div>
+        </div>
+      </article>
+      <article class="card" data-tags="terminal one-hue dark" id="amber">
+        <a class="shot" href="docs/thumbs/amber.jpg"><img src="docs/thumbs/amber.jpg" alt="amber crt wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>amber crt</h3>
+            <code>amber</code>
+          </header>
+          <p>Single-phosphor CRT. The discipline that makes this read as *designed* rather than dated is that there is exactly one hue: #ffb000, varied only in brightness.</p>
+          <div class="swatches"><i style="background:#0c0a08" title="bg #0c0a08"></i><i style="background:#141009" title="bg1 #141009"></i><i style="background:#1e1710" title="bg2 #1e1710"></i><i style="background:#2b2116" title="bg3 #2b2116"></i><i style="background:#ffb000" title="amber #ffb000"></i><i style="background:#ffcc55" title="bright #ffcc55"></i><i style="background:#d99400" title="dim #d99400"></i><i style="background:#7a5400" title="faint #7a5400"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>conky</dd></div><div><dt>launcher</dt><dd>tofi</dd></div><div><dt>transition</dt><dd>simple</dd></div></dl>
+          <div class="tags"><span class="tag">terminal</span><span class="tag">one-hue</span><span class="tag mode">dark</span></div>
+        </div>
+      </article>
+      <article class="card" data-tags="neon loud dark" id="outrun">
+        <a class="shot" href="docs/thumbs/outrun.jpg"><img src="docs/thumbs/outrun.jpg" alt="outrun wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>outrun</h3>
+            <code>outrun</code>
+          </header>
+          <p>1984 neon. Indigo night, hot magenta, cyan horizon.</p>
+          <div class="swatches"><i style="background:#0d0221" title="bg #0d0221"></i><i style="background:#190b33" title="bg1 #190b33"></i><i style="background:#241b4d" title="bg2 #241b4d"></i><i style="background:#3b2d6b" title="bg3 #3b2d6b"></i><i style="background:#f0e6ff" title="fg #f0e6ff"></i><i style="background:#c9b8f0" title="fg1 #c9b8f0"></i><i style="background:#6b5b9a" title="dim #6b5b9a"></i><i style="background:#ff2e97" title="magenta #ff2e97"></i><i style="background:#00f0ff" title="cyan #00f0ff"></i><i style="background:#b967ff" title="purple #b967ff"></i><i style="background:#fffb96" title="yellow #fffb96"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar</dd></div><div><dt>launcher</dt><dd>rofi-full</dd></div><div><dt>transition</dt><dd>wave</dd></div></dl>
+          <div class="tags"><span class="tag">neon</span><span class="tag">loud</span><span class="tag mode">dark</span></div>
+        </div>
+      </article>
+      <article class="card" data-tags="monochrome print dark" id="mono">
+        <a class="shot" href="docs/thumbs/mono.jpg"><img src="docs/thumbs/mono.jpg" alt="mono wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>mono</h3>
+            <code>mono</code>
+          </header>
+          <p>Swiss. There is no colour in this rice — not one hue, anywhere.</p>
+          <div class="swatches"><i style="background:#0a0a0a" title="bg #0a0a0a"></i><i style="background:#121212" title="bg1 #121212"></i><i style="background:#1c1c1c" title="bg2 #1c1c1c"></i><i style="background:#2e2e2e" title="bg3 #2e2e2e"></i><i style="background:#6e6e6e" title="dim #6e6e6e"></i><i style="background:#9a9a9a" title="fg1 #9a9a9a"></i><i style="background:#b4b4b4" title="fg2 #b4b4b4"></i><i style="background:#e8e8e8" title="fg #e8e8e8"></i><i style="background:#ffffff" title="white #ffffff"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>none</dd></div><div><dt>launcher</dt><dd>fuzzel</dd></div><div><dt>transition</dt><dd>simple</dd></div></dl>
+          <div class="tags"><span class="tag">monochrome</span><span class="tag">print</span><span class="tag mode">dark</span></div>
+        </div>
+      </article>
+      <article class="card" data-tags="technical one-hue dark" id="blueprint">
+        <a class="shot" href="docs/thumbs/blueprint.jpg"><img src="docs/thumbs/blueprint.jpg" alt="blueprint wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>blueprint</h3>
+            <code>blueprint</code>
+          </header>
+          <p>Blueprint — drafting table. Cyan hairlines on navy, all monospace.</p>
+          <div class="swatches"><i style="background:#06121f" title="bg #06121f"></i><i style="background:#081a2b" title="bg1 #081a2b"></i><i style="background:#0d2438" title="bg2 #0d2438"></i><i style="background:#14344f" title="bg3 #14344f"></i><i style="background:#e8f4fb" title="fg #e8f4fb"></i><i style="background:#9dc9e0" title="fg1 #9dc9e0"></i><i style="background:#3f6b8a" title="dim #3f6b8a"></i><i style="background:#35d6ff" title="ac #35d6ff"></i><i style="background:#7fe3ff" title="ac2 #7fe3ff"></i><i style="background:#ff6b8a" title="red #ff6b8a"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar, conky</dd></div><div><dt>launcher</dt><dd>tofi</dd></div><div><dt>transition</dt><dd>wipe</dd></div></dl>
+          <div class="tags"><span class="tag">technical</span><span class="tag">one-hue</span><span class="tag mode">dark</span></div>
+        </div>
+      </article></div>
+    </section>
+    <section class="group">
+      <div class="grouphead">
+        <h2>Palette classics</h2>
+        <p>Faithful takes on palettes you already know, applied across every app.</p>
+        <span class="count">9</span>
+      </div>
+      <div class="grid">
+      <article class="card" data-tags="classic cool dark" id="nord">
+        <a class="shot" href="docs/thumbs/nord.jpg"><img src="docs/thumbs/nord.jpg" alt="nord wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>nord</h3>
+            <code>nord</code>
+          </header>
+          <p>Nord — arctic. Cool blue-greys, frost cyan, zero warmth.</p>
+          <div class="swatches"><i style="background:#2e3440" title="bg #2e3440"></i><i style="background:#272c36" title="bg1 #272c36"></i><i style="background:#3b4252" title="bg2 #3b4252"></i><i style="background:#4c566a" title="bg3 #4c566a"></i><i style="background:#eceff4" title="fg #eceff4"></i><i style="background:#d8dee9" title="fg1 #d8dee9"></i><i style="background:#6b7789" title="dim #6b7789"></i><i style="background:#88c0d0" title="ac #88c0d0"></i><i style="background:#81a1c1" title="ac2 #81a1c1"></i><i style="background:#bf616a" title="red #bf616a"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar</dd></div><div><dt>launcher</dt><dd>drawer</dd></div><div><dt>transition</dt><dd>wipe</dd></div></dl>
+          <div class="tags"><span class="tag">classic</span><span class="tag">cool</span><span class="tag mode">dark</span></div>
+        </div>
+      </article>
+      <article class="card" data-tags="classic vivid dark" id="dracula">
+        <a class="shot" href="docs/thumbs/dracula.jpg"><img src="docs/thumbs/dracula.jpg" alt="dracula wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>dracula</h3>
+            <code>dracula</code>
+          </header>
+          <p>Dracula — the classic. Violet, magenta and cyan on graphite.</p>
+          <div class="swatches"><i style="background:#282a36" title="bg #282a36"></i><i style="background:#21222c" title="bg1 #21222c"></i><i style="background:#343746" title="bg2 #343746"></i><i style="background:#44475a" title="bg3 #44475a"></i><i style="background:#f8f8f2" title="fg #f8f8f2"></i><i style="background:#d8d8d2" title="fg1 #d8d8d2"></i><i style="background:#6272a4" title="dim #6272a4"></i><i style="background:#bd93f9" title="ac #bd93f9"></i><i style="background:#ff79c6" title="ac2 #ff79c6"></i><i style="background:#ff5555" title="red #ff5555"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar</dd></div><div><dt>launcher</dt><dd>rofi-grid</dd></div><div><dt>transition</dt><dd>grow</dd></div></dl>
+          <div class="tags"><span class="tag">classic</span><span class="tag">vivid</span><span class="tag mode">dark</span></div>
+        </div>
+      </article>
+      <article class="card" data-tags="muted cool dark" id="duskfox">
+        <a class="shot" href="docs/thumbs/duskfox.jpg"><img src="docs/thumbs/duskfox.jpg" alt="duskfox wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>duskfox</h3>
+            <code>duskfox</code>
+          </header>
+          <p>Duskfox — muted violet night. Rose Pine&#x27;s cousin, cooler and dimmer.</p>
+          <div class="swatches"><i style="background:#232136" title="bg #232136"></i><i style="background:#1d1b2a" title="bg1 #1d1b2a"></i><i style="background:#2d2a45" title="bg2 #2d2a45"></i><i style="background:#393552" title="bg3 #393552"></i><i style="background:#e0def4" title="fg #e0def4"></i><i style="background:#b6b3ce" title="fg1 #b6b3ce"></i><i style="background:#6e6a86" title="dim #6e6a86"></i><i style="background:#c4a7e7" title="ac #c4a7e7"></i><i style="background:#9ccfd8" title="ac2 #9ccfd8"></i><i style="background:#eb6f92" title="red #eb6f92"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar</dd></div><div><dt>launcher</dt><dd>rofi</dd></div><div><dt>transition</dt><dd>fade</dd></div></dl>
+          <div class="tags"><span class="tag">muted</span><span class="tag">cool</span><span class="tag mode">dark</span></div>
+        </div>
+      </article>
+      <article class="card" data-tags="cool deep dark" id="abyss">
+        <a class="shot" href="docs/thumbs/abyss.jpg"><img src="docs/thumbs/abyss.jpg" alt="abyss wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>abyss</h3>
+            <code>abyss</code>
+          </header>
+          <p>Abyss — deep water. Near-black navy, teal and electric cyan.</p>
+          <div class="swatches"><i style="background:#0b1220" title="bg #0b1220"></i><i style="background:#0f1a2b" title="bg1 #0f1a2b"></i><i style="background:#152438" title="bg2 #152438"></i><i style="background:#1d3050" title="bg3 #1d3050"></i><i style="background:#cfe3f5" title="fg #cfe3f5"></i><i style="background:#9fbcd6" title="fg1 #9fbcd6"></i><i style="background:#4a6483" title="dim #4a6483"></i><i style="background:#2ec4b6" title="ac #2ec4b6"></i><i style="background:#48cae4" title="ac2 #48cae4"></i><i style="background:#ef476f" title="red #ef476f"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar</dd></div><div><dt>launcher</dt><dd>rofi-grid</dd></div><div><dt>transition</dt><dd>grow</dd></div></dl>
+          <div class="tags"><span class="tag">cool</span><span class="tag">deep</span><span class="tag mode">dark</span></div>
+        </div>
+      </article>
+      <article class="card" data-tags="soft warm dark" id="sakura">
+        <a class="shot" href="docs/thumbs/sakura.jpg"><img src="docs/thumbs/sakura.jpg" alt="sakura wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>sakura</h3>
+            <code>sakura</code>
+          </header>
+          <p>Sakura — blossom at night. Soft pink and lilac on plum-black.</p>
+          <div class="swatches"><i style="background:#1a1520" title="bg #1a1520"></i><i style="background:#221b29" title="bg1 #221b29"></i><i style="background:#2e2436" title="bg2 #2e2436"></i><i style="background:#3d3047" title="bg3 #3d3047"></i><i style="background:#f2e6ef" title="fg #f2e6ef"></i><i style="background:#cdb8c8" title="fg1 #cdb8c8"></i><i style="background:#7a6377" title="dim #7a6377"></i><i style="background:#f2a6c2" title="ac #f2a6c2"></i><i style="background:#c9a7d4" title="ac2 #c9a7d4"></i><i style="background:#e8748f" title="red #e8748f"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar</dd></div><div><dt>launcher</dt><dd>fuzzel</dd></div><div><dt>transition</dt><dd>fade</dd></div></dl>
+          <div class="tags"><span class="tag">soft</span><span class="tag">warm</span><span class="tag mode">dark</span></div>
+        </div>
+      </article>
+      <article class="card" data-tags="deep vivid dark" id="emerald">
+        <a class="shot" href="docs/thumbs/emerald.jpg"><img src="docs/thumbs/emerald.jpg" alt="emerald wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>emerald</h3>
+            <code>emerald</code>
+          </header>
+          <p>Emerald — deep green glass. Jewel tones on near-black forest.</p>
+          <div class="swatches"><i style="background:#071410" title="bg #071410"></i><i style="background:#0c1f18" title="bg1 #0c1f18"></i><i style="background:#123024" title="bg2 #123024"></i><i style="background:#1a4433" title="bg3 #1a4433"></i><i style="background:#d7f5e6" title="fg #d7f5e6"></i><i style="background:#9fd6bd" title="fg1 #9fd6bd"></i><i style="background:#4b7a66" title="dim #4b7a66"></i><i style="background:#2ee68a" title="ac #2ee68a"></i><i style="background:#3ddbd9" title="ac2 #3ddbd9"></i><i style="background:#ff6b81" title="red #ff6b81"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar</dd></div><div><dt>launcher</dt><dd>tofi</dd></div><div><dt>transition</dt><dd>wipe</dd></div></dl>
+          <div class="tags"><span class="tag">deep</span><span class="tag">vivid</span><span class="tag mode">dark</span></div>
+        </div>
+      </article>
+      <article class="card" data-tags="monochrome cool dark" id="mercury">
+        <a class="shot" href="docs/thumbs/mercury.jpg"><img src="docs/thumbs/mercury.jpg" alt="mercury wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>mercury</h3>
+            <code>mercury</code>
+          </header>
+          <p>Mercury — cool silver. Near-monochrome, one ice-blue accent.</p>
+          <div class="swatches"><i style="background:#0e1013" title="bg #0e1013"></i><i style="background:#15181c" title="bg1 #15181c"></i><i style="background:#1e2229" title="bg2 #1e2229"></i><i style="background:#2b313a" title="bg3 #2b313a"></i><i style="background:#e6ecf2" title="fg #e6ecf2"></i><i style="background:#b8c2cd" title="fg1 #b8c2cd"></i><i style="background:#6b7684" title="dim #6b7684"></i><i style="background:#6fa8dc" title="ac #6fa8dc"></i><i style="background:#a9c7e8" title="ac2 #a9c7e8"></i><i style="background:#e06c75" title="red #e06c75"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar</dd></div><div><dt>launcher</dt><dd>fuzzel</dd></div><div><dt>transition</dt><dd>simple</dd></div></dl>
+          <div class="tags"><span class="tag">monochrome</span><span class="tag">cool</span><span class="tag mode">dark</span></div>
+        </div>
+      </article>
+      <article class="card" data-tags="vivid warm dark" id="plum">
+        <a class="shot" href="docs/thumbs/plum.jpg"><img src="docs/thumbs/plum.jpg" alt="plum wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>plum</h3>
+            <code>plum</code>
+          </header>
+          <p>Plum — aubergine and magenta. Rich, saturated, unapologetic.</p>
+          <div class="swatches"><i style="background:#17101d" title="bg #17101d"></i><i style="background:#1e1526" title="bg1 #1e1526"></i><i style="background:#291c33" title="bg2 #291c33"></i><i style="background:#3a2949" title="bg3 #3a2949"></i><i style="background:#ecd9f5" title="fg #ecd9f5"></i><i style="background:#c4a8d4" title="fg1 #c4a8d4"></i><i style="background:#7a5f8c" title="dim #7a5f8c"></i><i style="background:#e05fc4" title="ac #e05fc4"></i><i style="background:#a678e0" title="ac2 #a678e0"></i><i style="background:#e5527a" title="red #e5527a"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar</dd></div><div><dt>launcher</dt><dd>rofi-full</dd></div><div><dt>transition</dt><dd>outer</dd></div></dl>
+          <div class="tags"><span class="tag">vivid</span><span class="tag">warm</span><span class="tag mode">dark</span></div>
+        </div>
+      </article>
+      <article class="card" data-tags="classic muted dark" id="solarized">
+        <a class="shot" href="docs/thumbs/solarized.jpg"><img src="docs/thumbs/solarized.jpg" alt="solarized wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>solarized</h3>
+            <code>solarized</code>
+          </header>
+          <p>Solarized Dark — the 2011 classic. Teal base, restrained accents.</p>
+          <div class="swatches"><i style="background:#002b36" title="bg #002b36"></i><i style="background:#01323d" title="bg1 #01323d"></i><i style="background:#073642" title="bg2 #073642"></i><i style="background:#0f4b58" title="bg3 #0f4b58"></i><i style="background:#93a1a1" title="fg #93a1a1"></i><i style="background:#839496" title="fg1 #839496"></i><i style="background:#586e75" title="dim #586e75"></i><i style="background:#2aa198" title="ac #2aa198"></i><i style="background:#268bd2" title="ac2 #268bd2"></i><i style="background:#dc322f" title="red #dc322f"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>nwg-panel</dd></div><div><dt>launcher</dt><dd>wofi</dd></div><div><dt>transition</dt><dd>fade</dd></div></dl>
+          <div class="tags"><span class="tag">classic</span><span class="tag">muted</span><span class="tag mode">dark</span></div>
+        </div>
+      </article></div>
+    </section>
+    <section class="group">
+      <div class="grouphead">
+        <h2>Deep &amp; moody</h2>
+        <p>Low light, high restraint. Built for a dark room and an OLED panel.</p>
+        <span class="count">7</span>
+      </div>
+      <div class="grid">
+      <article class="card" data-tags="deep oled dark" id="obsidian">
+        <a class="shot" href="docs/thumbs/obsidian.jpg"><img src="docs/thumbs/obsidian.jpg" alt="obsidian wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>obsidian</h3>
+            <code>obsidian</code>
+          </header>
+          <p>Obsidian — true black with a single violet. Built for OLED.</p>
+          <div class="swatches"><i style="background:#000000" title="bg #000000"></i><i style="background:#0a0a0c" title="bg1 #0a0a0c"></i><i style="background:#141418" title="bg2 #141418"></i><i style="background:#212127" title="bg3 #212127"></i><i style="background:#e8e8ee" title="fg #e8e8ee"></i><i style="background:#a8a8b4" title="fg1 #a8a8b4"></i><i style="background:#5a5a68" title="dim #5a5a68"></i><i style="background:#8b5cf6" title="ac #8b5cf6"></i><i style="background:#a78bfa" title="ac2 #a78bfa"></i><i style="background:#f0517a" title="red #f0517a"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar</dd></div><div><dt>launcher</dt><dd>rofi-grid</dd></div><div><dt>transition</dt><dd>grow</dd></div></dl>
+          <div class="tags"><span class="tag">deep</span><span class="tag">oled</span><span class="tag mode">dark</span></div>
+        </div>
+      </article>
+      <article class="card" data-tags="deep warm dark" id="crimson">
+        <a class="shot" href="docs/thumbs/crimson.jpg"><img src="docs/thumbs/crimson.jpg" alt="crimson wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>crimson</h3>
+            <code>crimson</code>
+          </header>
+          <p>Crimson — burgundy and oxblood. Warm dark, no brightness anywhere.</p>
+          <div class="swatches"><i style="background:#180d10" title="bg #180d10"></i><i style="background:#201116" title="bg1 #201116"></i><i style="background:#2c161d" title="bg2 #2c161d"></i><i style="background:#3e1f28" title="bg3 #3e1f28"></i><i style="background:#f0dde2" title="fg #f0dde2"></i><i style="background:#c9a8b2" title="fg1 #c9a8b2"></i><i style="background:#7a5560" title="dim #7a5560"></i><i style="background:#c72c48" title="ac #c72c48"></i><i style="background:#e0607a" title="ac2 #e0607a"></i><i style="background:#c72c48" title="red #c72c48"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar</dd></div><div><dt>launcher</dt><dd>drawer</dd></div><div><dt>transition</dt><dd>wipe</dd></div></dl>
+          <div class="tags"><span class="tag">deep</span><span class="tag">warm</span><span class="tag mode">dark</span></div>
+        </div>
+      </article>
+      <article class="card" data-tags="muted quiet dark" id="moss">
+        <a class="shot" href="docs/thumbs/moss.jpg"><img src="docs/thumbs/moss.jpg" alt="moss wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>moss</h3>
+            <code>moss</code>
+          </header>
+          <p>Moss — desaturated sage and stone. The quietest palette here.</p>
+          <div class="swatches"><i style="background:#1c201b" title="bg #1c201b"></i><i style="background:#232821" title="bg1 #232821"></i><i style="background:#2c322a" title="bg2 #2c322a"></i><i style="background:#3a4136" title="bg3 #3a4136"></i><i style="background:#d4d8cc" title="fg #d4d8cc"></i><i style="background:#a4ab9c" title="fg1 #a4ab9c"></i><i style="background:#6c7466" title="dim #6c7466"></i><i style="background:#8fa876" title="ac #8fa876"></i><i style="background:#7c9a8e" title="ac2 #7c9a8e"></i><i style="background:#a87c7c" title="red #a87c7c"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar</dd></div><div><dt>launcher</dt><dd>rofi</dd></div><div><dt>transition</dt><dd>fade</dd></div></dl>
+          <div class="tags"><span class="tag">muted</span><span class="tag">quiet</span><span class="tag mode">dark</span></div>
+        </div>
+      </article>
+      <article class="card" data-tags="one-hue vivid dark" id="ultraviolet">
+        <a class="shot" href="docs/thumbs/ultraviolet.jpg"><img src="docs/thumbs/ultraviolet.jpg" alt="ultraviolet wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>ultraviolet</h3>
+            <code>ultraviolet</code>
+          </header>
+          <p>Ultraviolet — monochrome violet. One hue, twelve values, nothing else.</p>
+          <div class="swatches"><i style="background:#0f0a18" title="bg #0f0a18"></i><i style="background:#150e21" title="bg1 #150e21"></i><i style="background:#1e142e" title="bg2 #1e142e"></i><i style="background:#2c1e42" title="bg3 #2c1e42"></i><i style="background:#ddd0f0" title="fg #ddd0f0"></i><i style="background:#b09ccc" title="fg1 #b09ccc"></i><i style="background:#6b5a8a" title="dim #6b5a8a"></i><i style="background:#9d6bff" title="ac #9d6bff"></i><i style="background:#c4a0ff" title="ac2 #c4a0ff"></i><i style="background:#b76bff" title="red #b76bff"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar</dd></div><div><dt>launcher</dt><dd>rofi-grid</dd></div><div><dt>transition</dt><dd>outer</dd></div></dl>
+          <div class="tags"><span class="tag">one-hue</span><span class="tag">vivid</span><span class="tag mode">dark</span></div>
+        </div>
+      </article>
+      <article class="card" data-tags="deep minimal dark" id="midnight">
+        <a class="shot" href="docs/thumbs/midnight.jpg"><img src="docs/thumbs/midnight.jpg" alt="midnight wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>midnight</h3>
+            <code>midnight</code>
+          </header>
+          <p>Midnight — deepest navy. Almost no chrome; status on demand only.</p>
+          <div class="swatches"><i style="background:#070b14" title="bg #070b14"></i><i style="background:#0b1120" title="bg1 #0b1120"></i><i style="background:#111a2e" title="bg2 #111a2e"></i><i style="background:#1a2740" title="bg3 #1a2740"></i><i style="background:#c4d0e4" title="fg #c4d0e4"></i><i style="background:#8fa0bd" title="fg1 #8fa0bd"></i><i style="background:#4a5a7a" title="dim #4a5a7a"></i><i style="background:#4d7cc7" title="ac #4d7cc7"></i><i style="background:#6f9ae0" title="ac2 #6f9ae0"></i><i style="background:#c75d6b" title="red #c75d6b"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>none</dd></div><div><dt>launcher</dt><dd>tofi</dd></div><div><dt>transition</dt><dd>fade</dd></div></dl>
+          <div class="tags"><span class="tag">deep</span><span class="tag">minimal</span><span class="tag mode">dark</span></div>
+        </div>
+      </article>
+      <article class="card" data-tags="monochrome cinematic dark" id="noir">
+        <a class="shot" href="docs/thumbs/noir.jpg"><img src="docs/thumbs/noir.jpg" alt="noir wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>noir</h3>
+            <code>noir</code>
+          </header>
+          <p>Noir — film stock. Hard greyscale, one crimson accent, deep shadows.</p>
+          <div class="swatches"><i style="background:#0c0c0d" title="bg #0c0c0d"></i><i style="background:#141416" title="bg1 #141416"></i><i style="background:#1e1e21" title="bg2 #1e1e21"></i><i style="background:#2c2c30" title="bg3 #2c2c30"></i><i style="background:#e4e4e6" title="fg #e4e4e6"></i><i style="background:#b0b0b4" title="fg1 #b0b0b4"></i><i style="background:#6a6a70" title="dim #6a6a70"></i><i style="background:#c1272d" title="ac #c1272d"></i><i style="background:#8a8a90" title="ac2 #8a8a90"></i><i style="background:#c1272d" title="red #c1272d"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar</dd></div><div><dt>launcher</dt><dd>rofi-full</dd></div><div><dt>transition</dt><dd>simple</dd></div></dl>
+          <div class="tags"><span class="tag">monochrome</span><span class="tag">cinematic</span><span class="tag mode">dark</span></div>
+        </div>
+      </article>
+      <article class="card" data-tags="terminal one-hue dark" id="matrix">
+        <a class="shot" href="docs/thumbs/matrix.jpg"><img src="docs/thumbs/matrix.jpg" alt="matrix wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>matrix</h3>
+            <code>matrix</code>
+          </header>
+          <p>Matrix — code rain. Pure green on black, no chrome at all.</p>
+          <div class="swatches"><i style="background:#000000" title="bg #000000"></i><i style="background:#020a02" title="bg1 #020a02"></i><i style="background:#04140a" title="bg2 #04140a"></i><i style="background:#0a2814" title="bg3 #0a2814"></i><i style="background:#00ff41" title="fg #00ff41"></i><i style="background:#00c832" title="fg1 #00c832"></i><i style="background:#046417" title="dim #046417"></i><i style="background:#00ff41" title="ac #00ff41"></i><i style="background:#7dffa0" title="ac2 #7dffa0"></i><i style="background:#ff3131" title="red #ff3131"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>conky</dd></div><div><dt>launcher</dt><dd>tofi</dd></div><div><dt>transition</dt><dd>simple</dd></div></dl>
+          <div class="tags"><span class="tag">terminal</span><span class="tag">one-hue</span><span class="tag mode">dark</span></div>
+        </div>
+      </article></div>
+    </section>
+    <section class="group">
+      <div class="grouphead">
+        <h2>Light</h2>
+        <p>Genuinely light, not a dark theme with the brightness turned up. Readable in daylight.</p>
+        <span class="count">4</span>
+      </div>
+      <div class="grid">
+      <article class="card light" data-tags="light warm paper light" id="dawn">
+        <a class="shot" href="docs/thumbs/dawn.jpg"><img src="docs/thumbs/dawn.jpg" alt="dawn wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>dawn</h3>
+            <code>dawn</code>
+          </header>
+          <p>The light rice. Warm paper ground, ink-violet text, and depth carried by soft shadows instead of borders — on a light surface a 1px outline reads as grubby, while a diffuse shadow reads as lift.</p>
+          <div class="swatches"><i style="background:#faf4ed" title="base #faf4ed"></i><i style="background:#fffaf3" title="surface #fffaf3"></i><i style="background:#f2e9e1" title="overlay #f2e9e1"></i><i style="background:#dfdad9" title="hl #dfdad9"></i><i style="background:#575279" title="text #575279"></i><i style="background:#797593" title="subtle #797593"></i><i style="background:#9893a5" title="muted #9893a5"></i><i style="background:#b4637a" title="love #b4637a"></i><i style="background:#ea9d34" title="gold #ea9d34"></i><i style="background:#d7827e" title="rose #d7827e"></i><i style="background:#286983" title="pine #286983"></i><i style="background:#56949f" title="foam #56949f"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar, nwg-dock</dd></div><div><dt>launcher</dt><dd>drawer</dd></div><div><dt>transition</dt><dd>fade</dd></div></dl>
+          <div class="tags"><span class="tag">light</span><span class="tag">warm</span><span class="tag">paper</span><span class="tag mode">light</span></div>
+        </div>
+      </article>
+      <article class="card light" data-tags="light monochrome paper light" id="eink">
+        <a class="shot" href="docs/thumbs/eink.jpg"><img src="docs/thumbs/eink.jpg" alt="e-ink wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>e-ink</h3>
+            <code>eink</code>
+          </header>
+          <p>E-ink — paper. Pure black on warm white, no colour, no gloss.</p>
+          <div class="swatches"><i style="background:#f7f7f4" title="bg #f7f7f4"></i><i style="background:#ffffff" title="bg1 #ffffff"></i><i style="background:#ebebe6" title="bg2 #ebebe6"></i><i style="background:#d6d6cf" title="bg3 #d6d6cf"></i><i style="background:#111111" title="fg #111111"></i><i style="background:#3a3a38" title="fg1 #3a3a38"></i><i style="background:#8a8a84" title="dim #8a8a84"></i><i style="background:#111111" title="ac #111111"></i><i style="background:#5a5a56" title="ac2 #5a5a56"></i><i style="background:#8c2f39" title="red #8c2f39"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>none</dd></div><div><dt>launcher</dt><dd>fuzzel</dd></div><div><dt>transition</dt><dd>simple</dd></div></dl>
+          <div class="tags"><span class="tag">light</span><span class="tag">monochrome</span><span class="tag">paper</span><span class="tag mode">light</span></div>
+        </div>
+      </article>
+      <article class="card light" data-tags="light cool clean light" id="arctic">
+        <a class="shot" href="docs/thumbs/arctic.jpg"><img src="docs/thumbs/arctic.jpg" alt="arctic wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>arctic</h3>
+            <code>arctic</code>
+          </header>
+          <p>Arctic — a LIGHT rice. Ice white, pale blue, cold and clean.</p>
+          <div class="swatches"><i style="background:#f4f7fa" title="bg #f4f7fa"></i><i style="background:#ffffff" title="bg1 #ffffff"></i><i style="background:#e6edf3" title="bg2 #e6edf3"></i><i style="background:#cfdae4" title="bg3 #cfdae4"></i><i style="background:#28323c" title="fg #28323c"></i><i style="background:#4a5865" title="fg1 #4a5865"></i><i style="background:#8fa0b0" title="dim #8fa0b0"></i><i style="background:#3a7ca5" title="ac #3a7ca5"></i><i style="background:#5fa8d3" title="ac2 #5fa8d3"></i><i style="background:#b3505a" title="red #b3505a"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar</dd></div><div><dt>launcher</dt><dd>fuzzel</dd></div><div><dt>transition</dt><dd>fade</dd></div></dl>
+          <div class="tags"><span class="tag">light</span><span class="tag">cool</span><span class="tag">clean</span><span class="tag mode">light</span></div>
+        </div>
+      </article>
+      <article class="card light" data-tags="light cool clean light" id="porcelain">
+        <a class="shot" href="docs/thumbs/porcelain.jpg"><img src="docs/thumbs/porcelain.jpg" alt="porcelain wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>porcelain</h3>
+            <code>porcelain</code>
+          </header>
+          <p>Porcelain — a LIGHT clinical rice. Cool white, blue-grey, surgical.</p>
+          <div class="swatches"><i style="background:#fbfcfd" title="bg #fbfcfd"></i><i style="background:#ffffff" title="bg1 #ffffff"></i><i style="background:#eef1f5" title="bg2 #eef1f5"></i><i style="background:#d8dee6" title="bg3 #d8dee6"></i><i style="background:#2b3440" title="fg #2b3440"></i><i style="background:#4d5866" title="fg1 #4d5866"></i><i style="background:#95a1b0" title="dim #95a1b0"></i><i style="background:#4c6ef5" title="ac #4c6ef5"></i><i style="background:#748ffc" title="ac2 #748ffc"></i><i style="background:#c92a3d" title="red #c92a3d"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar</dd></div><div><dt>launcher</dt><dd>fuzzel</dd></div><div><dt>transition</dt><dd>fade</dd></div></dl>
+          <div class="tags"><span class="tag">light</span><span class="tag">cool</span><span class="tag">clean</span><span class="tag mode">light</span></div>
+        </div>
+      </article></div>
+    </section>
+    <section class="group">
+      <div class="grouphead">
+        <h2>Desktop homage</h2>
+        <p>Deliberate impersonations, down to the bar geometry and dock behaviour.</p>
+        <span class="count">2</span>
+      </div>
+      <div class="grid">
+      <article class="card" data-tags="homage dark" id="win11">
+        <a class="shot" href="docs/thumbs/win11.jpg"><img src="docs/thumbs/win11.jpg" alt="Windows 11 Pro wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>Windows 11 Pro</h3>
+            <code>win11</code>
+          </header>
+          <p>Mica: a near-opaque dark surface, 4px-rounded hover fills, centred icon cluster, and the clock stacked time-over-date hard against the right.</p>
+          <div class="swatches"><i style="background:#202020" title="bg #202020"></i><i style="background:#191919" title="bg1 #191919"></i><i style="background:#2b2b2b" title="bg2 #2b2b2b"></i><i style="background:#3d3d3d" title="bg3 #3d3d3d"></i><i style="background:#ffffff" title="fg #ffffff"></i><i style="background:#e0e0e0" title="fg1 #e0e0e0"></i><i style="background:#a0a0a0" title="dim #a0a0a0"></i><i style="background:#0078d4" title="ac #0078d4"></i><i style="background:#4cc2ff" title="ac2 #4cc2ff"></i><i style="background:#f85149" title="red #f85149"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar</dd></div><div><dt>launcher</dt><dd>rofi-grid</dd></div><div><dt>transition</dt><dd>fade</dd></div></dl>
+          <div class="tags"><span class="tag">homage</span><span class="tag mode">dark</span></div>
+        </div>
+      </article>
+      <article class="card" data-tags="homage dark" id="macos">
+        <a class="shot" href="docs/thumbs/macos.jpg"><img src="docs/thumbs/macos.jpg" alt="Mac OS X wallpaper" loading="lazy"></a>
+        <div class="body">
+          <header>
+            <h3>Mac OS X</h3>
+            <code>macos</code>
+          </header>
+          <p>26px, heavily translucent, no rounding (it is flush to the top edge), SF-ish type at 13px, and generous spacing between status items. The dock is nwg-dock, not waybar.</p>
+          <div class="swatches"><i style="background:#1e1e1e" title="bg #1e1e1e"></i><i style="background:#252527" title="bg1 #252527"></i><i style="background:#2c2c2e" title="bg2 #2c2c2e"></i><i style="background:#3a3a3c" title="bg3 #3a3a3c"></i><i style="background:#ffffff" title="fg #ffffff"></i><i style="background:#ebebf0" title="fg1 #ebebf0"></i><i style="background:#8e8e93" title="dim #8e8e93"></i><i style="background:#0a84ff" title="ac #0a84ff"></i><i style="background:#64d2ff" title="ac2 #64d2ff"></i><i style="background:#ff453a" title="red #ff453a"></i></div>
+          <dl class="meta"><div><dt>shell</dt><dd>waybar, nwg-dock</dd></div><div><dt>launcher</dt><dd>rofi-grid</dd></div><div><dt>transition</dt><dd>fade</dd></div></dl>
+          <div class="tags"><span class="tag">homage</span><span class="tag mode">dark</span></div>
+        </div>
+      </article></div>
+    </section>
+
+  <footer>
+    Generated from each rice's own files &mdash; the descriptions are the
+    header comments in <code>themes/&lt;rice&gt;/waybar.css</code>, the swatches
+    are the palette declared in <code>themes/&lt;rice&gt;/rofi.rasi</code>.
+    Apply one with <code>themes/switch.sh &lt;rice&gt;</code> or press
+    <code>Super&nbsp;+&nbsp;T</code>.
+  </footer>
+</div>
+
+<script>
+  var active = new Set();
+  var chips = document.querySelectorAll('.chip');
+  var cards = document.querySelectorAll('.card');
+
+  function apply() {
+    var shown = 0;
+    cards.forEach(function (c) {
+      var t = (c.dataset.tags || '').split(/\s+/);
+      var ok = active.size === 0 || [...active].every(function (f) { return t.includes(f); });
+      c.classList.toggle('hide', !ok);
+      if (ok) shown++;
+    });
+    document.querySelectorAll('.group').forEach(function (g) {
+      var any = g.querySelectorAll('.card:not(.hide)').length;
+      g.style.display = any ? '' : 'none';
+    });
+    document.querySelector('.empty').style.display = shown ? 'none' : 'block';
+  }
+
+  chips.forEach(function (ch) {
+    ch.addEventListener('click', function () {
+      var f = ch.dataset.f;
+      if (f === '*') { active.clear(); }
+      else if (active.has(f)) { active.delete(f); }
+      else { active.add(f); }
+      chips.forEach(function (c) {
+        c.classList.toggle('on', c.dataset.f === '*' ? active.size === 0
+                                                     : active.has(c.dataset.f));
+      });
+      apply();
+    });
+  });
+</script>

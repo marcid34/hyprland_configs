@@ -1,4 +1,4 @@
 # Bare path = applied to every monitor. Use <output>=<path> lines to
 # differ per display (see kib-custom).
-/home/kib/Pictures/Wallpapers/themes/duskfox.jpg
+/home/birch/.config/rices/hyprland_configs/wallpapers/duskfox/duskfox.jpg
 transition=fade

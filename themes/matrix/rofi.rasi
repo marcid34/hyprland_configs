@@ -1,7 +1,11 @@
 /* matrix — rofi (default list; this rice's launcher is tofi) */
 configuration {
-  modes: "drun,run"; show-icons: true; icon-theme: "breeze-dark";
-  drun-display-format: "{name}"; display-drun: "apps"; display-run: "run";
+  modes: "drun,run";
+  show-icons: true;
+  icon-theme: "breeze-dark";
+  drun-display-format: "{name}";
+  display-drun: "apps";
+  display-run: "run";
   drun-match-fields: "name,generic,exec,keywords";
 }
 * { bg:#000000; bg1:#020a02; bg2:#04140a; bg3:#0a2814;

@@ -1,7 +1,11 @@
 /* arctic — rofi (default list; this rice's launcher is fuzzel) */
 configuration {
-  modes: "drun,run"; show-icons: true; icon-theme: "breeze-dark";
-  drun-display-format: "{name}"; display-drun: "apps"; display-run: "run";
+  modes: "drun,run";
+  show-icons: true;
+  icon-theme: "breeze-dark";
+  drun-display-format: "{name}";
+  display-drun: "apps";
+  display-run: "run";
   drun-match-fields: "name,generic,exec,keywords";
 }
 * { bg:#f4f7fa; bg1:#ffffff; bg2:#e6edf3; bg3:#cfdae4;

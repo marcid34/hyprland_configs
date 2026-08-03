@@ -1,7 +1,11 @@
 /* noir — rofi (default list; this rice's launcher is rofi-full) */
 configuration {
-  modes: "drun,run"; show-icons: true; icon-theme: "breeze-dark";
-  drun-display-format: "{name}"; display-drun: "apps"; display-run: "run";
+  modes: "drun,run";
+  show-icons: true;
+  icon-theme: "breeze-dark";
+  drun-display-format: "{name}";
+  display-drun: "apps";
+  display-run: "run";
   drun-match-fields: "name,generic,exec,keywords";
 }
 * { bg:#0c0c0d; bg1:#141416; bg2:#1e1e21; bg3:#2c2c30;

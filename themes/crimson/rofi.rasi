@@ -1,7 +1,11 @@
 /* crimson — rofi (default list; this rice's launcher is drawer) */
 configuration {
-  modes: "drun,run"; show-icons: true; icon-theme: "breeze-dark";
-  drun-display-format: "{name}"; display-drun: "apps"; display-run: "run";
+  modes: "drun,run";
+  show-icons: true;
+  icon-theme: "breeze-dark";
+  drun-display-format: "{name}";
+  display-drun: "apps";
+  display-run: "run";
   drun-match-fields: "name,generic,exec,keywords";
 }
 * { bg:#180d10; bg1:#201116; bg2:#2c161d; bg3:#3e1f28;

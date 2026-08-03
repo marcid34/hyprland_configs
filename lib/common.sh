@@ -20,10 +20,11 @@ HC_LIB_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 HC_REPO="$(cd "$HC_LIB_DIR/.." && pwd)"
 HC_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}"
 
-# The home directory the configs in this repo were authored against. Paths
-# baked into config files are rewritten from this to the current $HOME by
-# hc_hydrate. Keep in sync with whatever `git grep -l /home/` reports.
-HC_ORIGIN_HOME="/home/kib"
+# The home directory the configs in this repo were currently written against.
+# Normally left empty: hc_hydrate detects it from the tree, so there is no
+# hardcoded value here to drift out of date. Set it to force an explicit
+# origin (see hc_hydrate).
+HC_ORIGIN_HOME="${HC_ORIGIN_HOME:-}"
 
 # ── Options (parsed by hc_init, settable from the environment) ─────────
 HC_YES="${HC_YES:-0}"        # --yes       assume yes, never prompt
@@ -187,19 +188,38 @@ hc_link_file() { hc_link "$1" "$2"; }
 #   themes/*/hyprlock.conf        background image path
 #   themes/*/wallpaper            per-rice wallpaper paths
 #
-# On the machine these configs were authored on this is a no-op. Anywhere
-# else it rewrites the repo working tree once, which shows up as a normal
-# `git diff` — see README "Installing on a different machine".
+# The origin is detected from the tree rather than hardcoded. An origin baked
+# into this file only describes the checkout correctly until the first rewrite,
+# after which it names a home directory that no longer appears anywhere — so on
+# the next machine the search would match nothing and the rewrite would be
+# skipped in silence, leaving every path pinned to the previous user. Reading it
+# back off the tree keeps this correct on any machine and any number of runs.
+#
+# Where $HOME already matches this is a no-op. Anywhere else it rewrites the
+# repo working tree once, which shows up as a normal `git diff` — see README
+# "Installing on a different machine".
 hc_hydrate() {
-    [ "$HOME" = "$HC_ORIGIN_HOME" ] && return 0
+    local origin="$HC_ORIGIN_HOME"
+
+    # Whichever home directory occurs most often in the tree is the one these
+    # configs are written against. Counting rather than taking the first hit
+    # keeps a stray reference to some other user's path from winning. The
+    # trailing `|| true` covers grep finding nothing and head closing the pipe.
+    if [ -z "$origin" ]; then
+        origin="$(grep -rhoIE --exclude-dir=.git -- '/home/[A-Za-z0-9._-]+' "$HC_REPO" 2>/dev/null \
+                  | sort | uniq -c | sort -rn | head -1 | awk '{print $2}')" || true
+    fi
+
+    [ -n "$origin" ] || return 0
+    [ "$origin" = "$HOME" ] && return 0
 
     local files
-    mapfile -t files < <(grep -rIl --exclude-dir=.git -- "$HC_ORIGIN_HOME" "$HC_REPO" 2>/dev/null || true)
+    mapfile -t files < <(grep -rIl --exclude-dir=.git -- "$origin" "$HC_REPO" 2>/dev/null || true)
     [ ${#files[@]} -eq 0 ] && return 0
 
-    hc_log "rewriting $HC_ORIGIN_HOME → $HOME in ${#files[@]} file(s)"
+    hc_log "rewriting $origin → $HOME in ${#files[@]} file(s)"
     for f in "${files[@]}"; do hc_dim "$(hc_tilde "$f")"; done
-    hc_run sed -i "s|$HC_ORIGIN_HOME|$HOME|g" "${files[@]}"
+    hc_run sed -i "s|$origin|$HOME|g" "${files[@]}"
     hc_info "these now show as local modifications in git — that is expected"
 }
 

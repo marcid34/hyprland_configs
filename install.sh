@@ -72,8 +72,8 @@ cat <<'EOF'
     themes/switch.sh dracula       apply one by name
     themes/switch.sh --current     which one is active
 
-  Wallpapers are not in this repo — drop images at
-  ~/Pictures/Wallpapers/themes/<rice>.{jpg,png} to fill them in.
+  Wallpapers ship with the repo, one folder per rice under wallpapers/.
+  Point a rice somewhere else by editing themes/<rice>/wallpaper.
 
   Log out and back into Hyprland to pick up the compositor config.
 EOF

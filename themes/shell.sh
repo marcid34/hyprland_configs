@@ -79,7 +79,7 @@ start() {
             nwg-dock)
                 # -s takes a *file name*, which nwg-dock resolves inside its
                 # own config dir -- handing it an absolute path yields
-                # ~/.config/nwg-dock-hyprland/home/kib/... and a fatal exit.
+                # ~/.config/nwg-dock-hyprland/home/birch/... and a fatal exit.
                 # So stage this rice's stylesheet there and pass the bare name.
                 if command -v nwg-dock-hyprland >/dev/null; then
                     mkdir -p "$HOME/.config/nwg-dock-hyprland"

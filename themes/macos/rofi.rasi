@@ -1,7 +1,11 @@
 /* Mac OS X — rofi (default list; launcher is the styled one) */
 configuration {
-  modes: "drun,run"; show-icons: true; icon-theme: "breeze-dark";
-  drun-display-format: "{name}"; display-drun: "apps"; display-run: "run";
+  modes: "drun,run";
+  show-icons: true;
+  icon-theme: "breeze-dark";
+  drun-display-format: "{name}";
+  display-drun: "apps";
+  display-run: "run";
 }
 * { bg:#1e1e1e; bg1:#252527; bg2:#2c2c2e; bg3:#3a3a3c;
      fg:#ffffff; fg1:#ebebf0; dim:#8e8e93; ac:#0a84ff;

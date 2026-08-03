@@ -1,7 +1,11 @@
 /* porcelain — rofi (default list; this rice's launcher is fuzzel) */
 configuration {
-  modes: "drun,run"; show-icons: true; icon-theme: "breeze-dark";
-  drun-display-format: "{name}"; display-drun: "apps"; display-run: "run";
+  modes: "drun,run";
+  show-icons: true;
+  icon-theme: "breeze-dark";
+  drun-display-format: "{name}";
+  display-drun: "apps";
+  display-run: "run";
   drun-match-fields: "name,generic,exec,keywords";
 }
 * { bg:#fbfcfd; bg1:#ffffff; bg2:#eef1f5; bg3:#d8dee6;

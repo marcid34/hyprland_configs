@@ -59,9 +59,14 @@ esac
 
 # Every profile must be complete, or we would half-apply a rice and leave
 # the desktop in a mixed state that is confusing to back out of.
+#
+# Only files every rice actually ships belong here. starship.toml used to be
+# listed and is shipped by none of them, which failed every profile on the
+# same file — invisibly, since picker.sh runs from a keybind and this check
+# reports on stderr. Anything optional is guarded where it is used instead.
 missing=()
 for f in waybar.jsonc waybar.css mako.conf rofi.rasi hypr.lua alacritty.toml \
-         nvim.lua fastfetch.jsonc wallpaper hyprlock.conf starship.toml \
+         nvim.lua fastfetch.jsonc wallpaper hyprlock.conf \
          shell.components launcher; do
     [ -f "$THEMES/$target/$f" ] || missing+=("$f")
 done
@@ -155,8 +160,14 @@ fi
 
 # hyprlock and starship read their config at launch, so a symlink is enough --
 # no reload needed for either.
+#
+# starship.toml is optional: `ln -sfn` will happily point at a target that does
+# not exist, so without this guard a rice that ships no starship theme would
+# leave a dangling ~/.config/starship.toml behind on every switch.
 ln -sfn "$CURRENT/hyprlock.conf" "$HOME/.config/hypr/hyprlock.conf" 2>/dev/null || true
-ln -sfn "$CURRENT/starship.toml" "$HOME/.config/starship.toml" 2>/dev/null || true
+if [ -e "$CURRENT/starship.toml" ]; then
+    ln -sfn "$CURRENT/starship.toml" "$HOME/.config/starship.toml" 2>/dev/null || true
+fi
 
 # rofi and fastfetch both read their config fresh on every launch, and both
 # resolve through the `current` symlink — nothing to signal for either.

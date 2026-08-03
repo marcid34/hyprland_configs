@@ -33,17 +33,17 @@
       "css-name": "clock"
     },
     "executor-cpu": {
-      "script": "/home/kib/.config/waybar/scripts/stat.sh cpu",
+      "script": "/home/birch/.config/waybar/scripts/stat.sh cpu",
       "interval": 5,
       "css-name": "executor"
     },
     "executor-mem": {
-      "script": "/home/kib/.config/waybar/scripts/stat.sh mem",
+      "script": "/home/birch/.config/waybar/scripts/stat.sh mem",
       "interval": 15,
       "css-name": "executor"
     },
     "executor-disk": {
-      "script": "/home/kib/.config/waybar/scripts/stat.sh disk",
+      "script": "/home/birch/.config/waybar/scripts/stat.sh disk",
       "interval": 60,
       "css-name": "executor"
     },
@@ -112,17 +112,17 @@
       "css-name": "clock"
     },
     "executor-cpu": {
-      "script": "/home/kib/.config/waybar/scripts/stat.sh cpu",
+      "script": "/home/birch/.config/waybar/scripts/stat.sh cpu",
       "interval": 5,
       "css-name": "executor"
     },
     "executor-mem": {
-      "script": "/home/kib/.config/waybar/scripts/stat.sh mem",
+      "script": "/home/birch/.config/waybar/scripts/stat.sh mem",
       "interval": 15,
       "css-name": "executor"
     },
     "executor-disk": {
-      "script": "/home/kib/.config/waybar/scripts/stat.sh disk",
+      "script": "/home/birch/.config/waybar/scripts/stat.sh disk",
       "interval": 60,
       "css-name": "executor"
     },

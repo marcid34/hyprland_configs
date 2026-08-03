@@ -1,7 +1,11 @@
 /* Windows 11 Pro — rofi (default list; launcher is the styled one) */
 configuration {
-  modes: "drun,run"; show-icons: true; icon-theme: "breeze-dark";
-  drun-display-format: "{name}"; display-drun: "apps"; display-run: "run";
+  modes: "drun,run";
+  show-icons: true;
+  icon-theme: "breeze-dark";
+  drun-display-format: "{name}";
+  display-drun: "apps";
+  display-run: "run";
 }
 * { bg:#202020; bg1:#191919; bg2:#2b2b2b; bg3:#3d3d3d;
      fg:#ffffff; fg1:#e0e0e0; dim:#a0a0a0; ac:#0078d4;
