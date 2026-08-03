@@ -61,15 +61,23 @@ removed.
 
 ## Calamity rice
 
-| Asset | Source | Licence |
-| --- | --- | --- |
-| `calamity/crimson.png` | [CalamityTeam/CalamityModPublic](https://github.com/CalamityTeam/CalamityModPublic) — `MainMenu/ClassicMenuBackground.png` | Calamity Mod team's artwork, used unmodified apart from cropping |
-| `calamity/corruption.png` | [wallhaven](https://wallhaven.cc/w/z8mzov) | see above |
-| `calamity/crimson-biome.png` | [wallhaven](https://wallhaven.cc/w/57wz51) | kept as the pixel-art alternative to the boss art |
+| Asset | Source |
+| --- | --- |
+| `calamity/corruption.jpg` | Eater of Worlds / Shadow Orbs fan art — **supplied by the repo owner, original artist unknown** |
+| `calamity/crimson.jpg` | Brain of Cthulhu / Crimson Hearts fan art — **supplied by the repo owner, carries an artist signature that has not been identified** |
+| `calamity/corruption-biome.png` | [wallhaven](https://wallhaven.cc/w/z8mzov) — the in-game biome background, kept as the pixel-art alternative |
+| `calamity/crimson-biome.png` | [wallhaven](https://wallhaven.cc/w/57wz51) — ditto |
+| `calamity/crimson-boss-calamity.png` | [CalamityTeam/CalamityModPublic](https://github.com/CalamityTeam/CalamityModPublic) — `MainMenu/ClassicMenuBackground.png`, cropped |
 
-The cursor in `themes/calamity/make-cursor.py` is Terraria's own arrowhead,
-transcribed by hand from an in-game screenshot: an 8x7 grid and two colours,
-not an extracted asset, but Re-Logic's design.
+> The two active wallpapers are fan art whose creators have not been traced.
+> They are here because this is a personal rice; if you are the artist, or you
+> know who is, open an issue and they will be credited or removed. Anyone
+> forking this repo should assume they are **not** cleared for redistribution.
+
+The cursors in `themes/calamity/make-cursor.py` are drawn from a pixel grid in
+that file, not extracted assets. The pointer traces Terraria's own arrowhead,
+which is Re-Logic's design; the other twelve shapes have no counterpart in the
+game and are drawn to match.
 
 ## Fonts
 
