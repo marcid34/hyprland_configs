@@ -276,18 +276,30 @@ def place(grid):
 
 
 INHERITS = "Adwaita"
-# canvas * scale == nominal, exactly. 36 is not optional: a 1.5-scaled display
-# asking for a 24px cursor requests 36, and a theme without it gets its nearest
-# size picked and then rescaled by the toolkit.
-SCALES = [(2, 24), (3, 36), (4, 48), (5, 60), (6, 72), (8, 96)]
+# A dense ladder rather than whole multiples of the canvas, so whatever a
+# client asks for is present verbatim and nothing has to be stretched. 42 is
+# what this display requests: a 28px cursor on a 1.5-scaled output.
+SIZES = [24, 28, 32, 36, 40, 42, 48, 56, 64, 72, 96]
 
 
-def bitmap(grid, scale, fill, hi, second):
+def bitmap(grid, size, fill, hi, second):
+    """Render the canvas at exactly size x size px, nearest-neighbour.
+
+    Sampling per output pixel rather than scaling by a whole number means any
+    size can be produced exactly, so the theme can offer the size a client
+    actually asks for instead of the nearest multiple. When size divides the
+    canvas evenly the cells are uniform; when it does not they vary by one
+    pixel, which is still a hard edge -- unlike letting the toolkit rescale,
+    which interpolates and softens the whole cursor.
+    """
     gh, gw = len(grid), max(len(r) for r in grid)
-    w, h = gw * scale, gh * scale
-    px = bytearray(w * h * 4)
-    for y, row in enumerate(grid):
-        for x, ch in enumerate(row):
+    px = bytearray(size * size * 4)
+    for y in range(size):
+        gy = min(gh - 1, y * gh // size)
+        row = grid[gy]
+        for x in range(size):
+            gx = min(gw - 1, x * gw // size)
+            ch = row[gx] if gx < len(row) else "."
             if ch == ".":
                 continue
             if ch in ("K", "O"):
@@ -298,11 +310,9 @@ def bitmap(grid, scale, fill, hi, second):
                 r, g, b = second
             else:
                 r, g, b = fill
-            for dy in range(scale):
-                for dx in range(scale):
-                    o = ((y * scale + dy) * w + (x * scale + dx)) * 4
-                    px[o:o + 4] = bytes((b, g, r, 0xFF))     # BGRA
-    return w, h, bytes(px)
+            o = (y * size + x) * 4
+            px[o:o + 4] = bytes((b, g, r, 0xFF))            # BGRA
+    return size, size, bytes(px)
 
 
 def xcursor(frames):
@@ -338,9 +348,11 @@ def build(biome, spec, preview=None):
             canvas, dx, dy = place(grid)
         hx, hy = hot[0] + dx, hot[1] + dy
         frames = []
-        for scale, nominal in SCALES:
-            w, h, px = bitmap(canvas, scale, spec["fill"], spec["hi"], spec["second"])
-            frames.append((nominal, w, h, hx * scale, hy * scale, px))
+        for size in SIZES:
+            w, h, px = bitmap(canvas, size, spec["fill"], spec["hi"], spec["second"])
+            # Hotspot in canvas cells -> the same point in output pixels.
+            frames.append((size, w, h,
+                           hx * size // CANVAS, hy * size // CANVAS, px))
         with open(os.path.join(curs, name), "wb") as fh:
             fh.write(xcursor(frames))
         made += 1
@@ -355,7 +367,7 @@ def build(biome, spec, preview=None):
             # canvas is that every cursor occupies the same box, and a preview
             # of the bare grid would hide exactly the bug this prevents.
             os.makedirs(preview, exist_ok=True)
-            w, h, px = bitmap(canvas, 4, spec["fill"], spec["hi"], spec["second"])
+            w, h, px = bitmap(canvas, 48, spec["fill"], spec["hi"], spec["second"])
             _png(w, h, px, os.path.join(preview, f"{theme}-{name}.png"))
 
     with open(os.path.join(root, "index.theme"), "w") as fh:
