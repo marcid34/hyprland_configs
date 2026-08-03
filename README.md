@@ -87,19 +87,20 @@ so you know what you're agreeing to.
 sudo pacman -S --needed \
   hyprland hypridle hyprlock hyprpaper \
   waybar mako rofi alacritty fastfetch cava btop neovim \
-  nwg-panel nwg-drawer nwg-dock-hyprland conky starship \
+  wofi fuzzel nwg-panel nwg-drawer nwg-dock-hyprland conky starship \
   grim slurp swappy wl-clipboard brightnessctl playerctl wireplumber \
   thunar python jq curl git fontconfig \
-  ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols adwaita-fonts
+  ttf-jetbrains-mono-nerd ttf-ubuntu-mono-nerd ttf-nerd-fonts-symbols \
+  ttf-ubuntu-font-family adwaita-fonts gnu-free-fonts terminus-font
 ```
 
 </details>
 
 <details>
-<summary><b>AUR packages (optional — every one degrades gracefully)</b></summary>
+<summary><b>AUR packages (every one degrades gracefully)</b></summary>
 
 ```bash
-yay -S swww yambar tofi
+yay -S swww yambar tofi bibata-cursor-theme-bin
 ```
 
 | Package | Used by | If missing |
@@ -107,13 +108,25 @@ yay -S swww yambar tofi
 | `swww` | animated wallpaper transitions | falls back to `hyprpaper` (instant swap) |
 | `yambar` | the `oxocarbon` rice's bar | that rice runs with no bar |
 | `tofi` | 5 rices' launcher | those rices fall back to `rofi` |
+| `bibata-cursor-theme-bin` | the session-wide cursor set in `hypr/hyprland.lua` | you silently get the system default cursor |
 
-Two more launchers, `wofi` and `fuzzel`, are in the official repos and are used
-by 9 rices between them. They also fall back to `rofi` if absent:
+</details>
 
-```bash
-sudo pacman -S --needed wofi fuzzel
-```
+<details>
+<summary><b>What "full functionality" actually means here</b></summary>
+
+`./install.sh` checks for all of it and offers to install what's missing, so
+you shouldn't need the lists above. Three separate kinds of dependency get
+checked, because they can't be detected the same way:
+
+| Kind | Checked with | Why it matters |
+| --- | --- | --- |
+| commands | `command -v` | a missing launcher or bar means that rice falls back |
+| fonts | `fc-list`, exact family match | a substituted font changes a rice's whole character; a missing Nerd Font turns every bar icon into tofu |
+| cursor themes | an icon dir with `cursors/` in it | `hyprctl setcursor` reports success for a theme that doesn't exist and leaves you with no cursor |
+
+Rices that build their own cursors (`calamity`) have them generated during
+install, into `~/.local/share/icons` — no root, no extra step.
 
 </details>
 

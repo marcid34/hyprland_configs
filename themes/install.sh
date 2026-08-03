@@ -14,8 +14,21 @@ hc_init "$@"
 # rices (see each profile's shell.components) and are checked separately.
 hc_deps rofi python3:python hyprctl:hyprland makoctl:mako starship
 
-hc_log "optional — only needed by rices that declare them in shell.components"
-hc_deps waybar swww conky yambar nwg-dock-hyprland
+# The rest of this block is everything the *rices* ask for, as opposed to what
+# switch.sh itself needs. None of it is fatal — a rice whose launcher or bar is
+# absent falls back to rofi / runs bare — but "installed and working" should
+# not mean "13 of the 33 profiles quietly look like something else", so all of
+# it gets offered.
+hc_log "launchers — each rice declares one in themes/<rice>/launcher"
+hc_deps wofi fuzzel tofi nwg-drawer
+
+hc_log "desktop shells — declared in themes/<rice>/shell.components"
+hc_deps waybar swww conky yambar nwg-dock-hyprland nwg-panel
+
+hc_log "cursor themes"
+# Bibata is the session-wide default set in hypr/hyprland.lua; without it that
+# variable names a theme that does not exist and you silently get the fallback.
+hc_deps_cursor Bibata-Modern-Classic:bibata-cursor-theme-bin
 
 hc_hydrate
 
@@ -43,10 +56,23 @@ fi
 # starship is the only theme link with no component directory of its own.
 hc_theme_link starship.toml "$HC_CONFIG/starship.toml"
 
+# Rices that build their own cursors ship a make-cursor.py. Running it here
+# means a fresh clone gets them without a separate manual step; it writes only
+# into ~/.local/share/icons, so it needs no root.
+for maker in "$HC_REPO"/themes/*/make-cursor.py; do
+    [ -f "$maker" ] || continue
+    # themes/current is a symlink to the active rice, so the glob finds every
+    # such rice twice. Build each one once, under its real name.
+    [ -L "$(dirname "$maker")" ] && continue
+    rice="$(basename "$(dirname "$maker")")"
+    hc_log "building $rice's cursors"
+    hc_run python3 "$maker" || hc_warn "$rice cursor build failed — that rice keeps the session cursor"
+done
+
 hc_log "wallpapers"
-hc_info "images are NOT in this repo (48M, and mostly not mine to redistribute)."
-hc_info "each rice points at ~/Pictures/Wallpapers/themes/<rice>.{jpg,png};"
+hc_info "included in this repo under wallpapers/<rice>/, one folder per rice."
+hc_info "point a rice somewhere else by editing themes/<rice>/wallpaper;"
 hc_info "switch.sh skips a missing image rather than failing, so the rest of"
-hc_info "the rice still applies. Drop your own in to fill them."
+hc_info "the rice still applies."
 
 hc_done

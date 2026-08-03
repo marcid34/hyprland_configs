@@ -103,6 +103,48 @@ hc_aur_helper() {
     echo ""
 }
 
+# hc_offer <label> <pkg>...
+# Shared tail of every dependency check: record what's missing, then offer to
+# install it. Kept separate from the checking so that things which are not
+# commands -- fonts, cursor themes -- can be offered the same way.
+hc_offer() {
+    local label="$1"; shift
+    [ $# -eq 0 ] && return 0
+
+    hc_warn "missing $label: $*"
+    HC_MISSING_PKGS+=("$@")
+
+    if ! command -v pacman >/dev/null 2>&1; then
+        hc_info "not an Arch system — install these with your package manager, then re-run"
+        return 0
+    fi
+
+    # AUR-only packages cannot be installed by pacman. Say so rather than
+    # letting pacman fail with "target not found" and look like a bug.
+    local helper; helper="$(hc_aur_helper)"
+    local installer=("sudo" "pacman" "-S" "--needed")
+    if [ -n "$helper" ]; then
+        installer=("$helper" "-S" "--needed")
+    else
+        local aur_only=()
+        for p in "$@"; do
+            pacman -Si "$p" >/dev/null 2>&1 || aur_only+=("$p")
+        done
+        if [ ${#aur_only[@]} -gt 0 ]; then
+            hc_info "no AUR helper (yay/paru) — these are AUR-only and will be skipped:"
+            hc_dim "${aur_only[*]}"
+        fi
+    fi
+
+    if hc_confirm "install with ${installer[0]}?"; then
+        hc_run "${installer[@]}" "$@" || hc_warn "package install failed — continuing, configs will still be linked"
+    else
+        hc_info "skipped; $* still needed for full functionality"
+    fi
+    return 0
+}
+
+# hc_deps <cmd>[:<pkg>]...   — present if the command is on PATH.
 hc_deps() {
     [ "$HC_NO_DEPS" = "1" ] && return 0
     [ $# -eq 0 ] && return 0
@@ -115,25 +157,61 @@ hc_deps() {
 
     hc_log "checking deps: $*"
     if [ ${#missing[@]} -eq 0 ]; then hc_dim "all present"; return 0; fi
+    hc_offer "packages" "${missing[@]}"
+}
 
-    hc_warn "missing: ${missing[*]}"
-    HC_MISSING_PKGS+=("${missing[@]}")
+# hc_deps_font <family>:<pkg>...
+# Fonts are not commands, so presence is a fontconfig question. Matching the
+# family exactly matters: fc-list substring-matches, and "Ubuntu" would
+# otherwise be satisfied by "UbuntuMono Nerd Font".
+hc_deps_font() {
+    [ "$HC_NO_DEPS" = "1" ] && return 0
+    [ $# -eq 0 ] && return 0
+    command -v fc-list >/dev/null 2>&1 || { hc_dim "no fc-list — skipping font check"; return 0; }
 
-    if ! command -v pacman >/dev/null 2>&1; then
-        hc_info "not an Arch system — install these with your package manager, then re-run"
-        return 0
-    fi
+    # Enumerate once, then match in memory. Piping fc-list into `grep -q` per
+    # font would be both 12 forks and a bug: grep exits at the first match,
+    # fc-list dies of SIGPIPE, and `set -o pipefail` turns that into a failure
+    # — so every installed font would read as missing.
+    local families
+    families="$(fc-list : family | tr ',' '\n' | sed 's/^ *//;s/ *$//' | sort -u)"
 
-    local helper; helper="$(hc_aur_helper)"
-    local installer=("sudo" "pacman" "-S" "--needed")
-    [ -n "$helper" ] && installer=("$helper" "-S" "--needed")
+    local missing=() spec fam pkg
+    for spec in "$@"; do
+        fam="${spec%%:*}"; pkg="${spec##*:}"
+        if ! printf '%s\n' "$families" | grep -qxF "$fam"; then
+            case " ${missing[*]} " in *" $pkg "*) ;; *) missing+=("$pkg") ;; esac
+        fi
+    done
 
-    if hc_confirm "install with ${installer[0]}?"; then
-        hc_run "${installer[@]}" "${missing[@]}" || hc_warn "package install failed — continuing, configs will still be linked"
-    else
-        hc_info "skipped; ${missing[*]} still needed for this component to work"
-    fi
-    return 0
+    hc_log "checking fonts: $#"
+    if [ ${#missing[@]} -eq 0 ]; then hc_dim "all present"; return 0; fi
+    hc_offer "fonts" "${missing[@]}"
+}
+
+# hc_deps_cursor <xcursor-theme>:<pkg>...
+# A cursor theme is present when some icon directory holds a `cursors/` dir
+# for it. Worth checking rather than assuming: hyprctl setcursor reports ok
+# for a theme that does not exist and leaves you with no cursor at all.
+hc_deps_cursor() {
+    [ "$HC_NO_DEPS" = "1" ] && return 0
+    [ $# -eq 0 ] && return 0
+
+    local missing=() spec theme pkg base found
+    for spec in "$@"; do
+        theme="${spec%%:*}"; pkg="${spec##*:}"
+        found=""
+        for base in "$HOME/.local/share/icons" "$HOME/.icons" /usr/share/icons; do
+            [ -d "$base/$theme/cursors" ] && { found=1; break; }
+        done
+        [ -n "$found" ] || case " ${missing[*]} " in
+            *" $pkg "*) ;; *) missing+=("$pkg") ;;
+        esac
+    done
+
+    hc_log "checking cursor themes: $*"
+    if [ ${#missing[@]} -eq 0 ]; then hc_dim "all present"; return 0; fi
+    hc_offer "cursor themes" "${missing[@]}"
 }
 
 # ── Backup + link ──────────────────────────────────────────────────────
