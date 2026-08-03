@@ -14,6 +14,9 @@ Rectangle {
     property alias label: text.text
     property int labelSize: 24
     property string labelFont: Theme.fontMain
+    // A grid from Icons.qml. Set it and the slot draws that instead of text.
+    property var icon: null
+    property int iconPixel: 3
 
     signal clicked()
 
@@ -40,12 +43,25 @@ Rectangle {
 
     Text {
         id: text
+        visible: root.icon === null
         anchors.centerIn: parent
         color: root.active ? Qt.lighter(root.accent, 1.5) : Theme.fg1
         font.family: root.labelFont
         font.pixelSize: root.labelSize
         renderType: Text.NativeRendering
         antialiasing: false
+    }
+
+    // A slot carries either a label or a drawn icon, never both.
+    PixelIcon {
+        visible: root.icon !== null
+        anchors.centerIn: parent
+        grid: root.icon === null ? [] : root.icon
+        pixel: root.iconPixel
+        fill: root.active ? Qt.lighter(root.accent, 1.3) : root.accent
+        light: Theme.fg
+        second: Theme.ac2
+        dim: Theme.dim
     }
 
     MouseArea {

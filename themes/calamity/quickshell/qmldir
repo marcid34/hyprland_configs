@@ -1,4 +1,6 @@
 module calamity
 singleton Theme 1.0 Theme.qml
+singleton Icons 1.0 Icons.qml
 Slot 1.0 Slot.qml
 Heart 1.0 Heart.qml
+PixelIcon 1.0 PixelIcon.qml

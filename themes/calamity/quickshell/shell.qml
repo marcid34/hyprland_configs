@@ -97,8 +97,8 @@ ShellRoot {
 
                     // menu toggle
                     Slot {
-                        label: root.menuOpen ? "◀" : "▶"
-                        labelSize: 18
+                        icon: root.menuOpen ? Icons.chevronLeft : Icons.chevronRight
+                        iconPixel: 3
                         active: root.menuOpen
                         onClicked: root.menuOpen = !root.menuOpen
                     }
@@ -173,8 +173,8 @@ ShellRoot {
                     }
 
                     Slot {
-                        label: "⏻"
-                        labelSize: 18
+                        icon: Icons.power
+                        iconPixel: 3
                         accent: Theme.red
                         onClicked: root.run("~/.config/waybar/scripts/power.sh")
                     }
@@ -227,19 +227,19 @@ ShellRoot {
 
                     Repeater {
                         model: [
-                            { icon: "⌘", tip: "launcher", cmd: "~/.config/themes/launch.sh" },
-                            { icon: "▣", tip: "terminal", cmd: "alacritty" },
-                            { icon: "☰", tip: "files",    cmd: "thunar" },
-                            { icon: "❉", tip: "biome",    cmd: "setsid -f ~/.config/themes/calamity/mode.sh --toggle" },
-                            { icon: "◑", tip: "rices",    cmd: "~/.config/themes/picker.sh" },
-                            { icon: "⚯", tip: "lock",     cmd: "hyprlock" },
-                            { icon: "✇", tip: "shot",     cmd: "grim -g \"$(slurp)\" - | swappy -f -" },
-                            { icon: "⏻", tip: "power",    cmd: "~/.config/waybar/scripts/power.sh" }
+                            { art: Icons.launcher, tip: "launcher", cmd: "~/.config/themes/launch.sh" },
+                            { art: Icons.terminal, tip: "terminal", cmd: "alacritty" },
+                            { art: Icons.files,    tip: "files",    cmd: "thunar" },
+                            { art: Icons.biome,    tip: "biome",    cmd: "setsid -f ~/.config/themes/calamity/mode.sh --toggle" },
+                            { art: Icons.rices,    tip: "rices",    cmd: "~/.config/themes/picker.sh" },
+                            { art: Icons.lock,     tip: "lock",     cmd: "hyprlock" },
+                            { art: Icons.shot,     tip: "shot",     cmd: "grim -g \"$(slurp)\" - | swappy -f -" },
+                            { art: Icons.power,    tip: "power",    cmd: "~/.config/waybar/scripts/power.sh" }
                         ]
                         Slot {
                             required property var modelData
-                            label: modelData.icon
-                            labelSize: 20
+                            icon: modelData.art
+                            iconPixel: 3
                             onClicked: {
                                 root.run(modelData.cmd);
                                 root.menuOpen = false;
