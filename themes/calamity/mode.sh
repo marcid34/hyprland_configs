@@ -48,7 +48,12 @@ apply() {
     [ -d "$MODES/$want" ] || die "no such biome: $want (have: $(biomes | tr '\n' ' '))"
 
     # Repoint atomically, so a reader never observes a missing `current`.
-    ln -sfn "$MODES/$want" "$CURRENT.tmp"
+    #
+    # The target is relative on purpose: this symlink is committed, and an
+    # absolute one would bake this machine's home directory into the repo and
+    # dangle on every clone. hc_hydrate cannot rescue it either — it rewrites
+    # file contents, and a symlink target is not file content.
+    ln -sfn "$want" "$CURRENT.tmp"
     mv -Tf "$CURRENT.tmp" "$CURRENT"
 
     # Only re-apply if this rice is the live one. Switching biome while some
