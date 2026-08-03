@@ -224,6 +224,8 @@ profile and says which file is missing, so check its output first.
 | Key | Does |
 | --- | --- |
 | `Super + T` | **rice picker** |
+| `Super + Space` | command palette — on rices with a Quickshell shell |
+| `Super + D` | dashboard — same |
 | `Super + R` / `E` | launcher / file manager |
 | `Super + Q` / `C` | terminal / close window |
 | `Super + L` | lock |

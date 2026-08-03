@@ -376,6 +376,14 @@ hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 -- Rice picker (rofi menu over all profiles, styled by the active rice)
 hl.bind(mainMod .. " + T",             hl.dsp.exec_cmd("~/.config/themes/picker.sh"))
 
+-- Quickshell surfaces on rices that ship one (qshell, calamity). Reached over
+-- IPC rather than Quickshell's GlobalShortcut: that registers an action, and
+-- binding it needs a `global` dispatcher this Lua wrapper does not expose.
+-- qsipc.sh exits quietly on the rices with no Quickshell shell, so these are
+-- harmless everywhere else.
+hl.bind(mainMod .. " + SPACE",         hl.dsp.exec_cmd("~/.config/themes/qsipc.sh palette toggle"))
+hl.bind(mainMod .. " + D",             hl.dsp.exec_cmd("~/.config/themes/qsipc.sh dash toggle"))
+
 -- Screenshots. grim writes the file, slurp picks the region, swappy annotates.
 -- Region shots go straight to swappy so you can mark up before saving; the
 -- full-screen one just files it and copies to the clipboard.
