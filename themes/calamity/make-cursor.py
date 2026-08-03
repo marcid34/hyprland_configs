@@ -43,6 +43,13 @@ BIOMES = {
 # ── the shapes ────────────────────────────────────────────────────────────
 # name: (grid, hotspot, [x11 and css aliases])
 
+# Every grid fits the pointer's footprint -- 9x9 at most.
+#
+# This matters more than it looks: one scale factor is applied to all of them,
+# so a 15-row I-beam next to an 8-row arrow renders nearly twice the height.
+# Drawing them all to the same box is what keeps the set feeling like one
+# cursor rather than a pointer plus a pile of oversized icons. MAX_GRID below
+# enforces it.
 ARROW = [
     "KK.......",
     "KWKKK....",
@@ -55,175 +62,133 @@ ARROW = [
 ]
 
 IBEAM = [
-    "OOOOOOO",
-    "OFFFFFO",
-    "OOOFOOO",
-    "..OFO..",
-    "..OFO..",
-    "..OFO..",
-    "..OFO..",
-    "..OFO..",
-    "..OFO..",
-    "..OFO..",
-    "..OFO..",
-    "..OFO..",
-    "OOOFOOO",
-    "OFFFFFO",
-    "OOOOOOO",
+    "OOOOO",
+    "OFFFO",
+    "OOFOO",
+    ".OFO.",
+    ".OFO.",
+    ".OFO.",
+    "OOFOO",
+    "OFFFO",
+    "OOOOO",
 ]
 
 HAND = [
-    "...OO......",
-    "..OWWO.....",
-    "..OWFO.....",
-    "..OWFO.....",
-    "..OWFOOO...",
-    "..OWFOFFOO.",
-    "..OWFOFFOFO",
-    ".OOWFFFFFFO",
-    ".OWFFFFFFFO",
-    ".OWFFFFFFFO",
-    "..OFFFFFFO.",
-    "..OFFFFFFO.",
-    "...OOOOOO..",
+    "..OO....",
+    ".OWFO...",
+    ".OWFOOO.",
+    ".OWFOFFO",
+    "OOWFFFFO",
+    "OFFFFFFO",
+    "OFFFFFFO",
+    ".OFFFFO.",
+    "..OOOO..",
 ]
 
 HOURGLASS = [
-    "OOOOOOOOO",
-    "OWWWWWWWO",
-    ".OGGGGGO.",
-    "..OGGGO..",
-    "...OGO...",
-    "...OGO...",
-    "..OGGGO..",
-    ".OGGGGGO.",
-    "OWWWWWWWO",
-    "OOOOOOOOO",
+    "OOOOOOO",
+    "OWWWWWO",
+    ".OGGGO.",
+    "..OGO..",
+    "..OGO..",
+    ".OGGGO.",
+    "OGGGGGO",
+    "OWWWWWO",
+    "OOOOOOO",
 ]
 
 CROSSHAIR = [
-    ".....OOO.....",
-    ".....OFO.....",
-    ".....OFO.....",
-    ".....OFO.....",
-    ".....OFO.....",
-    "OOOOOOFOOOOOO",
-    "OFFFFFFFFFFFO",
-    "OOOOOOFOOOOOO",
-    ".....OFO.....",
-    ".....OFO.....",
-    ".....OFO.....",
-    ".....OFO.....",
-    ".....OOO.....",
+    "...OOO...",
+    "...OFO...",
+    "...OFO...",
+    "OOOOFOOOO",
+    "OFFFFFFFO",
+    "OOOOFOOOO",
+    "...OFO...",
+    "...OFO...",
+    "...OOO...",
 ]
 
 RESIZE_H = [
-    "....O.......O....",
-    "...OO.......OO...",
-    "..OFO.......OFO..",
-    ".OFFOOOOOOOOOFFO.",
-    "OFFFFFFFFFFFFFFFO",
-    ".OFFOOOOOOOOOFFO.",
-    "..OFO.......OFO..",
-    "...OO.......OO...",
-    "....O.......O....",
+    "..O...O..",
+    ".OO...OO.",
+    "OFOOOOOFO",
+    "OFFFFFFFO",
+    "OFOOOOOFO",
+    ".OO...OO.",
+    "..O...O..",
 ]
 
 RESIZE_V = [
-    "....O....",
-    "...OFO...",
-    "..OFFFO..",
-    ".OFFFFFO.",
-    "OOOFFFOOO",
-    "..OFFFO..",
-    "..OFFFO..",
-    "..OFFFO..",
-    "..OFFFO..",
-    "OOOFFFOOO",
-    ".OFFFFFO.",
-    "..OFFFO..",
-    "...OFO...",
-    "....O....",
+    "...O...",
+    "..OFO..",
+    ".OFFFO.",
+    "OOOFOOO",
+    "..OFO..",
+    "OOOFOOO",
+    ".OFFFO.",
+    "..OFO..",
+    "...O...",
 ]
 
 RESIZE_FDIAG = [
-    "OOOOOOO......",
-    "OFFFFO.......",
-    "OFFFO........",
-    "OFOFFO.......",
-    "OFO.OFO......",
-    "OOO..OFO.....",
-    "......OFO..OO",
-    ".......OFO.OF",
-    "........OFOOF",
-    ".........OFFF",
-    "......OO.OFFF",
-    "......OFFFFFO",
-    "......OOOOOOO",
+    "OOOOO....",
+    "OFFFO....",
+    "OFFFO....",
+    "OOFFOO...",
+    "..OFFFO..",
+    "...OFFOO.",
+    "....OFFFO",
+    "....OFFFO",
+    "....OOOOO",
 ]
 
 RESIZE_BDIAG = [
-    "......OOOOOOO",
-    ".......OFFFFO",
-    "........OFFFO",
-    ".......OFFOFO",
-    "......OFO.OFO",
-    ".....OFO..OOO",
-    "OO..OFO......",
-    "FO.OFO.......",
-    "FOOFO........",
-    "FFFO.........",
-    "FFFO.OO......",
-    "OFFFFFFO.....",
-    "OOOOOOO......",
+    "....OOOOO",
+    "....OFFFO",
+    "....OFFFO",
+    "...OOFFOO",
+    "..OFFFO..",
+    ".OOFFO...",
+    "OFFFO....",
+    "OFFFO....",
+    "OOOOO....",
 ]
 
 MOVE = [
-    ".....O.....",
-    "....OFO....",
-    "...OFFFO...",
-    "....OFO....",
-    ".O..OFO..O.",
-    "OFOOOFOOOFO",
-    "OFFFFFFFFFO",
-    "OFOOOFOOOFO",
-    ".O..OFO..O.",
-    "....OFO....",
-    "...OFFFO...",
-    "....OFO....",
-    ".....O.....",
+    "....O....",
+    "...OFO...",
+    "..OFFFO..",
+    "OOOOFOOOO",
+    "OFFFFFFFO",
+    "OOOOFOOOO",
+    "..OFFFO..",
+    "...OFO...",
+    "....O....",
 ]
 
-# A filled disc with a bar punched out of it. A ring plus a diagonal slash is
-# the conventional drawing, but at eleven pixels the slash and the ring blur
-# into each other -- the bar stays legible.
 FORBIDDEN = [
-    "...OOOOO...",
-    "..OFFFFFO..",
-    ".OFFFFFFFO.",
-    "OFFFFFFFFFO",
-    "OFFOOOOOFFO",
-    "OFOOOOOOOFO",
-    "OFFOOOOOFFO",
-    "OFFFFFFFFFO",
-    ".OFFFFFFFO.",
-    "..OFFFFFO..",
-    "...OOOOO...",
+    "..OOOOO..",
+    ".OFFFFFO.",
+    "OFFFFFFFO",
+    "OFOOOOOFO",
+    "OOOOOOOOO",
+    "OFOOOOOFO",
+    "OFFFFFFFO",
+    ".OFFFFFO.",
+    "..OOOOO..",
 ]
 
-# A closed fist. The notches along the top are knuckles -- without them this
-# is an indistinct blob at this size.
 GRABBING = [
-    "..OO.OO.OO.",
-    ".OFFOFFOFFO",
-    ".OFFFFFFFFO",
-    "OFFFFFFFFFO",
-    "OFFFFFFFFFO",
-    "OFFFFFFFFFO",
-    ".OFFFFFFFFO",
-    ".OFFFFFFFO.",
-    "..OFFFFFO..",
-    "...OOOOO...",
+    ".OO.OO.O.",
+    "OFFOFFOFO",
+    "OFFFFFFFO",
+    "OFFFFFFFO",
+    "OFFFFFFFO",
+    "OFFFFFFFO",
+    ".OFFFFFO.",
+    "..OFFFO..",
+    "...OOO...",
 ]
 
 # Aliases are the whole point of shipping a set: toolkits ask by both the
@@ -234,36 +199,50 @@ SHAPES = {
     "left_ptr": (ARROW, (0, 0), [
         "default", "arrow", "top_left_arrow", "left_arrow",
         "9d800788f1b08800ae810202380a0822"]),
-    "xterm": (IBEAM, (3, 7), ["text", "ibeam"]),
-    "hand2": (HAND, (4, 1), [
+    "xterm": (IBEAM, (2, 4), ["text", "ibeam"]),
+    "hand2": (HAND, (3, 1), [
         "pointer", "hand1", "hand", "pointing_hand", "grab", "openhand",
         "e29285e634086352946a0e7090d73106"]),
-    "watch": (HOURGLASS, (4, 5), ["wait"]),
-    "left_ptr_watch": (HOURGLASS, (4, 5), [
+    "watch": (HOURGLASS, (3, 4), ["wait"]),
+    "left_ptr_watch": (HOURGLASS, (3, 4), [
         "progress", "half-busy", "00000000000000020006000e7e9ffc3f",
         "3ecb610c1bf2410f44200f48c40d3599"]),
-    "crosshair": (CROSSHAIR, (6, 6), ["cross", "tcross", "cell"]),
-    "sb_h_double_arrow": (RESIZE_H, (8, 4), [
+    "crosshair": (CROSSHAIR, (4, 4), ["cross", "tcross", "cell"]),
+    "sb_h_double_arrow": (RESIZE_H, (4, 3), [
         "ew-resize", "h_double_arrow", "col-resize", "split_h",
         "028006030e0e7ebffc7f7070c0600140", "14fef782d02440884392942c11205230"]),
-    "sb_v_double_arrow": (RESIZE_V, (4, 6), [
+    "sb_v_double_arrow": (RESIZE_V, (3, 4), [
         "ns-resize", "v_double_arrow", "row-resize", "split_v",
         "00008160000006810000408080010102", "2870a09082c103050810ffdffffe0204"]),
-    "bottom_right_corner": (RESIZE_FDIAG, (6, 6), [
+    "bottom_right_corner": (RESIZE_FDIAG, (4, 4), [
         "nwse-resize", "size_fdiag", "top_left_corner",
         "c7088f0f3e6c8088236ef8e1e3e70000", "38c5dff7c7b8962045400281044508d2"]),
-    "bottom_left_corner": (RESIZE_BDIAG, (6, 6), [
+    "bottom_left_corner": (RESIZE_BDIAG, (4, 4), [
         "nesw-resize", "size_bdiag", "top_right_corner",
         "fcf1c3c7cd4491d801f1e1c78f100000", "60c0e6ba2a1b47cec1cf29be7dc9a55e"]),
-    "fleur": (MOVE, (5, 6), ["move", "all-scroll", "size_all", "dnd-move"]),
-    "crossed_circle": (FORBIDDEN, (5, 5), [
+    "fleur": (MOVE, (4, 4), ["move", "all-scroll", "size_all", "dnd-move"]),
+    "crossed_circle": (FORBIDDEN, (4, 4), [
         "not-allowed", "no-drop", "forbidden", "dnd-none",
         "03b6e0fcb3499374a867c041f52298f0"]),
     # A drag in progress is a closed hand, not the move compass -- aliasing
     # `grabbing` onto fleur would make every drag look like a window move.
-    "grabbing": (GRABBING, (5, 5), [
+    "grabbing": (GRABBING, (4, 4), [
         "closedhand", "dnd-grabbing", "fcf21c00b30f7e3f83fe0dfd12e71cff"]),
 }
+
+
+# A shape bigger than this renders visibly larger than the pointer, because
+# one scale factor is applied to every grid. A hotspot outside the grid puts
+# the click point somewhere the cursor is not being drawn. Both are silent
+# failures at runtime, so they are caught here instead.
+MAX_GRID = 9
+
+for _n, (_g, _hot, _al) in SHAPES.items():
+    _w = max(len(r) for r in _g)
+    _h = len(_g)
+    assert all(len(r) == _w for r in _g), f"{_n}: ragged grid"
+    assert _w <= MAX_GRID and _h <= MAX_GRID, f"{_n}: {_w}x{_h} exceeds {MAX_GRID}"
+    assert 0 <= _hot[0] < _w and 0 <= _hot[1] < _h, f"{_n}: hotspot {_hot} outside grid"
 
 INHERITS = "Adwaita"
 # The pointer grid is 8px tall, so a "24px" cursor wants a 3x upscale, not 1x.
