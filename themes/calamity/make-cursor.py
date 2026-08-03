@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 """Build the calamity rice's pixel cursors, one per biome.
 
-Terraria's own cursor art is Re-Logic's and has no freely-licensed port, so
-this draws its own pointer from the pixel grid below rather than shipping
-someone else's bitmap. What it borrows is the *convention* a 2D pixel game
-uses: a hard 1px black outline, a flat bright fill, no antialiasing, and
-integer upscaling so the edges stay square at any size.
+The pointer below is Terraria's own arrowhead, transcribed by hand off an
+in-game screenshot: 8x7 pixels, one pixel of outline all the way round, tip at
+the top-left. It is a shape and eight colours, not an extracted asset, but it
+is Re-Logic's design and worth naming as such rather than passing off as
+original.
 
-The fill is the biome's accent, so the pointer turns purple in Corruption and
-red in Crimson along with everything else.
+Terraria lets the player choose the cursor colour, so tinting it per biome is
+in keeping: purple in Corruption, the game's own red in Crimson.
+
+Nothing here is antialiased and every size is an integer multiple of the
+original grid, so the edges stay square however far it scales up.
 
 Writes the Xcursor binary format directly -- no xcursorgen, no root:
 
@@ -23,33 +26,30 @@ import os
 import struct
 import sys
 
+# The arrowhead Terraria actually draws, read pixel-for-pixel off a screenshot
+# of the game (the reference was 2x, so this is the de-scaled 9x8 original).
+# Squat, tip at the top-left, one pixel of outline the whole way round.
+#
 # '.' transparent   'K' outline   'F' biome fill   'W' highlight
 GLYPH = [
-    "K...........",
-    "KK..........",
-    "KFK.........",
-    "KFFK........",
-    "KFFFK.......",
-    "KFFFFK......",
-    "KFFFFFK.....",
-    "KFFFFFFK....",
-    "KFFFFFFFK...",
-    "KFFFFFFFFK..",
-    "KFFFFFFFFFK.",
-    "KFFFFFKKKKKK",
-    "KFFKFFK.....",
-    "KFK.KFFK....",
-    "KK..KFFK....",
-    "K....KFFK...",
-    ".....KFFK...",
-    "......KFK...",
-    "......KK....",
+    "KK.......",
+    "KWKKK....",
+    ".KWFFKK..",
+    ".KWFFFFK.",
+    ".KFFFKK..",
+    "..KFKK...",
+    "..KFK....",
+    "...K.....",
 ]
 HOTSPOT = (0, 0)
 
+# Terraria lets the player pick the cursor colour, so tinting it per biome is
+# in keeping rather than a liberty. Crimson uses the game's own default red,
+# sampled from the reference; Corruption is its purple counterpart.
+OUTLINE = (0x0B, 0x0D, 0x11)
 BIOMES = {
-    "Corruption": dict(fill=(0x9D, 0x7C, 0xD8), hi=(0xC9, 0xB1, 0xF0)),
-    "Crimson":    dict(fill=(0xC8, 0x44, 0x3A), hi=(0xE8, 0x8A, 0x7A)),
+    "Corruption": dict(fill=(0x7A, 0x3C, 0xA8), hi=(0xB0, 0x7C, 0xE0)),
+    "Crimson":    dict(fill=(0xA8, 0x26, 0x45), hi=(0xE0, 0x5A, 0x78)),
 }
 
 # Every shape this theme does not draw is inherited from here.
@@ -60,7 +60,8 @@ INHERITS = "Adwaita"
 ALIASES = ["default", "arrow", "top_left_arrow", "left_arrow",
            "9d800788f1b08800ae810202380a0822"]
 
-SCALES = [(1, 24), (2, 48), (3, 72), (4, 96)]   # (pixel scale, nominal size)
+# The glyph is only 8px tall, so a "24px" cursor wants a 3x upscale, not 1x.
+SCALES = [(3, 24), (4, 32), (6, 48), (8, 64), (12, 96)]  # (pixel scale, nominal size)
 
 
 def bitmap(scale, fill, hi):
@@ -73,7 +74,8 @@ def bitmap(scale, fill, hi):
             if ch == ".":
                 continue
             if ch == "K":
-                r, g, b, a = 0x10, 0x0C, 0x14, 0xFF
+                r, g, b = OUTLINE
+                a = 0xFF
             elif ch == "W":
                 r, g, b = hi
                 a = 0xFF

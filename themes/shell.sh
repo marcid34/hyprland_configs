@@ -11,6 +11,7 @@
 #   conky      readout drawn on the wallpaper, no bar
 #   yambar     a different bar program entirely
 #   nwg-dock   floating dock, macOS-shaped
+#   quickshell a shell the rice writes itself, in QML (calamity)
 #   (none)     no persistent chrome; status is summoned with SUPER+I
 
 set -uo pipefail
@@ -21,7 +22,7 @@ COMPONENTS_FILE="$CUR/shell.components"
 
 # Everything a rice might run. Killed unconditionally on switch so a
 # component from the previous rice can never linger over the new one.
-ALL="waybar conky yambar nwg-dock nwg-panel"
+ALL="waybar conky yambar nwg-dock nwg-panel quickshell"
 
 stop_all() {
     for c in $ALL; do pkill -x "$c" 2>/dev/null; done
@@ -51,7 +52,7 @@ start() {
     local panel_wanted=0 panel_have=0
     for c in $comps; do
         case "$c" in
-            waybar|nwg-panel|yambar)
+            waybar|nwg-panel|yambar|quickshell)
                 panel_wanted=1
                 if [ "$c" = waybar ] || command -v "$c" >/dev/null; then
                     panel_have=1
@@ -60,7 +61,7 @@ start() {
     done
     if [ "$panel_wanted" = 1 ] && [ "$panel_have" = 0 ]; then
         comps="waybar $(printf '%s' "$comps" | tr ' ' '\n' \
-               | grep -vE '^(nwg-panel|yambar)$' | tr '\n' ' ')"
+               | grep -vE '^(nwg-panel|yambar|quickshell)$' | tr '\n' ' ')"
     fi
     for c in $comps; do
         case "$c" in
@@ -72,6 +73,13 @@ start() {
             yambar)
                 command -v yambar >/dev/null && \
                   setsid yambar -c "$CUR/yambar.yml" >/dev/null 2>&1 </dev/null & ;;
+            quickshell)
+                # --path so the config follows `current` rather than needing a
+                # copy under ~/.config/quickshell. -n stops a second instance
+                # stacking a duplicate bar if this is called twice.
+                command -v quickshell >/dev/null && \
+                  setsid quickshell -n --path "$CUR/quickshell/shell.qml" \
+                         >/dev/null 2>&1 </dev/null & ;;
             nwg-panel)
                 command -v nwg-panel >/dev/null && \
                   setsid nwg-panel -c "$CUR/nwg-panel.json" \

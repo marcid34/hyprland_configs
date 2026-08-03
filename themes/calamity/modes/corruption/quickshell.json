@@ -1,0 +1,18 @@
+{
+  "bg": "#191029",
+  "bg1": "#1f1533",
+  "bg2": "#2b1e47",
+  "bg3": "#3b2a60",
+  "bg4": "#4a3578",
+  "fg": "#e2d8f5",
+  "fg1": "#c3b3e4",
+  "dim": "#7d6ba8",
+  "ac": "#9d7cd8",
+  "ac2": "#7bd88f",
+  "red": "#d2688f",
+  "yellow": "#d8b96a",
+  "slot": "#241a3d",
+  "slotEdge": "#0d0817",
+  "label": "corruption",
+  "other": "crimson"
+}

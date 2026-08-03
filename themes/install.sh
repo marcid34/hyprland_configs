@@ -23,7 +23,7 @@ hc_log "launchers — each rice declares one in themes/<rice>/launcher"
 hc_deps wofi fuzzel tofi nwg-drawer
 
 hc_log "desktop shells — declared in themes/<rice>/shell.components"
-hc_deps waybar swww conky yambar nwg-dock-hyprland nwg-panel
+hc_deps waybar swww conky yambar nwg-dock-hyprland nwg-panel quickshell
 
 hc_log "cursor themes"
 # Bibata is the session-wide default set in hypr/hyprland.lua; without it that

@@ -1,4 +1,6 @@
-Terraria, by way of the Calamity mod. Two biomes in one rice — Corruption's
-shadow-purple and cursed-flame green, or Crimson's crimtane red and ichor gold
-— swapped live from a button in the bar, which repaints every app and the
-wallpaper with it.
+Terraria, by way of the Calamity mod — and the one rice that writes its own
+desktop shell. Bar and side menu are quickshell/QML built out of a single
+Terraria inventory slot: flat fill, hard double edge, pixel type, battery as
+life hearts. Two biomes, Corruption's shadow-purple or Crimson's crimtane red,
+swapped live from a slot in the bar, which repaints every app, the wallpaper
+and the cursor with it.

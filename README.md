@@ -11,7 +11,7 @@ dock, some conky, some yambar, some nothing at all.
 
 <img src="docs/hero.jpg" width="100%" alt="All 33 rices">
 
-`33 rices` · `4 light` · `7 launcher styles` · `7 shell layouts` · `wallpapers included`
+`33 rices` · `4 light` · `7 launcher styles` · `8 shell layouts` · `wallpapers included`
 
 **[Every rice, with descriptions and palettes →](#the-rices)**
 
@@ -263,7 +263,7 @@ The one this repo was built around.
 One shape, more than one palette, swapped live from a control the rice puts on the desktop itself.
 
 <table>
-<tr><td width="33%" valign="top"><img src="docs/thumbs/calamity.jpg" width="100%" alt="calamity"><br><img src="docs/palettes/calamity.png" width="100%" height="8" alt=""><br><b>calamity</b> · <code>calamity</code><br><sub>Terraria, by way of the Calamity mod. Two biomes in one rice — Corruption's shadow-purple and cursed-flame green, or Crimson's crimtane red and ichor gold — swapped live from a button in the bar, which repaints every app and the wallpaper with it.</sub><br><sub><b>shell</b> waybar · <b>launcher</b> rofi</sub></td><td width="33%"></td><td width="33%"></td></tr>
+<tr><td width="33%" valign="top"><img src="docs/thumbs/calamity.jpg" width="100%" alt="calamity"><br><img src="docs/palettes/calamity.png" width="100%" height="8" alt=""><br><b>calamity</b> · <code>calamity</code><br><sub>Terraria, by way of the Calamity mod — and the one rice that writes its own desktop shell. Bar and side menu are quickshell/QML built out of a single Terraria inventory slot: flat fill, hard double edge, pixel type, battery as life hearts. Two biomes, Corruption's shadow-purple or Crimson's crimtane red, swapped live from a slot in the bar, which repaints every app, the wallpaper and the cursor with it.</sub><br><sub><b>shell</b> quickshell · <b>launcher</b> rofi</sub></td><td width="33%"></td><td width="33%"></td></tr>
 </table>
 ### Designed atmospheres <sub>(9)</sub>
 

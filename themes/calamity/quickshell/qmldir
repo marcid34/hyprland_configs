@@ -1,0 +1,4 @@
+module calamity
+singleton Theme 1.0 Theme.qml
+Slot 1.0 Slot.qml
+Heart 1.0 Heart.qml

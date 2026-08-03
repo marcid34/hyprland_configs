@@ -58,3 +58,26 @@ removed.
 | `tokyonight` | `tokyonight.jpg` | [D3Ext/aesthetic-wallpapers](https://github.com/D3Ext/aesthetic-wallpapers) | `TokyoSimplistic.jpg` |
 | `ultraviolet` | `ultraviolet.png` | [D3Ext/aesthetic-wallpapers](https://github.com/D3Ext/aesthetic-wallpapers) | `minimal-purple.jpg` |
 | `win11` | `win11.jpg` | [linuxdotexe/nordic-wallpapers](https://github.com/linuxdotexe/nordic-wallpapers) | `Win11Lake-2.jpg` |
+
+## Calamity rice
+
+| Asset | Source | Licence |
+| --- | --- | --- |
+| `calamity/crimson.png` | [CalamityTeam/CalamityModPublic](https://github.com/CalamityTeam/CalamityModPublic) — `MainMenu/ClassicMenuBackground.png` | Calamity Mod team's artwork, used unmodified apart from cropping |
+| `calamity/corruption.png` | [wallhaven](https://wallhaven.cc/w/z8mzov) | see above |
+| `calamity/crimson-biome.png` | [wallhaven](https://wallhaven.cc/w/57wz51) | kept as the pixel-art alternative to the boss art |
+
+The cursor in `themes/calamity/make-cursor.py` is Terraria's own arrowhead,
+transcribed by hand from an in-game screenshot: an 8x7 grid and two colours,
+not an extracted asset, but Re-Logic's design.
+
+## Fonts
+
+Vendored under `assets/fonts/`, all SIL Open Font Licence 1.1 (licence text
+alongside each):
+
+| Font | Used for |
+| --- | --- |
+| [Pixelify Sans](https://github.com/google/fonts/tree/main/ofl/pixelifysans) | the calamity rice's UI text |
+| [Silkscreen](https://github.com/google/fonts/tree/main/ofl/silkscreen) | its labels and headings |
+| [Press Start 2P](https://github.com/google/fonts/tree/main/ofl/pressstart2p) | available for accents |
