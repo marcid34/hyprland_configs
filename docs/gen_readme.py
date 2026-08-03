@@ -7,6 +7,10 @@ OUT = os.path.expanduser("~/.config/rices/hyprland_configs/README.md")
 
 GROUPS = [
     ("Signature", "The one this repo was built around.", ["kib-custom"]),
+    ("Switchable",
+     "One shape, more than one palette, swapped live from a control the rice "
+     "puts on the desktop itself.",
+     ["calamity"]),
     ("Designed atmospheres",
      "The layout changes here, not just the colours — different bar shape, "
      "different launcher, different amount of chrome.",
@@ -361,7 +365,43 @@ order is the left-to-right order of the waybar profile indicators.
 
 Optional per-rice extras: `btop.theme`, `cava.conf`, `starship.toml`,
 `rofi-grid.rasi`, `rofi-full.rasi`, `wofi.conf`, `wofi.css`, `fuzzel.ini`,
-`tofi.conf`, `drawer.css`, `nwg-panel.json`.
+`tofi.conf`, `drawer.css`, `nwg-panel.json`, plus:
+
+| File | Does |
+| --- | --- |
+| `about` | one line describing the rice, used by the docs instead of guessing from a header comment |
+| `cursor` | `<xcursor-theme> [size]`, applied on switch — skipped with a warning if that theme isn't installed |
+
+### Rices with more than one mode
+
+`calamity` is the worked example. It has one shape and two palettes, and puts
+a button in its own bar to swap between them:
+
+```
+themes/calamity/
+  modes/corruption/   the colour-carrying files: waybar.css, rofi.rasi,
+  modes/crimson/      alacritty.toml, hyprlock.conf, mako.conf, hypr.lua,
+                      nvim.lua, fastfetch.jsonc, btop.theme, cava.conf,
+                      wallpaper, cursor
+  modes/current  ->   corruption          the only thing a switch changes
+  waybar.css     ->   modes/current/waybar.css     (and the same for the rest)
+  waybar.jsonc        shared: layout doesn't change between modes
+  mode.sh             the switcher
+```
+
+Because the rice-root files are symlinks through `modes/current`, flipping that
+one link repoints all twelve at once; `mode.sh` then re-applies the rice so
+every app reloads. It's the same trick `themes/current` uses, one level down.
+
+```bash
+themes/calamity/mode.sh              # which biome is live
+themes/calamity/mode.sh --toggle     # switch to the other
+themes/calamity/mode.sh crimson      # switch to a named one
+```
+
+The bar button calls `mode.sh --toggle` through `setsid -f`, because
+re-applying the rice restarts waybar — a plain `on-click` would run as
+waybar's child and kill itself partway through the switch.
 
 ---
 

@@ -1,0 +1,5 @@
+# calamity (corruption) — wallpaper
+# Bare path = applied to every monitor. Swapped wholesale when the biome
+# switch repoints modes/current, so this file is per-biome, not per-rice.
+/home/birch/.config/rices/hyprland_configs/wallpapers/calamity/corruption.png
+transition=fade

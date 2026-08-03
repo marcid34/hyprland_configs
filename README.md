@@ -2,16 +2,16 @@
 
 # hyprland_configs
 
-**A complete Hyprland desktop with 32 interchangeable rices.**
+**A complete Hyprland desktop with 33 interchangeable rices.**
 
 Switching a rice swaps the terminal, bar, launcher, notifications, lock screen,
 editor colours, prompt and wallpaper *together* — and can change what the
 desktop **is**, not just how it's painted. Some profiles run waybar, some a
 dock, some conky, some yambar, some nothing at all.
 
-<img src="docs/hero.jpg" width="100%" alt="All 32 rices">
+<img src="docs/hero.jpg" width="100%" alt="All 33 rices">
 
-`32 rices` · `4 light` · `7 launcher styles` · `7 shell layouts` · `wallpapers included`
+`33 rices` · `4 light` · `7 launcher styles` · `7 shell layouts` · `wallpapers included`
 
 **[Every rice, with descriptions and palettes →](#the-rices)**
 
@@ -166,7 +166,7 @@ themes/switch.sh dracula     # apply one by name
 themes/switch.sh --next      # or just cycle through them
 ```
 
-All 32 names are listed in [The rices](#the-rices) below, and in
+All 33 names are listed in [The rices](#the-rices) below, and in
 `themes/profiles.list`. Once you're logged in, `Super + T` opens a picker.
 
 **5. Log out and back into Hyprland.**
@@ -244,6 +244,13 @@ The one this repo was built around.
 
 <table>
 <tr><td width="33%" valign="top"><img src="docs/thumbs/kib-custom.jpg" width="100%" alt="kib-custom"><br><img src="docs/palettes/kib-custom.png" width="100%" height="8" alt=""><br><b>kib-custom</b> · <code>kib-custom</code><br><sub>Catppuccin Mocha — matched to alacritty + nvim rice</sub><br><sub><b>shell</b> waybar · <b>launcher</b> rofi</sub></td><td width="33%"></td><td width="33%"></td></tr>
+</table>
+### Switchable <sub>(1)</sub>
+
+One shape, more than one palette, swapped live from a control the rice puts on the desktop itself.
+
+<table>
+<tr><td width="33%" valign="top"><img src="docs/thumbs/calamity.jpg" width="100%" alt="calamity"><br><img src="docs/palettes/calamity.png" width="100%" height="8" alt=""><br><b>calamity</b> · <code>calamity</code><br><sub>Terraria, by way of the Calamity mod. Two biomes in one rice — Corruption's shadow-purple and cursed-flame green, or Crimson's crimtane red and ichor gold — swapped live from a button in the bar, which repaints every app and the wallpaper with it.</sub><br><sub><b>shell</b> waybar · <b>launcher</b> rofi</sub></td><td width="33%"></td><td width="33%"></td></tr>
 </table>
 ### Designed atmospheres <sub>(9)</sub>
 
@@ -345,7 +352,43 @@ order is the left-to-right order of the waybar profile indicators.
 
 Optional per-rice extras: `btop.theme`, `cava.conf`, `starship.toml`,
 `rofi-grid.rasi`, `rofi-full.rasi`, `wofi.conf`, `wofi.css`, `fuzzel.ini`,
-`tofi.conf`, `drawer.css`, `nwg-panel.json`.
+`tofi.conf`, `drawer.css`, `nwg-panel.json`, plus:
+
+| File | Does |
+| --- | --- |
+| `about` | one line describing the rice, used by the docs instead of guessing from a header comment |
+| `cursor` | `<xcursor-theme> [size]`, applied on switch — skipped with a warning if that theme isn't installed |
+
+### Rices with more than one mode
+
+`calamity` is the worked example. It has one shape and two palettes, and puts
+a button in its own bar to swap between them:
+
+```
+themes/calamity/
+  modes/corruption/   the colour-carrying files: waybar.css, rofi.rasi,
+  modes/crimson/      alacritty.toml, hyprlock.conf, mako.conf, hypr.lua,
+                      nvim.lua, fastfetch.jsonc, btop.theme, cava.conf,
+                      wallpaper, cursor
+  modes/current  ->   corruption          the only thing a switch changes
+  waybar.css     ->   modes/current/waybar.css     (and the same for the rest)
+  waybar.jsonc        shared: layout doesn't change between modes
+  mode.sh             the switcher
+```
+
+Because the rice-root files are symlinks through `modes/current`, flipping that
+one link repoints all twelve at once; `mode.sh` then re-applies the rice so
+every app reloads. It's the same trick `themes/current` uses, one level down.
+
+```bash
+themes/calamity/mode.sh              # which biome is live
+themes/calamity/mode.sh --toggle     # switch to the other
+themes/calamity/mode.sh crimson      # switch to a named one
+```
+
+The bar button calls `mode.sh --toggle` through `setsid -f`, because
+re-applying the rice restarts waybar — a plain `on-click` would run as
+waybar's child and kill itself partway through the switch.
 
 ---
 

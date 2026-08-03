@@ -1,0 +1,9 @@
+# calamity (corruption) — cursor
+#
+# "<xcursor-theme> [size]". Built by ../../make-cursor.py, which draws its own
+# pixel pointer rather than shipping Re-Logic's art: hard 1px outline, flat
+# biome-coloured fill, integer upscaling so it stays square at any size.
+# Rebuild with:  themes/calamity/make-cursor.py
+#
+# If the theme isn't built, switch.sh says so and keeps your current cursor.
+Terraria-Corruption 24

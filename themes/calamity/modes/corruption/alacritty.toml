@@ -1,0 +1,45 @@
+# calamity (corruption) — Alacritty
+# Shadow-purple void, cursed-flame green. The Corruption: vertical chasms, demonite, and a sky that never warms.
+
+[colors.primary]
+background = "#191029"
+foreground = "#e2d8f5"
+dim_foreground = "#c3b3e4"
+
+[colors.cursor]
+text = "#191029"
+cursor = "#9d7cd8"
+
+[colors.selection]
+text = "#e2d8f5"
+background = "#3b2a60"
+
+[colors.normal]
+black = "#2b1e47"
+red = "#d2688f"
+green = "#7bd88f"
+yellow = "#d8b96a"
+blue = "#6a5acd"
+magenta = "#b48ee8"
+cyan = "#74c7d8"
+white = "#c3b3e4"
+
+[colors.bright]
+black = "#4a3578"
+red = "#d2688f"
+green = "#7bd88f"
+yellow = "#d8b96a"
+blue = "#6a5acd"
+magenta = "#b48ee8"
+cyan = "#74c7d8"
+white = "#e2d8f5"
+
+[window]
+padding = { x = 12, y = 10 }
+decorations = "None"
+opacity = 0.96
+blur = true
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+size = 12.5

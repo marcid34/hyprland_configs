@@ -48,9 +48,9 @@ def describe(path):
     parts = re.split(r"(?<=[.!?])\s+", text)
     return " ".join(parts[:2]).strip()
 
-def colours(rice):
+def colours(rice, sub=""):
     """Named colours, in declared order, from the rofi theme's `*  { }` block."""
-    p = os.path.join(THEMES, rice, "rofi.rasi")
+    p = os.path.join(THEMES, rice, sub, "rofi.rasi")
     if not os.path.exists(p):
         return []
     txt = open(p, encoding="utf-8", errors="replace").read()
@@ -71,9 +71,9 @@ def one(path):
     except OSError:
         return ""
 
-def wallpapers(rice):
+def wallpapers(rice, sub=""):
     shots, trans = [], ""
-    for ln in one(os.path.join(THEMES, rice, "wallpaper")).splitlines():
+    for ln in one(os.path.join(THEMES, rice, sub, "wallpaper")).splitlines():
         ln = ln.strip()
         if not ln or ln.startswith("#"):
             continue
@@ -95,11 +95,38 @@ for r in order:
     d = os.path.join(THEMES, r)
     if not os.path.isdir(d):
         continue
-    desc = (describe(os.path.join(d, "waybar.css"))
+    # A rice with more than one palette can't be summarised by any single
+    # themed file's header, so it may state its own line in `about`.
+    about = re.sub(r"\s+", " ", one(os.path.join(d, "about"))).strip()
+    desc = (about
+            or describe(os.path.join(d, "waybar.css"))
             or describe(os.path.join(d, "alacritty.toml"))
             or describe(os.path.join(d, "rofi.rasi")))
-    pal = colours(r)
-    walls, trans = wallpapers(r)
+    modes_dir = os.path.join(d, "modes")
+    modes = sorted(n for n in os.listdir(modes_dir)
+                   if os.path.isdir(os.path.join(modes_dir, n))
+                   and not os.path.islink(os.path.join(modes_dir, n))) \
+        if os.path.isdir(modes_dir) else []
+    # A multi-mode rice's root files are symlinks through modes/current, so
+    # reading them would capture whatever biome happens to be live and make
+    # the docs change under you. Read the modes themselves instead, and let
+    # the first one stand for the rice.
+    mode_data = []
+    for mo in modes:
+        sub = os.path.join("modes", mo)
+        mode_data.append({
+            "name": mo,
+            "palette": colours(r, sub),
+            "wallpapers": wallpapers(r, sub)[0],
+            "transition": wallpapers(r, sub)[1],
+        })
+    if mode_data:
+        pal = mode_data[0]["palette"]
+        walls = mode_data[0]["wallpapers"]
+        trans = mode_data[0]["transition"]
+    else:
+        pal = colours(r)
+        walls, trans = wallpapers(r)
     m = re.search(r'font:\s*"([^"]+)"', one(os.path.join(d, "rofi.rasi")))
     rices.append({
         "id": r,
@@ -107,6 +134,10 @@ for r in order:
         "desc": desc,
         "shell": ", ".join(one(os.path.join(d, "shell.components")).split()) or "none",
         "launcher": one(os.path.join(d, "launcher")) or "rofi",
+        "modes": modes,
+        "mode_data": mode_data,
+        "cursor": one(os.path.join(d, "cursor")).splitlines()[-1].strip()
+                  if os.path.exists(os.path.join(d, "cursor")) else "",
         "font": m.group(1) if m else "",
         "wallpapers": walls,
         "transition": trans,

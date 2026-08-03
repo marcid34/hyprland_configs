@@ -18,6 +18,7 @@ removed.
 - [orangci/walls-catppuccin-mocha](https://github.com/orangci/walls-catppuccin-mocha)
 - [rose-pine/wallpapers](https://github.com/rose-pine/wallpapers)
 - [visika/solarized-wallpapers](https://github.com/visika/solarized-wallpapers)
+- [wallhaven](https://wallhaven.cc)
 
 ## Per rice
 
@@ -27,6 +28,8 @@ removed.
 | `amber` | `amber.png` | [D3Ext/aesthetic-wallpapers](https://github.com/D3Ext/aesthetic-wallpapers) | `ibmbios8x8_intel.png` |
 | `arctic` | `arctic.png` | [linuxdotexe/nordic-wallpapers](https://github.com/linuxdotexe/nordic-wallpapers) | `EOS-SnowCappedMountain01.jpg` |
 | `blueprint` | `blueprint.png` | [orangci/walls-catppuccin-mocha](https://github.com/orangci/walls-catppuccin-mocha) | `blueprint.png` |
+| `calamity (corruption)` | `corruption.png` | [wallhaven](https://wallhaven.cc/w/z8mzov) | `wallhaven-z8mzov.png` |
+| `calamity (crimson)` | `crimson.png` | [wallhaven](https://wallhaven.cc/w/57wz51) | `wallhaven-57wz51.png` |
 | `crimson` | `crimson.jpg` | [D3Ext/aesthetic-wallpapers](https://github.com/D3Ext/aesthetic-wallpapers) | `red-forest.jpg` |
 | `dawn` | `dawn.png` | [rose-pine/wallpapers](https://github.com/rose-pine/wallpapers) | `illustration/block-wave-dawn.png` |
 | `dracula` | `dracula.png` | [dracula/wallpaper](https://github.com/dracula/wallpaper) | `soft-waves/dracula-soft-waves-bd93f9.png` |

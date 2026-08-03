@@ -1,0 +1,97 @@
+/* calamity (crimson) — waybar
+ * Crimtane red, ichor gold, bone. The Crimson: flesh caverns, a bloodied ground and pale bone arches on the horizon.
+ * Layout: top slab, built like a Terraria inventory panel — flat fill, a
+ * hard 2px accent underline, and chunky evenly-padded cells.
+ */
+
+* {
+  font-family: "JetBrainsMono Nerd Font Propo", "FreeSerif", monospace;
+  font-size: 13px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+/* The panel. Terraria's UI is opaque and heavy-bordered rather than glassy,
+ * so this is a solid slab with a single accent rule along the bottom. */
+window#waybar {
+  background: #22110f;
+  color: #d9b6ac;
+  border-bottom: 2px solid #c8443a;
+}
+.modules-left, .modules-center, .modules-right { padding: 0; }
+
+#clock, #battery, #network, #pulseaudio, #cpu, #memory, #tray,
+#custom-media, #custom-notif, #custom-power, #window, #workspaces,
+#idle_inhibitor {
+  background: transparent;
+  color: #d9b6ac;
+  margin: 0;
+  padding: 3px 14px;
+  border: none;
+  border-radius: 0;
+  transition: background-color 120ms ease;
+}
+#clock { color: #f2ded8; font-weight: 700; letter-spacing: 0.5px; }
+#custom-media { color: #e8b13d; }
+#window { color: #9a716a; }
+#window.empty { color: transparent; }
+#tray { padding: 0 10px; }
+
+#clock:hover, #pulseaudio:hover, #network:hover, #battery:hover,
+#custom-notif:hover, #custom-media:hover, #idle_inhibitor:hover {
+  background: #331916;
+}
+#custom-power { color: #e05545; }
+#custom-power:hover { background: #e05545; color: #1a0d0c; }
+
+/* ── launcher ── */
+#custom-launcher {
+  color: #c8443a;
+  font-size: 15px;
+  padding: 0 15px;
+}
+#custom-launcher:hover { background: #c8443a; color: #1a0d0c; }
+
+/* ── workspaces ── */
+#workspaces { padding: 0 8px; }
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent; border: none; box-shadow: none;
+  padding: 0 7px; margin: 0; color: #5f2c22;
+}
+#workspaces .occupied { color: #9a716a; }
+#workspaces .visible  { color: #e8b13d; }
+#workspaces .active   { color: #c8443a; }
+
+/* ── the biome switch ──
+ * The one control this rice adds. Styled as an actual button rather than a
+ * bar glyph — inset fill, full border, and a dot carrying the biome colour —
+ * because it changes the whole desktop and should not read as a status icon.
+ */
+#custom-mode {
+  background: #331916;
+  color: #f2ded8;
+  border: 1px solid #c8443a;
+  border-radius: 4px;
+  padding: 2px 12px;
+  margin: 4px 8px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+#custom-mode:hover { background: #c8443a; color: #1a0d0c; }
+#custom-mode.corruption { border-color: #9d7cd8; }
+#custom-mode.crimson    { border-color: #c8443a; }
+
+/* ── states ── */
+#battery.warning  { color: #e8b13d; }
+#battery.critical { color: #e05545; }
+#network.disconnected { color: #e05545; }
+#network.disabled     { color: #5f2c22; }
+#custom-notif.dnd     { color: #e05545; }
+#custom-notif.unread  { color: #e8b13d; }
+#custom-notif.idle    { color: #9a716a; }
+#idle_inhibitor.activated   { color: #e8b13d; }
+#idle_inhibitor.deactivated { color: #9a716a; }
+
+tooltip { background: #1a0d0c; border: 1px solid #c8443a; border-radius: 4px; }
+tooltip label { color: #f2ded8; }

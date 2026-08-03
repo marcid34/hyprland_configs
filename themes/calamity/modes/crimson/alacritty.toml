@@ -1,0 +1,45 @@
+# calamity (crimson) — Alacritty
+# Crimtane red, ichor gold, bone. The Crimson: flesh caverns, a bloodied ground and pale bone arches on the horizon.
+
+[colors.primary]
+background = "#1a0d0c"
+foreground = "#f2ded8"
+dim_foreground = "#d9b6ac"
+
+[colors.cursor]
+text = "#1a0d0c"
+cursor = "#c8443a"
+
+[colors.selection]
+text = "#f2ded8"
+background = "#4a231c"
+
+[colors.normal]
+black = "#331916"
+red = "#e05545"
+green = "#8a9b7a"
+yellow = "#e8b13d"
+blue = "#7d8fa0"
+magenta = "#a05a7a"
+cyan = "#86a09b"
+white = "#d9b6ac"
+
+[colors.bright]
+black = "#5f2c22"
+red = "#e05545"
+green = "#8a9b7a"
+yellow = "#e8b13d"
+blue = "#7d8fa0"
+magenta = "#a05a7a"
+cyan = "#86a09b"
+white = "#f2ded8"
+
+[window]
+padding = { x = 12, y = 10 }
+decorations = "None"
+opacity = 0.96
+blur = true
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+size = 12.5

@@ -1,0 +1,43 @@
+/* calamity (crimson) — rofi
+ *
+ * Crimtane red, ichor gold, bone. The Crimson: flesh caverns, a bloodied ground and pale bone arches on the horizon.
+ * Shaped like a Terraria panel: opaque fill, a full 2px biome border, and a
+ * selected row that fills solid rather than tinting — the game highlights an
+ * inventory slot, it does not wash it.
+ */
+configuration {
+  modes: "drun,run";
+  show-icons: true;
+  icon-theme: "breeze-dark";
+  drun-display-format: "{name}";
+  display-drun: "inventory";
+  display-run: "run";
+  drun-match-fields: "name,generic,exec,keywords";
+}
+* { bg:#1a0d0c; bg1:#22110f; bg2:#331916; bg3:#4a231c;
+     fg:#f2ded8; fg1:#d9b6ac; dim:#9a716a; ac:#c8443a;
+     ac2:#e8b13d; red:#e05545;
+     background-color: transparent; text-color: @fg1;
+     font: "JetBrainsMono Nerd Font Propo 12"; }
+window { width: 560px; background-color: @bg1; border: 2px;
+          border-color: @ac; border-radius: 6px; padding: 0; }
+mainbox { children: [ inputbar, listview ]; spacing: 0; }
+inputbar { children: [ prompt, entry ]; padding: 14px 18px; spacing: 12px;
+            border: 0 0 2px 0; border-color: @bg3; }
+prompt { text-color: @ac; }
+entry { placeholder: "search"; placeholder-color: @dim; vertical-align: 0.5; }
+listview { lines: 9; columns: 1; padding: 8px; spacing: 2px;
+            scrollbar: false; fixed-height: false; }
+element { padding: 9px 14px; spacing: 12px;
+           border-radius: 3px; cursor: pointer; }
+element normal.normal, element alternate.normal {
+  background-color: transparent; text-color: @fg1; }
+element normal.active, element alternate.active {
+  background-color: transparent; text-color: @ac2; }
+element normal.urgent, element alternate.urgent {
+  background-color: transparent; text-color: @red; }
+element selected.normal, element selected.active {
+  background-color: @ac; text-color: @bg; }
+element selected.urgent { background-color: @red; text-color: @bg; }
+element-icon { size: 20px; vertical-align: 0.5; }
+element-text { vertical-align: 0.5; text-color: inherit; }

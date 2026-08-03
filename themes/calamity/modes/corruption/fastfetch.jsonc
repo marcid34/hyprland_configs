@@ -1,0 +1,33 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "small",
+    "padding": { "top": 1, "left": 2, "right": 4 },
+    "color": { "1": "38;2;157;124;216", "2": "38;2;123;216;143" }
+  },
+  "display": {
+    "separator": "  ",
+    "key": { "width": 9 },
+    "color": { "title": "38;2;157;124;216" }
+  },
+  "modules": [
+    "break",
+    { "type": "title", "color": { "user": "38;2;157;124;216", "host": "38;2;123;216;143" } },
+    { "type": "custom", "format": "────────────────────────────",
+      "outputColor": "38;2;74;53;120" },
+    { "type": "os",       "key": "world",  "keyColor": "38;2;157;124;216" },
+    { "type": "kernel",   "key": "seed",   "keyColor": "38;2;157;124;216" },
+    { "type": "uptime",   "key": "played", "keyColor": "38;2;157;124;216" },
+    { "type": "packages", "key": "items",  "keyColor": "38;2;157;124;216" },
+    { "type": "shell",    "key": "shell",  "keyColor": "38;2;157;124;216" },
+    { "type": "wm",       "key": "wm",     "keyColor": "38;2;123;216;143" },
+    { "type": "terminal", "key": "term",   "keyColor": "38;2;123;216;143" },
+    { "type": "cpu",      "key": "cpu",    "keyColor": "38;2;116;199;216" },
+    { "type": "gpu",      "key": "gpu",    "keyColor": "38;2;116;199;216" },
+    { "type": "memory",   "key": "mana",   "keyColor": "38;2;123;216;143" },
+    { "type": "disk",     "key": "chest",  "keyColor": "38;2;123;216;143" },
+    "break",
+    { "type": "colors", "symbol": "circle" },
+    "break"
+  ]
+}

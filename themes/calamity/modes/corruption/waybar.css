@@ -1,0 +1,97 @@
+/* calamity (corruption) — waybar
+ * Shadow-purple void, cursed-flame green. The Corruption: vertical chasms, demonite, and a sky that never warms.
+ * Layout: top slab, built like a Terraria inventory panel — flat fill, a
+ * hard 2px accent underline, and chunky evenly-padded cells.
+ */
+
+* {
+  font-family: "JetBrainsMono Nerd Font Propo", "FreeSerif", monospace;
+  font-size: 13px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+/* The panel. Terraria's UI is opaque and heavy-bordered rather than glassy,
+ * so this is a solid slab with a single accent rule along the bottom. */
+window#waybar {
+  background: #1f1533;
+  color: #c3b3e4;
+  border-bottom: 2px solid #9d7cd8;
+}
+.modules-left, .modules-center, .modules-right { padding: 0; }
+
+#clock, #battery, #network, #pulseaudio, #cpu, #memory, #tray,
+#custom-media, #custom-notif, #custom-power, #window, #workspaces,
+#idle_inhibitor {
+  background: transparent;
+  color: #c3b3e4;
+  margin: 0;
+  padding: 3px 14px;
+  border: none;
+  border-radius: 0;
+  transition: background-color 120ms ease;
+}
+#clock { color: #e2d8f5; font-weight: 700; letter-spacing: 0.5px; }
+#custom-media { color: #7bd88f; }
+#window { color: #7d6ba8; }
+#window.empty { color: transparent; }
+#tray { padding: 0 10px; }
+
+#clock:hover, #pulseaudio:hover, #network:hover, #battery:hover,
+#custom-notif:hover, #custom-media:hover, #idle_inhibitor:hover {
+  background: #2b1e47;
+}
+#custom-power { color: #d2688f; }
+#custom-power:hover { background: #d2688f; color: #191029; }
+
+/* ── launcher ── */
+#custom-launcher {
+  color: #9d7cd8;
+  font-size: 15px;
+  padding: 0 15px;
+}
+#custom-launcher:hover { background: #9d7cd8; color: #191029; }
+
+/* ── workspaces ── */
+#workspaces { padding: 0 8px; }
+#custom-ws1, #custom-ws2, #custom-ws3, #custom-ws4, #custom-ws5 {
+  background: transparent; border: none; box-shadow: none;
+  padding: 0 7px; margin: 0; color: #4a3578;
+}
+#workspaces .occupied { color: #7d6ba8; }
+#workspaces .visible  { color: #7bd88f; }
+#workspaces .active   { color: #9d7cd8; }
+
+/* ── the biome switch ──
+ * The one control this rice adds. Styled as an actual button rather than a
+ * bar glyph — inset fill, full border, and a dot carrying the biome colour —
+ * because it changes the whole desktop and should not read as a status icon.
+ */
+#custom-mode {
+  background: #2b1e47;
+  color: #e2d8f5;
+  border: 1px solid #9d7cd8;
+  border-radius: 4px;
+  padding: 2px 12px;
+  margin: 4px 8px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+#custom-mode:hover { background: #9d7cd8; color: #191029; }
+#custom-mode.corruption { border-color: #9d7cd8; }
+#custom-mode.crimson    { border-color: #c8443a; }
+
+/* ── states ── */
+#battery.warning  { color: #d8b96a; }
+#battery.critical { color: #d2688f; }
+#network.disconnected { color: #d2688f; }
+#network.disabled     { color: #4a3578; }
+#custom-notif.dnd     { color: #d2688f; }
+#custom-notif.unread  { color: #7bd88f; }
+#custom-notif.idle    { color: #7d6ba8; }
+#idle_inhibitor.activated   { color: #7bd88f; }
+#idle_inhibitor.deactivated { color: #7d6ba8; }
+
+tooltip { background: #191029; border: 1px solid #9d7cd8; border-radius: 4px; }
+tooltip label { color: #e2d8f5; }

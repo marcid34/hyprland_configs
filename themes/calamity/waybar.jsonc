@@ -1,0 +1,184 @@
+// calamity — waybar
+// Shell: One top slab shaped like a Terraria inventory panel, plus the biome
+// switch — the only rice that ships a control of its own.
+// This rice's own desktop shell, not a restyle of another profile's.
+{
+  "name": "panel",
+  "layer": "top",
+  "position": "top",
+  "height": 38,
+  "modules-left": [
+    "custom/launcher",
+    "group/workspaces",
+    "hyprland/window"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "custom/mode",
+    "custom/media",
+    "tray",
+    "pulseaudio",
+    "network",
+    "battery",
+    "custom/notif",
+    "custom/power"
+  ],
+  "group/workspaces": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/ws1",
+      "custom/ws2",
+      "custom/ws3",
+      "custom/ws4",
+      "custom/ws5"
+    ]
+  },
+  "custom/ws1": {
+    "exec": "~/.config/waybar/scripts/ws.py render numbers 1",
+    "on-click": "~/.config/waybar/scripts/ws.py focus 1",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  "custom/ws2": {
+    "exec": "~/.config/waybar/scripts/ws.py render numbers 2",
+    "on-click": "~/.config/waybar/scripts/ws.py focus 2",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  "custom/ws3": {
+    "exec": "~/.config/waybar/scripts/ws.py render numbers 3",
+    "on-click": "~/.config/waybar/scripts/ws.py focus 3",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  "custom/ws4": {
+    "exec": "~/.config/waybar/scripts/ws.py render numbers 4",
+    "on-click": "~/.config/waybar/scripts/ws.py focus 4",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  "custom/ws5": {
+    "exec": "~/.config/waybar/scripts/ws.py render numbers 5",
+    "on-click": "~/.config/waybar/scripts/ws.py focus 5",
+    "return-type": "json",
+    "restart-interval": 3,
+    "cursor": true
+  },
+  // The biome switch. One-shot rather than polled: the only thing that can
+  // change it is a click, and acting on that click re-applies the rice, which
+  // restarts waybar and re-execs this module anyway.
+  //
+  // `setsid -f` is load-bearing. Re-applying the rice restarts waybar, and a
+  // plain on-click runs as waybar's child, so the switch would kill itself
+  // partway through.
+  "custom/mode": {
+    "exec": "~/.config/themes/calamity/mode.sh --waybar",
+    "on-click": "setsid -f ~/.config/themes/calamity/mode.sh --toggle",
+    "return-type": "json",
+    "interval": "once",
+    "cursor": true
+  },
+  "custom/launcher": {
+    "format": "",
+    "on-click": "~/.config/themes/launch.sh",
+    "tooltip": false,
+    "cursor": true
+  },
+  "hyprland/window": {
+    "format": "{title}",
+    "max-length": 44,
+    "separate-outputs": true,
+    "rewrite": {
+      "": "—"
+    }
+  },
+  "custom/media": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/player.sh",
+    "on-click": "playerctl play-pause",
+    "max-length": 28,
+    "interval": 5
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}",
+    "format-muted": "󰝟",
+    "scroll-step": 5,
+    "format-icons": {
+      "headphone": "󰋋",
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
+    },
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  },
+  "network": {
+    "interval": 5,
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤮",
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "tooltip-format-wifi": "<b>{essid}</b>\n{signalStrength}%  ·  {ipaddr}",
+    "on-click": "alacritty --class nm-float -e nmtui"
+  },
+  "battery": {
+    "interval": 30,
+    "states": {
+      "warning": 25,
+      "critical": 12
+    },
+    "format": "{icon} {capacity}",
+    "format-charging": "󰂄 {capacity}",
+    "format-icons": [
+      "󰁺",
+      "󰁼",
+      "󰁾",
+      "󰂀",
+      "󰂂"
+    ],
+    "tooltip-format": "{capacity}%  ·  {time} left"
+  },
+  "custom/notif": {
+    "exec": "~/.config/waybar/scripts/notif.py render",
+    "on-click": "~/.config/waybar/scripts/notif.py toggle",
+    "return-type": "json",
+    "interval": 3,
+    "cursor": true
+  },
+  "clock": {
+    "interval": 10,
+    "format": "{:%a %d %b   %H:%M}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "mode": "month",
+      "format": {
+        "today": "<b>{}</b>"
+      }
+    }
+  },
+  "custom/power": {
+    "format": "󰐥",
+    "on-click": "~/.config/waybar/scripts/power.sh",
+    "tooltip": false,
+    "cursor": true
+  },
+  "spacing": 4
+}

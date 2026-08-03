@@ -174,4 +174,32 @@ fi
 # nvim applies on next launch; running instances can use  :ThemeReload
 # (defined in ~/.config/nvim/lua/plugins/colorscheme.lua).
 
+# cursor: optional, one line of "<xcursor-theme> [size]" in themes/<n>/cursor.
+#
+# Most rices don't ship one and keep whatever hyprland.lua set globally — the
+# file being absent is the normal case, not a missing dependency. A rice that
+# does ship one only gets it applied when the theme is actually installed,
+# because hyprctl setcursor on a missing theme leaves you with *no* cursor
+# rather than falling back.
+CUR_FILE="$THEMES/$target/cursor"
+if [ -f "$CUR_FILE" ] && command -v hyprctl >/dev/null; then
+    read -r cur_theme cur_size < <(grep -vE '^\s*(#|$)' "$CUR_FILE" | head -1)
+    [ -n "${cur_size:-}" ] || cur_size=24
+    if [ -n "${cur_theme:-}" ]; then
+        found=""
+        for base in "$HOME/.local/share/icons" "$HOME/.icons" /usr/share/icons; do
+            [ -d "$base/$cur_theme/cursors" ] && { found=1; break; }
+        done
+        if [ -n "$found" ]; then
+            hyprctl setcursor "$cur_theme" "$cur_size" >/dev/null 2>&1 || true
+            # New clients read the environment, so update it for anything
+            # launched after this point in the session.
+            hyprctl keyword env XCURSOR_THEME,"$cur_theme" >/dev/null 2>&1 || true
+            hyprctl keyword env XCURSOR_SIZE,"$cur_size"   >/dev/null 2>&1 || true
+        else
+            echo "switch.sh: cursor theme '$cur_theme' is not installed — keeping the current one" >&2
+        fi
+    fi
+fi
+
 echo "$target"
