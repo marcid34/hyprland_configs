@@ -5,6 +5,7 @@ import QtQuick.Layouts
 import Quickshell
 import Quickshell.Io
 import Quickshell.Hyprland
+import Quickshell.Hyprland._GlobalShortcuts
 import Quickshell.Services.Mpris
 import Quickshell.Services.Pipewire
 import Quickshell.Services.UPower
@@ -20,6 +21,9 @@ ShellRoot {
     id: root
 
     property bool dashOpen: false
+    // Variants delegates cannot see sibling ids, but they can see `root`.
+    // Aliasing the palette's state here is what lets the bar button drive it.
+    property alias paletteOpen: palette.open
 
     function run(cmd) { Quickshell.execDetached(["sh", "-c", cmd]) }
 
@@ -257,6 +261,13 @@ ShellRoot {
                     }
 
                     Pill {
+                        icon: "󰍉"
+                        tint: Theme.ac
+                        active: root.paletteOpen
+                        onClicked: root.paletteOpen = !root.paletteOpen
+                    }
+
+                    Pill {
                         icon: "󰕮"
                         tint: Theme.ac
                         active: root.dashOpen
@@ -265,6 +276,34 @@ ShellRoot {
                 }
             }
         }
+    }
+
+    // The shell registers its own hotkey rather than asking you to edit the
+    // compositor config. Super+Space opens the palette.
+    GlobalShortcut {
+        appid: "qshell"
+        name: "palette"
+        description: "Open the QShell command palette"
+        onPressed: palette.open = !palette.open
+    }
+
+    CommandPalette { id: palette }
+
+    // The shell exposes an API. `qs ipc call palette toggle` from any script,
+    // keybind or CI job drives the running shell -- no restart, no config
+    // reload, no separate daemon. This is also how the surfaces get tested.
+    IpcHandler {
+        target: "palette"
+        function toggle(): void { palette.open = !palette.open }
+        function reveal(): void { palette.open = true }
+        function hide(): void { palette.open = false }
+    }
+
+    IpcHandler {
+        target: "dash"
+        function toggle(): void { root.dashOpen = !root.dashOpen }
+        function reveal(): void { root.dashOpen = true }
+        function hide(): void { root.dashOpen = false }
     }
 
     // ── the dashboard ────────────────────────────────────────────────────

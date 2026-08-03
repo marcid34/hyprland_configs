@@ -32,10 +32,19 @@ for i in "${!names[@]}"; do
     rows+="${mark}${labels[$i]}"$'\n'
 done
 
+# picker.rasi fixes a grid, and a fixed grid silently truncates: at 3 columns
+# and 11 lines it holds 33, so the 34th profile simply was not on screen and
+# there was no scrollbar to reach it. Size the grid to the registry instead,
+# so adding a rice can never again drop one off the end.
+cols="$(sed -n 's/^\s*columns:\s*\([0-9]\+\).*/\1/p' "$THEMES/picker.rasi" | head -1)"
+[ -n "$cols" ] || cols=3
+lines=$(( (${#names[@]} + cols - 1) / cols ))
+
 sel="$(printf '%s' "$rows" | rofi -dmenu -i \
         -p "rice" \
         -format i \
         -theme "$THEMES/picker.rasi" \
+        -theme-str "listview { lines: ${lines}; }" \
         -no-custom 2>/dev/null || true)"
 
 [ -n "$sel" ] || exit 0
