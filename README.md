@@ -13,7 +13,11 @@ dock, some conky, some yambar, some nothing at all.
 
 `32 rices` · `4 light` · `7 launcher styles` · `7 shell layouts` · `wallpapers included`
 
-**[Browse every rice with descriptions and palettes →](RICES.html)**
+**[Every rice, with descriptions and palettes →](#the-rices)**
+
+<sub>There's also <a href="RICES.html"><code>RICES.html</code></a> — the same
+overview as a filterable page. GitHub shows it as source, so open it in a
+browser after cloning: <code>xdg-open RICES.html</code></sub>
 
 </div>
 
