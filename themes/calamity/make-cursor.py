@@ -235,18 +235,51 @@ SHAPES = {
 # one scale factor is applied to every grid. A hotspot outside the grid puts
 # the click point somewhere the cursor is not being drawn. Both are silent
 # failures at runtime, so they are caught here instead.
-MAX_GRID = 9
+MAX_GRID = 12
 
 for _n, (_g, _hot, _al) in SHAPES.items():
     _w = max(len(r) for r in _g)
     _h = len(_g)
     assert all(len(r) == _w for r in _g), f"{_n}: ragged grid"
-    assert _w <= MAX_GRID and _h <= MAX_GRID, f"{_n}: {_w}x{_h} exceeds {MAX_GRID}"
+    assert _w <= MAX_GRID and _h <= MAX_GRID, f"{_n}: {_w}x{_h} exceeds canvas {MAX_GRID}"
     assert 0 <= _hot[0] < _w and 0 <= _hot[1] < _h, f"{_n}: hotspot {_hot} outside grid"
 
+# Every cursor is rendered onto one shared square canvas, and the nominal size
+# it advertises is exactly that canvas in pixels.
+#
+# Both halves matter. Different-shaped images make the set look inconsistent;
+# and a nominal that does not equal the image's real size makes every toolkit
+# that rescales by target/nominal scale each shape by a different amount --
+# which is how a 9-row I-beam ends up visibly larger than an 8-row pointer
+# even though the grids are the same size.
+CANVAS = 12
+
+# The pointer is anchored at its tip so the hotspot stays at (0,0); everything
+# else reads best centred.
+ANCHOR_TOPLEFT = {"left_ptr"}
+
+
+def place(grid):
+    """Pad an ink grid into the shared canvas. -> (canvas grid, dx, dy)"""
+    w = max(len(r) for r in grid)
+    h = len(grid)
+    dx = (CANVAS - w) // 2
+    dy = (CANVAS - h) // 2
+    rows = []
+    for _ in range(dy):
+        rows.append("." * CANVAS)
+    for r in grid:
+        rows.append("." * dx + r.ljust(w, ".") + "." * (CANVAS - dx - w))
+    while len(rows) < CANVAS:
+        rows.append("." * CANVAS)
+    return rows, dx, dy
+
+
 INHERITS = "Adwaita"
-# The pointer grid is 8px tall, so a "24px" cursor wants a 3x upscale, not 1x.
-SCALES = [(3, 24), (4, 32), (6, 48), (8, 64), (12, 96)]
+# canvas * scale == nominal, exactly. 36 is not optional: a 1.5-scaled display
+# asking for a 24px cursor requests 36, and a theme without it gets its nearest
+# size picked and then rescaled by the toolkit.
+SCALES = [(2, 24), (3, 36), (4, 48), (5, 60), (6, 72), (8, 96)]
 
 
 def bitmap(grid, scale, fill, hi, second):
@@ -296,10 +329,18 @@ def build(biome, spec, preview=None):
 
     made = 0
     for name, (grid, hot, aliases) in SHAPES.items():
+        if name in ANCHOR_TOPLEFT:
+            w0 = max(len(r) for r in grid)
+            canvas = [r.ljust(w0, ".") + "." * (CANVAS - w0) for r in grid]
+            canvas += ["." * CANVAS] * (CANVAS - len(canvas))
+            dx = dy = 0
+        else:
+            canvas, dx, dy = place(grid)
+        hx, hy = hot[0] + dx, hot[1] + dy
         frames = []
         for scale, nominal in SCALES:
-            w, h, px = bitmap(grid, scale, spec["fill"], spec["hi"], spec["second"])
-            frames.append((nominal, w, h, hot[0] * scale, hot[1] * scale, px))
+            w, h, px = bitmap(canvas, scale, spec["fill"], spec["hi"], spec["second"])
+            frames.append((nominal, w, h, hx * scale, hy * scale, px))
         with open(os.path.join(curs, name), "wb") as fh:
             fh.write(xcursor(frames))
         made += 1
@@ -310,8 +351,11 @@ def build(biome, spec, preview=None):
             os.symlink(name, link)
 
         if preview:
+            # Preview the canvas, not the ink grid: the whole point of the
+            # canvas is that every cursor occupies the same box, and a preview
+            # of the bare grid would hide exactly the bug this prevents.
             os.makedirs(preview, exist_ok=True)
-            w, h, px = bitmap(grid, 4, spec["fill"], spec["hi"], spec["second"])
+            w, h, px = bitmap(canvas, 4, spec["fill"], spec["hi"], spec["second"])
             _png(w, h, px, os.path.join(preview, f"{theme}-{name}.png"))
 
     with open(os.path.join(root, "index.theme"), "w") as fh:
