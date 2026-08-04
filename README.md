@@ -224,6 +224,7 @@ profile and says which file is missing, so check its output first.
 | Key | Does |
 | --- | --- |
 | `Super + T` | **rice picker** |
+| `Super + Shift + C` | **cast** this screen to a TV / Chromecast |
 | `Super + Space` | command palette — on rices with a Quickshell shell |
 | `Super + D` | dashboard — same |
 | `Super + R` / `E` | launcher / file manager |
@@ -317,6 +318,37 @@ Deliberate impersonations, down to the bar geometry and dock behaviour.
 <tr><td width="33%" valign="top"><img src="docs/thumbs/win11.jpg" width="100%" alt="Windows 11 Pro"><br><img src="docs/palettes/win11.png" width="100%" height="8" alt=""><br><b>Windows 11 Pro</b> · <code>win11</code><br><sub>Mica: a near-opaque dark surface, 4px-rounded hover fills, centred icon cluster, and the clock stacked time-over-date hard against the right.</sub><br><sub><b>shell</b> waybar · <b>launcher</b> rofi-grid</sub></td><td width="33%" valign="top"><img src="docs/thumbs/macos.jpg" width="100%" alt="Mac OS X"><br><img src="docs/palettes/macos.png" width="100%" height="8" alt=""><br><b>Mac OS X</b> · <code>macos</code><br><sub>26px, heavily translucent, no rounding (it is flush to the top edge), SF-ish type at 13px, and generous spacing between status items. The dock is nwg-dock, not waybar.</sub><br><sub><b>shell</b> waybar, nwg-dock · <b>launcher</b> rofi-grid</sub></td><td width="33%"></td></tr>
 </table>
 
+
+---
+
+## Casting
+
+`Super + Shift + C` on any rice opens a device picker, drawn in that rice's own
+rofi theme. It is one script — `themes/cast.sh` — so no profile ships casting
+config of its own.
+
+```bash
+themes/cast.sh check       # preflight: what is missing and how to fix it
+themes/cast.sh discover    # devices seen on the network
+themes/cast.sh stop        # tear down the session
+```
+
+Three separate things have to be in place, and each fails in a way that looks
+identical from the outside — "casting is broken" — so `check` reports them
+separately:
+
+| Piece | Why | Fix |
+| --- | --- | --- |
+| `xdg-desktop-portal-hyprland` | nothing can capture the screen without it | `sudo pacman -S xdg-desktop-portal-hyprland` |
+| `avahi-daemon` **running** | discovery is mDNS; with the daemon off no device is ever found | `sudo systemctl enable --now avahi-daemon` |
+| `gnome-network-displays` | speaks Chromecast and Miracast | `yay -S gnome-network-displays` |
+
+Installing the package is not enough for avahi — it ships a service that is
+disabled by default, which is the single most common reason a device list comes
+back empty.
+
+Screen **sharing** inside Chrome, Slack, Discord or Zoom needs only the first
+of those, and works without the other two.
 
 ---
 

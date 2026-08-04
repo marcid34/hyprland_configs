@@ -297,6 +297,7 @@ profile and says which file is missing, so check its output first.
 | Key | Does |
 | --- | --- |
 | `Super + T` | **rice picker** |
+| `Super + Shift + C` | **cast** this screen to a TV / Chromecast |
 | `Super + Space` | command palette — on rices with a Quickshell shell |
 | `Super + D` | dashboard — same |
 | `Super + R` / `E` | launcher / file manager |
@@ -327,6 +328,37 @@ Every wallpaper is included in this repo under `wallpapers/<rice>/`.
 The colour strip under each preview is that rice's actual declared palette.
 
 {"".join(sections)}
+
+---
+
+## Casting
+
+`Super + Shift + C` on any rice opens a device picker, drawn in that rice's own
+rofi theme. It is one script — `themes/cast.sh` — so no profile ships casting
+config of its own.
+
+```bash
+themes/cast.sh check       # preflight: what is missing and how to fix it
+themes/cast.sh discover    # devices seen on the network
+themes/cast.sh stop        # tear down the session
+```
+
+Three separate things have to be in place, and each fails in a way that looks
+identical from the outside — "casting is broken" — so `check` reports them
+separately:
+
+| Piece | Why | Fix |
+| --- | --- | --- |
+| `xdg-desktop-portal-hyprland` | nothing can capture the screen without it | `sudo pacman -S xdg-desktop-portal-hyprland` |
+| `avahi-daemon` **running** | discovery is mDNS; with the daemon off no device is ever found | `sudo systemctl enable --now avahi-daemon` |
+| `gnome-network-displays` | speaks Chromecast and Miracast | `yay -S gnome-network-displays` |
+
+Installing the package is not enough for avahi — it ships a service that is
+disabled by default, which is the single most common reason a device list comes
+back empty.
+
+Screen **sharing** inside Chrome, Slack, Discord or Zoom needs only the first
+of those, and works without the other two.
 
 ---
 
