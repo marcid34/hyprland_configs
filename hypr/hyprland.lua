@@ -73,7 +73,14 @@ local menu        = "~/.config/themes/launch.sh"  -- per-rice launcher
    -- back to hyprpaper automatically if the swww daemon is not running, so
    -- this is safe either way.
    hl.exec_cmd("swww-daemon || awww-daemon || hyprpaper")
-   hl.exec_cmd("waybar")
+   -- Start whatever the *active rice* declares, not waybar unconditionally.
+   -- shell.components is only consulted by switch.sh, which runs on a theme
+   -- change and not at login -- so hardcoding waybar here meant every reboot
+   -- came up with waybar no matter which rice was active, and the profiles
+   -- that run yambar, nwg-panel, quickshell or deliberately no bar at all
+   -- silently lost their shell until the next switch.
+   -- shell.sh keeps the waybar fallback for a rice whose panel is missing.
+   hl.exec_cmd("~/.config/themes/shell.sh start")
    hl.exec_cmd("mako")           -- notification daemon, see ~/.config/mako/config
    hl.exec_cmd("hypridle")       -- idle -> lock, see ~/.config/hypr/hypridle.conf
  end)
