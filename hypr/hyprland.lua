@@ -382,6 +382,10 @@ hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 
 -- Rice picker (rofi menu over all profiles, styled by the active rice)
 hl.bind(mainMod .. " + T",             hl.dsp.exec_cmd("~/.config/themes/picker.sh"))
+-- Cast this screen to a TV / Chromecast / Miracast display. Like the rice
+-- picker this is one rice-agnostic script rendered in the active profile's
+-- rofi theme, so every profile gets it without shipping any config of its own.
+hl.bind(mainMod .. " + SHIFT + C",     hl.dsp.exec_cmd("~/.config/themes/cast.sh"))
 
 -- Quickshell surfaces on rices that ship one (qshell, calamity). Reached over
 -- IPC rather than Quickshell's GlobalShortcut: that registers an action, and

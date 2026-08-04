@@ -160,6 +160,26 @@ hc_deps() {
     hc_offer "packages" "${missing[@]}"
 }
 
+# hc_deps_pkg <pkg>...
+# For things that ship no binary on PATH -- D-Bus services, portals, plugin
+# libraries. `command -v xdg-desktop-portal-hyprland` fails on a machine that
+# has it installed and working, so checking these the usual way reports them
+# permanently missing and offers to reinstall them on every run.
+hc_deps_pkg() {
+    [ "$HC_NO_DEPS" = "1" ] && return 0
+    [ $# -eq 0 ] && return 0
+    command -v pacman >/dev/null 2>&1 || return 0
+
+    local missing=() pkg
+    for pkg in "$@"; do
+        pacman -Q "$pkg" >/dev/null 2>&1 || missing+=("$pkg")
+    done
+
+    hc_log "checking packages: $*"
+    if [ ${#missing[@]} -eq 0 ]; then hc_dim "all present"; return 0; fi
+    hc_offer "packages" "${missing[@]}"
+}
+
 # hc_deps_font <family>:<pkg>...
 # Fonts are not commands, so presence is a fontconfig question. Matching the
 # family exactly matters: fc-list substring-matches, and "Ubuntu" would

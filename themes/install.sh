@@ -25,6 +25,25 @@ hc_deps wofi fuzzel tofi nwg-drawer
 hc_log "desktop shells — declared in themes/<rice>/shell.components"
 hc_deps waybar swww conky yambar nwg-dock-hyprland nwg-panel quickshell
 
+hc_log "casting — Super+Shift+C, available on every rice"
+# The ScreenCast portal is what lets anything capture the screen at all; the
+# rest is discovery and the tool that speaks Chromecast/Miracast.
+hc_deps avahi-browse:avahi \
+        busctl:systemd \
+        gnome-network-displays
+
+# avahi ships a service that is not enabled by default, and without it device
+# discovery silently returns nothing at all -- which reads as "casting is
+# broken" rather than "a daemon is off".
+if command -v systemctl >/dev/null 2>&1; then
+    if ! systemctl is-active --quiet avahi-daemon 2>/dev/null; then
+        hc_warn "avahi-daemon is not running — no cast device will be discovered"
+        hc_info "enable it with:  sudo systemctl enable --now avahi-daemon"
+    else
+        hc_dim "avahi-daemon running"
+    fi
+fi
+
 hc_log "cursor themes"
 # Bibata is the session-wide default set in hypr/hyprland.lua; without it that
 # variable names a theme that does not exist and you silently get the fallback.

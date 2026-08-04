@@ -12,6 +12,12 @@ hc_log "keybind targets"
 hc_deps grim slurp swappy wl-copy:wl-clipboard brightnessctl playerctl \
         wpctl:wireplumber thunar
 
+# Screen capture goes through the portal, not through the app: without it
+# screen sharing and casting fail identically in every browser and every
+# conferencing app, with no useful error. These ship no binary on PATH, so
+# they are checked as packages rather than commands.
+hc_deps_pkg xdg-desktop-portal xdg-desktop-portal-hyprland
+
 hc_hydrate
 hc_link hypr
 
