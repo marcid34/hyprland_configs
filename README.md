@@ -2,16 +2,16 @@
 
 # hyprland_configs
 
-**A complete Hyprland desktop with 34 interchangeable rices.**
+**A complete Hyprland desktop with 44 interchangeable rices.**
 
 Switching a rice swaps the terminal, bar, launcher, notifications, lock screen,
 editor colours, prompt and wallpaper *together* — and can change what the
 desktop **is**, not just how it's painted. Some profiles run waybar, some a
 dock, some conky, some yambar, some nothing at all.
 
-<img src="docs/hero.jpg" width="100%" alt="All 34 rices">
+<img src="docs/hero.jpg" width="100%" alt="All 44 rices">
 
-`34 rices` · `4 light` · `7 launcher styles` · `8 shell layouts` · `wallpapers included`
+`44 rices` · `6 light` · `7 launcher styles` · `8 shell layouts` · `wallpapers included`
 
 **[Every rice, with descriptions and palettes →](#the-rices)**
 
@@ -179,7 +179,7 @@ themes/switch.sh dracula     # apply one by name
 themes/switch.sh --next      # or just cycle through them
 ```
 
-All 34 names are listed in [The rices](#the-rices) below, and in
+All 44 names are listed in [The rices](#the-rices) below, and in
 `themes/profiles.list`. Once you're logged in, `Super + T` opens a picker.
 
 **5. Log out and back into Hyprland.**
@@ -274,6 +274,16 @@ One shape, more than one palette, swapped live from a control the rice puts on t
 
 <table>
 <tr><td width="33%" valign="top"><img src="docs/thumbs/calamity.jpg" width="100%" alt="calamity"><br><img src="docs/palettes/calamity.png" width="100%" height="8" alt=""><br><b>calamity</b> · <code>calamity</code><br><sub>Terraria, by way of the Calamity mod — and the one rice that writes its own desktop shell. Bar and side menu are quickshell/QML built out of a single Terraria inventory slot: flat fill, hard double edge, pixel type, battery as life hearts. Two biomes, Corruption's shadow-purple or Crimson's crimtane red, swapped live from a slot in the bar, which repaints every app, the wallpaper and the cursor with it.</sub><br><sub><b>shell</b> quickshell · <b>launcher</b> rofi</sub></td><td width="33%"></td><td width="33%"></td></tr>
+</table>
+### Soft modern <sub>(10)</sub>
+
+Ten rices sharing one Quickshell shell and one motion system: three floating islands instead of a bar across the top, a launcher and a dashboard in the same QML, and every press, hover and transition tuned to the same three durations. Only the colour changes between them.
+
+<table>
+<tr><td width="33%" valign="top"><img src="docs/thumbs/halcyon.jpg" width="100%" alt="halcyon"><br><img src="docs/palettes/halcyon.png" width="100%" height="8" alt=""><br><b>halcyon</b> · <code>halcyon</code><br><sub>Warm charcoal and coral. Soft light, hard edges nowhere.</sub><br><sub><b>shell</b> quickshell · <b>launcher</b> rofi</sub></td><td width="33%" valign="top"><img src="docs/thumbs/vellum.jpg" width="100%" alt="vellum"><br><img src="docs/palettes/vellum.png" width="100%" height="8" alt=""><br><b>vellum</b> · <code>vellum</code><br><sub>Warm paper and sage ink. A light rice that is not a white screen.</sub><br><sub><b>shell</b> quickshell · <b>launcher</b> rofi</sub></td><td width="33%" valign="top"><img src="docs/thumbs/cobalt.jpg" width="100%" alt="cobalt"><br><img src="docs/palettes/cobalt.png" width="100%" height="8" alt=""><br><b>cobalt</b> · <code>cobalt</code><br><sub>Deep water and luminous azure. Cold, clean, wide awake.</sub><br><sub><b>shell</b> quickshell · <b>launcher</b> rofi</sub></td></tr>
+<tr><td width="33%" valign="top"><img src="docs/thumbs/orchid.jpg" width="100%" alt="orchid"><br><img src="docs/palettes/orchid.png" width="100%" height="8" alt=""><br><b>orchid</b> · <code>orchid</code><br><sub>Plum dusk and lilac light. Soft focus with a bright edge.</sub><br><sub><b>shell</b> quickshell · <b>launcher</b> rofi</sub></td><td width="33%" valign="top"><img src="docs/thumbs/seafoam.jpg" width="100%" alt="seafoam"><br><img src="docs/palettes/seafoam.png" width="100%" height="8" alt=""><br><b>seafoam</b> · <code>seafoam</code><br><sub>Deep teal and mint spray. Quiet until something happens.</sub><br><sub><b>shell</b> quickshell · <b>launcher</b> rofi</sub></td><td width="33%" valign="top"><img src="docs/thumbs/graphite.jpg" width="100%" alt="graphite"><br><img src="docs/palettes/graphite.png" width="100%" height="8" alt=""><br><b>graphite</b> · <code>graphite</code><br><sub>Neutral to the point of silence, with one warm signal in it.</sub><br><sub><b>shell</b> quickshell · <b>launcher</b> rofi</sub></td></tr>
+<tr><td width="33%" valign="top"><img src="docs/thumbs/ember.jpg" width="100%" alt="ember"><br><img src="docs/palettes/ember.png" width="100%" height="8" alt=""><br><b>ember</b> · <code>ember</code><br><sub>Banked heat. Amber falling into rose, nothing fully cooled.</sub><br><sub><b>shell</b> quickshell · <b>launcher</b> rofi</sub></td><td width="33%" valign="top"><img src="docs/thumbs/glacier.jpg" width="100%" alt="glacier"><br><img src="docs/palettes/glacier.png" width="100%" height="8" alt=""><br><b>glacier</b> · <code>glacier</code><br><sub>Cool glass and ice blue. The bright rice, with the glare taken out.</sub><br><sub><b>shell</b> quickshell · <b>launcher</b> rofi</sub></td><td width="33%" valign="top"><img src="docs/thumbs/nocturne.jpg" width="100%" alt="nocturne"><br><img src="docs/palettes/nocturne.png" width="100%" height="8" alt=""><br><b>nocturne</b> · <code>nocturne</code><br><sub>Indigo night, periwinkle light. Dark without being heavy.</sub><br><sub><b>shell</b> quickshell · <b>launcher</b> rofi</sub></td></tr>
+<tr><td width="33%" valign="top"><img src="docs/thumbs/matcha.jpg" width="100%" alt="matcha"><br><img src="docs/palettes/matcha.png" width="100%" height="8" alt=""><br><b>matcha</b> · <code>matcha</code><br><sub>Soft olive under green light. Organic, low, and very calm.</sub><br><sub><b>shell</b> quickshell · <b>launcher</b> rofi</sub></td><td width="33%"></td><td width="33%"></td></tr>
 </table>
 ### Designed atmospheres <sub>(9)</sub>
 

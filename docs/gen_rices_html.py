@@ -20,6 +20,13 @@ GROUPS = [
      "One shape, more than one palette, swapped live from a control the rice "
      "puts on the desktop itself.",
      ["calamity"]),
+    ("Soft modern",
+     "Ten rices sharing one Quickshell shell and one motion system: three "
+     "floating islands instead of a bar across the top, a launcher and a "
+     "dashboard in the same QML, and every press, hover and transition tuned "
+     "to the same three durations. Only the colour changes between them.",
+     ["halcyon", "vellum", "cobalt", "orchid", "seafoam", "graphite",
+      "ember", "glacier", "nocturne", "matcha"]),
     ("Designed atmospheres",
      "Rices where the layout changes, not just the colours — different bar "
      "shape, different launcher, different amount of chrome.",

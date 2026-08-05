@@ -1,144 +1,196 @@
 {
-  "kib-custom": [
-    "signature",
-    "muted"
-  ],
-  "tokyonight": [
-    "neon",
-    "glass"
-  ],
-  "rosepine": [
-    "muted",
-    "soft"
-  ],
-  "kanagawa": [
-    "warm",
-    "print"
-  ],
-  "oxocarbon": [
-    "neon",
-    "sharp"
-  ],
-  "everforest": [
-    "muted",
-    "soft"
-  ],
-  "dawn": [
-    "light",
-    "warm",
-    "paper"
-  ],
-  "amber": [
-    "terminal",
-    "one-hue"
-  ],
-  "outrun": [
-    "neon",
-    "loud"
-  ],
-  "mono": [
-    "monochrome",
-    "print"
-  ],
-  "nord": [
-    "classic",
-    "cool"
-  ],
-  "dracula": [
-    "classic",
-    "vivid"
-  ],
-  "duskfox": [
-    "muted",
-    "cool"
-  ],
-  "abyss": [
-    "cool",
-    "deep"
-  ],
-  "sakura": [
-    "soft",
-    "warm"
-  ],
-  "emerald": [
-    "deep",
-    "vivid"
-  ],
-  "mercury": [
-    "monochrome",
-    "cool"
-  ],
-  "plum": [
-    "vivid",
-    "warm"
-  ],
-  "blueprint": [
-    "technical",
-    "one-hue"
-  ],
-  "eink": [
-    "light",
-    "monochrome",
-    "paper"
-  ],
-  "solarized": [
-    "classic",
-    "muted"
-  ],
-  "matrix": [
-    "terminal",
-    "one-hue"
-  ],
-  "noir": [
-    "monochrome",
-    "cinematic"
-  ],
-  "arctic": [
-    "light",
-    "cool",
-    "clean"
-  ],
-  "obsidian": [
-    "deep",
-    "oled"
-  ],
-  "crimson": [
-    "deep",
-    "warm"
-  ],
-  "moss": [
-    "muted",
-    "quiet"
-  ],
-  "ultraviolet": [
-    "one-hue",
-    "vivid"
-  ],
-  "porcelain": [
-    "light",
-    "cool",
-    "clean"
-  ],
-  "midnight": [
-    "deep",
-    "minimal"
-  ],
-  "win11": [
-    "homage"
-  ],
-  "macos": [
-    "homage"
-  ],
-  "calamity": [
-    "pixel",
-    "two-mode",
-    "deep",
-    "vivid"
-  ],
-  "qshell": [
-    "clean",
-    "showcase",
-    "deep",
-    "cool"
-  ]
+ "kib-custom": [
+  "signature",
+  "muted"
+ ],
+ "tokyonight": [
+  "neon",
+  "glass"
+ ],
+ "rosepine": [
+  "muted",
+  "soft"
+ ],
+ "kanagawa": [
+  "warm",
+  "print"
+ ],
+ "oxocarbon": [
+  "neon",
+  "sharp"
+ ],
+ "everforest": [
+  "muted",
+  "soft"
+ ],
+ "dawn": [
+  "light",
+  "warm",
+  "paper"
+ ],
+ "amber": [
+  "terminal",
+  "one-hue"
+ ],
+ "outrun": [
+  "neon",
+  "loud"
+ ],
+ "mono": [
+  "monochrome",
+  "print"
+ ],
+ "nord": [
+  "classic",
+  "cool"
+ ],
+ "dracula": [
+  "classic",
+  "vivid"
+ ],
+ "duskfox": [
+  "muted",
+  "cool"
+ ],
+ "abyss": [
+  "cool",
+  "deep"
+ ],
+ "sakura": [
+  "soft",
+  "warm"
+ ],
+ "emerald": [
+  "deep",
+  "vivid"
+ ],
+ "mercury": [
+  "monochrome",
+  "cool"
+ ],
+ "plum": [
+  "vivid",
+  "warm"
+ ],
+ "blueprint": [
+  "technical",
+  "one-hue"
+ ],
+ "eink": [
+  "light",
+  "monochrome",
+  "paper"
+ ],
+ "solarized": [
+  "classic",
+  "muted"
+ ],
+ "matrix": [
+  "terminal",
+  "one-hue"
+ ],
+ "noir": [
+  "monochrome",
+  "cinematic"
+ ],
+ "arctic": [
+  "light",
+  "cool",
+  "clean"
+ ],
+ "obsidian": [
+  "deep",
+  "oled"
+ ],
+ "crimson": [
+  "deep",
+  "warm"
+ ],
+ "moss": [
+  "muted",
+  "quiet"
+ ],
+ "ultraviolet": [
+  "one-hue",
+  "vivid"
+ ],
+ "porcelain": [
+  "light",
+  "cool",
+  "clean"
+ ],
+ "midnight": [
+  "deep",
+  "minimal"
+ ],
+ "win11": [
+  "homage"
+ ],
+ "macos": [
+  "homage"
+ ],
+ "calamity": [
+  "pixel",
+  "two-mode",
+  "deep",
+  "vivid"
+ ],
+ "qshell": [
+  "clean",
+  "showcase",
+  "deep",
+  "cool"
+ ],
+ "halcyon": [
+  "soft",
+  "warm",
+  "deep"
+ ],
+ "vellum": [
+  "light",
+  "paper",
+  "soft",
+  "warm"
+ ],
+ "cobalt": [
+  "cool",
+  "deep",
+  "vivid"
+ ],
+ "orchid": [
+  "soft",
+  "deep",
+  "vivid"
+ ],
+ "seafoam": [
+  "cool",
+  "deep",
+  "soft"
+ ],
+ "graphite": [
+  "monochrome",
+  "deep",
+  "minimal",
+  "quiet"
+ ],
+ "ember": [
+  "warm",
+  "deep",
+  "soft"
+ ],
+ "glacier": [
+  "light",
+  "cool",
+  "clean"
+ ],
+ "nocturne": [
+  "cool",
+  "deep",
+  "quiet"
+ ],
+ "matcha": [
+  "deep",
+  "one-hue",
+  "soft"
+ ]
 }
