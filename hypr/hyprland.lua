@@ -380,8 +380,18 @@ hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 
--- Rice picker (rofi menu over all profiles, styled by the active rice)
-hl.bind(mainMod .. " + T",             hl.dsp.exec_cmd("~/.config/themes/picker.sh"))
+-- Rice picker. A Quickshell grid over every profile, each tile carrying that
+-- rice's own four colours (themes/palettes.index), painted in the colours of
+-- whichever rice is currently active. It is one program rather than a
+-- per-profile config, so every profile gets it without shipping any of its own.
+--
+-- Falls back to the rofi picker where quickshell is not installed: the menu is
+-- the only way to change rices from the keyboard, so it must not be the thing
+-- that breaks on a machine missing one package.
+hl.bind(mainMod .. " + T",             hl.dsp.exec_cmd(
+    "command -v quickshell >/dev/null 2>&1 " ..
+    "&& exec quickshell -n --path ~/.config/themes/ricemenu/shell.qml " ..
+    "|| exec ~/.config/themes/picker.sh"))
 -- Cast this screen to a TV / Chromecast / Miracast display. Like the rice
 -- picker this is one rice-agnostic script rendered in the active profile's
 -- rofi theme, so every profile gets it without shipping any config of its own.
