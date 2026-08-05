@@ -1,0 +1,35 @@
+-- nocturne — Neovim
+-- Indigo night, periwinkle light. Dark without being heavy.
+return {
+  palette = {
+    name = "nocturne",
+    bg        = "#0a0b13",
+    bg1       = "#11131e",
+    bg2       = "#171a28",
+    bg3       = "#232739",
+    fg        = "#eaecf8",
+    fg1       = "#c8cce4",
+    dim       = "#9096b4",
+    sel       = "#232739",
+    accent    = "#8c9cff",
+    accent2   = "#b9a4ff",
+    red       = "#ff8b9e",
+    green     = "#7fdfae",
+    blue      = "#8c9cff",
+    purple    = "#b9a4ff",
+    cyan      = "#7fd4ee",
+    orange           = "#8c9cff",
+    yellow           = "#f6cd83",
+    transparent      = false,
+    light            = false,
+    italic_comments  = true,
+    border           = "#232739",
+  },
+  opts = {
+    number = true, relativenumber = true, signcolumn = "yes",
+    cursorline = true, cursorlineopt = "number",
+    winborder = "rounded",
+    fillchars = "eob: ,vert:│",
+    laststatus = 3,
+  },
+}

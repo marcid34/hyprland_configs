@@ -1,0 +1,35 @@
+-- glacier — Neovim
+-- Cool glass and ice blue. The bright rice, with the glare taken out.
+return {
+  palette = {
+    name = "glacier",
+    bg        = "#eef2f7",
+    bg1       = "#ffffff",
+    bg2       = "#e4ebf3",
+    bg3       = "#d3dde9",
+    fg        = "#1a2431",
+    fg1       = "#3a4859",
+    dim       = "#6b7c90",
+    sel       = "#d3dde9",
+    accent    = "#2f7fd8",
+    accent2   = "#3fb0c4",
+    red       = "#c4514f",
+    green     = "#3f8f6b",
+    blue      = "#2f7fd8",
+    purple    = "#8256b8",
+    cyan      = "#3fb0c4",
+    orange           = "#2f7fd8",
+    yellow           = "#b5822c",
+    transparent      = false,
+    light            = true,
+    italic_comments  = true,
+    border           = "#d3dde9",
+  },
+  opts = {
+    number = true, relativenumber = true, signcolumn = "yes",
+    cursorline = true, cursorlineopt = "number",
+    winborder = "rounded",
+    fillchars = "eob: ,vert:│",
+    laststatus = 3,
+  },
+}

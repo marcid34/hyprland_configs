@@ -1,0 +1,35 @@
+-- cobalt — Neovim
+-- Deep water and luminous azure. Cold, clean, wide awake.
+return {
+  palette = {
+    name = "cobalt",
+    bg        = "#090d15",
+    bg1       = "#101724",
+    bg2       = "#16202f",
+    bg3       = "#222e42",
+    fg        = "#e9f0fa",
+    fg1       = "#c0cddd",
+    dim       = "#8496ab",
+    sel       = "#222e42",
+    accent    = "#4d9dff",
+    accent2   = "#78e2ff",
+    red       = "#ff8080",
+    green     = "#66dfa8",
+    blue      = "#4d9dff",
+    purple    = "#b98cff",
+    cyan      = "#78e2ff",
+    orange           = "#4d9dff",
+    yellow           = "#ffcc70",
+    transparent      = false,
+    light            = false,
+    italic_comments  = true,
+    border           = "#222e42",
+  },
+  opts = {
+    number = true, relativenumber = true, signcolumn = "yes",
+    cursorline = true, cursorlineopt = "number",
+    winborder = "rounded",
+    fillchars = "eob: ,vert:│",
+    laststatus = 3,
+  },
+}

@@ -1,0 +1,82 @@
+/* halcyon — waybar
+ *
+ * Fallback bar for a machine without quickshell. Same palette, same radius and
+ * the same three-island split as the real shell, so the rice still reads as
+ * itself if it is ever used.
+ */
+
+* {
+  font-family: "Adwaita Sans", "FreeSerif", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: #f4f0f5;
+}
+
+/* The three groups are the islands. Each gets its own fill, hairline and
+ * radius rather than the window having one — that is the whole look. */
+.modules-left, .modules-center, .modules-right {
+  background: rgba(23, 21, 27, 0.90);
+  border: 1px solid #2b2733;
+  border-radius: 18px;
+  padding: 0 6px;
+  margin: 0 2px;
+}
+
+#workspaces { background: transparent; padding: 0 2px; }
+#workspaces button {
+  color: #6b6275;
+  background: transparent;
+  padding: 0 5px;
+  margin: 4px 1px;
+  border: none;
+  border-radius: 999px;
+  transition: color 200ms ease, background-color 110ms ease;
+}
+#workspaces button.empty { color: #6b6275; }
+#workspaces button.visible { color: #9a90a3; }
+#workspaces button.active {
+  color: #ff8f6e;
+  background: rgba(255, 143, 110, 0.14);
+}
+#workspaces button:hover { background: #1f1c25; color: #cdc5d1; }
+
+#window { color: #9a90a3; padding: 0 10px; }
+#window.empty { color: #6b6275; }
+
+#clock {
+  color: #f4f0f5;
+  font-weight: 600;
+  padding: 0 14px;
+  letter-spacing: 0.2px;
+}
+
+#mpris, #tray, #pulseaudio, #network, #battery {
+  color: #cdc5d1;
+  background: transparent;
+  padding: 2px 10px;
+  margin: 4px 1px;
+  border-radius: 999px;
+  transition: background-color 110ms ease, color 110ms ease;
+}
+#mpris:hover, #pulseaudio:hover, #network:hover, #battery:hover {
+  background: #1f1c25;
+  color: #f4f0f5;
+}
+#mpris { color: #ffbfa0; }
+#pulseaudio.muted { color: #6b6275; }
+#battery.warning { color: #ffc978; }
+#battery.critical { color: #ff7a7a; background: rgba(255, 122, 122, 0.16); }
+#battery.charging { color: #8fd9a8; }
+
+tooltip {
+  background: #17151b;
+  border: 1px solid #2b2733;
+  border-radius: 12px;
+  color: #cdc5d1;
+}
+tooltip label { color: #cdc5d1; padding: 4px; }

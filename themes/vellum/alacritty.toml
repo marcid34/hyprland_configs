@@ -1,0 +1,51 @@
+# vellum — Alacritty
+# Warm paper and sage ink. A light rice that is not a white screen.
+
+[colors.primary]
+background = "#f6f2ea"
+foreground = "#2c2823"
+dim_foreground = "#4d463d"
+
+[colors.cursor]
+text = "#f6f2ea"
+cursor = "#6d8f63"
+
+[colors.selection]
+text = "#2c2823"
+background = "#ded6c6"
+
+[colors.normal]
+black   = "#efe9dd"
+red     = "#b5524a"
+green   = "#6d8f63"
+yellow  = "#b38a52"
+blue    = "#4f7a94"
+magenta = "#8a6a94"
+cyan    = "#4f8a86"
+white   = "#4d463d"
+
+[colors.bright]
+black   = "#ded6c6"
+red     = "#b5524a"
+green   = "#6d8f63"
+yellow  = "#b38a52"
+blue    = "#4f7a94"
+magenta = "#8a6a94"
+cyan    = "#4f8a86"
+white   = "#2c2823"
+
+[window]
+padding = { x = 16, y = 14 }
+decorations = "None"
+opacity = 0.96
+blur = true
+dynamic_padding = true
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size = 13.0
+
+[cursor]
+style = { shape = "Beam", blinking = "On" }
+blink_interval = 620
+unfocused_hollow = true

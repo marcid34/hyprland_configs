@@ -1,0 +1,51 @@
+# matcha — Alacritty
+# Soft olive under green light. Organic, low, and very calm.
+
+[colors.primary]
+background = "#0c0f0b"
+foreground = "#eaf0e3"
+dim_foreground = "#ccd6c0"
+
+[colors.cursor]
+text = "#0c0f0b"
+cursor = "#a9d84c"
+
+[colors.selection]
+text = "#eaf0e3"
+background = "#272f20"
+
+[colors.normal]
+black   = "#1b2117"
+red     = "#f08b7f"
+green   = "#a9d84c"
+yellow  = "#e6c65c"
+blue    = "#8fc0d8"
+magenta = "#c0a3e0"
+cyan    = "#6fd39c"
+white   = "#ccd6c0"
+
+[colors.bright]
+black   = "#272f20"
+red     = "#f08b7f"
+green   = "#a9d84c"
+yellow  = "#e6c65c"
+blue    = "#8fc0d8"
+magenta = "#c0a3e0"
+cyan    = "#6fd39c"
+white   = "#eaf0e3"
+
+[window]
+padding = { x = 16, y = 14 }
+decorations = "None"
+opacity = 0.92
+blur = true
+dynamic_padding = true
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size = 13.0
+
+[cursor]
+style = { shape = "Beam", blinking = "On" }
+blink_interval = 620
+unfocused_hollow = true

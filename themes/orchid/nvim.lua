@@ -1,0 +1,35 @@
+-- orchid — Neovim
+-- Plum dusk and lilac light. Soft focus with a bright edge.
+return {
+  palette = {
+    name = "orchid",
+    bg        = "#110d17",
+    bg1       = "#191323",
+    bg2       = "#221a30",
+    bg3       = "#2f2440",
+    fg        = "#f2ecf8",
+    fg1       = "#d5c8e2",
+    dim       = "#a292b4",
+    sel       = "#2f2440",
+    accent    = "#c294ff",
+    accent2   = "#ff9fd8",
+    red       = "#ff8ba0",
+    green     = "#93e0b8",
+    blue      = "#9db4ff",
+    purple    = "#c294ff",
+    cyan      = "#8fdcf0",
+    orange           = "#c294ff",
+    yellow           = "#f5cc85",
+    transparent      = false,
+    light            = false,
+    italic_comments  = true,
+    border           = "#2f2440",
+  },
+  opts = {
+    number = true, relativenumber = true, signcolumn = "yes",
+    cursorline = true, cursorlineopt = "number",
+    winborder = "rounded",
+    fillchars = "eob: ,vert:│",
+    laststatus = 3,
+  },
+}

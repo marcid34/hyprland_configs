@@ -1,0 +1,51 @@
+# nocturne — Alacritty
+# Indigo night, periwinkle light. Dark without being heavy.
+
+[colors.primary]
+background = "#0a0b13"
+foreground = "#eaecf8"
+dim_foreground = "#c8cce4"
+
+[colors.cursor]
+text = "#0a0b13"
+cursor = "#8c9cff"
+
+[colors.selection]
+text = "#eaecf8"
+background = "#232739"
+
+[colors.normal]
+black   = "#171a28"
+red     = "#ff8b9e"
+green   = "#7fdfae"
+yellow  = "#f6cd83"
+blue    = "#8c9cff"
+magenta = "#b9a4ff"
+cyan    = "#7fd4ee"
+white   = "#c8cce4"
+
+[colors.bright]
+black   = "#232739"
+red     = "#ff8b9e"
+green   = "#7fdfae"
+yellow  = "#f6cd83"
+blue    = "#8c9cff"
+magenta = "#b9a4ff"
+cyan    = "#7fd4ee"
+white   = "#eaecf8"
+
+[window]
+padding = { x = 16, y = 14 }
+decorations = "None"
+opacity = 0.92
+blur = true
+dynamic_padding = true
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size = 13.0
+
+[cursor]
+style = { shape = "Beam", blinking = "On" }
+blink_interval = 620
+unfocused_hollow = true

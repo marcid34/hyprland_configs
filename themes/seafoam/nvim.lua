@@ -1,0 +1,35 @@
+-- seafoam — Neovim
+-- Deep teal and mint spray. Quiet until something happens.
+return {
+  palette = {
+    name = "seafoam",
+    bg        = "#071310",
+    bg1       = "#0d1c18",
+    bg2       = "#132621",
+    bg3       = "#1d352e",
+    fg        = "#e4f4ef",
+    fg1       = "#bcdcd2",
+    dim       = "#7fa89d",
+    sel       = "#1d352e",
+    accent    = "#4fe3b4",
+    accent2   = "#6fd6f5",
+    red       = "#ff8b8b",
+    green     = "#4fe3b4",
+    blue      = "#6fd6f5",
+    purple    = "#c8a6ff",
+    cyan      = "#6fd6f5",
+    orange           = "#4fe3b4",
+    yellow           = "#ffd28a",
+    transparent      = false,
+    light            = false,
+    italic_comments  = true,
+    border           = "#1d352e",
+  },
+  opts = {
+    number = true, relativenumber = true, signcolumn = "yes",
+    cursorline = true, cursorlineopt = "number",
+    winborder = "rounded",
+    fillchars = "eob: ,vert:│",
+    laststatus = 3,
+  },
+}

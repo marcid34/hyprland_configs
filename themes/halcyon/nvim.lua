@@ -1,0 +1,35 @@
+-- halcyon — Neovim
+-- Warm charcoal and coral. Soft light, hard edges nowhere.
+return {
+  palette = {
+    name = "halcyon",
+    bg        = "#0f0e11",
+    bg1       = "#17151b",
+    bg2       = "#1f1c25",
+    bg3       = "#2b2733",
+    fg        = "#f4f0f5",
+    fg1       = "#cdc5d1",
+    dim       = "#9a90a3",
+    sel       = "#2b2733",
+    accent    = "#ff8f6e",
+    accent2   = "#ffbfa0",
+    red       = "#ff7a7a",
+    green     = "#8fd9a8",
+    blue      = "#8fb8ff",
+    purple    = "#d9a2ff",
+    cyan      = "#7fd8e0",
+    orange           = "#ff8f6e",
+    yellow           = "#ffc978",
+    transparent      = false,
+    light            = false,
+    italic_comments  = true,
+    border           = "#2b2733",
+  },
+  opts = {
+    number = true, relativenumber = true, signcolumn = "yes",
+    cursorline = true, cursorlineopt = "number",
+    winborder = "rounded",
+    fillchars = "eob: ,vert:│",
+    laststatus = 3,
+  },
+}

@@ -1,0 +1,64 @@
+// halcyon — waybar
+//
+// Fallback bar. This rice's shell is quickshell; switch.sh drops back to
+// waybar when quickshell is not installed, and a rice with no waybar config
+// would leave that machine with no bar at all.
+{
+  "name": "halcyon",
+  "layer": "top",
+  "position": "top",
+  "height": 38,
+  "margin-top": 10,
+  "margin-left": 10,
+  "margin-right": 10,
+  "spacing": 4,
+  "modules-left": ["hyprland/workspaces", "hyprland/window"],
+  "modules-center": ["clock"],
+  "modules-right": ["mpris", "tray", "pulseaudio", "network", "battery"],
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": { "default": "\u25cf", "active": "\u25cf", "empty": "\u25cb" },
+    "on-click": "activate",
+    "persistent-workspaces": { "*": 6 }
+  },
+  "hyprland/window": {
+    "format": "{title}",
+    "max-length": 42,
+    "separate-outputs": true,
+    "rewrite": { "": "Desktop" }
+  },
+  "clock": {
+    "interval": 10,
+    "format": "{:%H:%M   \u00b7   %a %d %b}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": { "mode": "month", "format": { "today": "<b>{}</b>" } }
+  },
+  "mpris": {
+    "format": "{status_icon} {title}",
+    "max-length": 26,
+    "status-icons": { "playing": "\u25b8", "paused": "\u2016", "stopped": "\u25a0" }
+  },
+  "tray": { "icon-size": 15, "spacing": 8 },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "\u00d7 muted",
+    "scroll-step": 3,
+    "format-icons": { "headphone": "\u25d1", "default": ["\u25cb", "\u25d1", "\u25cf"] },
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  },
+  "network": {
+    "interval": 5,
+    "format-wifi": "\u25b4 {signalStrength}%",
+    "format-ethernet": "\u25ac",
+    "format-disconnected": "\u25b5",
+    "tooltip-format-wifi": "<b>{essid}</b>\n{signalStrength}%  \u00b7  {ipaddr}"
+  },
+  "battery": {
+    "interval": 30,
+    "states": { "warning": 25, "critical": 12 },
+    "format": "{capacity}%",
+    "format-charging": "\u2191 {capacity}%",
+    "tooltip-format": "{timeTo}"
+  }
+}

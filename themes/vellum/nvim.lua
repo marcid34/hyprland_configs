@@ -1,0 +1,35 @@
+-- vellum — Neovim
+-- Warm paper and sage ink. A light rice that is not a white screen.
+return {
+  palette = {
+    name = "vellum",
+    bg        = "#f6f2ea",
+    bg1       = "#fffdf7",
+    bg2       = "#efe9dd",
+    bg3       = "#ded6c6",
+    fg        = "#2c2823",
+    fg1       = "#4d463d",
+    dim       = "#7d7466",
+    sel       = "#ded6c6",
+    accent    = "#6d8f63",
+    accent2   = "#b38a52",
+    red       = "#b5524a",
+    green     = "#6d8f63",
+    blue      = "#4f7a94",
+    purple    = "#8a6a94",
+    cyan      = "#4f8a86",
+    orange           = "#6d8f63",
+    yellow           = "#b38a52",
+    transparent      = false,
+    light            = true,
+    italic_comments  = true,
+    border           = "#ded6c6",
+  },
+  opts = {
+    number = true, relativenumber = true, signcolumn = "yes",
+    cursorline = true, cursorlineopt = "number",
+    winborder = "rounded",
+    fillchars = "eob: ,vert:│",
+    laststatus = 3,
+  },
+}

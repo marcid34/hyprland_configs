@@ -1,0 +1,51 @@
+# halcyon — Alacritty
+# Warm charcoal and coral. Soft light, hard edges nowhere.
+
+[colors.primary]
+background = "#0f0e11"
+foreground = "#f4f0f5"
+dim_foreground = "#cdc5d1"
+
+[colors.cursor]
+text = "#0f0e11"
+cursor = "#ff8f6e"
+
+[colors.selection]
+text = "#f4f0f5"
+background = "#2b2733"
+
+[colors.normal]
+black   = "#1f1c25"
+red     = "#ff7a7a"
+green   = "#8fd9a8"
+yellow  = "#ffc978"
+blue    = "#8fb8ff"
+magenta = "#d9a2ff"
+cyan    = "#7fd8e0"
+white   = "#cdc5d1"
+
+[colors.bright]
+black   = "#2b2733"
+red     = "#ff7a7a"
+green   = "#8fd9a8"
+yellow  = "#ffc978"
+blue    = "#8fb8ff"
+magenta = "#d9a2ff"
+cyan    = "#7fd8e0"
+white   = "#f4f0f5"
+
+[window]
+padding = { x = 16, y = 14 }
+decorations = "None"
+opacity = 0.92
+blur = true
+dynamic_padding = true
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size = 13.0
+
+[cursor]
+style = { shape = "Beam", blinking = "On" }
+blink_interval = 620
+unfocused_hollow = true

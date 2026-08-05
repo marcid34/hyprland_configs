@@ -1,0 +1,28 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "small",
+    "padding": { "top": 1, "left": 2, "right": 4 },
+    "color": { "1": "38;2;77;157;255", "2": "38;2;120;226;255" }
+  },
+  "display": {
+    "separator": "  ",
+    "key": { "width": 9 },
+    "color": { "title": "38;2;77;157;255" }
+  },
+  "modules": [
+    "break",
+    { "type": "title", "color": { "user": "38;2;77;157;255", "host": "38;2;120;226;255" } },
+    { "type": "custom", "format": "  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500" },
+    { "type": "os",     "key": "os",   "keyColor": "38;2;132;150;171" },
+    { "type": "kernel", "key": "kern", "keyColor": "38;2;132;150;171" },
+    { "type": "wm",     "key": "wm",   "keyColor": "38;2;132;150;171" },
+    { "type": "shell",  "key": "sh",   "keyColor": "38;2;132;150;171" },
+    { "type": "terminal", "key": "term", "keyColor": "38;2;132;150;171" },
+    { "type": "memory", "key": "mem",  "keyColor": "38;2;132;150;171" },
+    { "type": "uptime", "key": "up",   "keyColor": "38;2;132;150;171" },
+    { "type": "custom", "format": "  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500" },
+    { "type": "custom", "format": "  cobalt \u00b7 Deep water and luminous azure" },
+    "break"
+  ]
+}

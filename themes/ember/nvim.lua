@@ -1,0 +1,35 @@
+-- ember — Neovim
+-- Banked heat. Amber falling into rose, nothing fully cooled.
+return {
+  palette = {
+    name = "ember",
+    bg        = "#120d0b",
+    bg1       = "#1b1512",
+    bg2       = "#241c18",
+    bg3       = "#322722",
+    fg        = "#f7ede6",
+    fg1       = "#dcc9bd",
+    dim       = "#ab9184",
+    sel       = "#322722",
+    accent    = "#ff9d4d",
+    accent2   = "#ff6f88",
+    red       = "#ff6f88",
+    green     = "#b8d18a",
+    blue      = "#9fb6e0",
+    purple    = "#e295c8",
+    cyan      = "#86ccc4",
+    orange           = "#ff9d4d",
+    yellow           = "#ff9d4d",
+    transparent      = false,
+    light            = false,
+    italic_comments  = true,
+    border           = "#322722",
+  },
+  opts = {
+    number = true, relativenumber = true, signcolumn = "yes",
+    cursorline = true, cursorlineopt = "number",
+    winborder = "rounded",
+    fillchars = "eob: ,vert:│",
+    laststatus = 3,
+  },
+}

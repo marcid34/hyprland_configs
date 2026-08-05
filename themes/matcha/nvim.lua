@@ -1,0 +1,35 @@
+-- matcha — Neovim
+-- Soft olive under green light. Organic, low, and very calm.
+return {
+  palette = {
+    name = "matcha",
+    bg        = "#0c0f0b",
+    bg1       = "#141911",
+    bg2       = "#1b2117",
+    bg3       = "#272f20",
+    fg        = "#eaf0e3",
+    fg1       = "#ccd6c0",
+    dim       = "#97a389",
+    sel       = "#272f20",
+    accent    = "#a9d84c",
+    accent2   = "#6fd39c",
+    red       = "#f08b7f",
+    green     = "#a9d84c",
+    blue      = "#8fc0d8",
+    purple    = "#c0a3e0",
+    cyan      = "#6fd39c",
+    orange           = "#a9d84c",
+    yellow           = "#e6c65c",
+    transparent      = false,
+    light            = false,
+    italic_comments  = true,
+    border           = "#272f20",
+  },
+  opts = {
+    number = true, relativenumber = true, signcolumn = "yes",
+    cursorline = true, cursorlineopt = "number",
+    winborder = "rounded",
+    fillchars = "eob: ,vert:│",
+    laststatus = 3,
+  },
+}

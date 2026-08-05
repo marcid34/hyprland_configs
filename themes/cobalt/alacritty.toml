@@ -1,0 +1,51 @@
+# cobalt — Alacritty
+# Deep water and luminous azure. Cold, clean, wide awake.
+
+[colors.primary]
+background = "#090d15"
+foreground = "#e9f0fa"
+dim_foreground = "#c0cddd"
+
+[colors.cursor]
+text = "#090d15"
+cursor = "#4d9dff"
+
+[colors.selection]
+text = "#e9f0fa"
+background = "#222e42"
+
+[colors.normal]
+black   = "#16202f"
+red     = "#ff8080"
+green   = "#66dfa8"
+yellow  = "#ffcc70"
+blue    = "#4d9dff"
+magenta = "#b98cff"
+cyan    = "#78e2ff"
+white   = "#c0cddd"
+
+[colors.bright]
+black   = "#222e42"
+red     = "#ff8080"
+green   = "#66dfa8"
+yellow  = "#ffcc70"
+blue    = "#4d9dff"
+magenta = "#b98cff"
+cyan    = "#78e2ff"
+white   = "#e9f0fa"
+
+[window]
+padding = { x = 16, y = 14 }
+decorations = "None"
+opacity = 0.92
+blur = true
+dynamic_padding = true
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size = 13.0
+
+[cursor]
+style = { shape = "Beam", blinking = "On" }
+blink_interval = 620
+unfocused_hollow = true

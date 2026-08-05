@@ -1,0 +1,51 @@
+# graphite — Alacritty
+# Neutral to the point of silence, with one warm signal in it.
+
+[colors.primary]
+background = "#0a0a0b"
+foreground = "#eeeef0"
+dim_foreground = "#c6c6ca"
+
+[colors.cursor]
+text = "#0a0a0b"
+cursor = "#f0b64a"
+
+[colors.selection]
+text = "#eeeef0"
+background = "#26262a"
+
+[colors.normal]
+black   = "#1a1a1d"
+red     = "#e88b8b"
+green   = "#a8c69a"
+yellow  = "#f0b64a"
+blue    = "#9fb4d4"
+magenta = "#c2a6cc"
+cyan    = "#93c4c8"
+white   = "#c6c6ca"
+
+[colors.bright]
+black   = "#26262a"
+red     = "#e88b8b"
+green   = "#a8c69a"
+yellow  = "#f0b64a"
+blue    = "#9fb4d4"
+magenta = "#c2a6cc"
+cyan    = "#93c4c8"
+white   = "#eeeef0"
+
+[window]
+padding = { x = 16, y = 14 }
+decorations = "None"
+opacity = 0.92
+blur = true
+dynamic_padding = true
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size = 13.0
+
+[cursor]
+style = { shape = "Beam", blinking = "On" }
+blink_interval = 620
+unfocused_hollow = true

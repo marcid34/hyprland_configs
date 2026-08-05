@@ -1,0 +1,51 @@
+# glacier — Alacritty
+# Cool glass and ice blue. The bright rice, with the glare taken out.
+
+[colors.primary]
+background = "#eef2f7"
+foreground = "#1a2431"
+dim_foreground = "#3a4859"
+
+[colors.cursor]
+text = "#eef2f7"
+cursor = "#2f7fd8"
+
+[colors.selection]
+text = "#1a2431"
+background = "#d3dde9"
+
+[colors.normal]
+black   = "#e4ebf3"
+red     = "#c4514f"
+green   = "#3f8f6b"
+yellow  = "#b5822c"
+blue    = "#2f7fd8"
+magenta = "#8256b8"
+cyan    = "#3fb0c4"
+white   = "#3a4859"
+
+[colors.bright]
+black   = "#d3dde9"
+red     = "#c4514f"
+green   = "#3f8f6b"
+yellow  = "#b5822c"
+blue    = "#2f7fd8"
+magenta = "#8256b8"
+cyan    = "#3fb0c4"
+white   = "#1a2431"
+
+[window]
+padding = { x = 16, y = 14 }
+decorations = "None"
+opacity = 0.96
+blur = true
+dynamic_padding = true
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size = 13.0
+
+[cursor]
+style = { shape = "Beam", blinking = "On" }
+blink_interval = 620
+unfocused_hollow = true

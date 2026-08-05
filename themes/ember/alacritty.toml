@@ -1,0 +1,51 @@
+# ember — Alacritty
+# Banked heat. Amber falling into rose, nothing fully cooled.
+
+[colors.primary]
+background = "#120d0b"
+foreground = "#f7ede6"
+dim_foreground = "#dcc9bd"
+
+[colors.cursor]
+text = "#120d0b"
+cursor = "#ff9d4d"
+
+[colors.selection]
+text = "#f7ede6"
+background = "#322722"
+
+[colors.normal]
+black   = "#241c18"
+red     = "#ff6f88"
+green   = "#b8d18a"
+yellow  = "#ff9d4d"
+blue    = "#9fb6e0"
+magenta = "#e295c8"
+cyan    = "#86ccc4"
+white   = "#dcc9bd"
+
+[colors.bright]
+black   = "#322722"
+red     = "#ff6f88"
+green   = "#b8d18a"
+yellow  = "#ff9d4d"
+blue    = "#9fb6e0"
+magenta = "#e295c8"
+cyan    = "#86ccc4"
+white   = "#f7ede6"
+
+[window]
+padding = { x = 16, y = 14 }
+decorations = "None"
+opacity = 0.92
+blur = true
+dynamic_padding = true
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size = 13.0
+
+[cursor]
+style = { shape = "Beam", blinking = "On" }
+blink_interval = 620
+unfocused_hollow = true

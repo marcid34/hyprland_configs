@@ -1,0 +1,35 @@
+-- graphite — Neovim
+-- Neutral to the point of silence, with one warm signal in it.
+return {
+  palette = {
+    name = "graphite",
+    bg        = "#0a0a0b",
+    bg1       = "#121214",
+    bg2       = "#1a1a1d",
+    bg3       = "#26262a",
+    fg        = "#eeeef0",
+    fg1       = "#c6c6ca",
+    dim       = "#8d8d94",
+    sel       = "#26262a",
+    accent    = "#f0b64a",
+    accent2   = "#e6e6ea",
+    red       = "#e88b8b",
+    green     = "#a8c69a",
+    blue      = "#9fb4d4",
+    purple    = "#c2a6cc",
+    cyan      = "#93c4c8",
+    orange           = "#f0b64a",
+    yellow           = "#f0b64a",
+    transparent      = false,
+    light            = false,
+    italic_comments  = true,
+    border           = "#26262a",
+  },
+  opts = {
+    number = true, relativenumber = true, signcolumn = "yes",
+    cursorline = true, cursorlineopt = "number",
+    winborder = "rounded",
+    fillchars = "eob: ,vert:│",
+    laststatus = 3,
+  },
+}

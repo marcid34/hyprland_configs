@@ -1,0 +1,42 @@
+/* vellum — rofi
+ *
+ * SUPER+R. The shell's own launcher (SUPER+SPACE) is the one built for this
+ * rice; this is the same palette and the same geometry so the two do not read
+ * as belonging to different desktops.
+ */
+configuration {
+  modes: "drun,run";
+  show-icons: true;
+  icon-theme: "breeze";
+  drun-display-format: "{name}";
+  display-drun: "apps";
+  display-run: "run";
+  drun-match-fields: "name,generic,exec,keywords";
+}
+* { bg:#f6f2ea; bg1:#fffdf7; bg2:#efe9dd; bg3:#ded6c6;
+     fg:#2c2823; fg1:#4d463d; dim:#7d7466; faint:#a89e8d;
+     ac:#6d8f63; ac2:#b38a52; red:#b5524a;
+     background-color: transparent; text-color: @fg1;
+     font: "Adwaita Sans 12"; }
+window { width: 540px; background-color: @bg1; border: 1px;
+          border-color: @bg3; border-radius: 18px; padding: 0; }
+mainbox { children: [ inputbar, listview ]; spacing: 0; }
+inputbar { children: [ prompt, entry ]; padding: 16px 20px; spacing: 12px;
+            border: 0 0 1px 0; border-color: @bg3; }
+prompt { text-color: @ac; }
+entry { placeholder: "Search"; placeholder-color: @faint; vertical-align: 0.5; }
+listview { lines: 7; columns: 1; padding: 10px; spacing: 2px;
+            scrollbar: false; fixed-height: false; }
+element { padding: 10px 14px; spacing: 12px;
+           border-radius: 12px; cursor: pointer; }
+element normal.normal, element alternate.normal {
+  background-color: transparent; text-color: @fg1; }
+element normal.active, element alternate.active {
+  background-color: transparent; text-color: @ac2; }
+element normal.urgent, element alternate.urgent {
+  background-color: transparent; text-color: @red; }
+element selected.normal, element selected.active {
+  background-color: @ac; text-color: @bg; }
+element selected.urgent { background-color: @red; text-color: @bg; }
+element-icon { size: 22px; vertical-align: 0.5; }
+element-text { vertical-align: 0.5; text-color: inherit; }

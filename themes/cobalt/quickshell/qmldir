@@ -1,0 +1,9 @@
+module soft
+singleton Theme 1.0 Theme.qml
+Surface 1.0 Surface.qml
+Chip 1.0 Chip.qml
+Workspaces 1.0 Workspaces.qml
+Ring 1.0 Ring.qml
+Slider 1.0 Slider.qml
+Launcher 1.0 Launcher.qml
+Dash 1.0 Dash.qml

@@ -84,6 +84,16 @@ game and are drawn to match.
 | Asset | Source |
 | --- | --- |
 | `qshell/qshell.jpg` | [wallhaven](https://wallhaven.cc/w/e8xlgw) — cropped to the panel, otherwise unmodified |
+| `halcyon` | `halcyon.jpg` | [wallhaven](https://wallhaven.cc) | [`kxoqdm`](https://whvn.cc/kxoqdm) |
+| `vellum` | `vellum.jpg` | [wallhaven](https://wallhaven.cc) | [`o5dwzl`](https://whvn.cc/o5dwzl) |
+| `cobalt` | `cobalt.jpg` | [wallhaven](https://wallhaven.cc) | [`y85yld`](https://whvn.cc/y85yld) |
+| `orchid` | `orchid.jpg` | [wallhaven](https://wallhaven.cc) | [`d6k32g`](https://whvn.cc/d6k32g) |
+| `seafoam` | `seafoam.jpg` | [wallhaven](https://wallhaven.cc) | [`e83ve8`](https://whvn.cc/e83ve8) |
+| `graphite` | `graphite.png` | [wallhaven](https://wallhaven.cc) | [`gpmv53`](https://whvn.cc/gpmv53) |
+| `ember` | `ember.png` | [wallhaven](https://wallhaven.cc) | [`nrxq6w`](https://whvn.cc/nrxq6w) |
+| `glacier` | `glacier.png` | [wallhaven](https://wallhaven.cc) | [`576j18`](https://whvn.cc/576j18) |
+| `nocturne` | `nocturne.png` | [wallhaven](https://wallhaven.cc) | [`9mqvz1`](https://whvn.cc/9mqvz1) |
+| `matcha` | `matcha.jpg` | [wallhaven](https://wallhaven.cc) | [`4gy7q4`](https://whvn.cc/4gy7q4) |
 
 ## Fonts
 

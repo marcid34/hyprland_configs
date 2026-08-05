@@ -1,0 +1,51 @@
+# seafoam — Alacritty
+# Deep teal and mint spray. Quiet until something happens.
+
+[colors.primary]
+background = "#071310"
+foreground = "#e4f4ef"
+dim_foreground = "#bcdcd2"
+
+[colors.cursor]
+text = "#071310"
+cursor = "#4fe3b4"
+
+[colors.selection]
+text = "#e4f4ef"
+background = "#1d352e"
+
+[colors.normal]
+black   = "#132621"
+red     = "#ff8b8b"
+green   = "#4fe3b4"
+yellow  = "#ffd28a"
+blue    = "#6fd6f5"
+magenta = "#c8a6ff"
+cyan    = "#6fd6f5"
+white   = "#bcdcd2"
+
+[colors.bright]
+black   = "#1d352e"
+red     = "#ff8b8b"
+green   = "#4fe3b4"
+yellow  = "#ffd28a"
+blue    = "#6fd6f5"
+magenta = "#c8a6ff"
+cyan    = "#6fd6f5"
+white   = "#e4f4ef"
+
+[window]
+padding = { x = 16, y = 14 }
+decorations = "None"
+opacity = 0.92
+blur = true
+dynamic_padding = true
+
+[font]
+normal = { family = "Adwaita Mono", style = "Regular" }
+size = 13.0
+
+[cursor]
+style = { shape = "Beam", blinking = "On" }
+blink_interval = 620
+unfocused_hollow = true
